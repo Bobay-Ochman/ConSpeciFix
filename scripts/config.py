@@ -6,6 +6,16 @@ PATH_TO_SPECIES_TXT = "../species.txt"
 MAX_THREADS = multiprocessing.cpu_count()
 MAX_SPECIES_SIZE = 500
 
+USEARCH_PATH = ''
+MAFFT_PATH = ''
+MCL_PATH = ''
+
+TACC = true
+
+if(TACC):
+	PATH_TO_OUTPUT = '/work/03414/be4833/out/results/'
+
+
 def getSpecies():
 	species=[]
 	f=open(PATH_TO_SPECIES_TXT,"r")

@@ -1,15 +1,7 @@
 from config import *
+import os
 
-print getSpecies()
-species = getSpecies()
-	
-#make sure we don't do work that has already been done
-todoSpec = []
+species = getSpeciesOfSize(500)
 for sp in species:
-	try:
-		k=open(PATH_TO_OUTPUT + sp + '/input.txt','r')
-		todoSpec.append(sp)
-	except:
-		pass
-species = todoSpec
-print len(species)
+	print sp
+	os.system('mv /work/03414/be4833/inputs/input_'+sp+'.txt '+PATH_TO_OUTPUT + sp + '/input_'+sp+'.txt')
