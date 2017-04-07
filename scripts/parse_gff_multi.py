@@ -93,5 +93,6 @@ if __name__ == '__main__':
 	args = []
 	for l in f:
 		args.append(l)
+	args = giveMulti(args)
 	p.map(processSpec,args)
 	

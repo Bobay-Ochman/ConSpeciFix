@@ -17,7 +17,7 @@ def unzip(sp):
 
 
 if __name__ == '__main__':
-	species = getSpecies()
+	species = giveMulti(getSpecies())
 	print species
 	p = Pool(MAX_THREADS)
 	p.map(unzip,species)

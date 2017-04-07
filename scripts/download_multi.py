@@ -11,12 +11,11 @@ def downloadFile(args):
 
 if __name__ == '__main__':
 	species = getSpecies()
-	#processSpec('Escherichia_coli','GCF_000299455.1_ASM29945v1_genomic.gff')
 	print multiprocessing.cpu_count()
-	p = Pool(3)
+	p = Pool(MAX_THREADS)
 	f = open('todo/download.txt','r')
 	args = []
-	for l in f.readlines():
+	for l in giveMulti(f.readlines()):
 		args.append(l)
 	p.map(downloadFile,args)
 	

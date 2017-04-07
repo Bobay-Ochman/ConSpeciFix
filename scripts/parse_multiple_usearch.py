@@ -120,7 +120,7 @@ if __name__ == '__main__':
 			k=open(PATH_TO_OUTPUT + sp + '/input.txt','r')
 		except:
 			todoSpec.append(sp)
-	species = todoSpec
+	species = giveMulti(todoSpec)
 	
 	processes = []
 	for i in range(maxThreads):

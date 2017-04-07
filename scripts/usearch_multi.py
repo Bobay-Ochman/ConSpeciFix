@@ -85,6 +85,8 @@ if __name__ == '__main__':
 		processes.append(p)
 
 	f = open('todo/usearch_re_do.txt','r')
+	lines = f.readlines()
+	lines = giveMulti(lines)
 	for l in f:
 		##see if any of our children functions have produced a thing we need to not init
 		try:
