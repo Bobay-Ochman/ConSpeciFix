@@ -1,5 +1,6 @@
 import os
 import multiprocessing
+import sys
 
 PATH_TO_OUTPUT = '/Volumes/ITDR/brian/results/'
 PATH_TO_SPECIES_TXT = "../species.txt"
@@ -10,11 +11,24 @@ USEARCH_PATH = ''
 MAFFT_PATH = ''
 MCL_PATH = ''
 
-TACC = true
+TACC = True
 
 if(TACC):
 	PATH_TO_OUTPUT = '/work/03414/be4833/out/results/'
+	MCL_PATH = '/work/03414/be4833/local/bin/mcl'
+	MAX_THREADS = 2
 
+
+def giveMulti(list):
+	rank = 0
+	worldSize = 1
+	if len(sys.argv) == 3:
+		rank = int(sys.argv[1])
+		worldSize = int(sys.argv[2])
+	ret = []
+	for l in list[rank::worldSize]:
+		ret.append(l)
+	return ret
 
 def getSpecies():
 	species=[]
