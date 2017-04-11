@@ -13,7 +13,7 @@
 #SBATCH -p development    # queue
 #SBATCH -N 4              # Number of nodes, not cores (16 cores/node)
 #SBATCH -n 4              # Total number of MPI tasks (if omitted, n=N)
-#SBATCH -t 01:00:00       # max time (HH:MM:SS)
+#SBATCH -t 00:10:00       # max time (HH:MM:SS)
 
 #SBATCH --mail-user=brian.ellis@utexas.edu
 #SBATCH --mail-type=ALL

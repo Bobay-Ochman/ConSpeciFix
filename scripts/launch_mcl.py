@@ -10,8 +10,18 @@ def mclOnSpec(sp):
 
 if __name__ == '__main__':
 	species = getSpecies()
+	complete = []
+	for sp in giveMulti(species):
+		try:
+			k=open(PATH_TO_OUTPUT + sp + '/out.input_'+sp+'.txt','r')
+			complete.append(sp)
+		except:
+			pass
+
 	todoSpec = []
 	for sp in giveMulti(species):
+		if sp in complete:
+			continue
 		try:
 			k=open(PATH_TO_OUTPUT + sp + '/input_'+sp+'.txt','r')
 			todoSpec.append(sp)
