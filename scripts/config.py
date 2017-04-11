@@ -12,7 +12,7 @@ USEARCH_PATH = ''
 MAFFT_PATH = ''
 MCL_PATH = ''
 
-TACC = (platform.processor() is 'i386')
+TACC = (platform.processor() != 'i386')
 
 
 if(TACC):
