@@ -2,8 +2,8 @@ import multiprocessing
 import sys
 import os
 
-print multiprocessing.cpu_count()
-print str(sys.argv)
+print 'cpu cound:', multiprocessing.cpu_count()
+print 'my args:', str(sys.argv)
 print 'hello World'
 
 #now do all the things you dream of!

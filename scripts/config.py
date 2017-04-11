@@ -11,7 +11,7 @@ USEARCH_PATH = ''
 MAFFT_PATH = ''
 MCL_PATH = ''
 
-TACC = False
+TACC = True
 
 if(TACC):
 	PATH_TO_OUTPUT = '/work/03414/be4833/out/results/'
