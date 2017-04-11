@@ -1,6 +1,7 @@
 import os
 import multiprocessing
 import sys
+import platform
 
 PATH_TO_OUTPUT = '/Volumes/ITDR/brian/results/'
 PATH_TO_SPECIES_TXT = "../species.txt"
@@ -11,7 +12,8 @@ USEARCH_PATH = ''
 MAFFT_PATH = ''
 MCL_PATH = ''
 
-TACC = False
+TACC = (platform.processor() is 'i386')
+
 
 if(TACC):
 	PATH_TO_OUTPUT = '/work/03414/be4833/out/results/'
