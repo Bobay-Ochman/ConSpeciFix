@@ -11,7 +11,7 @@ USEARCH_PATH = ''
 MAFFT_PATH = ''
 MCL_PATH = ''
 
-TACC = True
+TACC = False
 
 if(TACC):
 	PATH_TO_OUTPUT = '/work/03414/be4833/out/results/'
@@ -38,6 +38,15 @@ def getSpecies():
 
 	f.close()
 	species = list(species)
+	return species
+	
+def getSelectedSpecies():
+	species=[]
+	f=open('../selected_species.txt','r')
+	for l in f:
+		a=l.strip('\n').split('\t')
+		species.append(a[0])
+	f.close()
 	return species
 	
 def getSpeciesOfSize(maxSize):

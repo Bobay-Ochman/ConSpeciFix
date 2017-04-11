@@ -40,6 +40,7 @@ launch_mcl.py # Cluster orthologs into families
 get_core.py	# Define the core genome at 85% and extract core proteins into the folder 'align'
 	-> generates output of core genomes and puts it in: PATH_TO_OUTPUT/sp/orthologs.txt
 	-> also puts all orthologs genes and corresponding ids into  PATH_TO_OUTPUT/sp/align/ortho#
+	-> also generates our list of "selected species" which will be used for the rest of the process
 		
 launch_mafft.py  # Align the core proteins with MAFFT
 

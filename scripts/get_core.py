@@ -9,29 +9,8 @@ from config import *
 def getCore(spec):
 
 	species = [spec]
-
-	"""
-	network={}
-	for sp in species:
-		network[sp]=[]
-		f=open('../results/' + sp + '/out.network.txt.I12' ,'r' )
-		for l in f:
-			a=l.strip("\n").split("\t")
-			network[sp].append(a)
-		f.close()
-
-	for sp in species:
-		h=open('../results/' + sp + '/new_strains.txt' ,'w' )
-		for st in network[sp][0]:
-			h.write(st + '\n')
-		h.close()
-
-	"""
-
 	strains=getGenomes(species)
-
 	exclusion=[]
-
 	genes={}
 	parent={}
 	tmp={}
@@ -104,7 +83,9 @@ def getCore(spec):
 
 	for sp in species:
 		try:
-			os.system('rm ' + PATH_TO_OUTPUT + sp + '/align/*' )
+			files = os.listdir(PATH_TO_OUTPUT + sp + '/align/')
+			for f in files:
+				os.remove(f)
 		except OSError:
 			pass
 		h=open(PATH_TO_OUTPUT + sp + '/orthologs.txt',"w")
@@ -116,6 +97,7 @@ def getCore(spec):
 			g=open(PATH_TO_OUTPUT + sp + '/align/' + ortho + ".fa","w")
 			for id in lili:
 				g.write(">" + id + "\n" + seq[sp][id]  )
+			g.truncate()
 			g.close()	
 		h.close()
 		#removed the part that mentions network and clusters because works without... (len(networks[sp]) 'clusters')
@@ -132,8 +114,9 @@ if __name__ == '__main__':
 	k.truncate()
 	k.close()	
 
-#	species = getSpeciesOfSize(500)	
-	species = ['Acetobacter_pasteurianus']
+	species = getSpeciesOfSize(MAX_SPECIES_SIZE)	
+	print len(species)
+#	species = ['Acetobacter_pasteurianus']
 	print multiprocessing.cpu_count()
-	p = Pool(multiprocessing.cpu_count()*2)
+	p = Pool(MAX_THREADS)
 	p.map(getCore,species)
