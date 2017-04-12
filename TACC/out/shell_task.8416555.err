@@ -1,0 +1,34 @@
+Traceback (most recent call last):
+  File "get_core.py", line 122, in <module>
+    p.map(getCore,species)
+  File "/usr/lib64/python2.6/multiprocessing/pool.py", line 148, in map
+    return self.map_async(func, iterable, chunksize).get()
+  File "/usr/lib64/python2.6/multiprocessing/pool.py", line 422, in get
+    raise self._value
+IOError: [Errno 2] No such file or directory: '/work/03414/be4833/out/results/Lactobacillus_helveticus/out.input_Lactobacillus_helveticus.txt.I12'
+Traceback (most recent call last):
+  File "get_core.py", line 122, in <module>
+    p.map(getCore,species)
+  File "/usr/lib64/python2.6/multiprocessing/pool.py", line 148, in map
+    return self.map_async(func, iterable, chunksize).get()
+  File "/usr/lib64/python2.6/multiprocessing/pool.py", line 422, in get
+    raise self._value
+IOError: [Errno 2] No such file or directory: '/work/03414/be4833/out/results/Corynebacterium_diphtheriae/out.input_Corynebacterium_diphtheriae.txt.I12'
+Traceback (most recent call last):
+  File "get_core.py", line 122, in <module>
+    p.map(getCore,species)
+  File "/usr/lib64/python2.6/multiprocessing/pool.py", line 148, in map
+    return self.map_async(func, iterable, chunksize).get()
+  File "/usr/lib64/python2.6/multiprocessing/pool.py", line 422, in get
+    raise self._value
+IOError: [Errno 2] No such file or directory: '/work/03414/be4833/out/results/Stenotrophomonas_maltophilia/out.input_Stenotrophomonas_maltophilia.txt.I12'
+Traceback (most recent call last):
+  File "get_core.py", line 122, in <module>
+    p.map(getCore,species)
+  File "/usr/lib64/python2.6/multiprocessing/pool.py", line 148, in map
+    return self.map_async(func, iterable, chunksize).get()
+  File "/usr/lib64/python2.6/multiprocessing/pool.py", line 422, in get
+    raise self._value
+IOError: [Errno 2] No such file or directory: '/work/03414/be4833/out/results/Brucella_abortus/out.input_Brucella_abortus.txt.I12'
+slurmstepd: *** JOB 8416555 ON c557-304 CANCELLED AT 2017-04-11T16:32:27 ***
+[c557-304.stampede.tacc.utexas.edu:mpirun_rsh][signal_processor] Caught signal 15, killing job

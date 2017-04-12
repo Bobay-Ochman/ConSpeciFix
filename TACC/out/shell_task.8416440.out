@@ -1,0 +1,12 @@
+TACC: Starting up job 8416440
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+Hello world from processor c557-503.stampede.tacc.utexas.edu, rank 0 out of 1 processors
+/work/03414/be4833/SpeciationProcess/TACC
+mcl on Enterobacter_asburiae
+cpu cound: 16
+my args: ['python_shell_task.py', '0', '1']
+hello World
+about to run launch_mcl.py with 0 1
+ 
+TACC: Shutdown complete. Exiting.
