@@ -3,9 +3,19 @@ import os
 from multiprocessing import Pool
 
 def concatForSpec(sp):
+	
+	"""
+	try:
+		h=open(PATH_TO_OUTPUT + sp + '/concat85.fa',"r")
+		h.close()
+		return
+	except:
+		pass
+	"""
+	
 	species = [sp]
 	strains=getGenomes(species)
-
+	
 	genes={}
 	orthologues={}
 	for sp in species:
@@ -91,10 +101,10 @@ def concatForSpec(sp):
 
 
 
-	print "Writing Phylip"
+	print "Writing falip"
 
 	for sp in species:
-		h=open(PATH_TO_OUTPUT + sp + '/concat85.phy',"w")
+		h=open(PATH_TO_OUTPUT + sp + '/concat85.fa',"w")
 		st1 = concat[sp].keys()[0]
 		longueur = len(concat[sp][st1])
 		h.write("   " + str(len(strains[sp])) + " " + str(longueur) + "\n")

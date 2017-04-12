@@ -1,4 +1,5 @@
 from config import *
 import os
 
-print MCL_PATH
+species = getSelectedSpecies()
+print len(species)

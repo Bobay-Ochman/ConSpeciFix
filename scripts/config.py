@@ -37,12 +37,12 @@ def getSpecies():
 	f=open(PATH_TO_SPECIES_TXT,"r")
 	for l in f:
 		species.append(l.strip("\n").split('\t')[0])
-
 	f.close()
 	species = list(species)
 	return species
 	
 def getSelectedSpecies():
+	"""
 	species=[]
 	f=open('../selected_species.txt','r')
 	for l in f:
@@ -50,6 +50,17 @@ def getSelectedSpecies():
 		species.append(a[0])
 	f.close()
 	return species
+	"""
+	ret = []
+	spec = getSpecies()
+	for sp in spec:
+		try:
+			h = open(PATH_TO_OUTPUT + sp + '/orthologs.txt')
+			h.close()
+			ret.append(sp)
+		except:
+			continue
+	return ret
 	
 def getSpeciesOfSize(maxSize):
 	ret = []
