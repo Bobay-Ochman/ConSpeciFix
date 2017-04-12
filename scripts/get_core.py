@@ -47,7 +47,12 @@ def getCore(spec):
 	for sp in species:
 		doublons[sp]=0
 		core[sp]=[]
-		f=open(PATH_TO_OUTPUT + sp + '/out.input_' + sp + '.txt.I12',"r")
+		f = None
+		try:
+			f=open(PATH_TO_OUTPUT + sp + '/out.input_' + sp + '.txt.I12',"r")
+		except:
+			print 'Skipping! '+ str(sp)
+			return
 		for l in f:
 			a=l.strip("\n").split("\t")
 			tmp=[]
@@ -109,14 +114,14 @@ def getCore(spec):
 			k.close()
 
 if __name__ == '__main__':
-	k=open('../selected_species.txt','w')
-	k.seek(0)
-	k.truncate()
-	k.close()	
-
-	species = getSpeciesOfSize(MAX_SPECIES_SIZE)	
-	print len(species)
-#	species = ['Acetobacter_pasteurianus']
-	print multiprocessing.cpu_count()
+	species = giveMulti(getSpeciesOfSize(MAX_SPECIES_SIZE))	
+	done = getSelectedSpecies()
+	specFinal = []
+	for sp in species:
+		if sp in done:
+			continue
+		else:
+			specFinal.append(sp)
+	species = specFinal
 	p = Pool(MAX_THREADS)
 	p.map(getCore,species)

@@ -1,5 +1,7 @@
 scripts/inputs/*
 scripts/config.pyc
+scripts/test.py
+selected_species.txt
 
 
 # OS generated files #

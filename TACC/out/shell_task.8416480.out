@@ -1,0 +1,11 @@
+TACC: Starting up job 8416480
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+Hello world from processor c558-101.stampede.tacc.utexas.edu, rank 0 out of 4 processors
+/work/03414/be4833/SpeciationProcess/TACC
+Hello world from processor c558-901.stampede.tacc.utexas.edu, rank 3 out of 4 processors
+Hello world from processor c558-702.stampede.tacc.utexas.edu, rank 1 out of 4 processors
+Hello world from processor c558-703.stampede.tacc.utexas.edu, rank 2 out of 4 processors
+/work/03414/be4833/SpeciationProcess/TACC
+/work/03414/be4833/SpeciationProcess/TACC
+/work/03414/be4833/SpeciationProcess/TACC
