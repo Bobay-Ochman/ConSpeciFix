@@ -2,7 +2,7 @@ scripts/inputs/*
 scripts/config.pyc
 scripts/test.py
 selected_species.txt
-
+TACC/out/*
 
 # OS generated files #
 ######################
