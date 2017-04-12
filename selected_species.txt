@@ -78,3 +78,9 @@ Helicobacter_pullorum	16
 Lactobacillus_gasseri	21
 Lactobacillus_salivarius	15
 Gardnerella_vaginalis	47
+Histophilus_somni	16
+Lactobacillus_helveticus	23
+Lactococcus_garvieae	19
+Lactobacillus_casei	39
+Bacillus_coagulans	22
+Elizabethkingia_anophelis	26
