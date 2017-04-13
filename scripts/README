@@ -1,76 +1,50 @@
-####### File System
-project
-	genomes_proks.txt	#pulled from the NCBI database
-	species.txt	#built from species.py, is the list of all species used
+# Bacteria Speciation Process
+some kind words of introduction
+
+## Process
+
+### Preparing the data
+probably something about downloading the NCBI cataloge that lists what all they have.
+- `species.py` creates species.txt with all species that will be applicable. (all the species with more than 15 complete genomes)
+- `folders.py` Prepare one folder for each species. Within that folder, creates folders for other portions of the process, including `genes`, `genomes`, `align` and `BBH`.
+- `download.py` Download genomes from NCBI into respective folders
+- `unzip.py` unzips the genomes
+- Parse GFF
+    - `parse_gff_build.py` makes a list in `todo/parse_gff.txt` with all parsing work that needs to be done
+    - `parse_gff_multi.py`	creates multiple parallel processes to parse the gff files listed in 'todo/parse_gff.txt' through fasta files into the species' folder. We just utilize .fa
 
 
+### Resampling analysis
 
-####### Preparing the data
+- USEACH
+    - `usearch_build.py` makes a list in `todo/usearch.txt` with all usearch comparisons needing to be performed.
+    - `usearch_multi.py` creates parallell processes to do the work listed by comparing all the genome pairs with eachother using USEARCH.
+- `parse_multiple_usearch.py` Finds the pair of orthologs genes
+    - creates input for MCL in  `PATH_TO_OUTPUT/(sp)/input.txt`
 
-Define the list of species to analyse (all the species with more than 15 complete genomes)
+***
+transfer work to the supercomputer TACC
+***
+- `launch_mcl.py` Cluster orthologs into families
+	- creates input for get_core in `PATH_TO_OUTPUT/(sp)/out.input_(sp).txt.I12`
 
-species.py	#defines species.txt
+- `get_core.py` Define the core genome at 85% and extract core proteins into the folder `PATH_TO_OUTPUT/(sp)/align/`
+    - generates output of core genomes and puts it in: `PATH_TO_OUTPUT/(sp)/orthologs.txt`
+	- also puts all orthologs genes and corresponding ids into `PATH_TO_OUTPUT/(sp)/align/ortho(#)`
+	- also generates our list of `selectedSpecies.txt` which will be used for the rest of the process.
+- `launch_mafft.py` Align the core proteins with MAFFT.
+    - produces output in `PATH_TO_OUTPUT/(sp)/align/(gene).align`
+- `concat85.py` Merges the core genes into a single alignment
+- `raxml_distance.csh` Compute the distances with RAxML
+- `sample.py` Remove nearly identical strains and generate random combinations of strains
+- `calcHM.py` # Compute the h/m ratios across all the combinations of strains
+### Graphing the data
+- `graph.py` Generate the input files to generate the graphs
+- `big_graph.py` Generate the script for R
+- `big_graph.R` Generate the graphs
 
-folders.py # Prepare one folder for each species. Within that folder, create the folders 'genes', 'genomes', 'align' and 'phylo'
-
-download.py  # Download genomes
-
-unzip.py # unzip all files
-
-parse_gff_build.py	#	makes a list in 'todo/parse_gff.txt' with all parsing work that needs to be done
-
-parse_gff_multi.py	#	creates n processes to parse the gff files listed in todo/parse_gff.txt
-					#	- fasta files into a species folder. Two fasta files for each genome (One nucleotide file .fa and one protein file .prot).
-
-
-####### Resampling analysis
-
-usearch_build.py	#	makes a list in 'toDoList.txt' with all usearch Comps needing to be performed
-
-usearch_multi.py    #	creates n processes to compare all the genome pairs with USEARCH
-
-parse_multiple_usearch.py  # Find the pairs of orthologs
-	-> creates input for MCL: PATH_TO_OUTPUT/sp/input.txt
-
-********* transfer work to TACC
-
-launch_mcl.py # Cluster orthologs into families
-	-> creates input for get_core.py: PATH_TO_OUTPUT/sp/out.input_sp.txt.I12
-
-get_core.py	# Define the core genome at 85% and extract core proteins into the folder 'align'
-	-> generates output of core genomes and puts it in: PATH_TO_OUTPUT/sp/orthologs.txt
-	-> also puts all orthologs genes and corresponding ids into  PATH_TO_OUTPUT/sp/align/ortho#
-	-> also generates our list of "selected species" which will be used for the rest of the process
-		
-launch_mafft.py  # Align the core proteins with MAFFT
-
-# wont't need the 'backtranslate.py' - Backtranslate the protein alignments into nucleotide alignments
-
-concat85.py # Merge the core genes into a single alignment
-
-raxml_distance.csh # Compute the distances with RAxML
-
-sample.py # Remove nearly identical strains and generate random combinations of strains
-
-calcHM.py # Compute the h/m ratios across all the combinations of strains
-
-
-####### Graphs
-
-graph.py # Generate the input files to generate the graphs
-
-big_graph.py # Generate the script for R
-
-big_graph.R # Generate the graphs
-
-
-####### Exclusion Criterion
-
-distrib.py
-
-kmeans.py
-
-split_kmaens.py
-
-criterion.py
-
+## Exclusion Criterion
+- `distrib.py`
+- `kmeans.py`
+- `split_kmaens.py`
+- `criterion.py`

@@ -106,12 +106,14 @@ def getCore(spec):
 			g.close()	
 		h.close()
 		#removed the part that mentions network and clusters because works without... (len(networks[sp]) 'clusters')
-		print sp,' There are ',nb,' core genes and ',doublons[sp],' doublons ',mean(genes[sp]), ' genes on average for',len(strains[sp]),' strains.  Ratio=',100*nb/mean(genes[sp]),' %'
-		ratio = nb/mean(genes[sp])
-		if ratio >= 0.20:
-			k=open('../selected_species.txt','a')
-			k.write(sp + '\t' + str(len(strains[sp])) + '\n')
-			k.close()
+		ratio = 0
+		if mean(genes[sp]) > 0:	
+			ratio = nb/mean(genes[sp])
+			print sp,' There are ',nb,' core genes and ',doublons[sp],' doublons ',mean(genes[sp]), ' genes on average for',len(strains[sp]),' strains.  Ratio=',100*nb/mean(genes[sp]),' %'
+			if ratio >= 0.20:
+				k=open('../selected_species.txt','a')
+				k.write(sp + '\t' + str(len(strains[sp])) + '\n')
+				k.close()
 
 if __name__ == '__main__':
 	species = giveMulti(getSpeciesOfSize(MAX_SPECIES_SIZE))	

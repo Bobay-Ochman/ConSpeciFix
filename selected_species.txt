@@ -296,3 +296,6 @@ Vibrio_nigripulchritudo	15
 >>>>>>> dcb184fe52cb62fbcca5eb6e956c15e920ba8094
 Bacillus_weihenstephanensis	19
 Klebsiella_oxytoca	88
+Burkholderia_stagnalis	64
+Lactobacillus_iners	16
+Lactobacillus_crispatus	26
