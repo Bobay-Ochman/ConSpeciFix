@@ -1,0 +1,2 @@
+slurmstepd: *** JOB 8419001 ON c559-203 CANCELLED AT 2017-04-12T14:44:50 DUE TO TIME LIMIT ***
+[c559-203.stampede.tacc.utexas.edu:mpirun_rsh][signal_processor] Caught signal 15, killing job
