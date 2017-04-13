@@ -18,6 +18,7 @@ if(TACC):
 	PATH_TO_OUTPUT = '/work/03414/be4833/out/results/'
 	MCL_PATH = '/work/03414/be4833/local/bin/mcl'
 	MAX_THREADS = 16
+	MAFFT_PATH = '/work/03414/be4833/bin/mafft'
 
 
 def giveMulti(list):
@@ -31,6 +32,11 @@ def giveMulti(list):
 		ret.append(l)
 	return ret
 
+def printLog(string):
+	string = str(string)
+	if len(sys.argv) == 3:
+		print '***'+str(sys.argv[1]) + ' ' + string
+	print '*** '+string
 def getSpecies():
 	species=[]
 	f=open(PATH_TO_SPECIES_TXT,"r")
