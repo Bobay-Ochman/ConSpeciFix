@@ -49,7 +49,7 @@ def concatForSpec(sp):
 	for sp in species:
 		tmp[sp]={}
 		for ortho in genes[sp]:
-			print sp, ortho
+			printLog(sp+' '+ortho)
 			f=open( PATH_TO_OUTPUT+ sp + '/align/'  + ortho + ".fa","r")
 			memo=[]
 			for l in f:
@@ -101,7 +101,7 @@ def concatForSpec(sp):
 
 
 
-	print "Writing falip"
+	printLog('Writing falip')
 
 	for sp in species:
 		h=open(PATH_TO_OUTPUT + sp + '/concat85.fa',"w")
@@ -129,7 +129,8 @@ def concatForSpec(sp):
 
 
 if __name__ == '__main__':
-	species = getSelectedSpecies()
+	species = giveMulti(getSelectedSpecies())
+	#species = ['Acetobacter_pasteurianus']
 	p = Pool(MAX_THREADS)
 	p.map(concatForSpec,species)
 
