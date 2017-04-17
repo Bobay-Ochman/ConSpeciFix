@@ -23,7 +23,7 @@ while True:
 			else:
 				totalToDo+=1
 
-	print totalDone ,' / ',totalToDo,'('+str(round(totalDone/(totalDone+totalToDo * 1.0)*100,3))+'%)'
+	print totalDone ,' / ',totalToDo,'('+str(round(totalDone/(totalToDo * 1.0)*100,3))+'%)'
 	if(orig == -1):
 		orig = totalDone
 		prev = orig
