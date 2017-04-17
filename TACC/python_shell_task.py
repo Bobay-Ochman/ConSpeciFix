@@ -9,7 +9,7 @@ print 'hello World'
 #now do all the things you dream of!
 #Don't let your todo list stay memes!
 
-prog = 'launch_mafft.py'
+prog = 'launch_mafft_multi.py'
 
 os.chdir('../scripts/')
 

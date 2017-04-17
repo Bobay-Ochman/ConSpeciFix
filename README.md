@@ -32,8 +32,10 @@ transfer work to the supercomputer TACC
     - generates output of core genomes and puts it in: `PATH_TO_OUTPUT/(sp)/orthologs.txt`
 	- also puts all orthologs genes and corresponding ids into `PATH_TO_OUTPUT/(sp)/align/ortho(#)`
 	- also generates our list of `selectedSpecies.txt` which will be used for the rest of the process.
+
 - `launch_mafft.py` Align the core proteins with MAFFT.
     - produces output in `PATH_TO_OUTPUT/(sp)/align/(gene).align`
+    
 - `concat85.py` Merges the core genes into a single alignment
 - `raxml_distance.csh` Compute the distances with RAxML
 - `sample.py` Remove nearly identical strains and generate random combinations of strains

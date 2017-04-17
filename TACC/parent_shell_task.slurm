@@ -11,9 +11,9 @@
 #SBATCH -o out/shell_task.%j.out   # stdout; %j expands to jobid
 #SBATCH -e out/shell_task.%j.err   # stderr; skip to combine stdout and stderr
 #SBATCH -p normal    # queue
-#SBATCH -N 16              # Number of nodes, not cores (16 cores/node)
-#SBATCH -n 16              # Total number of MPI tasks (if omitted, n=N)
-#SBATCH -t 05:00:00       # max time (HH:MM:SS)
+#SBATCH -N 8              # Number of nodes, not cores (16 cores/node)
+#SBATCH -n 8              # Total number of MPI tasks (if omitted, n=N)
+#SBATCH -t 01:00:00       # max time (HH:MM:SS)
 
 #SBATCH --mail-user=brian.ellis@utexas.edu
 #SBATCH --mail-type=ALL
