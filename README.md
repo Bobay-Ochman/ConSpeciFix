@@ -33,8 +33,10 @@ transfer work to the supercomputer TACC
 	- also puts all orthologs genes and corresponding ids into `PATH_TO_OUTPUT/(sp)/align/ortho(#)`
 	- also generates our list of `selectedSpecies.txt` which will be used for the rest of the process.
 
-- `launch_mafft.py` Align the core proteins with MAFFT.
-    - produces output in `PATH_TO_OUTPUT/(sp)/align/(gene).align`
+- MAFFT
+    - `launch_mafft_build.py` builds a list in `todo/mafft.txt`
+    - `launch_mafft_multi.py` Align the core proteins with MAFFT.
+        - produces output in `PATH_TO_OUTPUT/(sp)/align/(gene).align`
     
 - `concat85.py` Merges the core genes into a single alignment
 - `raxml_distance.csh` Compute the distances with RAxML
