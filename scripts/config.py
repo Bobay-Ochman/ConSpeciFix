@@ -17,7 +17,7 @@ TACC = (platform.processor() != 'i386')
 if(TACC):
 	PATH_TO_OUTPUT = '/work/03414/be4833/out/results/'
 	MCL_PATH = '/work/03414/be4833/local/bin/mcl'
-	MAX_THREADS = 16
+	MAX_THREADS = 4
 	MAFFT_PATH = '/work/03414/be4833/bin/mafft'
 
 
