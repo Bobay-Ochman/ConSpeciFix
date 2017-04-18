@@ -4,14 +4,12 @@ from multiprocessing import Pool
 
 def concatForSpec(sp):
 	
-	"""
 	try:
 		h=open(PATH_TO_OUTPUT + sp + '/concat85.fa',"r")
 		h.close()
 		return
 	except:
 		pass
-	"""
 	
 	species = [sp]
 	strains=getGenomes(species)
@@ -130,6 +128,7 @@ def concatForSpec(sp):
 
 if __name__ == '__main__':
 	species = getSelectedSpecies()
+	species = ['Achromobacter_xylosoxidans']
 	p = Pool(MAX_THREADS)
 	p.map(concatForSpec,species)
 

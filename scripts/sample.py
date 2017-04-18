@@ -9,6 +9,9 @@ for l in f:
 
 f.close()
 
+species= ['Achromobacter_xylosoxidans']
+
+
 strains={}
 for sp in species:
 	strains[sp]=[]

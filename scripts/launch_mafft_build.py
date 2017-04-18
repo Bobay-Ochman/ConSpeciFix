@@ -1,7 +1,7 @@
 from config import *
 
 species = getSelectedSpecies()
-#species = ['Acetobacter_pasteurianus']
+#species = ['Achromobacter_xylosoxidans']
 out = open('todo/mafft.txt','w')
 out.seek(0)
 for sp in species:

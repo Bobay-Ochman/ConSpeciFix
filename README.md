@@ -39,9 +39,10 @@ transfer work to the supercomputer TACC
         - produces output in `PATH_TO_OUTPUT/(sp)/align/(gene).align`
     
 - `concat85.py` Merges the core genes into a single alignment
-- `raxml_distance.csh` Compute the distances with RAxML
+- `raxml_distance.py` Compute the distances with RAxML
 - `sample.py` Remove nearly identical strains and generate random combinations of strains
 - `calcHM.py` # Compute the h/m ratios across all the combinations of strains
+
 ### Graphing the data
 - `graph.py` Generate the input files to generate the graphs
 - `big_graph.py` Generate the script for R
