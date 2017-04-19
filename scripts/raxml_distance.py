@@ -1,13 +1,16 @@
-from config import *
 import os
+from config import *
 
-species = getSelectedSpecies()
+
+species = giveMulti(getSelectedSpecies())
+
+### Don't multithread because RAxML can do it for us and better
 
 for sp in species:
-	os.system('time caffeinate raxml -f x -T 16 -p 12345 -s' + PATH_TO_OUTPUT+ sp + '/concat85.phy  -m GTRGAMMA -n dist')
-	os.system('mv RAxML_distances.dist   '+PATH_TO_OUTPUT+ sp +'/distances.dist')
-	os.system('rm RA*')
-
+	print sp
+	os.chdir(PATH_TO_OUTPUT+ sp+'/')
+	print os.getcwd()
+	os.system('raxml -f x -T 16 -p 12345 -s ' +  ' concat85.phy  -m GTRGAMMA -n dist')
 
 
 
