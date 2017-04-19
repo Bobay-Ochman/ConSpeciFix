@@ -4,14 +4,13 @@ from multiprocessing import Pool
 
 def concatForSpec(sp):
 	printLog('starting '+sp)
-	"""
 	try:
 		h=open(PATH_TO_OUTPUT + sp + '/concat85.fa',"r")
 		h.close()
 		return
 	except:
 		pass
-	"""
+
 	species = [sp]
 	strains=getGenomes(species)
 	
@@ -43,7 +42,6 @@ def concatForSpec(sp):
 
 
 
-	tirets='------------------------------------------------------------------'
 	tmp={}
 	for sp in species:
 		tmp[sp]={}
@@ -127,7 +125,6 @@ def concatForSpec(sp):
 
 if __name__ == '__main__':
 	species = giveMulti(getSelectedSpecies())
-	species = ['Acetobacter_pasteurianus']
 	p = Pool(MAX_THREADS)
 	p.map(concatForSpec,species)
 
