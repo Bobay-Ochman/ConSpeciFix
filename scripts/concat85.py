@@ -3,11 +3,13 @@ import os
 from multiprocessing import Pool
 
 def concatForSpec(sp):
+#for sp in giveMulti(getSelectedSpecies()):
 	printLog('starting '+sp)
 	try:
 		h=open(PATH_TO_OUTPUT + sp + '/concat85.fa',"r")
 		h.close()
 		return
+		#continue
 	except:
 		pass
 
@@ -46,6 +48,7 @@ def concatForSpec(sp):
 	for sp in species:
 		tmp[sp]={}
 		for ortho in genes[sp]:
+			print sp, ortho
 			f=open( PATH_TO_OUTPUT+ sp + '/align/'  + ortho + ".fa","r")
 			memo=[]
 			maxLen = 0;
@@ -83,17 +86,18 @@ def concatForSpec(sp):
 	tmp={}
 
 
-
-	for sp in species:
-		h=open(PATH_TO_OUTPUT + sp + '/concat85.fa',"w")
-		for st in strains[sp]:
-			h.write(">" + st + "\n")
-			i=0
-			while i < len(concat[sp][st]):		# MODIF 
-				h.write(concat[sp][st][i:i+60] + "\n")
-				i+=60
-		h.close()
-
+	try:
+		for sp in species:
+			h=open(PATH_TO_OUTPUT + sp + '/concat85.fa',"w")
+			for st in strains[sp]:
+				h.write(">" + st + "\n")
+				i=0
+				while i < len(concat[sp][st]):		# MODIF 
+					h.write(concat[sp][st][i:i+60] + "\n")
+					i+=60
+			h.close()
+	except:
+		print 'skipping', sp
 
 	##comment out all of the falip files
 """	printLog('Writing falip '+ str(species))
@@ -123,11 +127,12 @@ def concatForSpec(sp):
 
 """
 
+
+
 if __name__ == '__main__':
 	species = giveMulti(getSelectedSpecies())
 	p = Pool(MAX_THREADS)
 	p.map(concatForSpec,species)
-
 
 
 
