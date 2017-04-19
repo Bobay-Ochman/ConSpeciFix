@@ -3,14 +3,15 @@ import os
 from multiprocessing import Pool
 
 def concatForSpec(sp):
-	
+	printLog('starting '+sp)
+	"""
 	try:
 		h=open(PATH_TO_OUTPUT + sp + '/concat85.fa',"r")
 		h.close()
 		return
 	except:
 		pass
-	
+	"""
 	species = [sp]
 	strains=getGenomes(species)
 	
@@ -47,9 +48,9 @@ def concatForSpec(sp):
 	for sp in species:
 		tmp[sp]={}
 		for ortho in genes[sp]:
-			#printLog(sp+' '+ortho)
 			f=open( PATH_TO_OUTPUT+ sp + '/align/'  + ortho + ".fa","r")
 			memo=[]
+			maxLen = 0;
 			for l in f:
 				if l[0] == ">":
 					id = l.strip("\n").strip(">").split(" ")[0]
@@ -62,14 +63,16 @@ def concatForSpec(sp):
 				else:
 					tmp[sp][st]+=l.strip("\n").upper()
 					longueur = len(tmp[sp][st])
+					if longueur > maxLen:
+						maxLen = longueur
 			f.close()
 			for st in strains[sp]:
 				if tmp[sp].has_key(st):
 					pass
 				else:
 					tmp[sp][st]=''
-				if len(tmp[sp][st]) < longueur:
-					while len(tmp[sp][st]) < longueur:
+				if len(tmp[sp][st]) < maxLen:
+					while len(tmp[sp][st]) < maxLen:
 						#print st, ' ',len(tmp[sp][st]),' ',longueur
 						tmp[sp][st]+='-'
 
@@ -94,17 +97,17 @@ def concatForSpec(sp):
 		h.close()
 
 
-
-	printLog('Writing falip '+ str(species))
+	##comment out all of the falip files
+"""	printLog('Writing falip '+ str(species))
 
 	for sp in species:
-		h=open(PATH_TO_OUTPUT + sp + '/concat85.fa',"w")
+		h=open(PATH_TO_OUTPUT + sp + '/concat85.phy',"w")
 		st1 = concat[sp].keys()[0]
 		longueur = len(concat[sp][st1])
 		h.write("   " + str(len(strains[sp])) + " " + str(longueur) + "\n")
 		for st in strains[sp]:
 			resu = st
-			while len(resu) < 52:
+			while len(resu) < 120:
 				resu += " "
 			i=0
 			while i in range(60):
@@ -115,16 +118,16 @@ def concatForSpec(sp):
 		j=60
 		while j < longueur:
 			for st in strains[sp]:
-				h.write("                                                    " + concat[sp][st][j:j+10] + " " + concat[sp][st][j+10:j+20] + " " + concat[sp][st][j+20:j+30] + " "  + concat[sp][st][j+30:j+40] + " " + concat[sp][st][j+40:j+50] + " " +  concat[sp][st][j+50:j+60] + "\n")
+				h.write("                                                                                                                        " + concat[sp][st][j:j+10] + " " + concat[sp][st][j+10:j+20] + " " + concat[sp][st][j+20:j+30] + " "  + concat[sp][st][j+30:j+40] + " " + concat[sp][st][j+40:j+50] + " " +  concat[sp][st][j+50:j+60] + "\n")
 			h.write("\n")
 			j+=60
 		h.close()
 
-
+"""
 
 if __name__ == '__main__':
 	species = giveMulti(getSelectedSpecies())
-#	species = ['Aeromonas_caviae']
+	species = ['Acetobacter_pasteurianus']
 	p = Pool(MAX_THREADS)
 	p.map(concatForSpec,species)
 

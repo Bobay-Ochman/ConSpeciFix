@@ -20,11 +20,13 @@ for sp in species:
 		strains[sp].append(l.strip('\n'))
 	f.close()
 
+## use the normal way to get strains
 
 
 dist={}
 for sp in species:
 	dist[sp]={}
+	#species folder
 	f=open('../results/' + sp + '/distances.dist',"r")
 	for l in f:
 		a=l.strip("\n").split("\t")
@@ -44,7 +46,7 @@ for sp in species:
 
 # Remove identical genomes
 
-exclusion=['NC_002513']
+exclusion=[]
 
 for sp in species:
 	for st in exclusion:
@@ -92,6 +94,7 @@ for sp in species:
 import random
 
 for sp in species:
+	#also in the species folder
 	h=open('../results/families_' + sp + '.txt',"w")
 	familles=[]
 	combin={}
