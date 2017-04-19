@@ -1,5 +1,6 @@
 # Bacteria Speciation Process
-some kind words of introduction
+
+A process that produces a database that, when tested against an instance of a bacteria, can determine with a certain confidence level whether or not the genome in question is a member of a particular species.
 
 ## Process
 
@@ -19,12 +20,10 @@ probably something about downloading the NCBI cataloge that lists what all they 
 - USEACH
     - `usearch_build.py` makes a list in `todo/usearch.txt` with all usearch comparisons needing to be performed.
     - `usearch_multi.py` creates parallell processes to do the work listed by comparing all the genome pairs with eachother using USEARCH.
+    
 - `parse_multiple_usearch.py` Finds the pair of orthologs genes
     - creates input for MCL in  `PATH_TO_OUTPUT/(sp)/input.txt`
-
-***
-transfer work to the supercomputer TACC
-***
+    
 - `launch_mcl.py` Cluster orthologs into families
 	- creates input for get_core in `PATH_TO_OUTPUT/(sp)/out.input_(sp).txt.I12`
 
@@ -39,8 +38,13 @@ transfer work to the supercomputer TACC
         - produces output in `PATH_TO_OUTPUT/(sp)/align/(gene).align`
     
 - `concat85.py` Merges the core genes into a single alignment
-- `raxml_distance.py` Compute the distances with RAxML
+	- produces output in `PATH_TO_OUTPUT/(sp)/concat.fa`
+	
+- `raxml_distance.py` Compute the distances between genomes with RAxML using the total genome listed in the `concat.fa`
+
 - `sample.py` Remove nearly identical strains and generate random combinations of strains
+	- produces `sample.txt` and `family.txt`
+	
 - `calcHM.py` # Compute the h/m ratios across all the combinations of strains
 
 ### Graphing the data
