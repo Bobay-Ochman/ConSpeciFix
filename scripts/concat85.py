@@ -48,7 +48,7 @@ def concatForSpec(sp):
 	for sp in species:
 		tmp[sp]={}
 		for ortho in genes[sp]:
-			print sp, ortho
+			printLog(sp+' '+ortho)
 			f=open( PATH_TO_OUTPUT+ sp + '/align/'  + ortho + ".fa","r")
 			memo=[]
 			maxLen = 0;
@@ -88,6 +88,7 @@ def concatForSpec(sp):
 
 	try:
 		for sp in species:
+			printLog('writing '+sp)
 			h=open(PATH_TO_OUTPUT + sp + '/concat85.fa',"w")
 			for st in strains[sp]:
 				h.write(">" + st + "\n")
@@ -97,7 +98,7 @@ def concatForSpec(sp):
 					i+=60
 			h.close()
 	except:
-		print 'skipping', sp
+		printLog('skipping '+sp)
 
 	##comment out all of the falip files
 """	printLog('Writing falip '+ str(species))
