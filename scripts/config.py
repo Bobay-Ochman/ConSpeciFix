@@ -11,6 +11,7 @@ MAX_SPECIES_SIZE = 500
 USEARCH_PATH = 'usearch61'
 MAFFT_PATH = 'mafft'
 MCL_PATH = ''
+RAXML_PATH = 'raxml'
 
 TACC = (platform.processor() != 'i386')
 
@@ -19,6 +20,7 @@ if(TACC):
 	MCL_PATH = '/work/03414/be4833/local/bin/mcl'
 	MAX_THREADS = 4
 	MAFFT_PATH = '/work/03414/be4833/bin/mafft'
+	RAXML_PATH = '/work/03414/be4833/RAxML/raxmlHPC-PTHREADS'
 
 
 def giveMulti(list):
@@ -76,6 +78,9 @@ def getSpeciesOfSize(maxSize):
 		if len(masterLen[sp])<maxSize:
 			ret.append(sp)
 	return ret
+
+def getSpeciesForTest():
+	return ['Kingella_kingae','Bacteroides_ovatus','Gilliamella_apicola','Streptococcus_mitis','Streptococcus_oralis']
 	
 def getGenomes(species):
 	dico = {}
