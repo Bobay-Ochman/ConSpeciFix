@@ -1,41 +1,62 @@
-import random
-from config import *
+
 import os
-from multiprocessing import Pool
+
+species=[]
+f=open('../selected_species.txt','r')
+for l in f:
+	a=l.strip('\n').split('\t')
+	species.append(a[0])
+
+f.close()
+
+species= ['Achromobacter_xylosoxidans']
 
 
-def sample(sp):
-	strains = getGenomes([species])
-	strains = strains[sp]
+strains={}
+for sp in species:
+	strains[sp]=[]
+	f=open('../results/' + sp + '/new_strains.txt','r')
+	for l in f:
+		strains[sp].append(l.strip('\n'))
+	f.close()
+
 ## use the normal way to get strains
 
-	dist={}
+
+dist={}
+for sp in species:
+	dist[sp]={}
 	#species folder
-	f=open(PATH_TO_OUTPUT + sp + '/distances.dist',"r")
+	f=open('../results/' + sp + '/distances.dist',"r")
 	for l in f:
 		a=l.strip("\n").split("\t")
 		st1,st2 = a[0].strip(" ").split(" ")[0], a[0].strip(" ").split(" ")[1]
-		if dist.has_key(st1):
+		if dist[sp].has_key(st1):
 			pass
 		else:
-			dist[st1] = {}
-		if dist.has_key(st2):
+			dist[sp][st1] = {}
+		if dist[sp].has_key(st2):
 			pass
 		else:
-			dist[st2] = {}
-		dist[st1][st2] = float(a[1])
-		dist[st2][st1] = float(a[1])
+			dist[sp][st2] = {}
+		dist[sp][st1][st2] = float(a[1])
+		dist[sp][st2][st1] = float(a[1])
 	f.close()
+
 
 # Remove identical genomes
 
-	exclusion=[]
+exclusion=[]
 
+for sp in species:
 	for st in exclusion:
-		if st in strains:
-			strains.remove(st)
-			
-	sub=list(dist.keys())
+		if st in strains[sp]:
+			strains[sp].remove(st)
+
+
+cluster={}
+for sp in species:
+	sub=list(dist[sp].keys())
 	print sp,' ',len(sub)
 	i=0
 	while i in range(len(sub)):
@@ -50,7 +71,7 @@ def sample(sp):
 					elif  st2 in exclusion and st2 in sub:
 						sub.remove(st2)
 						i=-1
-				elif float(dist[st1][st2]) <= 0.00005 or float(dist[st1][st2]) > 1:
+				elif float(dist[sp][st1][st2]) <= 0.00005 or float(dist[sp][st1][st2]) > 1:
 					if 1==1:
 						if st2 in sub:
 							sub.remove(st2)
@@ -59,21 +80,26 @@ def sample(sp):
 					i= -1
 		i+=1
 	print len(sub)," strains left"
-	cluster= list(sub)
+	cluster[sp]= list(sub)
 
 
-	h=open(PATH_TO_OUTPUT + sp + '/sample.txt',"w")
-	for st in strains:
+
+for sp in species:
+	h=open('../results/' + sp + '/sample.txt',"w")
+	for st in strains[sp]:
 		h.write(st + "\n")
 	h.close()
 
 
+import random
+
+for sp in species:
 	#also in the species folder
-	h=open(PATH_TO_OUTPUT + sp +'/families_' + sp + '.txt',"w")
+	h=open('../results/families_' + sp + '.txt',"w")
 	familles=[]
 	combin={}
 	i=4
-	while i <= len(strains):
+	while i <= len(strains[sp]):
 		toto=0
 		#print i
 		combin[i] = []
@@ -84,9 +110,9 @@ def sample(sp):
 		while j <= 100:
 			tmp=[]
 			for truc in range(i):
-				st = random.choice(strains)
+				st = random.choice(strains[sp])
 				while st in tmp:
-					st = random.choice(strains)
+					st = random.choice(strains[sp])
 				tmp.append(st)
 			tmp.sort()
 			subset = "-".join(tmp)
@@ -107,10 +133,8 @@ def sample(sp):
 
 
 
-if __name__ == '__main__':
-	species = giveMulti(getSelectedSpecies())
-	p = Pool(MAX_THREADS)
-	p.map(sample,species)
+
+
 
 
 
