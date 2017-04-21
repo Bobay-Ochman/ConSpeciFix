@@ -38,6 +38,7 @@ def printLog(string):
 		print '***'+str(sys.argv[1]) + ' ' + string
 	else:
 		print '*** '+string
+		
 def getSpecies():
 	species=[]
 	f=open(PATH_TO_SPECIES_TXT,"r")
