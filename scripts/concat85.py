@@ -131,7 +131,7 @@ def concatForSpec(sp):
 
 
 if __name__ == '__main__':
-	species = giveMulti(getSelectedSpecies())
+	species = giveMulti(getSpeciesForTest())
 	p = Pool(MAX_THREADS)
 	p.map(concatForSpec,species)
 
