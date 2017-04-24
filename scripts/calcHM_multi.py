@@ -1,115 +1,102 @@
-
-#path ="/Users/ochmanlab/Desktop/drew/"
-
 import os
-import sys
-
 from config import *
+from multiprocessing import Pool
+import multiprocessing
 
-
-SP = getSelectedSpecies()
-
-SP = 'Acetobacter_pasteurianus'
-
-# Load distances
-strains=[]
-f=open(PATH_TO_OUTPUT + SP + '/sample.txt','r')
-for l in f:
-	a=l.strip("\n").split("\t")
-	strains.append(a[0])
-f.close()
-
-
-dist={}
-f=open(PATH_TO_OUTPUT + SP + '/RAxML_distances.dist',"r")
-for l in f:
-	a=l.strip("\n").split("\t")
-	st1,st2 = a[0].strip(" ").split(" ")[0], a[0].strip(" ").split(" ")[1]
-	if dist.has_key(st1):
-		pass
-	else:
-		dist[st1] = {}
-	if dist.has_key(st2):
-		pass
-	else:
-		dist[st2] = {}
-	dist[st1][st2] = float(a[1])
-	dist[st2][st1] = float(a[1])
-f.close()
-
-
-
-
-tmp={}
-f=open(PATH_TO_OUTPUT + SP + '/concat85.fa',"r")
-for l in f:
-	if l[0] == '>':
-		nb=0
-		tag=0
-		sp = l.strip('>').strip('\n') 
-		tmp[sp] = []
-	else:
-		nb += len(l.strip('\n'))
-		tmp[sp].append(l.strip('\n'))
-f.close()
-
-
-seq = {}
-for sp in strains:
-	seq[sp] = ''.join(tmp[sp])
-
-
-#strains.remove('Dsim')
-
-memo_subset={}
-tmp = os.listdir(PATH_TO_OUTPUT + SP + '/')
-for file in tmp:
-	if file.startswith("rm"):
-		f=open( PATH_TO_OUTPUT + SP + '/' + file,"r")
-		for l in f:
-			a=l.strip("\n").split("\t")
-			if len(a) == 5:									
-				memo_subset[a[0]] = a[1:]
-		f.close()
-
-
-
-f_subset=open(PATH_TO_OUTPUT + SP + '/rm1.txt',"w")
-for subset in memo_subset:
-	f_subset.write(subset + "\t" + '\t'.join(memo_subset[subset])  + "\n")
-
-f_subset.close()
-
-
-
-tmp=[]
-f=open(PATH_TO_OUTPUT + SP + '/families_'+SP+'.txt','r')
-for l in f:
-	a=l.strip('\n').split('\t')
-	if memo_subset.has_key(a[1]):
-		pass
-	else:
-		tmp.append(a[1])
-
-
-import random
-
-subsets=[]
-while len(tmp) > 0:
-	truc = random.choice(tmp)
-	subsets.append(truc)
-	tmp.remove(truc)
-
-
-print 'GO'
-
-alpha=['A','C','G','T']
-
-LONGUEUR=len(seq[sp])
-if LONGUEUR > 1000000:
-	LONGUEUR = 1000000
+def calcHM(args):
 	
-for truc in subsets:
+	SP = args.strip('\n').split('\t')[0]
+	truc = args.strip('\n').split('\t')[1]	
+		# Load distances
+	strains=[]
+	f=open(PATH_TO_OUTPUT + SP + '/sample.txt','r')
+	for l in f:
+		a=l.strip("\n").split("\t")
+		strains.append(a[0])
+	f.close()
+
+
+	dist={}
+	f=open(PATH_TO_OUTPUT + SP + '/RAxML_distances.dist',"r")
+	for l in f:
+		a=l.strip("\n").split("\t")
+		st1,st2 = a[0].strip(" ").split(" ")[0], a[0].strip(" ").split(" ")[1]
+		if dist.has_key(st1):
+			pass
+		else:
+			dist[st1] = {}
+		if dist.has_key(st2):
+			pass
+		else:
+			dist[st2] = {}
+		dist[st1][st2] = float(a[1])
+		dist[st2][st1] = float(a[1])
+	f.close()
+
+
+
+
+	tmp={}
+	f=open(PATH_TO_OUTPUT + SP + '/concat85.fa',"r")
+	for l in f:
+		if l[0] == '>':
+			nb=0
+			tag=0
+			sp = l.strip('>').strip('\n') 
+			tmp[sp] = []
+		else:
+			try:
+				nb += len(l.strip('\n'))
+				tmp[sp].append(l.strip('\n'))
+			except (KeyError,UnboundLocalError) as e:
+				print e
+				return
+	f.close()
+
+
+	seq = {}
+	for sp in strains:
+		seq[sp] = ''.join(tmp[sp])
+
+	#strains.remove('Dsim')
+
+	memo_subset={}
+	tmp = os.listdir(PATH_TO_OUTPUT + SP + '/')
+	for file in tmp:
+		if file.startswith("rm"):
+			f=open( PATH_TO_OUTPUT + SP + '/' + file,"r")
+			for l in f:
+				a=l.strip("\n").split("\t")
+				if len(a) == 5:									
+					memo_subset[a[0]] = a[1:]
+			f.close()
+
+
+
+	f_subset=open(PATH_TO_OUTPUT + SP + '/rm1.txt',"w")
+	for subset in memo_subset:
+		f_subset.write(subset + "\t" + '\t'.join(memo_subset[subset])  + "\n")
+
+	f_subset.close()
+
+
+
+	tmp=[]
+	f=open(PATH_TO_OUTPUT + SP + '/families_'+SP+'.txt','r')
+	for l in f:
+		a=l.strip('\n').split('\t')
+		if memo_subset.has_key(a[1]):
+			pass
+		else:
+			tmp.append(a[1])	
+		
+		
+	alpha=['A','C','G','T']
+
+	LONGUEUR=len(seq[sp])
+	if LONGUEUR > 1000000:
+		LONGUEUR = 1000000
+	
 	strains = truc.split('-')
 	bip=[]
 	singleton,more=0,0
@@ -119,6 +106,17 @@ for truc in subsets:
 		tmp=[]
 		memo=[]
 		for sp in strains:
+			lookingAtMe = False
+			try:
+				testing = seq[sp]
+				lookingAtMe = True
+				testing2 = testing[i]
+			except KeyError as e:
+				print 'we got some real problems now!!!! ',lookingAtMe,e
+				errorFD = open('todo/exclusion.txt','a')
+				errorFD.write(str(e)+'\n')
+				errorFD.close()
+				return
 			N = seq[sp][i]
 			if N in alpha:
 				tmp.append(N)
@@ -325,11 +323,32 @@ for truc in subsets:
 		rm = float(r)/m
 	except ZeroDivisionError:
 		rm = 'NA'
-	print  len(strains),' r/m= ', rm      #,' r= ',r,' m= ',m	, '   Bips:  r= ',bip.count('r'),'  m= ',bip.count('m'),' |  for ',singleton,' singleton'
+	print  SP, len(strains),' r/m= ', rm      #,' r= ',r,' m= ',m	, '   Bips:  r= ',bip.count('r'),'  m= ',bip.count('m'),' |  for ',singleton,' singleton'
 	h=open(PATH_TO_OUTPUT + SP + '/rm1.txt',"a")
 	h.write(truc + '\t' + str(r) + '\t' + str(m) + '\t' + str(rm) + '\t' + str(len(bip)) + '\n'   )
 	h.close()
 
+"""
+f = open('todo/calcHM.txt','r')
+args = []
+for l in giveMulti(f.readlines()):
+	if l.startswith('Lactobacillus_crispatus'):
+		args.append(l)
 
+for sp in args:
+	calcHM(sp)
 
+"""
 
+if __name__ == '__main__':
+	species = getSpecies()
+	print multiprocessing.cpu_count()
+	p = Pool(MAX_THREADS)
+	f = open('todo/calcHM.txt','r')
+	args = []
+#	args = f.readlines()[10000:10010]
+	for l in giveMulti(f.readlines()):
+		args.append(l)
+	p.map(calcHM,args)
+
+#"""

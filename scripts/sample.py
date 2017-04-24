@@ -4,37 +4,60 @@ import os
 from multiprocessing import Pool
 
 
+#species = giveMulti(getSpeciesForTest())
+
+#for sp in species:
 def sample(sp):
-	strains = getGenomes([species])
+	strains = getGenomes([sp])
 	strains = strains[sp]
-## use the normal way to get strains
 
 	dist={}
 	#species folder
-	f=open(PATH_TO_OUTPUT + sp + '/distances.dist',"r")
-	for l in f:
-		a=l.strip("\n").split("\t")
-		st1,st2 = a[0].strip(" ").split(" ")[0], a[0].strip(" ").split(" ")[1]
-		if dist.has_key(st1):
-			pass
-		else:
-			dist[st1] = {}
-		if dist.has_key(st2):
-			pass
-		else:
-			dist[st2] = {}
-		dist[st1][st2] = float(a[1])
-		dist[st2][st1] = float(a[1])
-	f.close()
-
+	try:
+		f=open(PATH_TO_OUTPUT + sp + '/RAxML_distances.dist',"r")
+		for l in f:
+			a=l.strip("\n").split("\t")
+			st1,st2 = a[0].strip(" ").split(" ")[0], a[0].strip(" ").split(" ")[1]
+			if dist.has_key(st1):
+				pass
+			else:
+				dist[st1] = {}
+			if dist.has_key(st2):
+				pass
+			else:
+				dist[st2] = {}
+			dist[st1][st2] = float(a[1])
+			dist[st2][st1] = float(a[1])
+		f.close()
+	except:
+		return
+		
 # Remove identical genomes
 
 	exclusion=[]
-
+	excFd = open('todo/exclusion.txt','r')
+	for line in excFd.readlines():
+		dat = line.replace("'","").strip('\n')+'.fa'
+		if dat in exclusion:
+			continue
+		else:
+			exclusion.append(dat)
+	
+	testStrains = []
+	for st in strains:
+		if '-' in st:
+			print st
+		else:
+			testStrains.append(st)
+	strains = testStrains
+		
+	#print strains
 	for st in exclusion:
 		if st in strains:
+			print 'removign a strain!'
 			strains.remove(st)
-			
+
+
 	sub=list(dist.keys())
 	print sp,' ',len(sub)
 	i=0
@@ -65,11 +88,12 @@ def sample(sp):
 	h=open(PATH_TO_OUTPUT + sp + '/sample.txt',"w")
 	for st in strains:
 		h.write(st + "\n")
+	h.truncate()
 	h.close()
 
 
 	#also in the species folder
-	h=open(PATH_TO_OUTPUT + sp +'/families_' + sp + '.txt',"w")
+	h=open(PATH_TO_OUTPUT + sp +'/families_'+sp+'.txt',"w")
 	familles=[]
 	combin={}
 	i=4
@@ -92,7 +116,7 @@ def sample(sp):
 			subset = "-".join(tmp)
 			if subset not in combin[i]:
 				toto+=1
-				print i,' ',toto
+			#	print i,' ',toto
 				combin[i].append(subset)
 				familles.append(subset)
 				h.write(str(i) + "\t" + subset + "\n")
@@ -103,6 +127,7 @@ def sample(sp):
 					print 'OK'
 					break
 		i+=1
+	h.truncate()
 	h.close()
 
 

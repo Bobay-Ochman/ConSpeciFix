@@ -3,6 +3,7 @@ scripts/config.pyc
 scripts/test.py
 selected_species.txt
 TACC/out/*
+scripts/todo/*
 
 # OS generated files #
 ######################
