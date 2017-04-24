@@ -9,7 +9,7 @@ print 'hello World'
 #now do all the things you dream of!
 #Don't let your todo list stay memes!
 
-prog = 'concat85.py'
+prog = 'raxml_distance.py'
 
 os.chdir('../scripts/')
 
