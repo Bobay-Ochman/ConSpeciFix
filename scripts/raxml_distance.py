@@ -2,7 +2,7 @@ import os
 from config import *
 
 
-species = giveMulti(getSpeciesForTest())
+species = giveMulti(['Kingella_kingae','Streptococcus_mitis'])
 print species
 
 ### Don't multithread because RAxML can do it for us and better
