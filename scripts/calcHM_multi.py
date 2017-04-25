@@ -341,7 +341,6 @@ for sp in args:
 """
 
 if __name__ == '__main__':
-	species = getSpecies()
 	print multiprocessing.cpu_count()
 	p = Pool(MAX_THREADS)
 	f = open('todo/calcHM.txt','r')

@@ -103,8 +103,7 @@ def calcHM(SP):
 		subsets.append(truc)
 		tmp.remove(truc)
 
-
-	print 'GO'
+	print '*** GO',SP,len(subsets)
 
 	fd = open('todo/calcHM.txt','a')
 	for t in subsets:
@@ -131,7 +130,8 @@ if __name__ == '__main__':
 	fd.truncate()
 	fd.close()
 	
-	species = getSelectedSpecies()
+	species = getSpeciesOfSize(50)[::3]
+	print len(species)
 	p = Pool(MAX_THREADS)
 	p.map(calcHM,species)
 
