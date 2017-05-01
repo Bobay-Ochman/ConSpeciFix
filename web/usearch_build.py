@@ -19,8 +19,7 @@ for sp in species:
 
 parent,dico={},{}
 
-todoList = open('todo/usearch.txt','w')
-largeSpecList = open('todo/LargeSpec.txt','w')
+todoList = open(uploadPath()+'/usearch.txt','w')
 
 globalDone = 0
 globalLeftToDo = 0
@@ -30,30 +29,18 @@ for sp in species:
 	#	continue
 	nb = len(liste[sp])
 	if nb >= 15:
-		if nb > 500:
-			largeSpecList.write(sp + '\n')
-			continue
 		print sp,' ',nb,' strains'
-		i=0
 		done = 0
 		leftToDo = 0
 		for prot1 in liste[sp]:
-			i+=1
 			prot2 = specialStrain
-			try:
-				completed = open(PATH_TO_OUTPUT +  sp + '/BBH/' + prot1 + '-' + prot2, 'r')
-				done+=1
-				globalDone +=1
-				continue
-			except:
-				todoList.write(PATH_TO_OUTPUT + '\t' + sp + '\t' + prot1 + '\t' + prot2+'\n');
-				leftToDo+=1
-				globalLeftToDo+=1
+			todoList.write(PATH_TO_OUTPUT + '\t' + sp + '\t' + prot1 + '\t' + prot2+'\n');
+			leftToDo+=1
+			globalLeftToDo+=1
 		print 'done already: ',done, ' left to do: ',leftToDo
 	else:
 		print sp, ' <15'
 todoList.close()
-largeSpecList.close()
 
 print 'done already: ',globalDone, ' left to do: ',globalLeftToDo
 

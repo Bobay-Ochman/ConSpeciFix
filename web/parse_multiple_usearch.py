@@ -34,17 +34,15 @@ for st in strains[sp]:
 
 #print genes
 #print lengthOfGene
-try:
-	#make ourselves folders
-	os.mkdir(PATH_TO_OUTPUT+sp+'/results')
-except OSError:
-	pass
 
 parent={}
 
 count = 0;
 #input is the input for the next step. We are putting just the id of the gene, and a 1
-g=open(PATH_TO_OUTPUT + sp + '/input.txt',"w")
+origFile=open(PATH_TO_OUTPUT + sp + '/input.txt',"r")
+g=open(uploadPath()+'/input.txt','w')
+for l in origFile:
+	g.write(l)
 
 for st1 in strains[sp]:
 

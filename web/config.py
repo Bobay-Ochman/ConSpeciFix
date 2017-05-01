@@ -5,6 +5,7 @@ import platform
 
 PATH_TO_OUTPUT = '/Volumes/ITDR/brian/results/'
 PATH_TO_UPLOAD = '/var/app/current/efs/uploads/'
+PATH_TO_SCRIPTS = '/var/app/current/efs/ConSpeciFix/web/'
 PATH_TO_SPECIES_TXT = "../species.txt"
 MAX_THREADS = multiprocessing.cpu_count()
 MAX_SPECIES_SIZE = 500
@@ -17,14 +18,25 @@ if(WEB):
 	MAX_THREADS = 2
 	MAFFT_PATH = '/work/03414/be4833/bin/mafft'
 
+#sys args:
+# 0 - prog name
+# 1 - suspectedSpecies
+# 2 - strain name
+# 3 - upload TimeStamp Folder
+
 def getSingleSpecies():
-	if len(sys.argv) == 3:
+	if len(sys.argv) == 4:
 		return [str(sys.argv[1])]
 	return []
 
 def getCompStrain():
-	if len(sys.argv) == 3:
+	if len(sys.argv) == 4:
 		return str(sys.argv[2])
+	return ''
+
+def uploadPath():
+	if(len(sys.argv)==4):
+		return PATH_TO_UPLOAD + str(sys.argv[3])
 	return ''
 
 def giveMulti(list):
