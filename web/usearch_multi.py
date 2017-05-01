@@ -6,7 +6,6 @@ import time
 from config import *
 
 sentinel = ['no work to be done, go home'] 
-maxThreads = 8
 totalWorkPut = 0
 totalSequencesRemoved = 0
 
@@ -66,7 +65,7 @@ def work(jobQ,remQ):
 
 if __name__ == '__main__':
  	#info('main line')
-	jobQ = Queue(maxsize=maxThreads)#so we only ever at most have one thing waiting for a job -> ensures minimum number of similar things get processed
+	jobQ = Queue(maxsize=MAX_THREADS)#so we only ever at most have one thing waiting for a job -> ensures minimum number of similar things get processed
 	remQ = Queue()
 	killList = []
 	processes = []
@@ -79,7 +78,7 @@ if __name__ == '__main__':
 	f.close()
 	
 	
-	for i in range(maxThreads):
+	for i in range(MAX_THREADS):
 		p = Process(target=work, args=(jobQ,remQ))
 		p.start()
 		processes.append(p)
@@ -106,7 +105,7 @@ if __name__ == '__main__':
 			jobQ.put(job)
 			totalWorkPut+=1
 			
-	for i in range(maxThreads):
+	for i in range(MAX_THREADS):
 		jobQ.put(sentinel)
 	print 'done producing'
 
@@ -116,4 +115,3 @@ if __name__ == '__main__':
 	print 'total comps: ' + str(totalWorkPut)
 	print 'total removs:' + str(totalSequencesRemoved)
 	print 'size of remove list: ' + str(len(killList))
-

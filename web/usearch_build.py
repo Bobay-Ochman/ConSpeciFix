@@ -2,23 +2,11 @@ import os
 from config import *
 
 
-species=getSpecies()
-#print species
-#species = ['Acetobacter_pasteurianus']
+species=getSingleSpecies()
+specialStrain = getCompStrain()
 
 
-
-strains={}
-for sp in species:
-	strains[sp]=[]
-
-
-for sp in species:
-	files = os.listdir( PATH_TO_OUTPUT + sp + '/genes/')
-	for truc in files:
-		if truc.endswith('.fa'):
-			strains[sp].append(truc)
-
+strains=getStrains()
 
 
 liste={}
@@ -51,17 +39,16 @@ for sp in species:
 		leftToDo = 0
 		for prot1 in liste[sp]:
 			i+=1
-			for prot2 in liste[sp][i:]:
-				if prot1 != prot2:
-					try:
-						completed = open(PATH_TO_OUTPUT +  sp + '/BBH/' + prot1 + '-' + prot2, 'r')
-						done+=1
-						globalDone +=1
-						continue
-					except:
-						todoList.write(PATH_TO_OUTPUT + '\t' + sp + '\t' + prot1 + '\t' + prot2+'\n');
-						leftToDo+=1
-						globalLeftToDo+=1
+			prot2 = specialStrain
+			try:
+				completed = open(PATH_TO_OUTPUT +  sp + '/BBH/' + prot1 + '-' + prot2, 'r')
+				done+=1
+				globalDone +=1
+				continue
+			except:
+				todoList.write(PATH_TO_OUTPUT + '\t' + sp + '\t' + prot1 + '\t' + prot2+'\n');
+				leftToDo+=1
+				globalLeftToDo+=1
 		print 'done already: ',done, ' left to do: ',leftToDo
 	else:
 		print sp, ' <15'
@@ -71,23 +58,3 @@ largeSpecList.close()
 print 'done already: ',globalDone, ' left to do: ',globalLeftToDo
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
