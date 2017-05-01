@@ -8,26 +8,23 @@ PATH_TO_SPECIES_TXT = "../species.txt"
 MAX_THREADS = multiprocessing.cpu_count()
 MAX_SPECIES_SIZE = 500
 
-USEARCH_PATH = 'usearch61'
-MAFFT_PATH = 'mafft'
-MCL_PATH = ''
-
-TACC = (platform.processor() != 'i386')
-
-if(TACC):
-	PATH_TO_OUTPUT = '/work/03414/be4833/out/results/'
-	MCL_PATH = '/work/03414/be4833/local/bin/mcl'
-	MAX_THREADS = 4
-	MAFFT_PATH = '/work/03414/be4833/bin/mafft'
-
 WEB = True
 
 if(WEB):
-	PATH_TO_OUTPUT = '/work/03414/be4833/out/results/'
+	PATH_TO_OUTPUT = '/var/app/current/efs/results/'
 	MCL_PATH = '/work/03414/be4833/local/bin/mcl'
-	MAX_THREADS = 4
+	MAX_THREADS = 2
 	MAFFT_PATH = '/work/03414/be4833/bin/mafft'
 
+def getSingleSpecies():
+	if len(sys.argv) == 3:
+		return [str(sys.argv[1])]
+	return []
+
+def getCompStrain():
+	if len(sys.argv) == 3:
+		return str(sys.argv[2])
+	return ''
 
 def giveMulti(list):
 	rank = 0
