@@ -130,7 +130,7 @@ if __name__ == '__main__':
 	fd.truncate()
 	fd.close()
 	
-	species = getSpeciesOfSize(50)[::3]
+	species = getSpeciesOfSize(50)[1::3] + getSpeciesOfSize(50)[2::3]
 	print len(species)
 	p = Pool(MAX_THREADS)
 	p.map(calcHM,species)

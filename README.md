@@ -52,6 +52,16 @@ probably something about downloading the NCBI cataloge that lists what all they 
 - `big_graph.py` Generate the script for R
 - `big_graph.R` Generate the graphs
 
+### Testing
+
+Exclusion Criterion
+
+- `distrib.py`
+- `kmeans.py`
+- `split_kmaens.py`
+- `criterion.py`
+
+
 ## Testing against the Database
 
 ### Preparing the data
@@ -91,9 +101,3 @@ probably something about downloading the NCBI cataloge that lists what all they 
     - produces `sample.txt` and `family.txt`
 
 - `calcHM.py`
-
-## Exclusion Criterion
-- `distrib.py`
-- `kmeans.py`
-- `split_kmaens.py`
-- `criterion.py`

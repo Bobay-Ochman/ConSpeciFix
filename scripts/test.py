@@ -1,6 +1,8 @@
 from config import *
 import os
 
+print PATH_TO_OUTPUT
+
 fd = open('todo/calcHM.txt','r')
 spec = []
 for l in fd.readlines():
