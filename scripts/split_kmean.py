@@ -4,22 +4,16 @@
 
 import os
 
-species=[]
-f=open('../results/species.txt','r')
-for l in f:
-	a=l.strip('\n').split('\t')
-	sp=a[0]
-	species.append(a[0])
+species=getSpecies()
 
-f.close()
 
 sample={}
 for sp in species:
 	sample[sp]=[]
 	try:
-		f=open('../' + sp + '/subsample.txt','r')
+		f=open(PATH_TO_OUTPUT + sp + '/subsample.txt','r')
 	except IOError:
-		f=open('../' + sp + '/sample.txt','r')
+		f=open(PATH_TO_OUTPUT + sp + '/sample.txt','r')
 	for l in f:
 		sample[sp].append(l.strip('\n'))
 	f.close()
