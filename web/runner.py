@@ -58,24 +58,27 @@ print "--- going on mafft"
 
 # concat85
 print "--- concating"
-#os.system('python '+ PATH_TO_SCRIPTS + 'concat85.py'+remArgs)
+os.system('python '+ PATH_TO_SCRIPTS + 'concat85.py'+remArgs)
+quit()
 
 # Raxml distance
 print "--- Raxml TIME!!!"
 os.system('python '+ PATH_TO_SCRIPTS + 'raxml_distance.py'+remArgs)
-quit()
 
 # sample.py
 print "--- Sampling time"
 os.system('python '+ PATH_TO_SCRIPTS + 'sample.py'+remArgs)
 
 # calcHM
-print "--- Doing HM"
-os.system('python '+ PATH_TO_SCRIPTS + 'calcHM.py'+remArgs)
+print "--- geting ready for HM"
+os.system('python '+ PATH_TO_SCRIPTS + 'calcHM_build.py'+remArgs)
+
+print "--- geting ready for HM"
+os.system('python '+ PATH_TO_SCRIPTS + 'calcHM_multi.py'+remArgs)
 
 # graph
 print "--- Graph time!"
 os.system('python '+ PATH_TO_SCRIPTS + 'graph.py'+remArgs)
 os.system('python '+ PATH_TO_SCRIPTS + 'big_graph.py'+remArgs)
-os.system('Rscript '+ PATH_TO_UPLOAD + 'big_graph.R'+remArgs)
+os.system('Rscript '+ PATH_TO_UPLOAD + 'graph.R')
 

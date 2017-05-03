@@ -23,7 +23,7 @@ else:
 	USEARCH_PATH = '/Users/Admin/Documents/Work/efs/progs/usearch8.0.1623_i86osx32'
 	MCL_PATH = 'mcl'
 	MAX_THREADS = 4
-	MAFFT_PATH = '/work/03414/be4833/bin/mafft'
+	MAFFT_PATH = 'mafft'
 	RAXML_PATH = './Users/Admin/Documents/Work/efs/progs/RAxML/raxmlHPC-PTHREADS-SSE3'
 	PATH_TO_UPLOAD = '/Users/Admin/Documents/Work/efs/uploads/'+str(sys.argv[3])+'/'
 	PATH_TO_SCRIPTS = '/Users/Admin/Documents/Work/ConSpeciFix/web/'

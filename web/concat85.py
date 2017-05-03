@@ -45,7 +45,7 @@ for sp in species:
 	tmp[sp]={}
 	for ortho in genes[sp]:
 		print sp, ortho
-		f=open( PATH_TO_UPLOAD + 'align/'  + ortho + ".fa","r")
+		f=open( PATH_TO_UPLOAD + 'align/'  + ortho + ".fa.align","r")
 		memo=[]
 		maxLen = 0;
 		for l in f:
@@ -57,8 +57,8 @@ for sp in species:
 					pass
 				else:
 					tmp[sp][st]=''
-			else:
-				tmp[sp][st]+=l.strip("\n").upper()
+				else:
+				tmp[sp][st]+=(l.strip("\n").upper())
 				longueur = len(tmp[sp][st])
 				if longueur > maxLen:
 					maxLen = longueur
@@ -67,11 +67,12 @@ for sp in species:
 			if tmp[sp].has_key(st):
 				pass
 			else:
-				tmp[sp][st]=''
+				tmp[sp][st]=[]
 			if len(tmp[sp][st]) < maxLen:
 				while len(tmp[sp][st]) < maxLen:
 					#print st, ' ',len(tmp[sp][st]),' ',longueur
 					tmp[sp][st]+='-'
+
 
 concat={}
 for sp in species:

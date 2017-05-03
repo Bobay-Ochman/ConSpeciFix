@@ -6,8 +6,9 @@ def launchMafft(args):
 
 	sp = args.split('\t')[0]
 	fichier= args.split('\t')[1].strip('\n')
-	print sp, fichier
-	os.system(MAFFT_PATH+'  ' + PATH_TO_UPLOAD + 'align/' + fichier + '  >   '  + PATH_TO_UPLOAD + 'align/'+ fichier + '.align > /dev/null 2>&1')
+	print PATH_TO_UPLOAD + 'align/' + fichier
+
+	os.system(MAFFT_PATH+' --quiet ' + PATH_TO_UPLOAD + 'align/' + fichier + '  >   '  + PATH_TO_UPLOAD + 'align/'+ fichier + '.align')
 
 if __name__ == '__main__':
 
@@ -19,3 +20,5 @@ if __name__ == '__main__':
 		args.append(l)
 	args = giveMulti(args)
 	p.map(launchMafft,args)
+
+	#> /dev/null 2>&1
