@@ -3,31 +3,37 @@ import multiprocessing
 import sys
 import platform
 
-PATH_TO_OUTPUT = '/Volumes/ITDR/brian/results/'
+PATH_TO_OUTPUT = '/var/app/current/efs/results/'
+PATH_TO_UPLOAD = '/var/app/current/efs/uploads/'
+PATH_TO_SCRIPTS = '/var/app/current/efs/ConSpeciFix/web/'
 PATH_TO_SPECIES_TXT = "../species.txt"
 MAX_THREADS = multiprocessing.cpu_count()
 MAX_SPECIES_SIZE = 500
 
-USEARCH_PATH = 'usearch61'
-MAFFT_PATH = 'mafft'
-MCL_PATH = ''
+MCL_PATH = '/work/03414/be4833/local/bin/mcl'
+MAX_THREADS = 2
+MAFFT_PATH = '/work/03414/be4833/bin/mafft'
 
-TACC = (platform.processor() != 'i386')
+#sys args:
+# 0 - prog name
+# 1 - suspectedSpecies
+# 2 - strain name
+# 3 - upload TimeStamp Folder
 
-if(TACC):
-	PATH_TO_OUTPUT = '/work/03414/be4833/out/results/'
-	MCL_PATH = '/work/03414/be4833/local/bin/mcl'
-	MAX_THREADS = 4
-	MAFFT_PATH = '/work/03414/be4833/bin/mafft'
+def getSingleSpecies():
+	if len(sys.argv) == 4:
+		return [str(sys.argv[1])]
+	return []
 
-WEB = True
+def getCompStrain():
+	if len(sys.argv) == 4:
+		return str(sys.argv[2])
+	return ''
 
-if(WEB):
-	PATH_TO_OUTPUT = '/work/03414/be4833/out/results/'
-	MCL_PATH = '/work/03414/be4833/local/bin/mcl'
-	MAX_THREADS = 4
-	MAFFT_PATH = '/work/03414/be4833/bin/mafft'
-
+def uploadPath():
+	if(len(sys.argv)==4):
+		return PATH_TO_UPLOAD + str(sys.argv[3])
+	return ''
 
 def giveMulti(list):
 	rank = 0
@@ -85,10 +91,14 @@ def getSpeciesOfSize(maxSize):
 			ret.append(sp)
 	return ret
 	
-def getGenomes(species):
+def getStrains(species):
 	dico = {}
 	for sp in species:
-		dico[sp] = os.listdir(PATH_TO_OUTPUT + sp+'/genes')
+		dico[sp] = []
+		files = os.listdir(PATH_TO_OUTPUT + sp+'/genes')
+		for truc in files:
+		if truc.endswith('.fa'):
+			dico[sp].append(truc)
 	return dico
 
 def getFolders():
