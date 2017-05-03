@@ -13,18 +13,21 @@ MAX_SPECIES_SIZE = 500
 
 WEB = False
 
-if(web):
-	USEARCH_PATH = './var/app/current/efs/progs/usearch8.0.1623_i86osx32'
+if(WEB):
+	USEARCH_PATH = '/var/app/current/efs/progs/usearch8.0.1623_i86osx32'
 	MCL_PATH = './var/app/current/efs/progs/mcl'
 	MAX_THREADS = 2
 	MAFFT_PATH = './var/app/current/efs/progs/mafft'
 	RAXML_PATH = '/var/app/current/efs/progs/RAxML/raxmlHPC-PTHREADS-SSE3'
 else:
-	USEARCH_PATH = './Users/Admin/Documents/Work/efs/progs/usearch8.0.1623_i86osx32'
-	MCL_PATH = '/work/03414/be4833/local/bin/mcl'
-	MAX_THREADS = 2
+	USEARCH_PATH = '/Users/Admin/Documents/Work/efs/progs/usearch8.0.1623_i86osx32'
+	MCL_PATH = 'mcl'
+	MAX_THREADS = 4
 	MAFFT_PATH = '/work/03414/be4833/bin/mafft'
 	RAXML_PATH = './Users/Admin/Documents/Work/efs/progs/RAxML/raxmlHPC-PTHREADS-SSE3'
+	PATH_TO_UPLOAD = '/Users/Admin/Documents/Work/efs/uploads/'+str(sys.argv[3])+'/'
+	PATH_TO_SCRIPTS = '/Users/Admin/Documents/Work/ConSpeciFix/web/'
+	PATH_TO_OUTPUT = '/Users/Admin/Documents/Work/efs/results/'
 
 #sys args:
 # 0 - prog name
@@ -40,11 +43,6 @@ def getSingleSpecies():
 def getCompStrain():
 	if len(sys.argv) == 4:
 		return str(sys.argv[2])
-	return ''
-
-def uploadPath():
-	if(len(sys.argv)==4):
-		return PATH_TO_UPLOAD + str(sys.argv[3])
 	return ''
 
 def giveMulti(list):
@@ -109,8 +107,8 @@ def getStrains(species):
 		dico[sp] = []
 		files = os.listdir(PATH_TO_OUTPUT + sp+'/genes')
 		for truc in files:
-		if truc.endswith('.fa'):
-			dico[sp].append(truc)
+			if truc.endswith('.fa'):
+				dico[sp].append(truc)
 	return dico
 
 def getFolders():

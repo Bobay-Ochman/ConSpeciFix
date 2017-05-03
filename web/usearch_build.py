@@ -5,8 +5,7 @@ from config import *
 species=getSingleSpecies()
 specialStrain = getCompStrain()
 
-
-strains=getStrains()
+strains=getStrains(species)
 
 
 liste={}
@@ -19,7 +18,7 @@ for sp in species:
 
 parent,dico={},{}
 
-todoList = open(uploadPath()+'/usearch.txt','w')
+todoList = open(PATH_TO_UPLOAD+'todo/usearch.txt','w')
 
 globalDone = 0
 globalLeftToDo = 0
@@ -33,7 +32,7 @@ for sp in species:
 		done = 0
 		leftToDo = 0
 		for prot1 in liste[sp]:
-			prot2 = specialStrain
+			prot2 = specialStrain+'.fa'
 			todoList.write(PATH_TO_OUTPUT + '\t' + sp + '\t' + prot1 + '\t' + prot2+'\n');
 			leftToDo+=1
 			globalLeftToDo+=1
