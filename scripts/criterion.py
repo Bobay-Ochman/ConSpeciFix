@@ -1,24 +1,19 @@
-
-
+from config import *
 import os
 
-species=[]
-f=open('../results/species.txt','r')
-for l in f:
-	a=l.strip('\n').split('\t')
-	sp=a[0]
-	species.append(sp)
-
-
-f.close()
+species=getSpecies()
 
 kick={}
 tag={}
-h=open("../results/criterion.txt","w")
+h=open(PATH_TO_OUTPUT + "criterion.txt","w")
 for sp in species:
 	kick[sp]=[]
 	tag[sp]="no"
-	f=open("../results/distrib/kmeans_" + sp + ".txt","r")
+	f = None
+	try:
+		f=open(PATH_TO_OUTPUT + sp+"/kmeans_" + sp + ".txt","r")
+	except:
+		continue
 	for l in f:
 		a=l.strip('\n').split('\t')
 		st = a[0]
@@ -34,7 +29,7 @@ for sp in species:
 	f.close()
 
 
-h=open('../results/modification.txt','w')
+h=open(PATH_TO_OUTPUT + '/modification.txt','w')
 for sp in species:
 	print sp," ",tag[sp]
 	h.write(sp + "\t" + tag[sp] + "\t" + "\t".join(kick[sp]) + "\n")

@@ -128,9 +128,8 @@ if __name__ == '__main__':
 	fd = open('todo/calcHM.txt','a')
 	fd.seek(0)
 	fd.truncate()
-	fd.close()
-	
-	species = getSpeciesOfSize(50)[1::3] + getSpeciesOfSize(50)[2::3]
+	fd.close()	
+	species = getSpeciesOfSize(100)
 	print len(species)
 	p = Pool(MAX_THREADS)
 	p.map(calcHM,species)

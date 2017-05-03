@@ -1,25 +1,19 @@
-
-# split species based on k-means method
-
-
+from config import *
 import os
 
-species=[]
-f=open('../results/species.txt','r')
-for l in f:
-	a=l.strip('\n').split('\t')
-	sp=a[0]
-	species.append(a[0])
-
-f.close()
+species=getSpecies()
+problem = []
 
 sample={}
+
 for sp in species:
 	sample[sp]=[]
+	f = None
 	try:
-		f=open('../' + sp + '/subsample.txt','r')
+		f=open(PATH_TO_OUTPUT + sp + '/sample.txt','r')
 	except IOError:
-		f=open('../' + sp + '/sample.txt','r')
+		problem.append(sp)
+		continue
 	for l in f:
 		sample[sp].append(l.strip('\n'))
 	f.close()
@@ -27,9 +21,18 @@ for sp in species:
 
 
 key={}
+
 for sp in species:
-	f=open("../results/distrib/key_" + sp + ".txt" ,"r")
-	for l in f:
+	f = None
+	try:
+		f=open(PATH_TO_OUTPUT + sp +"/key_" + sp + ".txt" ,"r")
+	except IOError:
+		problem.append(sp)
+		continue
+	lines = f.readlines()
+	if(len(lines) == 0):
+		problem.append(sp)
+	for l in lines:
 		a=l.strip('\n').split(' ')
 		if float(a[0]) < float(a[1]):
 			key[sp] = 'direct'
@@ -38,21 +41,31 @@ for sp in species:
 		print sp,' ', a,' ',key[sp] 
 	f.close()
 
-
-
+for sp in problem:
+	try:
+		species.remove(sp)
+	except:
+		pass
 
 #euk=['drosophila','human']
 euk=[]
+print "*********"
+#print species
 for sp in species:
 	print sp
 	liste=[]
-	f=open("../results/distrib/distrib_" + sp + ".txt" , "r")
+	f=open(PATH_TO_OUTPUT + sp +"/distrib_" + sp + ".txt" , "r")
 	for l in f:
 		a=l.strip('\n').split('\t')
 		liste.append(a[0])
 	f.close()
 	vector=[]
-	f=open("../results/distrib/vector_" + sp + ".txt" , "r")
+	try:
+		f=open(PATH_TO_OUTPUT + sp +"/vector_" + sp + ".txt" , "r")
+	except:
+		species.remove(sp)
+		continue
+	
 	for l in f:
 		a=l.strip('\n').split('\t')
 		vector.append(a[0])
@@ -78,14 +91,17 @@ for sp in species:
 				high.extend(strains)
 		i+=1
 	TOT = len(low) + len(high)
-	h=open('../results/distrib/kmeans_' + sp + '.txt','w')
+	h=open(PATH_TO_OUTPUT + sp +'/kmeans_' + sp + '.txt','w')
 	h.write('tot\t' + str(len(low))  + '\t' +  str(round(100*len(low)/float(TOT),1)) + '\t' + str(len(high))  + '\t' +  str(round(100*len(high)/float(TOT),1)) + '\n')
 	for st in sample[sp]:
 		L = low.count(st)
 		H = high.count(st)
 		tot = L + H
 		#print st,' ',L,' ',H,' ',tot
-		h.write(st + '\t' + str(L) + '\t' + str(round(100*L/float(tot),1)) + '\t' + str(H) + '\t' + str(round(100*H/float(tot),1)) +  '\n')
+		try:
+			h.write(st + '\t' + str(L) + '\t' + str(round(100*L/float(tot),1)) + '\t' + str(H) + '\t' + str(round(100*H/float(tot),1)) +  '\n')
+		except:
+			pass
 	h.close()
 
 
