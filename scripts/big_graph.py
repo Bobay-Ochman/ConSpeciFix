@@ -1,7 +1,7 @@
 from config import *
 
 
-species= ['Acetobacter_pasteurianus', 'Buchnera_aphidicola', 'Clostridium_beijerinckii', 'Corynebacterium_jeikeium', 'Klebsiella_quasipneumoniae', 'Lactobacillus_crispatus', 'Lactobacillus_fermentum', 'Micrococcus_luteus', 'Morganella_morganii', 'Mycobacterium_africanum', 'Mycobacterium_chelonae', 'Mycobacterium_fortuitum', 'Mycobacterium_immunogenum', 'Mycoplasma_bovis', 'Mycoplasma_gallisepticum', 'Pseudomonas_denitrificans']
+species= ['Acetobacter_pasteurianus','Bacillus_weihenstephanensis','Buchnera_aphidicola','Clostridium_beijerinckii','Corynebacterium_glutamicum','Corynebacterium_jeikeium','Cutibacterium_acnes','Gallibacterium_anatis','Gilliamella_apicola','Klebsiella_quasipneumoniae','Klebsiella_variicola','Lactobacillus_crispatus','Lactobacillus_fermentum','Lactobacillus_helveticus','Lactobacillus_salivarius','Leptospira_kirschneri','Methanobrevibacter_smithii','Micrococcus_luteus','Microcystis_aeruginosa','Morganella_morganii','Mycobacterium_africanum','Mycobacterium_chelonae','Mycobacterium_colombiense','Mycobacterium_fortuitum','Mycobacterium_immunogenum','Mycobacterium_kansasii','Mycoplasma_bovis','Mycoplasma_gallisepticum','Mycoplasma_mycoides','Porphyromonas_gingivalis','Prochlorococcus_marinus','Pseudoalteromonas_luteoviolacea','Pseudomonas_chlororaphis','Pseudomonas_denitrificans','Pseudomonas_psychrotolerans','Pseudomonas_stutzeri','Raoultella_ornithinolytica','Rhodococcus_fascians']
 h=open("big_graph.R",'w')
 
 NB,nb=1,0
