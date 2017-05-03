@@ -10,9 +10,21 @@ PATH_TO_SPECIES_TXT = "../species.txt"
 MAX_THREADS = multiprocessing.cpu_count()
 MAX_SPECIES_SIZE = 500
 
-MCL_PATH = '/work/03414/be4833/local/bin/mcl'
-MAX_THREADS = 2
-MAFFT_PATH = '/work/03414/be4833/bin/mafft'
+
+WEB = False
+
+if(web):
+	USEARCH_PATH = './var/app/current/efs/progs/usearch8.0.1623_i86osx32'
+	MCL_PATH = './var/app/current/efs/progs/mcl'
+	MAX_THREADS = 2
+	MAFFT_PATH = './var/app/current/efs/progs/mafft'
+	RAXML_PATH = '/var/app/current/efs/progs/RAxML/raxmlHPC-PTHREADS-SSE3'
+else:
+	USEARCH_PATH = './Users/Admin/Documents/Work/efs/progs/usearch8.0.1623_i86osx32'
+	MCL_PATH = '/work/03414/be4833/local/bin/mcl'
+	MAX_THREADS = 2
+	MAFFT_PATH = '/work/03414/be4833/bin/mafft'
+	RAXML_PATH = './Users/Admin/Documents/Work/efs/progs/RAxML/raxmlHPC-PTHREADS-SSE3'
 
 #sys args:
 # 0 - prog name
