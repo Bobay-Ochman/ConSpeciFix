@@ -21,28 +21,28 @@ try:
 except:
 	pass
 
-print "--- made folders"
+print "------ made folders"
 
 remArgs = ' '+sys.argv[1]+' '+sys.argv[2]+' '+sys.argv[3]+' '
 
 # parse the gff
-print "--- running parse_gff_build"
+print "------ running parse_gff_build"
 #os.system('python '+PATH_TO_SCRIPTS + 'parse_gff_build.py'+remArgs)
-print "--- running parse_gff_multi"
+print "------ running parse_gff_multi"
 #os.system('python '+PATH_TO_SCRIPTS + 'parse_gff_multi.py'+remArgs)
 
 # usearch
-print "--- usearch build"
+print "------ usearch build"
 #os.system('python '+ PATH_TO_SCRIPTS + 'usearch_build.py'+remArgs)
-print "--- usearch multi"
+print "------ usearch multi"
 #os.system('python '+ PATH_TO_SCRIPTS + 'usearch_multi.py'+remArgs)
 
-print "--- parse usearch"
+print "------ parse usearch"
 # parse multiple usearch
 #os.system('python '+ PATH_TO_SCRIPTS + 'parse_multiple_usearch.py'+remArgs)
 
 # MCL
-print "--- MCL time"
+print "------ MCL time"
 #os.system('python '+ PATH_TO_SCRIPTS + 'launch_mcl.py'+remArgs)
 
 # getcore
@@ -50,35 +50,33 @@ print "--- get core"
 #os.system('python '+ PATH_TO_SCRIPTS + 'get_core.py'+remArgs)
 
 # launch mafft
-print "---  mafft prep"
+print "------ mafft prep"
 #os.system('python '+ PATH_TO_SCRIPTS + 'launch_mafft_build.py'+remArgs)
 
 print "--- going on mafft"
 #os.system('python '+ PATH_TO_SCRIPTS + 'launch_mafft_multi.py'+remArgs)
 
 # concat85
-print "--- concating"
-os.system('python '+ PATH_TO_SCRIPTS + 'concat85.py'+remArgs)
-quit()
+print "------ concating to the 85"
+#os.system('python '+ PATH_TO_SCRIPTS + 'concat85_arr.py'+remArgs)
 
 # Raxml distance
-print "--- Raxml TIME!!!"
-os.system('python '+ PATH_TO_SCRIPTS + 'raxml_distance.py'+remArgs)
+print "------ Raxml TIME!!!"
+#os.system('python '+ PATH_TO_SCRIPTS + 'raxml_distance.py'+remArgs)
 
 # sample.py
-print "--- Sampling time"
-os.system('python '+ PATH_TO_SCRIPTS + 'sample.py'+remArgs)
+print "------ Sampling time"
+#os.system('python '+ PATH_TO_SCRIPTS + 'sample.py'+remArgs)
 
 # calcHM
-print "--- geting ready for HM"
-os.system('python '+ PATH_TO_SCRIPTS + 'calcHM_build.py'+remArgs)
 
-print "--- geting ready for HM"
+print "------ going for r/m"
 os.system('python '+ PATH_TO_SCRIPTS + 'calcHM_multi.py'+remArgs)
+quit()
 
 # graph
-print "--- Graph time!"
+print "------ Graph time!"
 os.system('python '+ PATH_TO_SCRIPTS + 'graph.py'+remArgs)
 os.system('python '+ PATH_TO_SCRIPTS + 'big_graph.py'+remArgs)
-os.system('Rscript '+ PATH_TO_UPLOAD + 'graph.R')
+os.system('sh '+ PATH_TO_UPLOAD + 'graph.R')
 

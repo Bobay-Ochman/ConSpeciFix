@@ -9,7 +9,7 @@ species = getSingleSpecies()
 for sp in species:
 	print sp
 	os.chdir(PATH_TO_UPLOAD)
-	os.system('raxml -f x -T 16 -p 12345 -s ' +  ' concat85.fa  -m GTRGAMMA -n dist')
+	os.system(RAXML_PATH + ' -f x -T 4 -p 12345 -s ' +  ' concat85.fa  -m GTRGAMMA -n dist')
 
 
 #'raxml -f x -T 4 -p 12345 -s /Volumes/ITDR/brian/results/Acetobacter_pasteurianus/concat85.phy  -m GTRGAMMA -n dist'

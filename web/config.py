@@ -24,7 +24,7 @@ else:
 	MCL_PATH = 'mcl'
 	MAX_THREADS = 4
 	MAFFT_PATH = 'mafft'
-	RAXML_PATH = './Users/Admin/Documents/Work/efs/progs/RAxML/raxmlHPC-PTHREADS-SSE3'
+	RAXML_PATH = '/Users/Admin/Documents/Work/efs/progs/RAxML/raxmlHPC-PTHREADS-SSE3'
 	PATH_TO_UPLOAD = '/Users/Admin/Documents/Work/efs/uploads/'+str(sys.argv[3])+'/'
 	PATH_TO_SCRIPTS = '/Users/Admin/Documents/Work/ConSpeciFix/web/'
 	PATH_TO_OUTPUT = '/Users/Admin/Documents/Work/efs/results/'

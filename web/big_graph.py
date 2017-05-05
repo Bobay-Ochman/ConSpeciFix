@@ -8,9 +8,9 @@ NB,nb=1,0
 for sp in species:
 	nb+=1
 	if nb == 1:
-		h.write("pdf('"+PATH_TO_UPLOAD+'gno' + str(NB) + ".pdf')\n")
+		h.write("pdf('"+PATH_TO_UPLOAD+'gno' + str(NB) + ".pdf') \n")
 		h.write("par(mfrow=c(1,1))\n")
-	h.write(  "tab = read.table('"+PATH_TO_UPLOAD + "graph.txt',h=T)\n")
+	h.write(  "tab = read.table('"+PATH_TO_UPLOAD + "graph.txt',h=T) \n")
 	h.write('w=c(tab$Nb,rev(tab$Nb))\n')
 	h.write('v=c(tab$Median-tab$SD,rev(tab$Median + tab$SD))\n')
 	h.write('plot(100,100,cex=0.5,cex.main=0.8,xlim=c(3,max(w)),ylim=c(0,max(v) + 0.1),xlab=c("# Genomes"),ylab=c("h/m"),main="' + sp + '")\n')

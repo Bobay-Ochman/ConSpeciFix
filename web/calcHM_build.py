@@ -4,69 +4,16 @@ from multiprocessing import Pool
 from config import *
 
 
-for SP in getSingleSpecies()
-	# Load distances
-	print SP
-	strains=[]
-	try:
-		f=open(PATH_TO_UPLOAD + 'sample.txt','r')
-		for l in f:
-			a=l.strip("\n").split("\t")
-			strains.append(a[0])
-		f.close()
-	except IOError as e:
-		print SP, e
-		return
-	dist={}
-	f=open(PATH_TO_UPLOAD + 'RAxML_distances.dist',"r")
-	for l in f:
-		a=l.strip("\n").split("\t")
-		st1,st2 = a[0].strip(" ").split(" ")[0], a[0].strip(" ").split(" ")[1]
-		if dist.has_key(st1):
-			pass
-		else:
-			dist[st1] = {}
-		if dist.has_key(st2):
-			pass
-		else:
-			dist[st2] = {}
-		dist[st1][st2] = float(a[1])
-		dist[st2][st1] = float(a[1])
-	f.close()
-
-
-
-
-	tmp={}
-	f=open(PATH_TO_UPLOAD + 'concat85.fa',"r")
-	for l in f:
-		if l[0] == '>':
-			nb=0
-			tag=0
-			sp = l.strip('>').strip('\n') 
-			tmp[sp] = []
-		else:
-			try:
-				nb += len(l.strip('\n'))
-				tmp[sp].append(l.strip('\n'))
-			except (KeyError,UnboundLocalError) as e:
-				print SP, e
-				return
-	f.close()
-
-
-	seq = {}
-	for sp in strains:
-		seq[sp] = ''.join(tmp[sp])
-
+for SP in getSingleSpecies():
+	
 
 	#strains.remove('Dsim')
 
 	memo_subset={}
-	tmp = os.listdir(PATH_TO_OUTPUT + SP + '/')
+	tmp = os.listdir(PATH_TO_UPLOAD)
 	for file in tmp:
 		if file.startswith("rm"):
-			f=open( PATH_TO_OUTPUT + SP + '/' + file,"r")
+			f=open( PATH_TO_UPLOAD + file,"r")
 			for l in f:
 				a=l.strip("\n").split("\t")
 				if len(a) == 5:									
@@ -74,8 +21,7 @@ for SP in getSingleSpecies()
 			f.close()
 
 
-
-	f_subset=open(PATH_TO_OUTPUT + SP + '/rm1.txt',"w")
+	f_subset=open(PATH_TO_UPLOAD+'rm1.txt',"w")
 	for subset in memo_subset:
 		f_subset.write(subset + "\t" + '\t'.join(memo_subset[subset])  + "\n")
 

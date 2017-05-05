@@ -6,13 +6,15 @@ import os
 
 species = getSingleSpecies()
 sp = species[0]
-strains = getStrains()
+strains = getStrains(species)
 strains = strains[sp]
+specialStrain = getCompStrain()+'.fa'
+strains.append(specialStrain)
 ## use the normal way to get strains
 
 dist={}
 #species folder
-f=open(PATH_TO_UPLOAD + 'distances.dist',"r")
+f=open(PATH_TO_UPLOAD + 'RAxML_distances.dist',"r")
 for l in f:
 	a=l.strip("\n").split("\t")
 	st1,st2 = a[0].strip(" ").split(" ")[0], a[0].strip(" ").split(" ")[1]
@@ -70,7 +72,7 @@ h.close()
 
 
 #also in the species folder
-h=open(PATH_TO_OUTPUT +'families_' + sp + '.txt',"w")
+h=open(PATH_TO_UPLOAD +'families_' + sp + '.txt',"w")
 familles=[]
 combin={}
 i=4
@@ -85,7 +87,6 @@ while i <= len(strains):
 	limit = i**2
 	while j <= 100:
 		tmp=[]
-		tmp.append(getCompStrain()+".fa")
 		for truc in range(i):
 			st = random.choice(strains)
 			while st in tmp:
