@@ -3,9 +3,6 @@ import multiprocessing
 import sys
 import platform
 
-PATH_TO_OUTPUT = '/var/app/current/efs/results/'
-PATH_TO_UPLOAD = '/var/app/current/efs/uploads/'
-PATH_TO_SCRIPTS = '/var/app/current/efs/ConSpeciFix/web/'
 PATH_TO_SPECIES_TXT = "../species.txt"
 MAX_THREADS = multiprocessing.cpu_count()
 MAX_SPECIES_SIZE = 500
@@ -16,9 +13,13 @@ WEB = False
 if(WEB):
 	USEARCH_PATH = '/var/app/current/efs/progs/usearch8.0.1623_i86osx32'
 	MCL_PATH = './var/app/current/efs/progs/mcl'
-	MAX_THREADS = 2
+	MAX_THREADS = 1
 	MAFFT_PATH = './var/app/current/efs/progs/mafft'
 	RAXML_PATH = '/var/app/current/efs/progs/RAxML/raxmlHPC-PTHREADS-SSE3'
+	PATH_TO_UPLOAD = '/var/app/current/efs/uploads/'
+	PATH_TO_SCRIPTS = '/var/app/current/efs/ConSpeciFix/web/'
+	PATH_TO_OUTPUT = '/var/app/current/efs/results/'
+
 else:
 	USEARCH_PATH = '/Users/Admin/Documents/Work/efs/progs/usearch8.0.1623_i86osx32'
 	MCL_PATH = 'mcl'
@@ -43,6 +44,11 @@ def getSingleSpecies():
 def getCompStrain():
 	if len(sys.argv) == 4:
 		return str(sys.argv[2])
+	return ''
+
+def getTimeStamp():
+	if len(sys.argv) == 4:
+		return str(sys.argv[3])
 	return ''
 
 def giveMulti(list):

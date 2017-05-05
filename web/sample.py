@@ -96,7 +96,6 @@ while i <= len(strains):
 		subset = "-".join(tmp)
 		if subset not in combin[i]:
 			toto+=1
-			print i,' ',toto
 			combin[i].append(subset)
 			familles.append(subset)
 			h.write(str(i) + "\t" + subset + "\n")
