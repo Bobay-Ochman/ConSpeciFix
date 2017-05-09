@@ -6,20 +6,20 @@ import sys
 try:
 	os.mkdir(PATH_TO_UPLOAD+'todo')
 except:
-	pass
-		#Need to also probably fill this folder with the genes we find here???
+	console.log('error making folder TODO')
+	#Need to also probably fill this folder with the genes we find here???
 try:
 	os.mkdir(PATH_TO_UPLOAD+'BBH')
 except:
-	pass
+	console.log('error making folder BBH')
 try:
 	os.mkdir(PATH_TO_UPLOAD+'results')
 except:
-	pass
+	console.log('error making folder results')
 try:
 	os.mkdir(PATH_TO_UPLOAD+'align')
 except:
-	pass
+	console.log('error making folder align')
 
 print "------ made folders"
 
