@@ -74,10 +74,11 @@ os.system('python '+ PATH_TO_SCRIPTS + 'calcHM_multi.py'+remArgs)
 
 print "------ Email the results!"
 os.system('python '+ PATH_TO_SCRIPTS + 'mail.py'+remArgs)
-quit()
 
 # graph
 print "------ Graph time!"
 os.system('python '+ PATH_TO_SCRIPTS + 'graph.py'+remArgs)
 os.system('python '+ PATH_TO_SCRIPTS + 'big_graph.py'+remArgs)
-os.system('sh '+ PATH_TO_UPLOAD + 'graph.R')
+os.system('Rscript '+ PATH_TO_UPLOAD + 'graph.R')
+quit()
+

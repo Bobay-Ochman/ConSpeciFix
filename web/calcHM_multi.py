@@ -97,8 +97,8 @@ while len(tmp) > 0:
 alpha=['A','C','G','T']
 
 LONGUEUR=len(seq[sp])
-if LONGUEUR > 1000000:
-	LONGUEUR = 1000000
+if LONGUEUR > 100000:
+	LONGUEUR = 100000
 
 for truc in subsets:
 	strains = truc.split('-')

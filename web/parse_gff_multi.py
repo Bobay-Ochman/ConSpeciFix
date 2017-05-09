@@ -87,7 +87,6 @@ def processSpec(args):
 			print sp,' ',spec,' ',NB,' empty'
 
 if __name__ == '__main__':
-	species = getSpecies()
 	p = Pool(MAX_THREADS)
 	f = open(PATH_TO_UPLOAD+'todo/parse_gff.txt','r')
 	args = []
