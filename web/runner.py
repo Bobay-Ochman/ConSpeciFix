@@ -4,7 +4,7 @@ import sys
 
 # make folders
 try:
-	os.mkdir(PATH_TO_UPLOAD+'todo')
+	os.system('sudo mkdir '+PATH_TO_UPLOAD+'todo')
 except OSError as e:
 	print e
 	#Need to also probably fill this folder with the genes we find here???
