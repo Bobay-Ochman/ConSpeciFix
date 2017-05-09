@@ -5,21 +5,21 @@ import sys
 # make folders
 try:
 	os.mkdir(PATH_TO_UPLOAD+'todo')
-except:
-	print ('error making folder TODO')
+except OSError as e:
+	print e
 	#Need to also probably fill this folder with the genes we find here???
 try:
 	os.mkdir(PATH_TO_UPLOAD+'BBH')
-except:
-	print ('error making folder BBH')
+except OSError as e:
+	print e
 try:
 	os.mkdir(PATH_TO_UPLOAD+'results')
-except:
-	print ('error making folder results')
+except OSError as e:
+	print e
 try:
 	os.mkdir(PATH_TO_UPLOAD+'align')
-except:
-	print ('error making folder align')
+except OSError as e:
+	print e
 
 print "------ made folders"
 
