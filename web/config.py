@@ -8,7 +8,7 @@ MAX_THREADS = multiprocessing.cpu_count()
 MAX_SPECIES_SIZE = 500
 
 
-WEB = False
+WEB = True
 
 if(WEB):
 	USEARCH_PATH = '/var/app/current/efs/progs/usearch8.0.1623_i86osx32'
