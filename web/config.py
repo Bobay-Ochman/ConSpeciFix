@@ -14,7 +14,7 @@ if(WEB):
 	USEARCH_PATH = '/var/app/current/efs/progs/usearch8.0.1623_i86linux32'
 	MCL_PATH = '/var/app/current/efs/progs/mcl'
 	MAX_THREADS = 1
-	MAFFT_PATH = '/var/app/current/efs/progs/mafft'
+	MAFFT_PATH = 'mafft'
 	RAXML_PATH = '/var/app/current/efs/progs/RAxML/raxmlHPC-PTHREADS-SSE3'
 	PATH_TO_UPLOAD = '/var/app/current/efs/uploads/'+str(sys.argv[3])+'/'
 	PATH_TO_SCRIPTS = '/var/app/current/efs/ConSpeciFix/web/'
