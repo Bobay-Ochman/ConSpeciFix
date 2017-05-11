@@ -18,11 +18,11 @@ except OSError as e:
 
 remArgs = ' '+sys.argv[1]+' '+sys.argv[2]+' '+sys.argv[3]+' '
 
-# parse the gff
+# parse the gff -> Skip since the FA already exists
 print "------ running parse_gff_build"
-os.system('python '+PATH_TO_SCRIPTS + 'parse_gff_build.py'+remArgs)
+#os.system('python '+PATH_TO_SCRIPTS + 'parse_gff_build.py'+remArgs)
 print "------ running parse_gff_multi"
-os.system('python '+PATH_TO_SCRIPTS + 'parse_gff_multi.py'+remArgs)
+#os.system('python '+PATH_TO_SCRIPTS + 'parse_gff_multi.py'+remArgs)
 
 # usearch
 print "------ usearch build"
