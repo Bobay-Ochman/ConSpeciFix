@@ -2,26 +2,19 @@ from config import *
 import os
 import sys
 
+
+print "------ making folders"
+
 # make folders
 try:
-	os.system('sudo mkdir '+PATH_TO_UPLOAD+'todo')
-except OSError as e:
-	print e
-	#Need to also probably fill this folder with the genes we find here???
-try:
-	os.mkdir(PATH_TO_UPLOAD+'BBH')
-except OSError as e:
-	print e
-try:
-	os.mkdir(PATH_TO_UPLOAD+'results')
-except OSError as e:
-	print e
-try:
-	os.mkdir(PATH_TO_UPLOAD+'align')
+	os.system('mkdir '+PATH_TO_UPLOAD+'todo')
+	os.system('mkdir '+PATH_TO_UPLOAD+'BBH')
+	os.system('mkdir '+PATH_TO_UPLOAD+'results')
+	os.system('mkdir '+PATH_TO_UPLOAD+'align')
+
 except OSError as e:
 	print e
 
-print "------ made folders"
 
 remArgs = ' '+sys.argv[1]+' '+sys.argv[2]+' '+sys.argv[3]+' '
 
