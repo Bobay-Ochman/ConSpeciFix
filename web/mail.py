@@ -1,4 +1,5 @@
 import smtplib
+from config import *
 from email.mime.text import MIMEText
 
 # Credentials (if needed)
