@@ -12,7 +12,7 @@ WEB = True
 
 if(WEB):
 	USEARCH_PATH = '/var/app/current/efs/progs/usearch8.0.1623_i86linux32'
-	MCL_PATH = './var/app/current/efs/progs/mcl'
+	MCL_PATH = '/var/app/current/efs/progs/mcl'
 	MAX_THREADS = 1
 	MAFFT_PATH = './var/app/current/efs/progs/mafft'
 	RAXML_PATH = '/var/app/current/efs/progs/RAxML/raxmlHPC-PTHREADS-SSE3'
