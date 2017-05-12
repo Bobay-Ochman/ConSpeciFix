@@ -26,28 +26,28 @@ os.system('python '+PATH_TO_SCRIPTS + 'parse_gff_multi.py'+remArgs)
 
 # usearch
 print "------ usearch build"
-os.system('python '+ PATH_TO_SCRIPTS + 'usearch_build.py'+remArgs)
+#os.system('python '+ PATH_TO_SCRIPTS + 'usearch_build.py'+remArgs)
 print "------ usearch multi"
-os.system('python '+ PATH_TO_SCRIPTS + 'usearch_multi.py'+remArgs)
+#os.system('python '+ PATH_TO_SCRIPTS + 'usearch_multi.py'+remArgs)
 
 print "------ parse usearch"
 # parse multiple usearch
-os.system('python '+ PATH_TO_SCRIPTS + 'parse_multiple_usearch.py'+remArgs)
+#os.system('python '+ PATH_TO_SCRIPTS + 'parse_multiple_usearch.py'+remArgs)
 
 # MCL
 print "------ MCL time"
-os.system('python '+ PATH_TO_SCRIPTS + 'launch_mcl.py'+remArgs)
+#os.system('python '+ PATH_TO_SCRIPTS + 'launch_mcl.py'+remArgs)
 
 # getcore
 print "------ get core"
-os.system('python '+ PATH_TO_SCRIPTS + 'get_core.py'+remArgs)
+#os.system('python '+ PATH_TO_SCRIPTS + 'get_core.py'+remArgs)
 
 # launch mafft
 print "------ mafft prep"
-os.system('python '+ PATH_TO_SCRIPTS + 'launch_mafft_build.py'+remArgs)
+#os.system('python '+ PATH_TO_SCRIPTS + 'launch_mafft_build.py'+remArgs)
 
 print "------ going on mafft"
-os.system('python '+ PATH_TO_SCRIPTS + 'launch_mafft_multi.py'+remArgs)
+#os.system('python '+ PATH_TO_SCRIPTS + 'launch_mafft_multi.py'+remArgs)
 
 # concat85
 print "------ concating to the 85"

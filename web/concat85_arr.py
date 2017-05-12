@@ -65,9 +65,7 @@ for sp in species:
 			if flash.has_key(st):
 				resu = ''.join(flash[st])
 			else:
-				resu = ''
-				while len(resu) < len(longueur):
-					resu += '-'
+				resu = '-'*len(longueur)
 			tmp[sp][st].append(resu)
 
 
@@ -79,19 +77,14 @@ for sp in species:
 
 tmp={}
 
-
-try:
-	for sp in species:
-		h=open(PATH_TO_UPLOAD + 'concat85.fa',"w")
-		for st in strains[sp]:
-			h.write(">" + st + "\n")
-			i=0
-			while i < len(concat[sp][st]):		# MODIF 
-				h.write(concat[sp][st][i:i+60] + "\n")
-				i+=60
-		h.close()
-except:
-	print 'skipping', sp
-
-
+for sp in species:
+	h=open(PATH_TO_UPLOAD + 'concat85.fa',"w")
+	for st in strains[sp]:
+		h.write(">" + st + "\n")
+		i=0
+		while i < len(concat[sp][st]):		# MODIF 
+			h.write(concat[sp][st][i:i+60] + "\n")
+			i+=60
+	h.close()
+print 'completed! '+str(species[0])
 
