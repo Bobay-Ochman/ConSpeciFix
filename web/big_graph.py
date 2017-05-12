@@ -8,7 +8,7 @@ NB,nb=1,0
 for sp in species:
 	nb+=1
 	if nb == 1:
-		h.write("pdf('"+PATH_TO_UPLOAD+'gno' + str(NB) + ".pdf') \n")
+		h.write("pdf('"+PATH_TO_UPLOAD+'testGraph' + ".pdf') \n")
 		h.write("par(mfrow=c(1,1))\n")
 	h.write(  "tab = read.table('"+PATH_TO_UPLOAD + "graph.txt',h=T) \n")
 	h.write('w=c(tab$Nb,rev(tab$Nb))\n')
