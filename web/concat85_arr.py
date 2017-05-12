@@ -65,9 +65,7 @@ for sp in species:
 			if flash.has_key(st):
 				resu = ''.join(flash[st])
 			else:
-				resu = ''
-				while len(resu) < len(longueur):
-					resu += '-'
+				resu = '-'*len(longueur)
 			tmp[sp][st].append(resu)
 
 
@@ -88,4 +86,5 @@ for sp in species:
 			h.write(concat[sp][st][i:i+60] + "\n")
 			i+=60
 	h.close()
+print 'completed! '+str(species[0])
 
