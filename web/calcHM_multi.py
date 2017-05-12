@@ -329,5 +329,5 @@ for truc in subsets:
 		rm = 'NA'
 	print  SP, len(strains),' r/m= ', rm      #,' r= ',r,' m= ',m	, '   Bips:  r= ',bip.count('r'),'  m= ',bip.count('m'),' |  for ',singleton,' singleton'
 	h=open(PATH_TO_UPLOAD + 'rm1.txt',"a")
-	h.write(truc + '\t' + str(r) + '\t' + str(m) + '\t' + str(rm) + '\t' + str(len(bip)) + '\n'   )
+	h.write(truc + '\st' + str(r) + '\t' + str(m) + '\t' + str(rm) + '\t' + str(len(bip)) + '\n'   )
 	h.close()

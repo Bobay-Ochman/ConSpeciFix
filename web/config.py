@@ -34,21 +34,27 @@ else:
 # 1 - suspectedSpecies
 # 2 - strain name
 # 3 - upload TimeStamp Folder
+# 4 - email
 
 def getSingleSpecies():
-	if len(sys.argv) == 4:
+	if len(sys.argv) == 5:
 		return [str(sys.argv[1])]
 	return []
 
 def getCompStrain():
-	if len(sys.argv) == 4:
+	if len(sys.argv) == 5:
 		return str(sys.argv[2])
 	return ''
 
 def getTimeStamp():
-	if len(sys.argv) == 4:
+	if len(sys.argv) == 5:
 		return str(sys.argv[3])
 	return ''
+
+def getEmail():
+	if len(sys.argv) == 5:
+		return str(sys.argv[4])
+	return 'ConSpeciFix@gmail.com'
 
 def giveMulti(list):
 	rank = 0
