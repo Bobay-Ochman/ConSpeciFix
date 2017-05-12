@@ -72,6 +72,6 @@ os.system('python '+ PATH_TO_SCRIPTS + 'big_graph.py'+remArgs)
 os.system('Rscript '+ PATH_TO_UPLOAD + 'graph.R')
 
 print "------ Email the results!"
-os.system('python '+ PATH_TO_SCRIPTS + 'mail.py'+remArgs)
+os.system('python '+ PATH_TO_SCRIPTS + 'mailGraph.py'+remArgs)
 quit()
 
