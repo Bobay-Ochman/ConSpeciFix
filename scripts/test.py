@@ -3,13 +3,10 @@ import os
 
 print PATH_TO_OUTPUT
 
-fd = open('todo/calcHM.txt','r')
-spec = []
-for l in fd.readlines():
-	sp = l.split('\t')[0]
-	if sp in spec:
-		pass
-	else:
-		spec.append(sp)
-print len(spec)
-print spec
+spec = getSpecies()
+for sp in spec:
+	files = os.listdir(PATH_TO_OUTPUT+sp+'/align/')
+	print sp
+	for f in files:
+		if(f.endswith('.align')):
+			os.remove(PATH_TO_OUTPUT+sp+'/align/'+str(f))

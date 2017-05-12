@@ -10,9 +10,9 @@ for sp in species:
 	#print files
 	for fichier in files:
 		#print done
-		if str(fichier).endswith('.fa.align'):
+		#if str(fichier).endswith('.fa.align'):
 			#We've already done it, we'll let them know
-			continue
+		#t	continue
 		if fichier+'.align' not in files:
 			out.write(sp + '\t' + fichier + '\n');
 

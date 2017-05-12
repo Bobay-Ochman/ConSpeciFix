@@ -3,7 +3,7 @@ import os
 
 specFolders = ''
 
-for sp in ['Buchnera_aphidicola', 'Mycoplasma_bovis', 'Lactobacillus_fermentum', 'Propionibacterium_freudenreichii', 'Clostridium_beijerinckii', 'Mycobacterium_africanum', 'Mycobacterium_fortuitum']:
+for sp in ['Gallibacterium_anatis','Lactobacillus_crispatus','Porphyromonas_gingivalis','Mycobacterium_colombiense']:
 	specFolders += ' ' + sp
 os.chdir(PATH_TO_OUTPUT)
 os.system('tar -c -f export.zip '+specFolders)
