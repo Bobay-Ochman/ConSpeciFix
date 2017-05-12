@@ -58,7 +58,7 @@ Exclusion Criterion
 
 - `distrib.py`
 - `kmeans.py`
-- `split_kmaens.py`
+- `split_kmeans.py`
 - `criterion.py`
 
 

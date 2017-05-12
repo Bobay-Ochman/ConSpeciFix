@@ -5,14 +5,14 @@ from multiprocessing import Pool
 def concatForSpec(sp):
 #for sp in giveMulti(getSelectedSpecies()):
 	printLog('starting '+sp)
-	try:
+	"""	try:
 		h=open(PATH_TO_OUTPUT + sp + '/concat85.fa',"r")
 		h.close()
 		return
 		#continue
 	except:
 		pass
-
+"""
 	species = [sp]
 	strains=getGenomes(species)
 	
@@ -47,9 +47,12 @@ def concatForSpec(sp):
 	tmp={}
 	for sp in species:
 		tmp[sp]={}
+		for st in strains[sp]:
+			tmp[sp][st] = []
 		for ortho in genes[sp]:
-			printLog(sp+' '+ortho)
-			f=open( PATH_TO_OUTPUT+ sp + '/align/'  + ortho + ".fa","r")
+			print sp, ortho
+			f=open( PATH_TO_OUTPUT + sp + '/align/'  + ortho + ".fa.align","r")
+			flash={}
 			memo=[]
 			maxLen = 0;
 			for l in f:
@@ -57,48 +60,37 @@ def concatForSpec(sp):
 					id = l.strip("\n").strip(">").split(" ")[0]
 					st = parent[id]
 					memo.append(st)
-					if tmp[sp].has_key(st):
-						pass
-					else:
-						tmp[sp][st]=''
+					flash[st]=[]
 				else:
-					tmp[sp][st]+=l.strip("\n").upper()
-					longueur = len(tmp[sp][st])
-					if longueur > maxLen:
-						maxLen = longueur
+					flash[st].append(l.strip("\n").upper())
 			f.close()
+			longueur = ''.join(flash[memo[0]])
 			for st in strains[sp]:
-				if tmp[sp].has_key(st):
-					pass
+				if flash.has_key(st):
+					resu = ''.join(flash[st])
 				else:
-					tmp[sp][st]=''
-				if len(tmp[sp][st]) < maxLen:
-					while len(tmp[sp][st]) < maxLen:
-						#print st, ' ',len(tmp[sp][st]),' ',longueur
-						tmp[sp][st]+='-'
+					resu = '-'*len(longueur)
+				tmp[sp][st].append(resu)
+
 
 	concat={}
 	for sp in species:
 		concat[sp]={}
 		for id in tmp[sp]:
-			concat[sp][id] = tmp[sp][id]
+			concat[sp][id] = ''.join(tmp[sp][id])
 
 	tmp={}
 
-
-	try:
-		for sp in species:
-			printLog('writing '+sp)
-			h=open(PATH_TO_OUTPUT + sp + '/concat85.fa',"w")
-			for st in strains[sp]:
-				h.write(">" + st + "\n")
-				i=0
-				while i < len(concat[sp][st]):		# MODIF 
-					h.write(concat[sp][st][i:i+60] + "\n")
-					i+=60
-			h.close()
-	except:
-		printLog('skipping '+sp)
+	for sp in species:
+		h=open(PATH_TO_OUTPUT+sp + '/concat85.fa',"w")
+		for st in strains[sp]:
+			h.write(">" + st + "\n")
+			i=0
+			while i < len(concat[sp][st]):		# MODIF 
+				h.write(concat[sp][st][i:i+60] + "\n")
+				i+=60
+		h.close()
+	print 'completed! '+str(species[0])
 
 	##comment out all of the falip files
 """	printLog('Writing falip '+ str(species))

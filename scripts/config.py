@@ -82,7 +82,7 @@ def getSpeciesOfSize(maxSize):
 	return ret
 
 def getSpeciesForTest():
-	return ['Kingella_kingae','Bacteroides_ovatus','Gilliamella_apicola','Streptococcus_mitis','Streptococcus_oralis']
+	return ['Gallibacterium_anatis','Lactobacillus_crispatus','Porphyromonas_gingivalis','Mycobacterium_colombiense']
 	
 def getGenomes(species):
 	dico = {}
