@@ -24,17 +24,21 @@ def work(jobQ,remQ):
 	
 		#run usearch
 		args = []
-		args.append('usearch61')
+		args.append(USEARCH_PATH)
 		args.append('-usearch_global')
 		args.append(path + sp + '/genes/' + prot1)
 		args.append('-db')
-		args.append(uploadPath() + prot2)
+		args.append(PATH_TO_UPLOAD + prot2)
 		args.append('-id')
 		args.append('0.7')
 		args.append('-strand')
 		args.append('plus')
 		args.append('-blast6out')
-		args.append(uploadPath() + '/BBH/' + prot1 + '-' + prot2)
+		args.append(PATH_TO_UPLOAD + 'BBH/' + prot1 + '-' + prot2)
+		com = ""
+		for arg in args:
+			com += " "+arg
+		print "command to be used:",com
 		popen = subprocess.Popen(args, stderr=subprocess.PIPE, universal_newlines=True)
 		for stdout_line in iter(popen.stderr.readline, ""):
 			print 'out: '+ stdout_line.strip('\n') 
@@ -50,13 +54,13 @@ def work(jobQ,remQ):
 			remQ.put(sp+'-'+prot1)
 			continue
 		#check the result
-		res = open(path +  sp + '/BBH/' + prot1 + '-' + prot2)
-		compResults = []
-		for line in res:
-			compResults.append(float(line.split('\t')[2]))
-		med = median(compResults)
-		if med >99:
-			remQ.put(sp+'-'+prot2)
+		# res = open(path +  sp + '/BBH/' + prot1 + '-' + prot2)
+		# compResults = []
+		# for line in res:
+		# 	compResults.append(float(line.split('\t')[2]))
+		# med = median(compResults)
+		# if med >99:
+		# 	remQ.put(sp+'-'+prot2)
 		#do a search to find things that are too similar
 
 #		if (dupID):
@@ -72,21 +76,15 @@ if __name__ == '__main__':
 	
 	largeSpecList = []
 	
-	f = open('todo/LargeSpec.txt','r')
-	for line in f:
-		largeSpecList.append(line.strip('\n'))
-	f.close()
-	
-	
 	for i in range(MAX_THREADS):
 		p = Process(target=work, args=(jobQ,remQ))
 		p.start()
 		processes.append(p)
 
-	f = open('todo/usearch_re_do.txt','r')
+	f = open(PATH_TO_UPLOAD + 'todo/usearch.txt','r')
 	lines = f.readlines()
-	lines = giveMulti(lines)
-	for l in f:
+	print len(lines)
+	for l in lines:
 		##see if any of our children functions have produced a thing we need to not init
 		try:
 			newKill = remQ.get_nowait()
@@ -99,11 +97,8 @@ if __name__ == '__main__':
 		job = l.strip('\n').split('\t')
 		seqA = job[1] +'-'+ job[2]
 		seqB = job[1] +'-' +job[3]
-		
-		#now we see if the job is not in the 'don't do' list
-		if seqA not in killList and seqB not in killList:
-			jobQ.put(job)
-			totalWorkPut+=1
+		jobQ.put(job)
+		totalWorkPut+=1
 			
 	for i in range(MAX_THREADS):
 		jobQ.put(sentinel)

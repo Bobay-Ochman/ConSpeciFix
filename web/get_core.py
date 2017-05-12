@@ -7,17 +7,24 @@ from config import *
 
 
 species = getSingleSpecies()
-strains=getGenomes(species)
+strains=getStrains(species)
+specialStrain = getCompStrain()+'.fa'
 exclusion=[]
 genes={}
 parent={}
 tmp={}
+strains[species[0]].append(specialStrain)
 for sp in species:
 	tmp[sp]={}
 	genes[sp]=[]
 	for st in strains[sp]:
 		nb=0
-		f=open(PATH_TO_OUTPUT + sp + '/genes/' + st,"r")
+		if st != specialStrain:
+			#print 'normal strain'
+			f=open(PATH_TO_OUTPUT + sp + '/genes/' + st,"r")
+		else:
+			#print 'special strain'
+			f=open(PATH_TO_UPLOAD + st,"r")
 		for l in f:
 			if l[0] == ">":
 				#should add .strip('+').strip('-')
@@ -31,6 +38,9 @@ for sp in species:
 				tmp[sp][id].append(l)
 		f.close()
 		genes[sp].append(nb)
+
+
+
 
 seq={}
 for sp in species:
@@ -47,10 +57,10 @@ for sp in species:
 	core[sp]=[]
 	f = None
 	try:
-		f=open(PATH_TO_OUTPUT + sp + '/out.input_' + sp + '.txt.I12',"r")
+		f=open(PATH_TO_UPLOAD+ 'out.input_' + sp + '.txt.I12',"r")
 	except:
 		print 'Skipping! '+ str(sp)
-		return
+		continue
 	for l in f:
 		a=l.strip("\n").split("\t")
 		tmp=[]
@@ -86,18 +96,18 @@ for sp in species:
 
 for sp in species:
 	try:
-		files = os.listdir(PATH_TO_OUTPUT + sp + '/align/')
+		files = os.listdir(PATH_TO_UPLOAD + 'align/')
 		for f in files:
 			os.remove(f)
 	except OSError:
 		pass
-	h=open(PATH_TO_OUTPUT + sp + '/orthologs.txt',"w")
+	h=open(PATH_TO_UPLOAD + 'orthologs.txt',"w")
 	nb=0
 	for lili in core[sp]:
 		nb+=1
 		ortho = "ortho" + str(nb)
 		h.write(ortho + "\t" + "\t".join(lili) + "\n")
-		g=open(PATH_TO_OUTPUT + sp + '/align/' + ortho + ".fa","w")
+		g=open(PATH_TO_UPLOAD+ 'align/' + ortho + ".fa","w")
 		for id in lili:
 			g.write(">" + id + "\n" + seq[sp][id]  )
 		g.truncate()
@@ -108,8 +118,3 @@ for sp in species:
 	if mean(genes[sp]) > 0:	
 		ratio = nb/mean(genes[sp])
 		print sp,' There are ',nb,' core genes and ',doublons[sp],' doublons ',mean(genes[sp]), ' genes on average for',len(strains[sp]),' strains.  Ratio=',100*nb/mean(genes[sp]),' %'
-		if ratio >= 0.20:
-			k=open('../selected_species.txt','a')
-			k.write(sp + '\t' + str(len(strains[sp])) + '\n')
-			k.close()
-

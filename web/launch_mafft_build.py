@@ -1,19 +1,21 @@
 from config import *
 
-species = getSelectedSpecies()
-out = open('todo/mafft.txt','w')
+species = getSingleSpecies()
+out = open(PATH_TO_UPLOAD+'todo/mafft.txt','w')
 out.seek(0)
 for sp in species:
-	files = os.listdir(PATH_TO_OUTPUT + sp + '/align/')
+	files = os.listdir(PATH_TO_UPLOAD + 'align/')
 	done = []
 	files = files[::-1]
 	#print files
 	for fichier in files:
 		#print done
 		if str(fichier).endswith('.fa.align'):
+			done.append(str(fichier))
 			#We've already done it, we'll let them know
 			continue
-		if fichier+'.align' not in files:
+	for fichier in files:
+		if str(fichier)+'.align' not in done:
 			out.write(sp + '\t' + fichier + '\n');
 
 out.truncate()

@@ -1,27 +1,25 @@
-
-#path ="/Users/ochmanlab/Desktop/drew/"
-
 import os
-import sys
+from config import *
+from multiprocessing import Pool
+import multiprocessing
+import random
+	
+#make the file for us
+f=open(PATH_TO_UPLOAD + 'todo/exclusion.txt','w')
+f.close()
 
-
-
-
-SP = sys.argv[-1]
-
-# Load distances
+SP = getSingleSpecies()[0]
+	# Load distances
 strains=[]
-f=open('../results/' + SP + '/sample.txt','r')
+f=open(PATH_TO_UPLOAD + 'sample.txt','r')
 for l in f:
 	a=l.strip("\n").split("\t")
 	strains.append(a[0])
-
-
 f.close()
 
 
 dist={}
-f=open('../results/' + SP + '/distances.dist',"r")
+f=open(PATH_TO_UPLOAD + 'RAxML_distances.dist',"r")
 for l in f:
 	a=l.strip("\n").split("\t")
 	st1,st2 = a[0].strip(" ").split(" ")[0], a[0].strip(" ").split(" ")[1]
@@ -35,14 +33,11 @@ for l in f:
 		dist[st2] = {}
 	dist[st1][st2] = float(a[1])
 	dist[st2][st1] = float(a[1])
-
 f.close()
 
 
-
-
 tmp={}
-f=open('../results/' + SP + '/concat85.fa',"r")
+f=open(PATH_TO_UPLOAD + 'concat85.fa',"r")
 for l in f:
 	if l[0] == '>':
 		nb=0
@@ -50,34 +45,32 @@ for l in f:
 		sp = l.strip('>').strip('\n') 
 		tmp[sp] = []
 	else:
-		nb += len(l.strip('\n'))
-		tmp[sp].append(l.strip('\n'))
-
-
+		try:
+			nb += len(l.strip('\n'))
+			tmp[sp].append(l.strip('\n'))
+		except (KeyError,UnboundLocalError) as e:
+			print e
+			quit()
 f.close()
 
 
 seq = {}
 for sp in strains:
 	seq[sp] = ''.join(tmp[sp])
-
-
 #strains.remove('Dsim')
 
 memo_subset={}
-tmp = os.listdir('../results/' + SP + '/')
+tmp = os.listdir(PATH_TO_UPLOAD)
 for file in tmp:
 	if file.startswith("rm"):
-		f=open( '../results/' + SP + '/' + file,"r")
+		f=open( PATH_TO_UPLOAD + file,"r")
 		for l in f:
 			a=l.strip("\n").split("\t")
 			if len(a) == 5:									
 				memo_subset[a[0]] = a[1:]
 		f.close()
 
-
-
-f_subset=open('../results/' + SP + '/rm1.txt',"w")
+f_subset=open(PATH_TO_UPLOAD + 'rm1.txt',"w")
 for subset in memo_subset:
 	f_subset.write(subset + "\t" + '\t'.join(memo_subset[subset])  + "\n")
 
@@ -86,29 +79,27 @@ f_subset.close()
 
 
 tmp=[]
-f=open('../results/' + SP + '/families.txt','r')
+f=open(PATH_TO_UPLOAD + 'families_'+SP+'.txt','r')
 for l in f:
 	a=l.strip('\n').split('\t')
 	if memo_subset.has_key(a[1]):
 		pass
 	else:
-		tmp.append(a[1])
-
-
-import random
-
+		tmp.append(a[1])	
+	
 subsets=[]
 while len(tmp) > 0:
 	truc = random.choice(tmp)
 	subsets.append(truc)
 	tmp.remove(truc)
 
-
-print 'GO'
-
+	
 alpha=['A','C','G','T']
 
 LONGUEUR=len(seq[sp])
+if LONGUEUR > 100000:
+	LONGUEUR = 100000
+
 for truc in subsets:
 	strains = truc.split('-')
 	bip=[]
@@ -119,6 +110,17 @@ for truc in subsets:
 		tmp=[]
 		memo=[]
 		for sp in strains:
+			# lookingAtMe = False
+			# try:
+			# 	testing = seq[sp]
+			# 	lookingAtMe = True
+			# 	testing2 = testing[i]
+			# except KeyError as e:
+			# 	print 'we got some real problems now!!!! ',lookingAtMe,e
+			# 	errorFD = open(PATH_TO_UPLOAD + 'todo/exclusion.txt','a')
+			# 	errorFD.write(str(e)+'\n')
+			# 	errorFD.close()
+			# 	return
 			N = seq[sp][i]
 			if N in alpha:
 				tmp.append(N)
@@ -325,11 +327,7 @@ for truc in subsets:
 		rm = float(r)/m
 	except ZeroDivisionError:
 		rm = 'NA'
-	print  len(strains),' r/m= ', rm      #,' r= ',r,' m= ',m	, '   Bips:  r= ',bip.count('r'),'  m= ',bip.count('m'),' |  for ',singleton,' singleton'
-	h=open('../results/' + SP + '/rm1.txt',"a")
-	h.write(truc + '\t' + str(r) + '\t' + str(m) + '\t' + str(rm) + '\t' + str(len(bip)) + '\n'   )
+	print  SP, len(strains),' r/m= ', rm      #,' r= ',r,' m= ',m	, '   Bips:  r= ',bip.count('r'),'  m= ',bip.count('m'),' |  for ',singleton,' singleton'
+	h=open(PATH_TO_UPLOAD + 'rm1.txt',"a")
+	h.write(truc + '\st' + str(r) + '\t' + str(m) + '\t' + str(rm) + '\t' + str(len(bip)) + '\n'   )
 	h.close()
-
-
-
-

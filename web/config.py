@@ -3,37 +3,58 @@ import multiprocessing
 import sys
 import platform
 
-PATH_TO_OUTPUT = '/var/app/current/efs/results/'
-PATH_TO_UPLOAD = '/var/app/current/efs/uploads/'
-PATH_TO_SCRIPTS = '/var/app/current/efs/ConSpeciFix/web/'
 PATH_TO_SPECIES_TXT = "../species.txt"
 MAX_THREADS = multiprocessing.cpu_count()
 MAX_SPECIES_SIZE = 500
 
-MCL_PATH = '/work/03414/be4833/local/bin/mcl'
-MAX_THREADS = 2
-MAFFT_PATH = '/work/03414/be4833/bin/mafft'
+
+WEB = True
+
+if(WEB):
+	USEARCH_PATH = '/var/app/current/efs/progs/usearch8.0.1623_i86linux32'
+	MCL_PATH = '/var/app/current/efs/progs/mcl'
+	MAX_THREADS = 1
+	MAFFT_PATH = 'mafft'
+	RAXML_PATH = '/var/app/current/efs/progs/RAxML/raxmlHPC-PTHREADS-SSE3'
+	PATH_TO_UPLOAD = '/var/app/current/efs/uploads/'+str(sys.argv[3])+'/'
+	PATH_TO_SCRIPTS = '/var/app/current/efs/ConSpeciFix/web/'
+	PATH_TO_OUTPUT = '/var/app/current/efs/results/'
+else:
+	USEARCH_PATH = '/Users/Admin/Documents/Work/efs/progs/usearch8.0.1623_i86osx32'
+	MCL_PATH = 'mcl'
+	MAX_THREADS = 4
+	MAFFT_PATH = 'mafft'
+	RAXML_PATH = '/Users/Admin/Documents/Work/efs/progs/RAxML/raxmlHPC-PTHREADS-SSE3'
+	PATH_TO_UPLOAD = '/Users/Admin/Documents/Work/efs/uploads/'+str(sys.argv[3])+'/'
+	PATH_TO_SCRIPTS = '/Users/Admin/Documents/Work/ConSpeciFix/web/'
+	PATH_TO_OUTPUT = '/Users/Admin/Documents/Work/efs/results/'
 
 #sys args:
 # 0 - prog name
 # 1 - suspectedSpecies
 # 2 - strain name
 # 3 - upload TimeStamp Folder
+# 4 - email
 
 def getSingleSpecies():
-	if len(sys.argv) == 4:
+	if len(sys.argv) == 5:
 		return [str(sys.argv[1])]
 	return []
 
 def getCompStrain():
-	if len(sys.argv) == 4:
+	if len(sys.argv) == 5:
 		return str(sys.argv[2])
 	return ''
 
-def uploadPath():
-	if(len(sys.argv)==4):
-		return PATH_TO_UPLOAD + str(sys.argv[3])
+def getTimeStamp():
+	if len(sys.argv) == 5:
+		return str(sys.argv[3])
 	return ''
+
+def getEmail():
+	if len(sys.argv) == 5:
+		return str(sys.argv[4])
+	return 'ConSpeciFix@gmail.com'
 
 def giveMulti(list):
 	rank = 0
@@ -97,8 +118,8 @@ def getStrains(species):
 		dico[sp] = []
 		files = os.listdir(PATH_TO_OUTPUT + sp+'/genes')
 		for truc in files:
-		if truc.endswith('.fa'):
-			dico[sp].append(truc)
+			if truc.endswith('.fa'):
+				dico[sp].append(truc)
 	return dico
 
 def getFolders():

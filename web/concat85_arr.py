@@ -43,9 +43,12 @@ exclusion=[]
 tmp={}
 for sp in species:
 	tmp[sp]={}
+	for st in strains[sp]:
+		tmp[sp][st] = []
 	for ortho in genes[sp]:
 		print sp, ortho
 		f=open( PATH_TO_UPLOAD + 'align/'  + ortho + ".fa.align","r")
+		flash={}
 		memo=[]
 		maxLen = 0;
 		for l in f:
@@ -53,48 +56,35 @@ for sp in species:
 				id = l.strip("\n").strip(">").split(" ")[0]
 				st = parent[id]
 				memo.append(st)
-				if tmp[sp].has_key(st):
-					pass
-				else:
-					tmp[sp][st]=''
+				flash[st]=[]
 			else:
-				tmp[sp][st]+=(l.strip("\n").upper())
-				longueur = len(tmp[sp][st])
-				if longueur > maxLen:
-					maxLen = longueur
+				flash[st].append(l.strip("\n").upper())
 		f.close()
+		longueur = ''.join(flash[memo[0]])
 		for st in strains[sp]:
-			if tmp[sp].has_key(st):
-				pass
+			if flash.has_key(st):
+				resu = ''.join(flash[st])
 			else:
-				tmp[sp][st]=[]
-			if len(tmp[sp][st]) < maxLen:
-				while len(tmp[sp][st]) < maxLen:
-					#print st, ' ',len(tmp[sp][st]),' ',longueur
-					tmp[sp][st]+='-'
+				resu = '-'*len(longueur)
+			tmp[sp][st].append(resu)
 
 
 concat={}
 for sp in species:
 	concat[sp]={}
 	for id in tmp[sp]:
-		concat[sp][id] = tmp[sp][id]
+		concat[sp][id] = ''.join(tmp[sp][id])
 
 tmp={}
 
-
-try:
-	for sp in species:
-		h=open(PATH_TO_UPLOAD + 'concat85.fa',"w")
-		for st in strains[sp]:
-			h.write(">" + st + "\n")
-			i=0
-			while i < len(concat[sp][st]):		# MODIF 
-				h.write(concat[sp][st][i:i+60] + "\n")
-				i+=60
-		h.close()
-except:
-	print 'skipping', sp
-
-
+for sp in species:
+	h=open(PATH_TO_UPLOAD + 'concat85.fa',"w")
+	for st in strains[sp]:
+		h.write(">" + st + "\n")
+		i=0
+		while i < len(concat[sp][st]):		# MODIF 
+			h.write(concat[sp][st][i:i+60] + "\n")
+			i+=60
+	h.close()
+print 'completed! '+str(species[0])
 

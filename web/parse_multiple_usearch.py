@@ -8,8 +8,8 @@ from config import *
 species = getSingleSpecies()
 sp = species[0]
 
-strains= getGenomes(species)
-specialStrain = getCompStrain()
+strains= getStrains(species)
+specialStrain = getCompStrain()+'.fa'
 
 genes,lengthOfGene={},{}
 
@@ -33,11 +33,11 @@ for st in strains[sp]:
 
 #Do it again for the special strain
 genes[sp][specialStrain]=0
-f=open(uploadPath() '/genes/' + st ,'r')
+f=open(PATH_TO_UPLOAD + specialStrain,'r')
 for l in f:
 	if l[0]=='>':
 		id = l.strip('\n').strip('>').strip(' +').strip(' -')
-		genes[sp][st]+=1
+		genes[sp][specialStrain]+=1
 	else:
 		lengthOfGene[id] = len(l.strip('\n'))
 f.close()
@@ -46,8 +46,8 @@ parent={}
 count = 0;
 
 #start off buy grabbing all the origional output
-origFile=open(PATH_TO_OUTPUT + sp + '/input.txt',"r")
-g=open(uploadPath()+'/input.txt','w')
+origFile=open(PATH_TO_OUTPUT + sp + '/input_'+sp+'.txt',"r")
+g=open(PATH_TO_UPLOAD+'input_'+sp+'.txt','w')
 for l in origFile:
 	g.write(l)
 
@@ -60,7 +60,7 @@ for st1 in strains[sp]:
 	st2 = specialStrain
 	try:
 		#open the results of usearch
-		f=open(uploadPath() + '/BBH/'  + st1 + "-" + st2 ,"r") 
+		f=open(PATH_TO_UPLOAD + 'BBH/'  + st1 + "-" + st2 ,"r") 
 		geneIDs = []
 		for l in f:
 			a= l.strip("\n").split("\t")
