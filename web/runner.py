@@ -65,13 +65,13 @@ os.system('python '+ PATH_TO_SCRIPTS + 'sample.py'+remArgs)
 print "------ going for r/m"
 os.system('python '+ PATH_TO_SCRIPTS + 'calcHM_multi.py'+remArgs)
 
-print "------ Email the results!"
-os.system('python '+ PATH_TO_SCRIPTS + 'mail.py'+remArgs)
-
 # graph
 print "------ Graph time!"
 os.system('python '+ PATH_TO_SCRIPTS + 'graph.py'+remArgs)
 os.system('python '+ PATH_TO_SCRIPTS + 'big_graph.py'+remArgs)
 os.system('Rscript '+ PATH_TO_UPLOAD + 'graph.R')
+
+print "------ Email the results!"
+os.system('python '+ PATH_TO_SCRIPTS + 'mail.py'+remArgs)
 quit()
 

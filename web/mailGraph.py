@@ -10,7 +10,7 @@ username = 'ConSpeciFix@gmail.com'
 password = 'helloW0rldHowAreYou'
 
 fromaddr = 'ConSpeciFix@gmail.com'
-toaddr  = 'brian.e2014@gmail.com'
+toaddr  = getEmail()
  
 msg = MIMEMultipart()
  
@@ -18,7 +18,7 @@ msg['From'] = fromaddr
 msg['To'] = toaddr
 msg['Subject'] = "Update on your File!"
  
-body = "Hello!\nHere are the results of your comparison.\n\nThanks,\nThe ConSpeciFix Team"
+body = "Hello!\n\nHere are the results of your comparison.\n\nThanks,\nThe ConSpeciFix Team\n\n"
  
 msg.attach(MIMEText(body, 'plain'))
  
@@ -38,3 +38,4 @@ server.login(username, password)
 text = msg.as_string()
 server.sendmail(fromaddr, toaddr, text)
 server.quit()
+

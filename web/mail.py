@@ -8,23 +8,18 @@ username = 'ConSpeciFix@gmail.com'
 password = 'helloW0rldHowAreYou'
 
 fromaddr = 'ConSpeciFix@gmail.com'
-toaddrs  = 'brian.e2014@gmail.com'
+toaddrs  = getEmail()
 
 
 
 message = ''
-if sys.argv[5] === 'error':
-	message = 'Hello!\nSorry, there was a problem reading the file you uploaded. Please make sure it contains either a zip file with both .gff and .fna files, or a single .fa file. \nIf this continues to be a problem, please reach out to the team at conspecifix@gmail.com'
+if(len(sys.argv) == 6):
+	if sys.argv[5] == 'error':
+		message = 'Hello!\n\nSorry, there was a problem reading the file you uploaded. Please make sure it contains either a zip file with both .gff and .fna files, or a single .fa file. \nIf this continues to be a problem, please reach out to the team at conspecifix@gmail.com'
 else:
-	message = """Hello!
-We have some updates for you! Your files for analysis have some information at www.conspecifix.com/uploads/"""+getTimeStamp() +""" 
+	message = 'Hello!\n\nWe have some updates for you! Your files for analysis have some information at www.conspecifix.com/uploads/'+getTimeStamp() +'\n\nThis analysis was for ' + str(getCompStrain())+' against species ' +getSingleSpecies()[0]+ '. '
 
-This analysis was for """ + getCompStrain()+' against species ' +getSingleSpecies()+ '. '
-
-msg = MIMEText(message+"""
-
-Sincerely,
-The ConSpeciFix Team""")
+msg = MIMEText(message+'\n\nSincerely,\nThe ConSpeciFix Team')
 
 msg['Subject'] = 'Update on your File!'
 msg['From'] = fromaddr
