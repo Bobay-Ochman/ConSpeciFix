@@ -75,7 +75,7 @@ for sp in species:
 			if 1==1:
 				if nb > 3:
 					if float(a[2]) > 0:
-						rm = float(a[1])/float(a[2])
+						rm = float(a[2])
 						if dico[sp].has_key(nb):
 							dico[sp][nb].append(rm)
 						else:
