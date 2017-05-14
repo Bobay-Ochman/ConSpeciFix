@@ -13,7 +13,7 @@ def sendEmail(messageString):
 	fromaddr = 'ConSpeciFix@gmail.com'
 	toaddrs  = getEmail()
 
-	postMessage = "\n\n\nThis message is in regards to the file uploaded on "+datetime.datetime.fromtimestamp(int(getTimeStamp())/1000.0)+"\nSpecies testing against: "+getSingleSpecies()
+	postMessage = "\n\n\nThis message is in regards to the file uploaded on "+str(datetime.datetime.fromtimestamp(int(getTimeStamp())/1000.0))+"\nSpecies testing against: "+getSingleSpecies()
 
 	msg = MIMEText("Hello!\n\n"+messageString+'\n\nSincerely,\nThe ConSpeciFix Team'+postMessage)
 
