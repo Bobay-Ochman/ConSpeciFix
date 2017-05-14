@@ -1,4 +1,5 @@
 from config import *
+from mailMessage import *
 import os
 import sys
 
@@ -26,6 +27,9 @@ remArgs = ' '+sys.argv[1]+' '+sys.argv[2]+' '+sys.argv[3]+' '+sys.argv[4]+' '
 
 print "------ Expects just to have a .fa file"
 # usearch
+
+sendEmail("We've started your analysis and will be emailing you periodically to keep you updated on how it is going.")
+
 print "------ usearch build"
 os.system('python '+ PATH_TO_SCRIPTS + 'usearch_build.py'+remArgs)
 print "------ usearch multi"
