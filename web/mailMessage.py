@@ -12,9 +12,7 @@ def sendEmail(messageString):
 	fromaddr = 'ConSpeciFix@gmail.com'
 	toaddrs  = getEmail()
 
-	message = "Hello!\n\n"+messageString+"\n\nThanks,\nThe ConSpeciFix Team"
-
-	msg = MIMEText(message+'\n\nSincerely,\nThe ConSpeciFix Team')
+	msg = MIMEText("Hello!\n\n"+messageString+'\n\nSincerely,\nThe ConSpeciFix Team')
 
 	msg['Subject'] = 'Update on your File!'
 	msg['From'] = fromaddr
