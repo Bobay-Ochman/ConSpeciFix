@@ -69,7 +69,7 @@ os.system('python '+ PATH_TO_SCRIPTS + 'raxml_distance.py'+remArgs)
 try:
 	f = open(PATH_TO_UPLOAD+'RAxML_distances.dist',"r")
 except:
-	sendEmail("It seems the genome you are testing against is completly divergent from "+getSingleSpecies()[0]+". Because of this, we were unable to produce H/M graphs to illustrate how simmilar they are.")
+	sendEmail("The genome that you are testing is substantially divergent from "+getSingleSpecies()[0]+", prohibiting recombination analysis and preventing production of h/m graphs. Please select a more closely related sample-set for comparison, if available.")
 	quit()
 
 

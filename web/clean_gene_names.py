@@ -1,7 +1,7 @@
 from config import *
 import os
 
-f = open(PATH_TO_UPLOAD+getCompStrain()+'.fa','r')
+f = open(PATH_TO_UPLOAD+getCompStrain(),'r')
 out = open(PATH_TO_UPLOAD+getCompStrain()+"_clean.fa",'w')
 
 count = 0
