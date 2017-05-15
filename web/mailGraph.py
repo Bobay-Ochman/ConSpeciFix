@@ -19,9 +19,9 @@ msg['From'] = fromaddr
 msg['To'] = toaddr
 msg['Subject'] = 'Update on your File! id:'+ getTimeStamp()
  
-body = "Hello!\n\nHere are the results of your comparison.\n\nThanks,\nThe ConSpeciFix Team\n\n"
+body = "Hello!\n\nHere are the results of your comparison.\n\nThanks,\nThe ConSpeciFix Team"
  
-postMessage = "\n\n\nThis message is in regards to the file uploaded on "+str(datetime.datetime.fromtimestamp(int(getTimeStamp())/1000.0))+"\nSpecies testing against: "+getSingleSpecies()[0]+"\n"
+postMessage = "\n\n\nThis message is in regards to the file uploaded on "+str(datetime.datetime.fromtimestamp(int(getTimeStamp())/1000.0))+"\nSpecies testing against: "+getSingleSpecies()[0]+"\n\n"
 
 body = body + postMessage
 
