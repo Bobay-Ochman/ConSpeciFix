@@ -64,6 +64,7 @@ for st1 in strains[sp]:
 		geneIDs = []
 		for l in f:
 			a= l.strip("\n").split("\t")
+			print a
 			#get the ids of the two genes they are comparing
 			id1 = a[0].strip(' -').strip(' +')
 			id2 = a[1].strip(' -').strip(' +')
@@ -83,7 +84,7 @@ for st1 in strains[sp]:
 				geneIDs.append(id2)
 		f.close()
 	except IOError:
-		#print "!!!!!! ",st1,".prot-",st2,".prot"
+		print "!!!!!! ",st1, st2
 		#h.write(st1 + "\t" + st2 + "\n")
 		pass
 g.truncate()
