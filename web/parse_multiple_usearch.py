@@ -38,8 +38,9 @@ for l in f:
 	if l[0]=='>':
 		id = l.strip('\n').strip('>').strip(' +').strip(' -')
 		genes[sp][specialStrain]+=1
+		lengthOfGene[id]=0
 	else:
-		lengthOfGene[id] = len(l.strip('\n'))
+		lengthOfGene[id] += len(l.strip('\n'))
 f.close()
 
 parent={}
@@ -64,7 +65,6 @@ for st1 in strains[sp]:
 		geneIDs = []
 		for l in f:
 			a= l.strip("\n").split("\t")
-			print a
 			#get the ids of the two genes they are comparing
 			id1 = a[0].strip(' -').strip(' +')
 			id2 = a[1].strip(' -').strip(' +')
