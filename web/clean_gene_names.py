@@ -1,6 +1,8 @@
 from config import *
 import os
 
+print printAllArgs()
+
 f = open(PATH_TO_UPLOAD+getCompStrain(),'r')
 out = open(PATH_TO_UPLOAD+getCompStrain()+"_clean.fa",'w')
 

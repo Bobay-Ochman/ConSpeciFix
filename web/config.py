@@ -36,6 +36,9 @@ else:
 # 3 - upload TimeStamp Folder
 # 4 - email
 
+def printAllArgs():
+	return str(sys.argv)
+
 def getSingleSpecies():
 	if len(sys.argv) == 5:
 		return [str(sys.argv[1])]
