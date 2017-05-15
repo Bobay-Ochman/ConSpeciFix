@@ -97,7 +97,7 @@ def calcHM(args):
 	if LONGUEUR > 1000000:
 		LONGUEUR = 1000000
 	
-	strains = truc.split('-')
+	strains = truc.split('&&&')
 	bip=[]
 	singleton,more=0,0
 	i = 0

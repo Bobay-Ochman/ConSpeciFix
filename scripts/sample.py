@@ -113,7 +113,7 @@ def sample(sp):
 					st = random.choice(strains)
 				tmp.append(st)
 			tmp.sort()
-			subset = "-".join(tmp)
+			subset = "&&&".join(tmp)
 			if subset not in combin[i]:
 				toto+=1
 			#	print i,' ',toto

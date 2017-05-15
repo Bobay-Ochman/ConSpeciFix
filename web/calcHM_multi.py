@@ -101,7 +101,7 @@ if LONGUEUR > 100000:
 	LONGUEUR = 100000
 
 for truc in subsets:
-	strains = truc.split('-')
+	strains = truc.split('&&&')
 	bip=[]
 	singleton,more=0,0
 	i = 0

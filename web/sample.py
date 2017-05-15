@@ -93,7 +93,7 @@ while i <= len(strains):
 				st = random.choice(strains)
 			tmp.append(st)
 		tmp.sort()
-		subset = "-".join(tmp)
+		subset = "&&&".join(tmp)
 		if subset not in combin[i]:
 			toto+=1
 			combin[i].append(subset)
