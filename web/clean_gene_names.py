@@ -1,7 +1,7 @@
 from config import *
 import os
 
-f = open(PATH_TO_UPLOAD+getCompStrain(),'r')
+f = open(PATH_TO_UPLOAD+getCompStrain()+'.fa','r')
 out = open(PATH_TO_UPLOAD+getCompStrain()+"_clean.fa",'w')
 
 count = 0
@@ -12,4 +12,10 @@ for l in f:
 	else:
 		out.write(l)
 out.close()
-os.system('mv '+PATH_TO_UPLOAD+getCompStrain()+"_clean.fa "+ PATH_TO_UPLOAD+getCompStrain())
+
+fullName = PATH_TO_UPLOAD+getCompStrain()
+indexOfEnd = fullName.rfind('.')
+if indexOfEnd == -1:
+	indexOfEnd = len(fullName)-1
+fullName = fullName[:indexOfEnd+1] + '.fa'
+os.system('mv '+PATH_TO_UPLOAD+getCompStrain()+"_clean.fa "+ fullName)
