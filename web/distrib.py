@@ -15,7 +15,7 @@ for l in f:
 	a=l.strip('\n').split('\t')
 	strains = a[0].split('&&&')
 	nb=len(strains)
-	rm = float(a[2])
+	rm = float(a[3])
 	if nb >= 10:
 		k.write(a[0] + '\t' + str(rm) + '\n')
 f.close()

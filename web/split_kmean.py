@@ -72,6 +72,7 @@ for sp in species:
 	f.close()
 	low,high=[],[]
 	i=0
+	print vector
 	while i < len(vector):
 		subset = liste[i]
 		strains = subset.split('&&&')
