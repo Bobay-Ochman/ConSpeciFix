@@ -16,36 +16,13 @@ for l in f:
 	strains = a[0].split('&&&')
 	nb=len(strains)
 	rm = float(a[3])
+	tag = "without"
+	if str(getCompStrain()+'.fa') in strains:
+		tag = "with"
 	if nb >= 10:
-		k.write(a[0] + '\t' + str(rm) + '\n')
+		k.write(a[0] + '\t' + str(rm) +'\t'+tag+'\n')
 f.close()
 k.close()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -4,7 +4,6 @@ import os
 species=getSingleSpecies()
 
 sp = species[0]
-print sp
 h=open(PATH_TO_UPLOAD+'kmean.R','w')
 h.write("tab=read.table('"+PATH_TO_UPLOAD+"distrib_" + sp + ".txt')\n")
 h.write("toto=kmeans(tab$V2,2)\n")
