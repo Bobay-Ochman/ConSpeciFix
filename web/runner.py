@@ -93,6 +93,7 @@ os.system('python '+ PATH_TO_SCRIPTS + 'distrib.py '+remArgs+ ' > '+PATH_TO_UPLO
 os.system('python '+ PATH_TO_SCRIPTS + 'kmean.py '+remArgs+ ' > '+PATH_TO_UPLOAD+'out/17_kmean.txt')
 os.system('python '+ PATH_TO_SCRIPTS + 'split_kmean.py '+remArgs+ ' > '+PATH_TO_UPLOAD+'out/18_split_kmean.txt')
 os.system('python '+ PATH_TO_SCRIPTS + 'criterion.py '+remArgs+ ' > '+PATH_TO_UPLOAD+'out/19_criterion.txt')
+os.system('python '+ PATH_TO_SCRIPTS + 'draw_kmeans_plot.py '+remArgs+ ' > '+PATH_TO_UPLOAD+'out/20_draw.txt')
 
 
 print "------ Email the results!"
