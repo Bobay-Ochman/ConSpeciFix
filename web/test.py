@@ -5,7 +5,7 @@ import sys
 
 
 
-remArgs = ['Lactobacillus_crispatus', 'upload_dd21c82a729bdfe702e443b3320504d1', '1494887021656', 'brian.ellis@austin.rr.com']
+remArgs = 'Lactobacillus_crispatus upload_dd21c82a729bdfe702e443b3320504d1 1494887021656 brian.ellis@austin.rr.com'
 remArgs = str(remArgs)
 
 print "------ parse usearch"
