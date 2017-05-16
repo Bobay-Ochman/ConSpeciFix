@@ -88,6 +88,13 @@ os.system('python '+ PATH_TO_SCRIPTS + 'graph.py'+remArgs + ' > '+PATH_TO_UPLOAD
 os.system('python '+ PATH_TO_SCRIPTS + 'big_graph.py'+remArgs+ ' > '+PATH_TO_UPLOAD+'out/14_graph_big.txt')
 os.system('Rscript '+ PATH_TO_UPLOAD + 'graph.R'+ ' > '+PATH_TO_UPLOAD+'out/15_graph_r.txt')
 
+print "------ Analysis time!"
+os.system('python '+ PATH_TO_SCRIPTS + 'distrib.py '+remArgs+ ' > '+PATH_TO_UPLOAD+'out/16_distrib.txt')
+os.system('python '+ PATH_TO_SCRIPTS + 'kmean.py '+remArgs+ ' > '+PATH_TO_UPLOAD+'out/17_kmean.txt')
+os.system('python '+ PATH_TO_SCRIPTS + 'split_kmean.py '+remArgs+ ' > '+PATH_TO_UPLOAD+'out/18_split_kmean.txt')
+os.system('python '+ PATH_TO_SCRIPTS + 'criterion.py '+remArgs+ ' > '+PATH_TO_UPLOAD+'out/19_criterion.txt')
+
+
 print "------ Email the results!"
 os.system('python '+ PATH_TO_SCRIPTS + 'mailGraph.py'+remArgs)
 quit()
