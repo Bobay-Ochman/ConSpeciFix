@@ -15,6 +15,6 @@ h.write("dev.off()\n")
 h.write("write(toto[1]$cluster,ncol=1,file='"+PATH_TO_UPLOAD+"vector_" + sp + ".txt')\n\n")
 h.write("write(toto[2]$centers,ncol=2,file='"+PATH_TO_UPLOAD+"key_" + sp + ".txt')\n")
 h.close()
-os.system("Rscript  "+PATH_TO_UPLOAD"kmean.R  ")
+os.system("Rscript  "+PATH_TO_UPLOAD+"kmean.R")
 
 os.remove("kmean.R")

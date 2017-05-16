@@ -3,7 +3,7 @@ from config import *
 species=getSingleSpecies()
 
 sp = species[0]
-k=open(PATH_TO_UPLOAD'distrib_' + sp + '.txt','w')
+k=open(PATH_TO_UPLOAD + 'distrib_' + sp + '.txt','w')
 dico={}
 print sp
 f=None
