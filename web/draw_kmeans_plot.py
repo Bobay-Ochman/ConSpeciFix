@@ -10,7 +10,7 @@ for sp in species:
 	h.write("tab=head(tab,-1)\n")
 	h.write("pdf('"+PATH_TO_UPLOAD+"boxPlot.pdf')\n")
 	h.write("v=1:length(tab$V1)\n")
-	h.write("plot(tab$V5,pch=16,type='h',cex=0.7,ylim=c(0,100),ylab='%',xlab=('Strains'),col='grey')\n")
+	h.write("boxplot(tab$V5,pch=16,type='h',cex=0.7,ylim=c(0,100),ylab='%',xlab=('Strains'),col='grey')\n")
 	h.write("points(finpoint$V5,col='red',pch=16)\n")
 	h.write("dev.off()\n")
 	h.close()
