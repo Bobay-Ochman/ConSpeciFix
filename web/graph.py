@@ -18,7 +18,7 @@ for sp in species:
 		for l in lines:
 			a=l.strip("\n").split("\t")
 			subset = a[0]
-			b=subset.split("-")
+			b=subset.split("&&&")
 			nb = len(b)
 			#if "SAEN3" not in b and "SAEN88" not in b:  ###########################
 			if nb > 3:
