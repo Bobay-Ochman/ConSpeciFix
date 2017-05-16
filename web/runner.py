@@ -71,8 +71,8 @@ try:
 	f = open(PATH_TO_UPLOAD+'RAxML_distances.dist',"r")
 except:
 	sendEmail("The genome that you are testing is substantially divergent from "+getSingleSpecies()[0]+", prohibiting recombination analysis and preventing production of h/m graphs. Please select a more closely related sample-set for comparison, if available.")
+	os.system("echo quitting, going home > out/11_stopping.txt")
 	quit()
-
 
 # sample.py
 print "------ Sampling time"
