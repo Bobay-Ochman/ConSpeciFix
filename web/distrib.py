@@ -10,7 +10,7 @@ f=None
 try:
 	f=open(PATH_TO_UPLOAD + 'rm1.txt','r')
 except:
-	continue
+	print 'Major problem! Cant open rm1.txt'
 for l in f:
 	a=l.strip('\n').split('\t')
 	strains = a[0].split('&&&')

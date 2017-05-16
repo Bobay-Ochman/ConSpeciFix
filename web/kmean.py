@@ -17,4 +17,4 @@ h.write("write(toto[2]$centers,ncol=2,file='"+PATH_TO_UPLOAD+"key_" + sp + ".txt
 h.close()
 os.system("Rscript  "+PATH_TO_UPLOAD+"kmean.R")
 
-os.remove("kmean.R")
+os.remove(PATH_TO_UPLOAD+"kmean.R")
