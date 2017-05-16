@@ -19,7 +19,7 @@ msg['From'] = fromaddr
 msg['To'] = toaddr
 msg['Subject'] = 'Update on your File! id:'+ getTimeStamp()
  
-body = "Hello!\n\nHere are the results of your comparison.\n\nThanks,\nThe ConSpeciFix Team"
+body = "Hello!\n\nHere are the results of your comparison. In boxPlot.pdf, the red data point represents the tested genome.\n\nThanks,\nThe ConSpeciFix Team"
  
 postMessage = "\n\n\nThis message is in regards to the file uploaded on "+str(datetime.datetime.fromtimestamp(int(getTimeStamp())/1000.0))+"\nSpecies testing against: "+getSingleSpecies()[0]+"\n\n"
 
@@ -40,6 +40,16 @@ msg.attach(part)
 #attach the standard graph 
 filename = "standardGraph.pdf"
 attachment = open(PATH_TO_OUTPUT+ str(getSingleSpecies()[0]) + '/standardGraph.pdf', "rb") 
+part = MIMEBase('application', 'octet-stream')
+part.set_payload((attachment).read())
+encoders.encode_base64(part)
+part.add_header('Content-Disposition', "attachment; filename= %s" % filename)
+msg.attach(part)
+
+
+#attach the dressen graph 
+filename = "boxPlot.pdf"
+attachment = open(PATH_TO_UPLOAD+'boxPlot.pdf', "rb") 
 part = MIMEBase('application', 'octet-stream')
 part.set_payload((attachment).read())
 encoders.encode_base64(part)
