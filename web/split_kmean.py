@@ -95,10 +95,7 @@ for sp in species:
 		H = high.count(st)
 		tot = L + H
 		#print st,' ',L,' ',H,' ',tot
-		try:
-			h.write(st + '\t' + str(L) + '\t' + str(round(100*L/float(tot),1)) + '\t' + str(H) + '\t' + str(round(100*H/float(tot),1)) +  '\n')
-		except:
-			pass
+		h.write(st + '\t' + str(L) + '\t' + str(round(100*L/float(tot),1)) + '\t' + str(H) + '\t' + str(round(100*H/float(tot),1)) +  '\n')
 	h.close()
 
 
