@@ -1,9 +1,9 @@
 from config import *
 import os
 
-species=getSpecies()
-problem = []
+species=getSingleSpecies()
 
+problem = []
 sample={}
 
 for sp in species:
@@ -25,7 +25,7 @@ key={}
 for sp in species:
 	f = None
 	try:
-		f=open(PATH_TO_UPLOAD + "/key_" + sp + ".txt" ,"r")
+		f=open(PATH_TO_UPLOAD + "key_" + sp + ".txt" ,"r")
 	except IOError:
 		problem.append(sp)
 		continue

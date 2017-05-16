@@ -1,7 +1,7 @@
 from config import *
 import os
 
-species=getSpecies()
+species=getSingleSpecies()
 
 kick={}
 tag={}
