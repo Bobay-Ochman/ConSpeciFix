@@ -64,3 +64,7 @@ text = msg.as_string()
 server.sendmail(fromaddr, toaddr, text)
 server.quit()
 
+print msg.as_string()
+print "all done. With everything!"
+
+
