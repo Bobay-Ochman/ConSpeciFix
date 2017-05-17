@@ -31,14 +31,14 @@ for sp in species:
 
 h=open(PATH_TO_UPLOAD + 'modification.txt','w')
 critInfoFD = open(PATH_TO_UPLOAD+'crit_stats.txt','a')
-critInfoFD.write('Member of Species according to Exclusion Criterion*')
+critInfoFD.write('Member of '+str(getSingleSpecies()[0])+' according to Exclusion Criterion*: ')
 for sp in species:
 	print sp," ",tag[sp]
 	h.write(sp + "\t" + tag[sp] + "\t" + "\t".join(kick[sp]) + "\n")
 	if tag[sp]=="no":
-		critInfoFD.write(sp+': yes')
+		critInfoFD.write('yes')
 	else:
-		critInfoFD.write(sp+': no')
+		critInfoFD.write('no')
 critInfoFD.write('\n\n*Please refer to Bobay & Ochman, GBE 2017')
 h.close()
 critInfoFD.close()
