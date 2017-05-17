@@ -30,7 +30,14 @@ for sp in species:
 
 
 h=open(PATH_TO_UPLOAD + 'modification.txt','w')
+critInfoFD = open(PATH_TO_UPLOAD+'crit_stats.txt','a')
+critInfoFD.write('Member of Species ')
 for sp in species:
 	print sp," ",tag[sp]
 	h.write(sp + "\t" + tag[sp] + "\t" + "\t".join(kick[sp]) + "\n")
+	if tag[sp]==="no":
+		critInfoFD.write(sp+': yes')
+	else:
+		critInfoFD.write(sp+': no')
 h.close()
+critInfoFD.close()

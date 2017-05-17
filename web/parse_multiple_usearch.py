@@ -97,6 +97,6 @@ g.truncate()
 g.close()
 
 critInfoFD = open(PATH_TO_UPLOAD+'crit_stats.txt','w')
-critInfoFD.write('Average Identity Score: '+str(mean(identityScore)))
+critInfoFD.write('Average Identity Score: '+str(mean(identityScore))+'\n')
 critInfoFD.close()
 

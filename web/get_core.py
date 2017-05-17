@@ -121,7 +121,7 @@ for sp in species:
 	h.close()
 	###Also append nb to the file with our criticalstats
 	critInfoFD = open(PATH_TO_UPLOAD+'crit_stats.txt','a')
-	critInfoFD.write('Number of Genes found to be orthologous: '+str(nb))
+	critInfoFD.write('Number of Genes found to be orthologous: '+str(nb)+'\n')
 	critInfoFD.close()
 
 	#removed the part that mentions network and clusters because works without... (len(networks[sp]) 'clusters')
