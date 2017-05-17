@@ -35,7 +35,7 @@ critInfoFD.write('Member of Species ')
 for sp in species:
 	print sp," ",tag[sp]
 	h.write(sp + "\t" + tag[sp] + "\t" + "\t".join(kick[sp]) + "\n")
-	if tag[sp]==="no":
+	if tag[sp]=="no":
 		critInfoFD.write(sp+': yes')
 	else:
 		critInfoFD.write(sp+': no')
