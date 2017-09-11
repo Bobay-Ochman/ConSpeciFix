@@ -6,12 +6,11 @@ from email.MIMEBase import MIMEBase
 from email import encoders
 from config import *
 
- 
-username = 'ConSpeciFix@gmail.com'
-password = 'helloW0rldHowAreYou'
+username = getUsername()
+password = getPassword()
 
-fromaddr = 'ConSpeciFix@gmail.com'
-toaddr  = getEmail()
+fromaddr = username
+toaddrs  = getEmail()
  
 msg = MIMEMultipart()
  

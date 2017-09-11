@@ -125,6 +125,17 @@ def getStrains(species):
 				dico[sp].append(truc)
 	return dico
 
+def getUsername():
+	fs = open('/var/app/current/emailCredentials.txt','r')
+	lines = fs.readlines()
+	return lines[0].strip('\n')
+
+
+def getPassword():
+	fs = open('/var/app/current/emailCredentials.txt','r')
+	lines = fs.readlines()
+	return lines[1].strip('\n')
+
 def getFolders():
 	return []
 	#return ['/genes','/genomes','/align', '/phylo','/BBH']
