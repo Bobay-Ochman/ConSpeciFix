@@ -128,13 +128,17 @@ def getStrains(species):
 def getUsername():
 	fs = open('/var/app/current/emailCredentials.txt','r')
 	lines = fs.readlines()
-	return lines[0].strip('\n')
+	ret = lines[0].strip('\n')
+	print 'username:', ret
+	return ret
 
 
 def getPassword():
 	fs = open('/var/app/current/emailCredentials.txt','r')
 	lines = fs.readlines()
-	return lines[1].strip('\n')
+	ret = lines[1].strip('\n')
+	print 'password:',ret
+	return ret
 
 def getFolders():
 	return []
