@@ -130,6 +130,7 @@ def getUsername():
 	lines = fs.readlines()
 	ret = lines[0].strip('\n')
 	print 'username:', ret
+	fs.close()
 	return ret
 
 
@@ -138,6 +139,7 @@ def getPassword():
 	lines = fs.readlines()
 	ret = lines[1].strip('\n')
 	print 'password:',ret
+	fs.close()
 	return ret
 
 def getFolders():

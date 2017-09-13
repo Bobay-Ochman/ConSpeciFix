@@ -8,7 +8,7 @@ from email.mime.text import MIMEText
 
 def sendEmail(messageString):
 	username = getUsername()
-	password = getPassword
+	password = getPassword()
 
 	fromaddr = username
 	toaddrs  = getEmail()
