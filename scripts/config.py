@@ -66,7 +66,7 @@ def getSelectedSpecies():
 	spec = getSpecies()
 	for sp in spec:
 		try:
-			h = open(PATH_TO_OUTPUT + sp + '/orthologs.txt')
+			h = open(PATH_TO_OUTPUT + sp + '/RAxML_distances.dist')
 			h.close()
 			ret.append(sp)
 		except:

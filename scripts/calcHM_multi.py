@@ -4,9 +4,10 @@ from multiprocessing import Pool
 import multiprocessing
 
 def calcHM(args):
-	
+
+
 	SP = args.strip('\n').split('\t')[0]
-	truc = args.strip('\n').split('\t')[1]	
+	truc = args.strip('\n').split('\t')[1]
 		# Load distances
 	strains=[]
 	f=open(PATH_TO_OUTPUT + SP + '/sample.txt','r')
@@ -76,9 +77,7 @@ def calcHM(args):
 	f_subset=open(PATH_TO_OUTPUT + SP + '/rm1.txt',"w")
 	for subset in memo_subset:
 		f_subset.write(subset + "\t" + '\t'.join(memo_subset[subset])  + "\n")
-
 	f_subset.close()
-
 
 
 	tmp=[]
@@ -97,7 +96,7 @@ def calcHM(args):
 	if LONGUEUR > 1000000:
 		LONGUEUR = 1000000
 	
-	strains = truc.split('-')
+	strains = truc.split('&&&')
 	bip=[]
 	singleton,more=0,0
 	i = 0
@@ -112,7 +111,7 @@ def calcHM(args):
 				lookingAtMe = True
 				testing2 = testing[i]
 			except KeyError as e:
-				print 'we got some real problems now!!!! ',lookingAtMe,e
+				print 'we got some real problems now!!!! ',lookingAtMe,e,sp,SP
 				errorFD = open('todo/exclusion.txt','a')
 				errorFD.write(str(e)+'\n')
 				errorFD.close()
@@ -327,12 +326,15 @@ def calcHM(args):
 	h=open(PATH_TO_OUTPUT + SP + '/rm1.txt',"a")
 	h.write(truc + '\t' + str(r) + '\t' + str(m) + '\t' + str(rm) + '\t' + str(len(bip)) + '\n'   )
 	h.close()
+	d=open("todo/completed.txt",'a')
+	d.write(args)
+	d.close()
 
 """
 f = open('todo/calcHM.txt','r')
 args = []
 for l in giveMulti(f.readlines()):
-	if l.startswith('Lactobacillus_crispatus'):
+	if l.startswith('Clostridium_botulinum'):
 		args.append(l)
 
 for sp in args:
@@ -345,9 +347,9 @@ if __name__ == '__main__':
 	p = Pool(MAX_THREADS)
 	f = open('todo/calcHM.txt','r')
 	args = []
-#	args = f.readlines()[10000:10010]
 	for l in giveMulti(f.readlines()):
 		args.append(l)
-	p.map(calcHM,args)
+	print "going!"
+	p.map(calcHM,reversed(args))
 
 #"""

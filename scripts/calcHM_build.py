@@ -94,7 +94,6 @@ def calcHM(SP):
 		else:
 			tmp.append(a[1])
 
-
 	import random
 
 	subsets=[]
@@ -128,8 +127,8 @@ if __name__ == '__main__':
 	fd = open('todo/calcHM.txt','a')
 	fd.seek(0)
 	fd.truncate()
-	fd.close()	
-	species = getSpeciesOfSize(100)
+	fd.close()
+	species = giveMulti(getSelectedSpecies())	
 	print len(species)
 	p = Pool(MAX_THREADS)
 	p.map(calcHM,species)

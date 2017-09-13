@@ -2,8 +2,7 @@ import os
 from config import *
 
 
-species = giveMulti(getSpeciesForTest())
-print species
+species = giveMulti(getSelectedSpecies()[0::3])	
 
 ### Don't multithread because RAxML can do it for us and better
 
@@ -11,8 +10,11 @@ for sp in species:
 	print sp
 	os.chdir(PATH_TO_OUTPUT+ sp+'/')
 	print os.getcwd()
-	os.system('rm RAx*')
-	os.system(RAXML_PATH+' -f x -T 16 -p 12345 -s ' +  ' concat85.fa  -m GTRGAMMA -n dist')
+	try:
+		os.system('rm RAx*')
+	except:
+		pass
+	os.system(RAXML_PATH+' -f x -T 10 -p 12345 -s ' +  ' concat85.fa  -m GTRGAMMA -n dist')
 
 
 

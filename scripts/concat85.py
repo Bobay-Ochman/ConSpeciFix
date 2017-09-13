@@ -51,7 +51,12 @@ def concatForSpec(sp):
 			tmp[sp][st] = []
 		for ortho in genes[sp]:
 			print sp, ortho
-			f=open( PATH_TO_OUTPUT + sp + '/align/'  + ortho + ".fa.align","r")
+			f = None
+			try:
+				f=open( PATH_TO_OUTPUT + sp + '/align/'  + ortho + ".fa.align","r")
+			except IOError as e:
+				print 'failing to do '+sp
+				return
 			flash={}
 			memo=[]
 			maxLen = 0;
@@ -123,7 +128,7 @@ def concatForSpec(sp):
 
 
 if __name__ == '__main__':
-	species = giveMulti(getSpeciesForTest())
+	species = giveMulti(getSelectedSpecies())	
 	p = Pool(MAX_THREADS)
 	p.map(concatForSpec,species)
 

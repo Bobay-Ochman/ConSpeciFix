@@ -43,7 +43,7 @@ probably something about downloading the NCBI cataloge that lists what all they 
 - `raxml_distance.py` Compute the distances between genomes with RAxML using the total genome listed in the `concat.fa`
 
 - `sample.py` Remove nearly identical strains and generate random combinations of strains
-	- produces `sample.txt` and `family.txt`
+	- produces `sample.txt` and `family_(sp).txt`
 	
 - `calcHM.py` Compute the h/m ratios across all the combinations of strains
 

@@ -1,6 +1,6 @@
 from config import *
 
-species=getSpecies()
+species=getSelectedSpecies()
 
 print species
 
@@ -16,9 +16,9 @@ for sp in species:
 		continue
 	for l in f:
 		a=l.strip('\n').split('\t')
-		strains = a[0].split('-')
+		strains = a[0].split('&&&')
 		nb=len(strains)
-		r,m=float(a[1]),float(a[2])
+		r,m=float(a[1]),float(a[2])  # change to just pull the rm ratio
 		if m > 0:
 			rm = r/m
 			if nb >= 10:

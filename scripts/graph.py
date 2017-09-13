@@ -52,7 +52,8 @@ def five( echantillon) :
 ########################################################################
 
 
-species=getSpeciesOfSize(50)
+species=getSelectedSpecies()
+print len(species)
 
 print 'hello world'
 
@@ -64,12 +65,10 @@ for sp in species:
 	try:
 		f=open(PATH_TO_OUTPUT + sp + '/rm1.txt',"r")
 		lines = f.readlines()
-		if len(lines) < 100:
-			continue
 		for l in lines:
 			a=l.strip("\n").split("\t")
 			subset = a[0]
-			b=subset.split("-")
+			b=subset.split("&&&")
 			nb = len(b)
 			#if "SAEN3" not in b and "SAEN88" not in b:  ###########################
 			if 1==1:
@@ -83,8 +82,8 @@ for sp in species:
 							liste[sp].append(nb)
 		f.close()
 		print 'doing',sp
-	except:
-		pass
+	except Exception as e:
+		print 'passing!!!' , sp, e
 
 
 
@@ -97,6 +96,7 @@ for sp in species:
 			continue
 		continue
 	h=open(PATH_TO_OUTPUT + sp + '/graph.txt',"w")
+	print PATH_TO_OUTPUT + sp + '/graph.txt'
 	h.seek(0)
 	h.write("Nb\tMean\tMedian\tSD\n")
 	for nb in liste[sp]:

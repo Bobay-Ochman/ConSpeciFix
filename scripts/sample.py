@@ -45,13 +45,10 @@ def sample(sp):
 	
 	testStrains = []
 	for st in strains:
-		if '-' in st:
-			print st
-		else:
-			testStrains.append(st)
+		testStrains.append(st)
 	strains = testStrains
 		
-	#print strains
+	#eprint strains
 	for st in exclusion:
 		if st in strains:
 			print 'removign a strain!'
@@ -105,7 +102,7 @@ def sample(sp):
 		mifa=i
 		j=1
 		limit = i**2
-		while j <= 100:
+		while j <= 50:
 			tmp=[]
 			for truc in range(i):
 				st = random.choice(strains)
@@ -113,7 +110,7 @@ def sample(sp):
 					st = random.choice(strains)
 				tmp.append(st)
 			tmp.sort()
-			subset = "-".join(tmp)
+			subset = "&&&".join(tmp)
 			if subset not in combin[i]:
 				toto+=1
 			#	print i,' ',toto
@@ -133,7 +130,7 @@ def sample(sp):
 
 
 if __name__ == '__main__':
-	species = giveMulti(getSelectedSpecies())
+	species = giveMulti(getSelectedSpecies())	
 	p = Pool(MAX_THREADS)
 	p.map(sample,species)
 

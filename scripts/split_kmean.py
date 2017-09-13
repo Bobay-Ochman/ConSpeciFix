@@ -74,10 +74,7 @@ for sp in species:
 	i=0
 	while i < len(vector):
 		subset = liste[i]
-		if sp in euk:
-			strains = subset.split('_')
-		else:
-			strains = subset.split('-')
+		strains = subset.split('-') # split on &&&
 		tag = vector[i]
 		if key[sp]=="direct":
 			if tag == "1":

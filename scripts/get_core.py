@@ -116,7 +116,7 @@ def getCore(spec):
 				k.close()
 
 if __name__ == '__main__':
-	species = giveMulti(getSpeciesOfSize(MAX_SPECIES_SIZE))	
+	species = giveMulti(getSelectedSpecies())	
 	done = getSelectedSpecies()
 	specFinal = []
 	for sp in species:

@@ -20,3 +20,5 @@ for sp in species:
 	os.system("Rscript  kmean.R  ")
 
 os.remove("kmean.R")
+
+
