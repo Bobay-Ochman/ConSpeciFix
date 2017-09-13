@@ -36,6 +36,9 @@ else:
 # 3 - upload TimeStamp Folder
 # 4 - email
 
+def printAllArgs():
+	return str(sys.argv)
+
 def getSingleSpecies():
 	if len(sys.argv) == 5:
 		return [str(sys.argv[1])]
@@ -121,6 +124,23 @@ def getStrains(species):
 			if truc.endswith('.fa'):
 				dico[sp].append(truc)
 	return dico
+
+def getUsername():
+	fs = open('/var/app/current/emailCredentials.txt','r')
+	lines = fs.readlines()
+	ret = lines[0].strip('\n')
+	print 'username:', ret
+	fs.close()
+	return ret
+
+
+def getPassword():
+	fs = open('/var/app/current/emailCredentials.txt','r')
+	lines = fs.readlines()
+	ret = lines[1].strip('\n')
+	print 'password:',ret
+	fs.close()
+	return ret
 
 def getFolders():
 	return []

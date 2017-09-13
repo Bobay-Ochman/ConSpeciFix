@@ -4,12 +4,11 @@ from config import *
 from email.mime.text import MIMEText
 
 # Credentials (if needed)
-username = 'ConSpeciFix@gmail.com'
-password = 'helloW0rldHowAreYou'
+username = getUsername()
+password = getPassword()
 
-fromaddr = 'ConSpeciFix@gmail.com'
+fromaddr = username
 toaddrs  = getEmail()
-
 
 
 message = ''

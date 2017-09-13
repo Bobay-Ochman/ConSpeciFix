@@ -104,15 +104,26 @@ for sp in species:
 	h=open(PATH_TO_UPLOAD + 'orthologs.txt',"w")
 	nb=0
 	for lili in core[sp]:
-		nb+=1
-		ortho = "ortho" + str(nb)
-		h.write(ortho + "\t" + "\t".join(lili) + "\n")
-		g=open(PATH_TO_UPLOAD+ 'align/' + ortho + ".fa","w")
+		#### Change to only do this if lili contains 'gene####'
+		tag = False
 		for id in lili:
-			g.write(">" + id + "\n" + seq[sp][id]  )
-		g.truncate()
-		g.close()	
+			if 'gene' in id:
+				tag = True 
+		if tag:
+			nb+=1
+			ortho = "ortho" + str(nb)
+			h.write(ortho + "\t" + "\t".join(lili) + "\n")
+			g=open(PATH_TO_UPLOAD+ 'align/' + ortho + ".fa","w")
+			for id in lili:
+				g.write(">" + id + "\n" + seq[sp][id]  )
+			g.truncate()
+			g.close()	
 	h.close()
+	###Also append nb to the file with our criticalstats
+	critInfoFD = open(PATH_TO_UPLOAD+'crit_stats.txt','a')
+	critInfoFD.write('Number of core genes orthologous to your genome: '+str(nb)+'\n')
+	critInfoFD.close()
+
 	#removed the part that mentions network and clusters because works without... (len(networks[sp]) 'clusters')
 	ratio = 0
 	if mean(genes[sp]) > 0:	

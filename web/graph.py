@@ -1,5 +1,6 @@
 from config import *
 
+
 species=getSingleSpecies()
 
 print 'hello world'
@@ -17,20 +18,19 @@ for sp in species:
 		for l in lines:
 			a=l.strip("\n").split("\t")
 			subset = a[0]
-			b=subset.split("-")
+			b=subset.split("&&&")
 			nb = len(b)
 			#if "SAEN3" not in b and "SAEN88" not in b:  ###########################
-			if 1==1:
-				if nb > 3:
-					if float(a[2]) > 0:
-						rm = float(a[1])/float(a[2])
-						if dico[sp].has_key(nb):
-							dico[sp][nb].append(rm)
-						else:
-							dico[sp][nb] = [rm]
-							liste[sp].append(nb)
+			if nb > 3:
+				rm = float(a[3])
+				if dico[sp].has_key(nb):
+					dico[sp][nb].append(rm)
+				else:
+					dico[sp][nb] = [rm]
+					liste[sp].append(nb)
 		f.close()
 		print 'doing',sp
+		print dico
 	except:
 		pass
 

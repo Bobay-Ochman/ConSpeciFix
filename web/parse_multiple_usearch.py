@@ -38,8 +38,9 @@ for l in f:
 	if l[0]=='>':
 		id = l.strip('\n').strip('>').strip(' +').strip(' -')
 		genes[sp][specialStrain]+=1
+		lengthOfGene[id]=0
 	else:
-		lengthOfGene[id] = len(l.strip('\n'))
+		lengthOfGene[id] += len(l.strip('\n'))
 f.close()
 
 parent={}
@@ -52,6 +53,9 @@ for l in origFile:
 	g.write(l)
 
 #input is the input for the next step. We are putting just the id of the two genes that are equivilant, and a 1
+
+identityScore = []
+
 for st1 in strains[sp]:
 
 	count = count + 1
@@ -60,6 +64,7 @@ for st1 in strains[sp]:
 	st2 = specialStrain
 	try:
 		#open the results of usearch
+		identityScoreForFile = []
 		f=open(PATH_TO_UPLOAD + 'BBH/'  + st1 + "-" + st2 ,"r") 
 		geneIDs = []
 		for l in f:
@@ -67,6 +72,7 @@ for st1 in strains[sp]:
 			#get the ids of the two genes they are comparing
 			id1 = a[0].strip(' -').strip(' +')
 			id2 = a[1].strip(' -').strip(' +')
+			identityScoreForFile.append(float(a[2]))
 			#also get the length of the usearch rn
 			len1,len2= lengthOfGene[id1] ,lengthOfGene[id2] 
 	
@@ -82,10 +88,15 @@ for st1 in strains[sp]:
 				geneIDs.append(id1)
 				geneIDs.append(id2)
 		f.close()
+		identityScore.append(median(identityScoreForFile))
 	except IOError:
-		#print "!!!!!! ",st1,".prot-",st2,".prot"
+		print "!!!!!! ",st1, st2
 		#h.write(st1 + "\t" + st2 + "\n")
 		pass
 g.truncate()
 g.close()
+
+critInfoFD = open(PATH_TO_UPLOAD+'crit_stats.txt','w')
+critInfoFD.write('Average Identity Score relative to other members of species: '+str(mean(identityScore))+'%\n')
+critInfoFD.close()
 
