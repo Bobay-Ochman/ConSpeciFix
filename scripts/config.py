@@ -3,26 +3,36 @@ import multiprocessing
 import sys
 import platform
 
+#Path to output should be followed by a tailing slash
 PATH_TO_OUTPUT = '/Volumes/ITDR/brian/results/'
-PATH_TO_SPECIES_TXT = "../species.txt"
+
+# Used on larger jobs where all work is linear, or in cases like
+# RAXML where the binaries themselves are optomized for multithreading
 MAX_THREADS = multiprocessing.cpu_count()
+
+#Used to ignore species that would take computationally very long times
 MAX_SPECIES_SIZE = 500
 
+#your local instalations for the following programs
+#or just the name of the programs, if they can be 
 USEARCH_PATH = 'usearch61'
 MAFFT_PATH = 'mafft'
-MCL_PATH = ''
+MCL_PATH = 'mcl'
 RAXML_PATH = 'raxml'
 
+
+#Nothing below this should need to be configured
+
+PATH_TO_SPECIES_TXT = "../species.txt"
+
+#used for multiprocessing on Stampeede
 TACC = (platform.processor() != 'i386')
-
-
-
 if(TACC):
-	PATH_TO_OUTPUT = '/work/03414/be4833/out/results/'
-	MCL_PATH = '/work/03414/be4833/local/bin/mcl'
+	PATH_TO_OUTPUT = '/work/03414/uteID/out/results/'
+	MCL_PATH = '/work/03414/uteID/local/bin/mcl'
 	MAX_THREADS = 4
-	MAFFT_PATH = '/work/03414/be4833/bin/mafft'
-	RAXML_PATH = '/work/03414/be4833/RAxML/raxmlHPC-PTHREADS'
+	MAFFT_PATH = '/work/03414/uteID/bin/mafft'
+	RAXML_PATH = '/work/03414/uteID/RAxML/raxmlHPC-PTHREADS'
 
 
 def giveMulti(list):
