@@ -5,6 +5,7 @@ selected_species.txt
 TACC/out/*
 scripts/todo/*
 web/config.pyc
+species.txt
 
 # OS generated files #
 ######################

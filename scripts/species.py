@@ -2,7 +2,11 @@ from config import *
 
 dico={}
 species=[]
+
+#The latest download from NCBI detailing all genomes possible
 f=open('../genomes_proks.txt','r')
+
+#filter out the ones that are not proper species
 for l in f:
 	if l[0]!='#':
 		a=l.strip('\n').split('\t')
@@ -19,24 +23,21 @@ for l in f:
 					else:
 						dico[sp]=1
 						species.append(sp)
-
-
 f.close()
 
 species.sort()
 
+#Create species.txt
 h=open(PATH_TO_SPECIES_TXT,'w')
 NB=0
 for sp in species:
+	#We need at least 15 to have statistically relevant datasets.
 	if dico[sp] >= 15:
 		NB+=1
 		print sp,' ',dico[sp]
 		h.write(sp + '\t' + str(dico[sp]) + '\n')
-	
-
+h.truncate()
 h.close()
 print NB
-
-
 
 
