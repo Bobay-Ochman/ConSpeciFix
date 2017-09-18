@@ -12,7 +12,7 @@ def downloadFile(args):
 if __name__ == '__main__':
 	species = getSpecies()
 	print multiprocessing.cpu_count()
-	p = Pool(MAX_THREADS)
+	p = Pool(3)#Instead of using MAX_THREADS, we are limited by bandwidth
 	f = open('todo/download.txt','r')
 	args = []
 	for l in giveMulti(f.readlines()):

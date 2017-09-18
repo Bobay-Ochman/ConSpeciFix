@@ -101,8 +101,8 @@ def getGenomes(species):
 	return dico
 
 def getFolders():
-	return []
-	#return ['/genes','/genomes','/align', '/phylo','/BBH']
+	#return []
+	return ['/genes','/genomes','/align','/BBH']
 	
 
 ########################################################################
