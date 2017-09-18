@@ -15,3 +15,5 @@ for sp in species:
 			else:
 				print 'doing: ' + sp + ' '+f
 				file.write(sp + '\t' + f + '\n')
+file.truncate()
+file.close()

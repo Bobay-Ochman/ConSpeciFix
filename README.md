@@ -2,13 +2,22 @@
 
 A process that produces a database that, when tested against an instance of a bacteria, can determine with a certain confidence level whether or not the genome in question is a member of a particular species.
 
+## Required Technologies
+
+The following programs should be accessable from your command line, or else the path to the program specified in config.py
+
+- gunzip
+- wget
+
 ## Building the Database
 
 ### Preparing the data
 probably something about downloading the NCBI cataloge that lists what all they have.
 - `species.py` creates species.txt with all species that will be applicable. (all the species with more than 15 complete genomes)
 - `folders.py` Prepare one folder for each species. Within that folder, creates folders for other portions of the process, including `genes`, `genomes`, `align` and `BBH`.
-- `download.py` Download genomes from NCBI into respective folders
+- `download_*.py` Download genomes from NCBI into respective folders
+    - `download_build.py` sets up the 'todo list' in `todo/*` containing all the download commands
+    - `download_multi.py` initiates the downloads, pulling in all genomes of all species in species.txt
 - `unzip.py` unzips the genomes
 - Parse GFF
     - `parse_gff_build.py` makes a list in `todo/parse_gff.txt` with all parsing work that needs to be done
