@@ -14,7 +14,7 @@ def processSpec(args):
 	try:
 		f=open(PATH_TO_OUTPUT + sp + "/genomes/" + file +'.gff',"r")
 	except:
-		print PATH_TO_OUTPUT + sp + "/genomes/" + file +'.fna'
+		print PATH_TO_OUTPUT + sp + "/genomes/" + file +'.gff'
 		print 'file error'
 		return
 	

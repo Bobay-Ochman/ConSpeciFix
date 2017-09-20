@@ -65,6 +65,7 @@ for sp in species:
 		print 'done already: ',done, ' left to do: ',leftToDo
 	else:
 		print sp, ' <15'
+todoList.truncate()
 todoList.close()
 largeSpecList.close()
 

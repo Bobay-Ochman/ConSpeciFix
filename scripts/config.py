@@ -4,7 +4,7 @@ import sys
 import platform
 
 #Path to output should be followed by a tailing slash
-PATH_TO_OUTPUT = '/Users/Admin/Documents/Work/resultsTEST/'
+PATH_TO_OUTPUT = '/Volumes/ITDR/brian/results/'
 
 # Used on larger jobs where all work is linear, or in cases like
 # RAXML where the binaries themselves are optomized for multithreading
@@ -15,7 +15,7 @@ MAX_SPECIES_SIZE = 500
 
 #your local instalations for the following programs
 #or just the name of the programs, if they can be 
-USEARCH_PATH = '/Users/Admin/Documents/Work/programs/usearch10.0.240_i86osx32'
+USEARCH_PATH = 'usearch61'
 MAFFT_PATH = 'mafft'
 MCL_PATH = 'mcl'
 RAXML_PATH = 'raxml'
@@ -101,6 +101,7 @@ def getGenomes(species):
 	return dico
 
 def getFolders():
+	#return []
 	return ['/genes','/genomes','/align','/BBH']
 	
 
