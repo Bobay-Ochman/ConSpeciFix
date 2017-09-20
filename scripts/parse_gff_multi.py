@@ -12,8 +12,9 @@ def processSpec(args):
 	dico[file] = []
 	f = None
 	try:
-		f=open(PATH_TO_OUTPUT + sp + "/genomes/" + file,"r")
+		f=open(PATH_TO_OUTPUT + sp + "/genomes/" + file +'.gff',"r")
 	except:
+		print PATH_TO_OUTPUT + sp + "/genomes/" + file +'.fna'
 		print 'file error'
 		return
 	
@@ -86,6 +87,20 @@ def processSpec(args):
 		else:
 			print sp,' ',spec,' ',NB,' empty'
 
+
+
+
+"""
+f = open('todo/parse_gff.txt','r')
+args = []
+for l in f.readlines():
+	args.append(l)
+
+for sp in args:
+	processSpec(sp)
+
+"""
+
 if __name__ == '__main__':
 	species = getSpecies()
 	p = Pool(MAX_THREADS)
@@ -93,6 +108,7 @@ if __name__ == '__main__':
 	args = []
 	for l in f:
 		args.append(l)
-	args = giveMulti(args)
+	print "going!"
 	p.map(processSpec,args)
-	
+
+#"""

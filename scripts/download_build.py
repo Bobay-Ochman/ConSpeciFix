@@ -62,7 +62,8 @@ for sp in species:
 		#	os.system('wget ' + ftp + '/' + id2 )
 		#	os.system('mv  ' + id2 + '    ' + PATH_TO_OUTPUT + sp + '/genomes/' )
 		
-
+download.truncate()
+download.close()
 
 
 
