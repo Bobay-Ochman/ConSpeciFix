@@ -10,21 +10,19 @@ startTime = time.time()
 sleepTime = 5
 prev = -1;
 
+totalToDo = 2* len(open('todo/download.txt','r').readlines())
+
 while True:
 
 	totalDone = 0
-	totalToDo = 0
 
 	for sp in species:
 		list = os.listdir(PATH_TO_OUTPUT + sp + '/genomes/')
 		for f in list:
-			if f.endswith('.gff'):
+			if f.endswith('.gz'):
 				totalDone+=1
-			else:
-				totalToDo+=1
 
-	print totalDone
-#	print totalDone ,' / ',totalToDo,'('+str(round(totalDone/(totalToDo * 1.0)*100,3))+'%)'
+	print totalDone ,' / ',totalToDo,'('+str(round(totalDone/(totalToDo * 1.0)*100,3))+'%)'
 	if(orig == -1):
 		orig = totalDone
 		prev = orig
