@@ -8,7 +8,7 @@ A process that produces a database that, when tested against an instance of a ba
 probably something about downloading the NCBI cataloge that lists what all they have.
 - `species.py` creates species.txt with all species that will be applicable. (all the species with more than 15 complete genomes)
 - `folders.py` Prepare one folder for each species. Within that folder, creates folders for other portions of the process, including `genes`, `genomes`, `align` and `BBH`.
-- `download.py` Download genomes from NCBI into respective folders
+- `download_*.py` Download genomes from NCBI into respective folders
 - `unzip.py` unzips the genomes
 - Parse GFF
     - `parse_gff_build.py` makes a list in `todo/parse_gff.txt` with all parsing work that needs to be done
