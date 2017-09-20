@@ -6,7 +6,6 @@ import time
 from config import *
 
 sentinel = ['no work to be done, go home'] 
-maxThreads = 8
 totalWorkPut = 0
 totalSequencesRemoved = 0
 
@@ -25,7 +24,7 @@ def work(jobQ,remQ):
 	
 		#run usearch
 		args = []
-		args.append('usearch61')
+		args.append(USEARCH_PATH)
 		args.append('-usearch_global')
 		args.append(path + sp + '/genes/' + prot1)
 		args.append('-db')
@@ -66,7 +65,7 @@ def work(jobQ,remQ):
 
 if __name__ == '__main__':
  	#info('main line')
-	jobQ = Queue(maxsize=maxThreads)#so we only ever at most have one thing waiting for a job -> ensures minimum number of similar things get processed
+	jobQ = Queue(maxsize=MAX_THREADS)#so we only ever at most have one thing waiting for a job -> ensures minimum number of similar things get processed
 	remQ = Queue()
 	killList = []
 	processes = []
@@ -79,7 +78,7 @@ if __name__ == '__main__':
 	f.close()
 	
 	
-	for i in range(maxThreads):
+	for i in range(MAX_THREADS):
 		p = Process(target=work, args=(jobQ,remQ))
 		p.start()
 		processes.append(p)
@@ -87,7 +86,7 @@ if __name__ == '__main__':
 	f = open('todo/usearch.txt','r')
 	lines = f.readlines()
 	lines = giveMulti(lines)
-	for l in f:
+	for l in lines:
 		##see if any of our children functions have produced a thing we need to not init
 		try:
 			newKill = remQ.get_nowait()
@@ -100,13 +99,12 @@ if __name__ == '__main__':
 		job = l.strip('\n').split('\t')
 		seqA = job[1] +'-'+ job[2]
 		seqB = job[1] +'-' +job[3]
-		
 		#now we see if the job is not in the 'don't do' list
 		if seqA not in killList and seqB not in killList:
 			jobQ.put(job)
 			totalWorkPut+=1
 			
-	for i in range(maxThreads):
+	for i in range(MAX_THREADS):
 		jobQ.put(sentinel)
 	print 'done producing'
 
