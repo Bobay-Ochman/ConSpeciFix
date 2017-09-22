@@ -2,7 +2,7 @@ import os
 from config import *
 
 
-species = giveMulti(getSelectedSpecies()[0::3])	
+species = giveMulti(getSelectedSpecies())	
 
 ### Don't multithread because RAxML can do it for us and better
 

@@ -2,18 +2,18 @@ from config import *
 
 species = getSelectedSpecies()
 out = open('todo/mafft.txt','w')
-out.seek(0)
 for sp in species:
 	files = os.listdir(PATH_TO_OUTPUT + sp + '/align/')
 	done = []
 	files = files[::-1]
 	#print files
 	for fichier in files:
-		if str(fichier).endswith('.fa.align'):
-			#We've already done it, we'll let them know
-			continue
-		if fichier+'.align' not in files:
-			out.write(sp + '\t' + fichier + '\n');
+		fd = open(PATH_TO_OUTPUT + sp + '/align/' + fichier)
+		totalLen = len(fd.readlines())
+		print sp, fichier, totalLen
+		if totalLen == 0 :
+			print 
+			out.write(sp + '\t' + fichier.strip('.fa.align') + '.fa\n');
 
 out.truncate()
 out.close()

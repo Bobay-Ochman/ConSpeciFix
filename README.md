@@ -6,9 +6,13 @@ A process that produces a database that, when tested against an instance of a ba
 
 The following programs should be accessable from your command line, or else the path to the program specified in config.py
 
+- python (everything is in python)
 - gunzip
 - wget
 - usearch https://www.drive5.com/usearch/
+- mcl https://www.micans.org/mcl/index.html
+- mafft http://mafft.cbrc.jp/alignment/software/
+- RAxML https://sco.h-its.org/exelixis/web/software/raxml/index.html
 
 ## Building the Database
 
