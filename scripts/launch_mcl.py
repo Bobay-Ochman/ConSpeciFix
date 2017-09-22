@@ -10,7 +10,7 @@ def mclOnSpec(sp):
 	os.system('mv  out.input_' + sp + '.txt.I12 ' + PATH_TO_OUTPUT + sp + '/')
 
 if __name__ == '__main__':
-	species = giveMulti(getSelectedSpecies())
+	species = giveMulti(getSpecies())
 	complete = []
 	#makes a list of stuff we are done with
 	for sp in species:
@@ -33,6 +33,11 @@ if __name__ == '__main__':
 		except:
 			pass
 	#now lets get cracking
+	print species
+	print todoSpec
+	print complete
+
+
 	species = todoSpec
 	p = Pool(MAX_THREADS)
 	p.map(mclOnSpec,species)

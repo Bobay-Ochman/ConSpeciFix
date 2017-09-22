@@ -2,8 +2,8 @@ from config import *
 import os
 from multiprocessing import Pool
 
-def concatForSpec(sp):
-#for sp in giveMulti(getSelectedSpecies()):
+#def concatForSpec(sp):
+for sp in giveMulti(getSelectedSpecies()):
 	printLog('starting '+sp)
 	"""	try:
 		h=open(PATH_TO_OUTPUT + sp + '/concat85.fa',"r")
@@ -56,7 +56,7 @@ def concatForSpec(sp):
 				f=open( PATH_TO_OUTPUT + sp + '/align/'  + ortho + ".fa.align","r")
 			except IOError as e:
 				print 'failing to do '+sp
-				return
+				exit()
 			flash={}
 			memo=[]
 			maxLen = 0;
@@ -126,6 +126,7 @@ def concatForSpec(sp):
 """
 
 
+"""
 
 if __name__ == '__main__':
 	species = giveMulti(getSelectedSpecies())	
@@ -133,4 +134,4 @@ if __name__ == '__main__':
 	p.map(concatForSpec,species)
 
 
-
+#"""

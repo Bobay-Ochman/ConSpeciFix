@@ -1,1 +1,0 @@
-Acetobacter_pasteurianus	ortho205.fa
