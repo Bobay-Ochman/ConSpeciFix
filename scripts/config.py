@@ -4,7 +4,7 @@ import sys
 import platform
 
 #Path to output should be followed by a tailing slash
-PATH_TO_OUTPUT = '/Users/Admin/Documents/Work/resultsTEST/'
+PATH_TO_OUTPUT = '/Volumes/ITDR/brian/results/'
 
 # Used on larger jobs where all work is linear, or in cases like
 # RAXML where the binaries themselves are optomized for multithreading
@@ -15,10 +15,10 @@ MAX_SPECIES_SIZE = 500
 
 #your local instalations for the following programs
 #or just the name of the programs, if they can be 
-USEARCH_PATH = '/Users/Admin/Documents/Work/programs/usearch10.0.240_i86osx32'
+USEARCH_PATH = 'usearch61'
 MAFFT_PATH = 'mafft'
 MCL_PATH = 'mcl'
-RAXML_PATH = '/Users/Admin/Documents/Work/standard-RAxML-master/raxmlHPC-SSE3'
+RAXML_PATH = 'raxml'
 
 
 #Nothing below this should need to be configured
@@ -63,7 +63,7 @@ def getSpecies():
 	return species
 	
 def getSelectedSpecies():
-	#"""
+	"""
 	species=[]
 	f=open('../selected_species.txt','r')
 	for l in f:
@@ -82,7 +82,6 @@ def getSelectedSpecies():
 		except:
 			continue
 	return ret
-	#"""
 	
 def getSpeciesOfSize(maxSize):
 	ret = []
@@ -102,6 +101,7 @@ def getGenomes(species):
 	return dico
 
 def getFolders():
+	#return []
 	return ['/genes','/genomes','/align','/BBH']
 	
 
@@ -219,5 +219,4 @@ def rev_comp( seq ):
 		else:
 			print "!!! ",B
 	return new_seq
-
 
