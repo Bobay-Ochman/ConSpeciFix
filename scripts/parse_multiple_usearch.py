@@ -52,7 +52,7 @@ def parseMultUsearch(spec):
 		for sp in species:
 			count = 0;
 			#input is the input for the next step. We are putting just the id of the gene, and a 1
-			g=open(PATH_TO_OUTPUT + sp + '/input.txt',"w")
+			g=open(PATH_TO_OUTPUT + sp + '/input_'+sp+'.txt',"w")
 
 			for st1 in strains[sp]:
 
@@ -112,12 +112,12 @@ def caller(JobQ):
 if __name__ == '__main__':
 	maxThreads = MAX_THREADS
 	jobQ = Queue()
-	species = getSpeciesOfSize(500)
+	species=getSpecies()
 	#make sure we don't do work that has already been done
 	todoSpec = []
 	for sp in species:
 		try:
-			k=open(PATH_TO_OUTPUT + sp + '/input.txt','r')
+			k=open(PATH_TO_OUTPUT + sp + '/input_'+sp+'.txt','r')
 		except:
 			todoSpec.append(sp)
 	species = giveMulti(todoSpec)

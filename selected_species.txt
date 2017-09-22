@@ -1,11 +1,3 @@
-Mycobacterium_africanum	31
-Mycobacterium_africanum	31
-Mycobacterium_africanum	31
-Mycobacterium_africanum	31
-Mycobacterium_africanum	31
-Mycobacterium_africanum	30
-Mycobacterium_africanum	30
-Mycobacterium_africanum	30
-Mycobacterium_africanum	30
-Mycobacterium_africanum	30
-Mycobacterium_africanum	30
+Acetobacter_pasteurianus	18
+Acinetobacter_calcoaceticus	16
+Alteromonas_mediterranea	15
