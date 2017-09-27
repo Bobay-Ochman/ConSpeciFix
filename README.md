@@ -24,6 +24,7 @@ The important files:
 - `config.py` defines several important variables that must be configered before any other steps.
 - `species.py` When run, this populates `species.txt` with a list of all species in the NCBI database. Only species on this list will be run in the next step.
 - `runner.py` When run, takes this list and runs an analysis for that species to completion.
+
 Run `species.py` and `runner.py` in order to produce your database.
 
 ### The Hard Way
