@@ -4,7 +4,7 @@ A process that produces a database that, when tested against an instance of a ba
 
 ## Required Technologies
 
-The following programs should be accessable from your command line, or else the path to the program specified in config.py
+The following programs should be accessable from your command line, or else the path to the program specified in `config.py`
 
 - python (everything is in python)
 - gunzip
@@ -16,8 +16,21 @@ The following programs should be accessable from your command line, or else the 
 
 ## Building the Database
 
+The scripts to build the database are found in the `/scripts` folder
+
+### The Easy Way
+
+The important files:
+- `config.py` defines several important variables that must be configered before any other steps.
+- `species.py` populates `species.txt` with a list of all species in the NCBI database. Only species on this list will be run in the next step.
+- `runner.py` takes this list and runs an analysis for that species to completion.
+
+### The Hard Way
+
+Also the "by-hand" way. This describes every script and what it does to complete the databse build.
+
 ### Preparing the data
-probably something about downloading the NCBI cataloge that lists what all they have.
+
 - `species.py` creates species.txt with all species that will be applicable. (all the species with more than 15 complete genomes)
 - `folders.py` Prepare one folder for each species. Within that folder, creates folders for other portions of the process, including `genes`, `genomes`, `align` and `BBH`.
 - `download_*.py` Download genomes from NCBI into respective folders
@@ -27,7 +40,6 @@ probably something about downloading the NCBI cataloge that lists what all they 
 - Parse GFF
     - `parse_gff_build.py` makes a list in `todo/parse_gff.txt` with all parsing work that needs to be done
     - `parse_gff_multi.py`	creates multiple parallel processes to parse the gff files listed in 'todo/parse_gff.txt' through fasta files into the species' folder. We just utilize .fa
-
 
 ### Resampling analysis
 
@@ -50,7 +62,8 @@ probably something about downloading the NCBI cataloge that lists what all they 
     - `launch_mafft_build.py` builds a list in `todo/mafft.txt`
     - `launch_mafft_multi.py` Align the core proteins with MAFFT.
         - produces output in `PATH_TO_OUTPUT/(sp)/align/(gene).align`
-    
+    - `launch_mafft_verify.py` If MAFFT is killed mid-proceess, it will leave incomplete files in the database. To remove them and add the particular alignments back to the todo list, run this script.
+
 - `concat85.py` Merges the core genes into a single alignment
 	- produces output in `PATH_TO_OUTPUT/(sp)/concat.fa`
 	
@@ -68,20 +81,21 @@ probably something about downloading the NCBI cataloge that lists what all they 
 
 ### Testing
 
-Exclusion Criterion
+Exclusion Criterion are defined in the following scripts and can be run in-order to produce a list of genomes not believed to be a member of the species.
 
 - `distrib.py`
 - `kmeans.py`
 - `split_kmeans.py`
 - `criterion.py`
 
-
 ## Testing against the Database
 
-### Preparing the data
+Scripts for testing against the database can be found in `/web` as they were initially developed for the www.conspecifix.com website.
+
+### Preparing the data (WEB)
 
 - TODO: in the far future, we will have it test against the most likely species so we may make an informed guess. For now, it will simply be placed in `PATH_TO_OUTPUT/trial(trial number)/(genomeName).fa`
-- This negates any pre-processing of the data, and we can jump right in to the number crunching.
+-
 
 ### Resampling analysis
 
