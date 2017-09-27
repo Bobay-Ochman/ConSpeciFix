@@ -26,7 +26,8 @@ The important files:
 - `runner.py` When run, takes this list and runs an analysis for that species to completion.
 
 To produce your database:
-1.`git clone https://github.com/Bobay-Ochman/ConSpeciFix.git`
+
+1. `git clone https://github.com/Bobay-Ochman/ConSpeciFix.git`
 2. Edit path variables in `scripts/config`
 3. `cd ConSpeciFix/scripts`
 4. `python species.py`
