@@ -25,7 +25,13 @@ The important files:
 - `species.py` When run, this populates `species.txt` with a list of all species in the NCBI database. Only species on this list will be run in the next step.
 - `runner.py` When run, takes this list and runs an analysis for that species to completion.
 
-Run `species.py` and `runner.py` in order to produce your database.
+To produce your database:
+1.`git clone https://github.com/Bobay-Ochman/ConSpeciFix.git`
+2. Edit path variables in `scripts/config`
+3. `cd ConSpeciFix/scripts`
+4. `python species.py`
+5. Remove any unwanted species from `species.txt`
+6. `python runner.py`
 
 ### The Hard Way
 
