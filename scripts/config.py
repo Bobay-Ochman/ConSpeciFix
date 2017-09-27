@@ -3,8 +3,26 @@ import multiprocessing
 import sys
 import platform
 
+
+
+############### VARIABLES USERS WILL NEED TO CHANGE ###############
+
+
 #Path to output should be followed by a tailing slash
 PATH_TO_OUTPUT = '/Volumes/ITDR/brian/results/'
+
+#your local instalations for the following programs, or simply the name of the program if it can be accessed from the command line
+# for example
+# RAXML_PATH = '/Users/Admin/programs/standard-RAxML-master/raxmlHPC-SSE3'
+# We have all of ours on our path as the following names
+USEARCH_PATH = 'usearch61' 
+MAFFT_PATH = 'mafft'
+MCL_PATH = 'mcl'
+RAXML_PATH = 'raxml'
+
+
+############### VARIABLES USERS MIGHT NEED TO CHANGE ###############
+
 
 # Used on larger jobs where all work is linear, or in cases like
 # RAXML where the binaries themselves are optomized for multithreading
@@ -13,15 +31,9 @@ MAX_THREADS = multiprocessing.cpu_count()
 #Used to ignore species that would take computationally very long times
 MAX_SPECIES_SIZE = 500
 
-#your local instalations for the following programs
-#or just the name of the programs, if they can be 
-USEARCH_PATH = 'usearch61'
-MAFFT_PATH = 'mafft'
-MCL_PATH = 'mcl'
-RAXML_PATH = 'raxml'
 
+############### Things users will not need to change ###############
 
-#Nothing below this should need to be configured
 
 PATH_TO_SPECIES_TXT = "../species.txt"
 
@@ -101,7 +113,6 @@ def getGenomes(species):
 	return dico
 
 def getFolders():
-	#return []
 	return ['/genes','/genomes','/align','/BBH']
 	
 
