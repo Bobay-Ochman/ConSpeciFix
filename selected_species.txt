@@ -1,3 +1,0 @@
-Acetobacter_pasteurianus	18
-Acinetobacter_calcoaceticus	16
-Alteromonas_mediterranea	15

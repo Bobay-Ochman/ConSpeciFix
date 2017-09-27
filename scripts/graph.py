@@ -73,8 +73,8 @@ for sp in species:
 			#if "SAEN3" not in b and "SAEN88" not in b:  ###########################
 			if 1==1:
 				if nb > 3:
-					if float(a[2]) > 0:
-						rm = float(a[2])
+					if float(a[3]) > 0:
+						rm = float(a[3])
 						if dico[sp].has_key(nb):
 							dico[sp][nb].append(rm)
 						else:
