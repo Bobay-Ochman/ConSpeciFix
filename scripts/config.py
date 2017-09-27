@@ -2,16 +2,20 @@ import os
 import multiprocessing
 import sys
 import platform
-
+import math
 
 
 ############### VARIABLES USERS WILL NEED TO CHANGE ###############
 
 
 #Path to output should be followed by a tailing slash
+#This is where the full database will be built,
+# and if all the species are being processed,
+# this can be upwards of 500GB
 PATH_TO_OUTPUT = '/Volumes/ITDR/brian/results/'
 
-#your local instalations for the following programs, or simply the name of the program if it can be accessed from the command line
+#your local instalations for the following programs,
+# or simply the name of the program if it can be accessed from the command line
 # for example
 # RAXML_PATH = '/Users/Admin/programs/standard-RAxML-master/raxmlHPC-SSE3'
 # We have all of ours on our path as the following names
@@ -148,12 +152,6 @@ def translate(seq):
 		i += 3
 	prot="".join(tmp)
 	return	prot
-	
-	
-	
-########################################################################
-import math
-
  
 def mean( echantillon ) :
     size = len( echantillon )
