@@ -13,7 +13,7 @@ print PATH_TO_OUTPUT+'out_'+runId
 print " "
 
 try:
-	os.system('mkdir '+PATH_TO_OUTPUT+'out_'+runId) to make our log file folder
+	os.system('mkdir '+PATH_TO_OUTPUT+'out_'+runId) #to make our log file folder
 	pass
 except OSError as e:
 	print e
