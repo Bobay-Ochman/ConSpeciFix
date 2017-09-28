@@ -1,4 +1,10 @@
 from config import *
+import sys
+
+args = []
+for arg in sys.argv:
+	args.append(arg.lower())
+
 
 dico={}
 species=[]
@@ -31,13 +37,19 @@ species.sort()
 h=open(PATH_TO_SPECIES_TXT,'w')
 NB=0
 for sp in species:
-	#We need at least 15 to have statistically relevant datasets.
-	if dico[sp] >= 15:
-		NB+=1
-		#print sp,' ',dico[sp]
-		h.write(sp + '\t' + str(dico[sp]) + '\n')
+	if sp.lower() in args:
+		print 'considering', sp
+		#We need at least 15 to have statistically relevant datasets.
+		if dico[sp] >= 15:
+			NB+=1
+			print 'accepted',sp,dico[sp]
+			h.write(sp + '\t' + str(dico[sp]) + '\n')
+		else:
+			print 'too few instances of the species in NCBI database, only',dico[sp],'instances.'
+	else:
+		pass # The user is not interested in the species
 h.truncate()
 h.close()
-print NB
+print 'total species',NB
 
 
