@@ -49,7 +49,7 @@ os.system('python launch_mafft_build.py'+ ' &> '+PATH_TO_OUTPUT+'_log.'+runId+'/
 os.system('python launch_mafft_multi.py'+ ' &> '+PATH_TO_OUTPUT+'_log.'+runId+'/12_mafft_multi.txt')
 
 print "Making a single Concat file"
-os.system('python concat85_arr.py'+ ' &> '+PATH_TO_OUTPUT+'_log.'+runId+'/13_concat85.txt')
+os.system('python concat85.py'+ ' &> '+PATH_TO_OUTPUT+'_log.'+runId+'/13_concat85.txt')
 
 print "RAxML"
 os.system('python raxml_distance.py'+ ' &> '+PATH_TO_OUTPUT+'_log.'+runId+'/14_raxml.txt')
