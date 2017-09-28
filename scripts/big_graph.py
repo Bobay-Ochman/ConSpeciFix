@@ -10,7 +10,7 @@ for sp in trialSpecies:
 	except:
 		pass
 
-h=open("big_graph.R",'w')
+h=open(PATH_TO_OUTPUT + "big_graph.R",'w')
 
 NB,nb=1,0
 for sp in species:

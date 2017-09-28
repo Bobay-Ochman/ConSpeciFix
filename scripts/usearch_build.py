@@ -3,10 +3,6 @@ from config import *
 
 
 species=getSpecies()
-#print species
-#species = ['Acetobacter_pasteurianus']
-
-
 
 strains={}
 for sp in species:
