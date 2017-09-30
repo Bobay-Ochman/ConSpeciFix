@@ -45,6 +45,8 @@ def work(jobQ,remQ):
 		return_code = popen.wait()
 		if return_code:
 			print 'return code: '+ str(return_code)
+			remQ.put(prot2)
+			remQ.put(prot1)
 			continue
 		#check the result
 		res = open(PATH_TO_MAT + 'BBH/' + prot1 + '-' + prot2)
@@ -52,6 +54,8 @@ def work(jobQ,remQ):
 		for line in res:
 			compResults.append(float(line.split('\t')[2]))
 		med = median(compResults)
+		if med >99:
+			remQ.put(prot2)
 
 if __name__ == '__main__':
  	#info('main line')
@@ -71,7 +75,6 @@ if __name__ == '__main__':
 		##see if any of our children functions have produced a thing we need to not init
 		try:
 			newKill = remQ.get_nowait()
-			newKillSp = newKill.split('-')[0]
 			if newKill not in killList:
 				killList.append(newKill)
 			totalSequencesRemoved+=1

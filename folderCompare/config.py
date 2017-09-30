@@ -12,17 +12,17 @@ import math
 #This is where the full database will be built,
 # and if all the species are being processed,
 # this can be upwards of 500GB
-PATH_TO_FOLDER = '/Users/Admin/Documents/Work/resultsTEST/test_species/'
+PATH_TO_FOLDER = '/Users/brian/Documents/Work/test_species/'
 
 #your local instalations for the following programs,
 # or simply the name of the program if it can be accessed from the command line
 # for example
 # RAXML_PATH = '/Users/Admin/programs/standard-RAxML-master/raxmlHPC-SSE3'
 # We have all of ours on our path as the following names
-USEARCH_PATH = '/Users/Admin/Documents/Work/programs/usearch10.0.240_i86osx32' 
+USEARCH_PATH = '/Users/brian/Documents/Work/programs/usearch10.0.240_i86osx32' 
 MAFFT_PATH = 'mafft'
 MCL_PATH = 'mcl'
-RAXML_PATH = '/Users/Admin/Documents/Work/standard-RAxML-master/raxmlHPC-SSE3'
+RAXML_PATH = '/Users/brian/Documents/Work/programs/standard-RAxML-master/raxmlHPC-PTHREADS-SSE3'
 
 
 ############### VARIABLES USERS MIGHT NEED TO CHANGE ###############
