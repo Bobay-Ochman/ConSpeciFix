@@ -54,7 +54,7 @@ low,high=[],[]
 i=0
 while i < len(vector):
 	subset = liste[i]
-	strains = subset.split('-') # split on &&&
+	strains = subset.split('&&&') # split on &&&
 	tag = vector[i]
 	if key=="direct":
 		if tag == "1":
@@ -76,8 +76,8 @@ for st in sample:
 	tot = L + H
 	try:
 		h.write(st + '\t' + str(L) + '\t' + str(round(100*L/float(tot),1)) + '\t' + str(H) + '\t' + str(round(100*H/float(tot),1)) +  '\n')
-	except:
-		pass
+	except Exception as e:
+		print e
 h.close()
 
 
