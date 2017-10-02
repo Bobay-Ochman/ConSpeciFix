@@ -17,9 +17,12 @@ for l in f:
 		mode1,mode2=float(a[1]),float(a[3])
 		tot=mode1+mode2
 		ratio = mode2/tot
+		line = st + "\t" + str(ratio) + "\n"
 		if ratio ==0:
 			print st
 			kick.append(st)
 			tag="y"
-		h.write(st + "\t" + str(ratio) + "\n")
+			h.write("kick: " + line)
+		else:
+			h.write("keep: "+ line)
 f.close()
