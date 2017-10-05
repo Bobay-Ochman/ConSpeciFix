@@ -19,9 +19,9 @@ The following programs should be accessable from your command line (on your loca
 
 There are four variants of the current conspecifix process. They are:
 
-- **Folder Comparison:** for use on a single folder of genomes to determine if they are all the same species.
-- **Database Building:** used to build a large database of genomes. Downloads, compares, and produces results for several species.
-- **Web-based Database Comparison:** A light-weight database comparison method designed for use in our website at www.conspecifix.com
-- **TACC:** Some scripts for variants on compute clusters in the Texas Advanced Computing Center
+- [**Folder Comparison:**](https://github.com/Bobay-Ochman/ConSpeciFix/tree/master/folderCompare) for use on a single folder of genomes to determine if they are all the same species.
+- [**Database Building:**](https://github.com/Bobay-Ochman/ConSpeciFix/tree/master/scripts) used to build a large database of genomes. Downloads, compares, and produces results for several species.
+- [**Web-based Database Comparison:**](https://github.com/Bobay-Ochman/ConSpeciFix/tree/master/web) A light-weight database comparison method designed for use in our website at www.conspecifix.com
+- [**TACC:**](https://github.com/Bobay-Ochman/ConSpeciFix/tree/master/TACC) Some scripts for variants on compute clusters in the Texas Advanced Computing Center
 
 These are all found in their respective folders with respective README files to describe specific functions.
