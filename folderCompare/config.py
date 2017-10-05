@@ -35,6 +35,7 @@ MAX_THREADS = multiprocessing.cpu_count()
 
 ############### Things users will not need to change ###############
 
+PATH_TO_FOLDER = '/' + PATH_TO_FOLDER.strip('/') + '/'
 PATH_TO_MAT = PATH_TO_FOLDER + '_conspecifix/' 	#materials folder
 PATH_TO_LOGS = PATH_TO_MAT+'_logs/'				#logs folder
 PATH_TO_TODO = PATH_TO_MAT + 'todo/'
