@@ -8,7 +8,7 @@ The important files:
 - `config.py` defines several important variables that must be configered before any other steps.
 - `runner.py` When run, completes an analysis for the strains located in the folder.
 
-To fun your folder comparison:
+To run your folder comparison:
 
 1. `git clone https://github.com/Bobay-Ochman/ConSpeciFix.git`
 2. Edit path variables in `folderCompare/config`
