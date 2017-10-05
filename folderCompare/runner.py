@@ -15,7 +15,7 @@ print " "
 print "Now beginning analysis steps:"
 print "  (See progress in log files)"
 
-"""
+
 try:
 	os.system('mkdir '+PATH_TO_MAT)
 	os.system('mkdir '+PATH_TO_LOGS)
@@ -47,7 +47,7 @@ os.system('python launch_mafft_multi.py'+ ' &> '+PATH_TO_LOGS+'12_mafft_multi.tx
 
 print "Making a single Concat file"
 os.system('python concat85.py'+ ' &> '+PATH_TO_LOGS+'13_concat85.txt')
-"""
+
 print "RAxML"
 os.system('python raxml_distance.py'+ ' &> '+PATH_TO_LOGS+'14_raxml.txt')
 
