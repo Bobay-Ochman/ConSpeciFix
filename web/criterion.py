@@ -8,6 +8,8 @@ species=getSingleSpecies()
 
 h=open(PATH_TO_UPLOAD + "criterion.txt","w")
 
+critInfoFD = open(PATH_TO_UPLOAD+'crit_stats.txt','a')
+critInfoFD.write('Member of '+str(getSingleSpecies()[0])+' according to Exclusion Criterion*: ')
 
 for sp in species:
 	kick = []
@@ -28,7 +30,7 @@ for sp in species:
 			line = st + "\n"
 			if ratio ==0:
 				kick.append(st)
-				tag="y"
+				tag="yes"
 			else:
 				keep.append(st)
 	f.close()
@@ -58,6 +60,14 @@ else:
 
 h.truncate()
 h.close()
+
+if tag is "yes": #Tag is if something got excluded
+	critInfoFD.write('no') #so if it did, we write "no"t a member of the species
+else:
+	critInfoFD.write('yes')
+
+critInfoFD.write('\n\n*Please refer to Bobay & Ochman, GBE 2017')
+critInfoFD.close()
 
 
 
