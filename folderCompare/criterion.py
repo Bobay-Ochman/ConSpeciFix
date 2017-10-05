@@ -5,12 +5,17 @@ import time
 ts = time.time()
 
 h=open(PATH_TO_FOLDER + "results.txt","w")
+
+
 header = "Conspecifix Results:\n\n\tCompleted on: "+datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S') +"\n"
 header = header + '\tFolder Path: ' + PATH_TO_FOLDER +'\n\n'
 header = header + """	For more information about our process, please visit our website at
 	https://www.conspecifix.com
 	or take a look at our github
 	https://github.com/Bobay-Ochman
+
+	Exclusion Criterion defined in Bobay & Ochman, GBE 2017
+	
 """
 
 header = header + "\nThe following strains are members of the species:\n"
@@ -47,4 +52,6 @@ else:
 	h.write("The following strains were determined to NOT be a member of the species:\n")
 	h.write('\n'.join(kick) + '\n')
 
+h.truncate()
+h.close()
 f.close()
