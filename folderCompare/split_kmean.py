@@ -54,7 +54,7 @@ low,high=[],[]
 i=0
 while i < len(vector):
 	subset = liste[i]
-	strains = subset.split('-') # split on &&&
+	strains = subset.split('&&&') # split on &&&
 	tag = vector[i]
 	if key=="direct":
 		if tag == "1":
