@@ -4,15 +4,16 @@ A process that produces a database that, when tested against an instance of a ba
 
 ## Required Technologies
 
-The following programs should be accessable from your command line, or else the path to the program specified in `config.py`
+The following programs should be accessable from your command line, or else the path to the program specified in `config.py`. Programs marked with a * must be on the command line.
 
-- python (everything is in python)
-- gunzip
-- wget
+- python*
+- gunzip*
+- wget*
 - usearch https://www.drive5.com/usearch/
 - mcl https://www.micans.org/mcl/index.html
 - mafft http://mafft.cbrc.jp/alignment/software/
 - RAxML https://sco.h-its.org/exelixis/web/software/raxml/index.html
+- Rscript* https://cran.r-project.org/doc/manuals/r-release/R-admin.html
 
 ## Building the Database
 

@@ -1,5 +1,5 @@
 scripts/inputs/*
-scripts/config.pyc
+*/*.pyc
 scripts/test.py
 selected_species.txt
 TACC/out/*

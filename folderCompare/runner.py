@@ -3,11 +3,18 @@ import os
 import sys
 import time
 
-print "Expecting species.txt to already be in place"
 print " "
-print "path of log files:"
+print " --- conspecifix ---"
+print " "
+print "Expecting folder of .fa files at:"
+print PATH_TO_FOLDER
+print " "
+print "Path to log files at:"
 print PATH_TO_LOGS
 print " "
+print "Now beginning analysis steps:"
+print "  (See progress in log files)"
+
 
 try:
 	os.system('mkdir '+PATH_TO_MAT)
@@ -18,6 +25,7 @@ try:
 	os.system('mkdir '+PATH_TO_MAT+'results/')
 except OSError as e:
 	print e
+
 
 print "Usearch"
 os.system('python usearch_build.py'+ ' &> '+PATH_TO_LOGS+'06_u_build.txt')
