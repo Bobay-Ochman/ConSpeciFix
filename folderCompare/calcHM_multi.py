@@ -320,6 +320,8 @@ def wrapper(arg):
 	except Exception as e:
 		print e
 		h = open (PATH_TO_TODO+'error.txt','a')
+		h.write(arg+'\t'+str(e)+'\n')
+		h.close
 
 
 if __name__ == '__main__':
