@@ -1,6 +1,6 @@
 from config import *
 
-species=getSelectedSpecies()
+species=getSelectedSpecies('rm1.txt')
 
 print species
 

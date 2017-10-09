@@ -2,8 +2,7 @@ from config import *
 import os
 from multiprocessing import Pool
 
-#def concatForSpec(sp):
-for sp in giveMulti(getSelectedSpecies()):
+def concatForSpec(sp):
 	printLog('starting '+sp)
 	"""	try:
 		h=open(PATH_TO_OUTPUT + sp + '/concat85.fa',"r")
@@ -125,11 +124,8 @@ for sp in giveMulti(getSelectedSpecies()):
 
 """
 
-
-"""
-
 if __name__ == '__main__':
-	species = giveMulti(getSelectedSpecies())	
+	species = giveMulti(getSelectedSpecies("align/ortho1.fa.align"))	
 	p = Pool(MAX_THREADS)
 	p.map(concatForSpec,species)
 

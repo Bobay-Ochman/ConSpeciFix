@@ -1,6 +1,6 @@
 from config import *
 
-species = getSelectedSpecies()
+species = getAllSpecies()
 out = open('todo/mafft.txt','w')
 out.seek(0)
 for sp in species:

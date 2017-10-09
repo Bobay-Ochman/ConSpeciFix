@@ -1,6 +1,6 @@
 from config import *
 
-species = getSelectedSpecies()
+species = getAllSpecies()
 out = open('todo/mafft.txt','w')
 for sp in species:
 	files = os.listdir(PATH_TO_OUTPUT + sp + '/align/')

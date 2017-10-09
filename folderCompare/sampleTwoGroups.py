@@ -121,7 +121,6 @@ for strain in sub:
 		specAList.append((strain,dist[specA][strain]))
 		specBList.append((strain,dist[specB][strain]))
 
-
 famSize = 15
 
 #take the initial core of the two clades

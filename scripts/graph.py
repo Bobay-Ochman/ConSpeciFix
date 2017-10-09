@@ -52,7 +52,7 @@ def five( echantillon) :
 ########################################################################
 
 
-species=getSelectedSpecies()
+species=getSelectedSpecies('rm1.txt')
 print len(species)
 
 print 'hello world'

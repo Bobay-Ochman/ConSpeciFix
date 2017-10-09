@@ -1,7 +1,7 @@
 from config import *
 
 
-trialSpecies= getSelectedSpecies()
+trialSpecies= getSelectedSpecies('rm1.txt')
 species = []
 for sp in trialSpecies:
 	try:

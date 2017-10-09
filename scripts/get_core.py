@@ -116,14 +116,9 @@ def getCore(spec):
 				k.close()
 
 if __name__ == '__main__':
-	species = giveMulti(getSpecies())	
-	done = getSelectedSpecies()
-	specFinal = []
-	for sp in species:
-		if sp in done:
-			continue
-		else:
-			specFinal.append(sp)
-	species = specFinal
+	species = giveMulti(getAllSpecies())	
 	p = Pool(MAX_THREADS)
 	p.map(getCore,species)
+
+
+	

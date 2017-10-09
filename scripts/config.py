@@ -77,28 +77,24 @@ def getSpecies():
 	f.close()
 	species = list(species)
 	return species
-	
-def getSelectedSpecies():
-	"""
-	species=[]
-	f=open('../selected_species.txt','r')
-	for l in f:
-		a=l.strip('\n').split('\t')
-		species.append(a[0])
-	f.close()
-	return species
-	"""
+
+def getSelectedSpecies(file):
 	ret = []
-	spec = getSpecies()
+	spec = getAllSpecies()
 	for sp in spec:
 		try:
-			h = open(PATH_TO_OUTPUT + sp + '/RAxML_distances.dist')
+			h = open(PATH_TO_OUTPUT + sp+'/' + file)
 			h.close()
 			ret.append(sp)
 		except:
 			continue
 	return ret
 	
+def getAllSpecies():
+	allSpec = os.listdir(PATH_TO_OUTPUT)
+	allSpec.remove('.DS_Store')
+	return allSpec
+
 def getSpeciesOfSize(maxSize):
 	ret = []
 	masterLen = getGenomes(getSpecies())

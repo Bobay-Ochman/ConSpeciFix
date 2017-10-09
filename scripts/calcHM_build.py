@@ -117,7 +117,7 @@ fd.seek(0)
 fd.truncate()
 fd.close()
 	
-for sp in getSelectedSpecies():
+for sp in getSelectedSpecies('sample.txt'):
 	calcHM(sp)
 
 """
@@ -128,7 +128,7 @@ if __name__ == '__main__':
 	fd.seek(0)
 	fd.truncate()
 	fd.close()
-	species = giveMulti(getSelectedSpecies())	
+	species = giveMulti(getSelectedSpecies('sample.txt'))	
 	print len(species)
 	p = Pool(MAX_THREADS)
 	p.map(calcHM,species)

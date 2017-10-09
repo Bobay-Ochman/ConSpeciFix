@@ -192,14 +192,10 @@ def sample(sp):
 	h.truncate()
 	h.close()
 
-
-sample('Buchnera_aphidicola')
-
 if __name__ == '__main__':
-#	species = giveMulti(getSelectedSpecies())	
-	species = ['Buchnera_aphidicola']
+	species = giveMulti(getSelectedSpecies('RAxML_distances.dist'))	
 	p = Pool(MAX_THREADS)
-#	p.map(sample,species)
+	p.map(sample,species)
 
 
 
