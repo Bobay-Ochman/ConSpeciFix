@@ -3,6 +3,7 @@ from config import *
 import os
 from multiprocessing import Pool
 from calcHM_import import *
+from scipy import stats
 
 
 strains = [strainFAFile for strainFAFile in os.listdir(PATH_TO_FOLDER) if str(strainFAFile).endswith('.fa')]
@@ -109,6 +110,8 @@ for i in range(len(sub)):
 				specA = st1
 				specB = st2
 
+print maxDist
+
 specAList = [(specA,0)]
 specBList = [(specB,0)]
 
@@ -119,17 +122,23 @@ for strain in sub:
 		specBList.append((strain,dist[specB][strain]))
 
 
+famSize = 15
+
 #take the initial core of the two clades
-sorted(specAList, key=lambda x: x[1])
-sorted(specBList, key=lambda x: x[1])
-coreA = [str(i[0]) for i in specAList[:9]] #make the core of A clade
-coreB = [str(i[0]) for i in specBList[:9]] #make the core of B clade
+specAList = sorted(specAList, key=lambda x: x[1])
+specBList = sorted(specBList, key=lambda x: x[1])
+coreA = [str(i[0]) for i in specAList[:famSize]] #make the core of A clade
+coreB = [str(i[0]) for i in specBList[:famSize]] #make the core of B clade
 together = coreA[:]	#make a 'together' clade with some of each
 together.extend(coreB[:])
 together = list(set(together))
 
-print coreA
-print coreB
+for a in specAList:
+	print a
+print "----"
+for a in specBList:
+	print a
+
 
 coreAFam = []
 for strain in coreA:
@@ -137,26 +146,41 @@ for strain in coreA:
 	tempCoreA.remove(strain)
 	coreAFam.append("&&&".join(tempCoreA))
 
-coreAHM = calcHMLoads(coreAFam,seq,dist)
+coreAHM =[1.4422163588390502, 1.4311878597592884, 1.4893655049151027, 1.4769284959492779, 1.4303250345781466, 1.489013982204467, 1.3358024691358024, 1.4162973065121036, 1.370532703978422, 1.4456427204731257, 1.485252808988764, 1.4676799440950383, 1.4345875043148084, 1.5193743334518308, 1.4169792021820662]
+#calcHMLoads(coreAFam,seq,dist)
+
 
 coreBFam = []
 for strain in coreB:
 	tempCoreB = coreB[:]
 	tempCoreB.remove(strain)
 	coreBFam.append("&&&".join(tempCoreB))
-coreBHM = calcHMLoads(coreBFam,seq,dist)
+coreBHM = [0.11154530343238751, 0.10839541672112578, 0.10814343601585988, 0.10846375797849087, 0.1078576400974591, 0.11223701284499978, 0.11126341577228185, 0.11265547127343944, 0.11404482889622725, 0.11450337118005896, 0.12136815005516734, 0.1215060569039874, 0.12233336283969196, 0.1313005784622668, 0.13115554109609298]
+#calcHMLoads(coreBFam,seq,dist)
 
 togetherFam = []
-for strain in together:
-	tempTogether = together[:]
-	tempTogether.remove(strain)
+for i in range(famSize):
+	togetherDupe = together[:]
+	tempTogether = []
+	for i in range(famSize-1):
+		strain = random.choice(togetherDupe)
+		tempTogether.append(strain)
+		togetherDupe.remove(strain)
 	togetherFam.append("&&&".join(tempTogether))
 coreTHM = calcHMLoads(togetherFam,seq,dist)
 
+print len(coreAHM)
 print coreAHM
+print len(coreBHM)
 print coreBHM
+print len(coreTHM)
 print coreTHM
 
+print "A vs. together:"
+print stats.ttest_ind(coreAHM,coreTHM)
+
+print "B vs. together:"
+print stats.ttest_ind(coreBHM,coreTHM)
 
 # #also in the species folder
 # h=open(PATH_TO_MAT +'families.txt',"w")
