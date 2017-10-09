@@ -55,7 +55,11 @@ def sample(sp):
 			strains.remove(st)
 
 
+
+#remove strains in exclusion, as well as prep for those greater than 1
 	sub=list(dist.keys())
+	countOfStrains = {}
+	listPairsOfStrains = []
 	print sp,' ',len(sub)
 	i=0
 	while i in range(len(sub)):
@@ -70,23 +74,84 @@ def sample(sp):
 					elif  st2 in exclusion and st2 in sub:
 						sub.remove(st2)
 						i=-1
-				elif float(dist[st1][st2]) <= 0.00005 or float(dist[st1][st2]) > 1:
-					if 1==1:
-						if st2 in sub:
-							sub.remove(st2)
-						else:
-							print 'PROBLEM'
-					i= -1
+				elif float(dist[st1][st2]) > 1:
+					if st1 in countOfStrains:
+						countOfStrains[st1] +=1
+					else:
+						countOfStrains[st1] = 1
+					if st2 in countOfStrains:
+						countOfStrains[st2] += 1
+					else:
+						countOfStrains[st2] = 1
+					listPairsOfStrains.append((st1,st2))
 		i+=1
+
+#going through and removing the ones that are the most distant
+	removedForBeingTooDistant = []
+	while len(listPairsOfStrains) > 0:
+		maxCount = 0
+		strainToRemove = ''
+		for strain in countOfStrains:
+			if(countOfStrains[strain] > maxCount):
+				maxCount = countOfStrains[strain]
+				strainToRemove = strain
+		if maxCount == 0:
+			break
+		i = 0
+		while i < len(listPairsOfStrains):
+			if listPairsOfStrains[i][0] == strainToRemove or listPairsOfStrains[i][1] == strainToRemove:
+				listPairsOfStrains.remove(listPairsOfStrains[i])
+				i-=1
+			i+=1
+		sub.remove(strainToRemove)
+		removedForBeingTooDistant.append(strainToRemove)
+		countOfStrains[strainToRemove] = -1
+
+#Now tackel the ones that are too similar
+	removedForBeingTooSimmilar = []
+	while len(sub) > 100:
+		#generate a list of every pair and their distance from one another
+		listOfSimilarities = []
+		i = 0
+		while i < len(sub):
+			st1 = sub[i]
+			for st2 in sub:
+				if st1!=st2:
+					listOfSimilarities.append((st1,st2,dist[st1][st2]))
+			i+= 1
+		listOfSimilarities = sorted(listOfSimilarities, key = lambda x: x[2])
+		maxPair = listOfSimilarities[0]
+		sub.remove(maxPair[1])
+		removedForBeingTooSimmilar.append(maxPair)
+
 	print len(sub)," strains left"
 	cluster= list(sub)
 
 
+#write out the ones we want to keep
 	h=open(PATH_TO_OUTPUT + sp + '/sample.txt',"w")
-	for st in strains:
+	for st in sub:
 		h.write(st + "\n")
 	h.truncate()
 	h.close()
+
+#write out the ones we want to toss
+	h=open(PATH_TO_OUTPUT + sp + '/removed.txt',"w")
+	h.write("Strain in the first column is removed for being too similar to the strain in the second column:\n")
+	for st in removedForBeingTooSimmilar:
+		h.write(st[1] + "\t" + st[0]+ "\n")
+	if len(removedForBeingTooSimmilar) == 0:
+		h.write("none removed, all sufficiently distant.\n")
+
+	h.write("\n\nRemoved for being too distant:\n")
+	for st in removedForBeingTooDistant:
+		h.write(st + "\n")
+	if len(removedForBeingTooDistant) == 0:
+		h.write("none removed, all sufficiently similar.\n")
+	h.truncate()
+	h.close()
+
+
 
 
 	#also in the species folder
@@ -94,7 +159,7 @@ def sample(sp):
 	familles=[]
 	combin={}
 	i=4
-	while i <= len(strains):
+	while i <= len(sub):
 		toto=0
 		#print i
 		combin[i] = []
@@ -105,9 +170,9 @@ def sample(sp):
 		while j <= 50:
 			tmp=[]
 			for truc in range(i):
-				st = random.choice(strains)
+				st = random.choice(sub)
 				while st in tmp:
-					st = random.choice(strains)
+					st = random.choice(sub)
 				tmp.append(st)
 			tmp.sort()
 			subset = "&&&".join(tmp)
@@ -128,11 +193,13 @@ def sample(sp):
 	h.close()
 
 
+sample('Buchnera_aphidicola')
 
 if __name__ == '__main__':
-	species = giveMulti(getSelectedSpecies())	
+#	species = giveMulti(getSelectedSpecies())	
+	species = ['Buchnera_aphidicola']
 	p = Pool(MAX_THREADS)
-	p.map(sample,species)
+#	p.map(sample,species)
 
 
 
