@@ -1,2 +1,0 @@
-slurmstepd: *** JOB 8418826 ON c558-502 CANCELLED AT 2017-04-12T14:09:05 ***
-[c558-502.stampede.tacc.utexas.edu:mpirun_rsh][signal_processor] Caught signal 15, killing job
