@@ -1,6 +1,8 @@
 # Bacteria Speciation Process
 
-A process that produces a database that, when tested against an instance of a bacteria, can determine with a certain confidence level whether or not the genome in question is a member of a particular species.
+An algorithm that detects bacterial and archaeal species based on the rates of gene flow across populations.
+
+Bobay and Ochman. *Genome Biol Evol* 2017. 9(3): 491–501.
 
 ## Required Technologies
 
@@ -17,11 +19,10 @@ The following programs should be accessable from your command line (on your loca
 
 ## Functionality
 
-There are four variants of the current conspecifix process. They are:
+There are three variants of the current conspecifix process. They are:
 
-- [**Folder Comparison:**](https://github.com/Bobay-Ochman/ConSpeciFix/tree/master/folderCompare) for use on a single folder of genomes to determine if they are all the same species.
-- [**Database Building:**](https://github.com/Bobay-Ochman/ConSpeciFix/tree/master/scripts) used to build a large database of genomes. Downloads, compares, and produces results for several species.
+- [**Analyze Your Own Genomes:**](https://github.com/Bobay-Ochman/ConSpeciFix/tree/master/personalCompare) for use on a single folder of genomes to determine if they are all the same species.
+- [**Database Mining:**](https://github.com/Bobay-Ochman/ConSpeciFix/tree/master/database) used to build a large database of genomes. Initiates downloads and comparisons, producing results for several species.
 - [**Web-based Database Comparison:**](https://github.com/Bobay-Ochman/ConSpeciFix/tree/master/web) A light-weight database comparison method designed for use in our website at www.conspecifix.com
-- [**TACC:**](https://github.com/Bobay-Ochman/ConSpeciFix/tree/master/TACC) Some scripts for variants on compute clusters in the Texas Advanced Computing Center
 
 These are all found in their respective folders with respective README files to describe specific functions.

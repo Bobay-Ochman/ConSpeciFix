@@ -1,11 +1,6 @@
-scripts/inputs/*
 */*.pyc
-scripts/test.py
-selected_species.txt
-TACC/out/*
-scripts/todo/*
-web/config.pyc
-species.txt
+*/test.py
+database/todo/*
 
 # OS generated files #
 ######################
