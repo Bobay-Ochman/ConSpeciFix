@@ -6,7 +6,7 @@ print species
 
 
 for sp in species:
-	k=open(PATH_TO_OUTPUT+sp+'/distrib_' + sp + '.txt','w')
+	k=open(PATH_TO_OUTPUT+sp+'/distrib.txt','w')
 	dico={}
 	print sp
 	f=None
@@ -24,6 +24,7 @@ for sp in species:
 			if nb >= 10:
 				k.write(a[0] + '\t' + str(rm) + '\n')
 	f.close()
+	k.truncate()
 	k.close()
 
 

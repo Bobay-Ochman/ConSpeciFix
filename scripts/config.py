@@ -12,7 +12,7 @@ import math
 #This is where the full database will be built,
 # and if all the species are being processed,
 # this can be upwards of 500GB
-PATH_TO_OUTPUT = '/Volumes/ITDR/brian/results/'
+PATH_TO_OUTPUT = '/Volumes/ITDR/brian/completed/'
 
 #your local instalations for the following programs,
 # or simply the name of the program if it can be accessed from the command line
@@ -38,6 +38,7 @@ MAX_SPECIES_SIZE = 500
 
 ############### Things users will not need to change ###############
 
+PATH_TO_OUTPUT = '/' + PATH_TO_OUTPUT.strip('/') + '/'
 
 PATH_TO_SPECIES_TXT = "../species.txt"
 
@@ -92,7 +93,12 @@ def getSelectedSpecies(file):
 	
 def getAllSpecies():
 	allSpec = os.listdir(PATH_TO_OUTPUT)
-	allSpec.remove('.DS_Store')
+	i = 0
+	while i < len(allSpec):
+		if allSpec[i] == '.DS_Store' or allSpec[i] == 'big_graph.R' or any(char.isdigit() for char in allSpec[i]):
+			del allSpec[i]
+			i-=1
+		i+=1
 	return allSpec
 
 def getSpeciesOfSize(maxSize):
@@ -102,9 +108,6 @@ def getSpeciesOfSize(maxSize):
 		if len(masterLen[sp])<maxSize:
 			ret.append(sp)
 	return ret
-
-def getSpeciesForTest():
-	return ['Gallibacterium_anatis','Lactobacillus_crispatus','Porphyromonas_gingivalis','Mycobacterium_colombiense']
 	
 def getGenomes(species):
 	dico = {}

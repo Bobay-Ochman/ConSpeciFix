@@ -1,14 +1,7 @@
 from config import *
 
 
-trialSpecies= getSelectedSpecies('rm1.txt')
-species = []
-for sp in trialSpecies:
-	try:
-		open(PATH_TO_OUTPUT + sp + "/graph.txt")
-		species.append(sp)
-	except:
-		pass
+species= getSelectedSpecies('graph.txt')
 
 h=open(PATH_TO_OUTPUT + "big_graph.R",'w')
 
