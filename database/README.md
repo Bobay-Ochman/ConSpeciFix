@@ -12,8 +12,8 @@ The important files:
 To produce your database:
 
 1. `git clone https://github.com/Bobay-Ochman/ConSpeciFix.git`
-2. Edit path variables in `scripts/config`
-3. `cd ConSpeciFix/scripts`
+2. Edit path variables in `ConSpeciFix/database/config`
+3. `cd ConSpeciFix/database`
 4. `python species.py`
 5. Remove any unwanted species from `species.txt`
 6. `python runner.py`
