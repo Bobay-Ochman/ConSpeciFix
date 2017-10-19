@@ -39,7 +39,7 @@ while ( pv < .001)
 maxAfterOutliers <- max(listOfValues)
 strainsForRemoval <- tab$V1[which(tab$V3 > maxAfterOutliers)]
 print(strainsForRemoval)
-write(strainsForRemoval,ncol=1,file='"""+PATH_TO_OUTPUT+sp+"""/removal.txt')
+write(strainsForRemoval,ncol=1,file='"""+PATH_TO_OUTPUT+sp+"""/for_removal.txt')
 
 #these are just the ones that are members of the species. They get green
 p2 <- hist(listOfValues,breaks = ourBreaks,plot = FALSE)

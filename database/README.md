@@ -62,8 +62,10 @@ Also the "by-hand" way. This describes every script and what it does to complete
 	
 - `raxml_distance.py` Computes the distances between genomes with RAxML using the genomes listed in `concat.fa`
 
-- `sample.py` Removes nearly identical strains and generates random combinations of strains
-	- produces `sample.txt` and `family_(sp).txt`
+- `sample.py` Removes nearly identical strains and generates random combinations of strains. Generates:
+	- `sample.txt` with all strains USED for the sampling
+    - `family.txt` with all combinations of strains in sample.py of differing sizes. 
+    - `removed.txt` with strains REMOVED for analysis for being drastically different or too similar.
 	
 - `calcHM.py` Computes h/m ratios across all the combinations of strains
 
@@ -79,5 +81,5 @@ The following scripts allow the Exclusion Criterion to run in order to identify 
 - `distrib.py` creates the distribution file
 - `kmeans.py` creates the Rscript that identfies two modes in the distribution with a kmeans test and produces graphs of the distribution file, as well as `vector.txt` and `key.txt`.
 - `split_kmeans.py` analyses the results of kmeans.py and produces `kmeans.txt`
-- `kmeansGraph.py` generates Rscript that graphs the result of `kmeans.txt` and identifies outliers, outputing `kmeans.pdf` and `removal.txt`
+- `kmeansGraph.py` generates Rscript that graphs the result of `kmeans.txt` and identifies outliers, outputing `kmeans.pdf` and `for_removal.txt`
 - `criterion.py` writes the final results into `criterion.txt`
