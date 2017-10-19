@@ -342,6 +342,15 @@ for sp in args:
 
 """
 
+def wrapper(arg):
+	try:
+		calcHM(arg)
+	except Exception as e:
+		print e
+		h = open('todo/error.txt','a')
+		h.write(str(arg)+'\t'+str(e)+'\n')
+		h.close()
+
 if __name__ == '__main__':
 	print multiprocessing.cpu_count()
 	p = Pool(MAX_THREADS)
@@ -350,6 +359,6 @@ if __name__ == '__main__':
 	for l in giveMulti(f.readlines()):
 		args.append(l)
 	print "going!"
-	p.map(calcHM,reversed(args))
+	p.map(wrapper,reversed(args))
 
 #"""

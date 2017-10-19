@@ -121,7 +121,7 @@ for strain in sub:
 		specAList.append((strain,dist[specA][strain]))
 		specBList.append((strain,dist[specB][strain]))
 
-famSize = 15
+famSize = 8
 
 #take the initial core of the two clades
 specAList = sorted(specAList, key=lambda x: x[1])
@@ -131,12 +131,6 @@ coreB = [str(i[0]) for i in specBList[:famSize]] #make the core of B clade
 together = coreA[:]	#make a 'together' clade with some of each
 together.extend(coreB[:])
 together = list(set(together))
-
-for a in specAList:
-	print a
-print "----"
-for a in specBList:
-	print a
 
 
 coreAFam = []
@@ -177,46 +171,6 @@ print stats.ttest_ind(coreAHM,coreTHM)
 
 print "B vs. together:"
 print stats.ttest_ind(coreBHM,coreTHM)
-
-# #also in the species folder
-# h=open(PATH_TO_MAT +'families.txt',"w")
-# familles=[]
-# combin={}
-# i=4
-# while i <= len(strains):
-# 	toto=0
-# 	#print i
-# 	combin[i] = []
-# 	reservoire=[]
-# 	mifa=i
-# 	j=1
-# 	limit = i**2
-# 	while j <= 50:
-# 		tmp=[]
-# 		for truc in range(i):
-# 			st = random.choice(strains)
-# 			while st in tmp:
-# 				st = random.choice(strains)
-# 			tmp.append(st)
-# 		tmp.sort()
-# 		subset = "&&&".join(tmp)
-# 		if subset not in combin[i]:
-# 			toto+=1
-# 		#	print i,' ',toto
-# 			combin[i].append(subset)
-# 			familles.append(subset)
-# 			h.write(str(i) + "\t" + subset + "\n")
-# 			j+=1
-# 		elif subset not in reservoire:
-# 			reservoire.append(subset)
-# 			if len(reservoire) == len(combin[i]):
-# 				print 'OK'
-# 				break
-# 	i+=1
-# h.truncate()
-# h.close()
-
-
 
 
 
