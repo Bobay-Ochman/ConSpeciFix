@@ -76,7 +76,8 @@ Also the "by-hand" way. This describes every script and what it does to complete
 
 The following scripts allow the Exclusion Criterion to run in order to identify strains that are sexually isolated from the other members of the species.
 
-- `distrib.py`
-- `kmeans.py`
-- `split_kmeans.py`
-- `criterion.py`
+- `distrib.py` creates the distribution file
+- `kmeans.py` creates the Rscript that identfies two modes in the distribution with a kmeans test and produces graphs of the distribution file, as well as `vector.txt` and `key.txt`.
+- `split_kmeans.py` analyses the results of kmeans.py and produces `kmeans.txt`
+- `kmeansGraph.py` generates Rscript that graphs the result of `kmeans.txt` and identifies outliers, outputing `kmeans.pdf` and `removal.txt`
+- `criterion.py` writes the final results into `criterion.txt`
