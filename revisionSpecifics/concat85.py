@@ -1,17 +1,13 @@
 from config import *
 import os
+import random
 from multiprocessing import Pool
 
 def concatForSpec(sp):
 	printLog('starting '+sp)
-	"""	try:
-		h=open(PATH_TO_OUTPUT + sp + '/concat85.fa',"r")
-		h.close()
-		return
-		#continue
-	except:
-		pass
-"""
+	geneSubsetNo = sp.split('\t')[1]
+	sp = sp.split('\t')[0]
+
 	species = [sp]
 	strains=getGenomes(species)
 	
@@ -26,6 +22,12 @@ def concatForSpec(sp):
 			orthologues[sp][a[0]]=a[1:]
 			genes[sp].append(a[0])
 		f.close()
+
+	#This is where we will go about truncating down the number of genes
+	newGeneList = []
+	random.shuffle(genes[sp])
+	for i in range(100):
+		newGeneList.append(genes[sp].pop())
 
 	parent={}
 	for sp in species:
@@ -48,7 +50,7 @@ def concatForSpec(sp):
 		tmp[sp]={}
 		for st in strains[sp]:
 			tmp[sp][st] = []
-		for ortho in genes[sp]:
+		for ortho in newGeneList:
 			print sp, ortho
 			f = None
 			try:
@@ -86,48 +88,26 @@ def concatForSpec(sp):
 	tmp={}
 
 	for sp in species:
-		h=open(PATH_TO_OUTPUT+sp + '/concat85.fa',"w")
+		h=open(PATH_TO_OUTPUT+sp + '/geneSubsets/geneSubsetNo'+geneSubsetNo+'/concat85.fa',"w")
 		for st in strains[sp]:
 			h.write(">" + st + "\n")
 			i=0
 			while i < len(concat[sp][st]):		# MODIF 
 				h.write(concat[sp][st][i:i+60] + "\n")
 				i+=60
+		h.truncate()
 		h.close()
 	print 'completed! '+str(species[0])
 
-	##comment out all of the falip files
-"""	printLog('Writing falip '+ str(species))
-
-	for sp in species:
-		h=open(PATH_TO_OUTPUT + sp + '/concat85.phy',"w")
-		st1 = concat[sp].keys()[0]
-		longueur = len(concat[sp][st1])
-		h.write("   " + str(len(strains[sp])) + " " + str(longueur) + "\n")
-		for st in strains[sp]:
-			resu = st
-			while len(resu) < 120:
-				resu += " "
-			i=0
-			while i in range(60):
-				resu+=concat[sp][st][i:i+10] + " "
-				i+=10
-			h.write(resu + "\n")
-		h.write("\n")
-		j=60
-		while j < longueur:
-			for st in strains[sp]:
-				h.write("                                                                                                                        " + concat[sp][st][j:j+10] + " " + concat[sp][st][j+10:j+20] + " " + concat[sp][st][j+20:j+30] + " "  + concat[sp][st][j+30:j+40] + " " + concat[sp][st][j+40:j+50] + " " +  concat[sp][st][j+50:j+60] + "\n")
-			h.write("\n")
-			j+=60
-		h.close()
-
-"""
 
 if __name__ == '__main__':
 	species = giveMulti(getSelectedSpecies("align/ortho1.fa.align"))	
+	args = []
+	for sp in species:
+		for i in range(100):
+			args.append(sp+'\t'+str(i))
 	p = Pool(MAX_THREADS)
-	p.map(concatForSpec,species)
+	p.map(concatForSpec,args)
 
 
 #"""

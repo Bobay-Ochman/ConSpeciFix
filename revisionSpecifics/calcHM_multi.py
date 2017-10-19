@@ -7,10 +7,11 @@ def calcHM(args):
 
 
 	SP = args.strip('\n').split('\t')[0]
-	truc = args.strip('\n').split('\t')[1]
+	geneSubsetNumb = args.strip('\n').split('\t')[1]
+	truc = args.strip('\n').split('\t')[2]
 		# Load distances
 	strains=[]
-	f=open(PATH_TO_OUTPUT + SP + '/sample.txt','r')
+	f=open(PATH_TO_OUTPUT + SP + '/revisedStrains.txt','r')
 	for l in f:
 		a=l.strip("\n").split("\t")
 		strains.append(a[0])
@@ -18,7 +19,7 @@ def calcHM(args):
 
 
 	dist={}
-	f=open(PATH_TO_OUTPUT + SP + '/RAxML_distances.dist',"r")
+	f=open(PATH_TO_OUTPUT + SP + '/geneSubsets/geneSubsetNo'+geneSubsetNumb+'/RAxML_distances.dist',"r")
 	for l in f:
 		a=l.strip("\n").split("\t")
 		st1,st2 = a[0].strip(" ").split(" ")[0], a[0].strip(" ").split(" ")[1]
@@ -38,7 +39,7 @@ def calcHM(args):
 
 
 	tmp={}
-	f=open(PATH_TO_OUTPUT + SP + '/concat85.fa',"r")
+	f=open(PATH_TO_OUTPUT + SP + '/geneSubsets/geneSubsetNo'+geneSubsetNumb+'/concat85.fa',"r")
 	for l in f:
 		if l[0] == '>':
 			nb=0
@@ -74,20 +75,10 @@ def calcHM(args):
 
 
 
-	f_subset=open(PATH_TO_OUTPUT + SP + '/rm1.txt',"w")
+	f_subset=open(PATH_TO_OUTPUT + SP + '/geneSubsets/geneSubsetNo'+geneSubsetNumb+'/rm1.txt',"w")
 	for subset in memo_subset:
 		f_subset.write(subset + "\t" + '\t'.join(memo_subset[subset])  + "\n")
-	f_subset.close()
-
-
-	tmp=[]
-	f=open(PATH_TO_OUTPUT + SP + '/families_'+SP+'.txt','r')
-	for l in f:
-		a=l.strip('\n').split('\t')
-		if memo_subset.has_key(a[1]):
-			pass
-		else:
-			tmp.append(a[1])	
+	f_subset.close()	
 		
 		
 	alpha=['A','C','G','T']

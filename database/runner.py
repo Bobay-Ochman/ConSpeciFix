@@ -3,8 +3,10 @@ import os
 import sys
 import time
 
-runId = str(time.time())
-
+runId = str(1508432169.8) #str(time.time())
+print " "
+print " ---ConSpeciFix---"
+print " "
 print "Expecting species.txt to already be in place"
 print " "
 print "runId:" + runId

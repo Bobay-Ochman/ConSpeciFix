@@ -12,7 +12,7 @@ import math
 #This is where the full database will be built,
 # and if all the species are being processed,
 # this can be upwards of 500GB
-PATH_TO_OUTPUT = '/Volumes/ITDR/brian/results/'
+PATH_TO_OUTPUT = '/Volumes/ITDR/brian/coreGenome/'
 
 #your local instalations for the following programs,
 # or simply the name of the program if it can be accessed from the command line

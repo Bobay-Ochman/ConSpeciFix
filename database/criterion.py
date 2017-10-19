@@ -4,7 +4,7 @@ import datetime
 import time
 ts = time.time()
 
-species=getSelectedSpecies('kmeans.txt')
+species=getSelectedSpecies('for_removal.txt')
 
 kick={}
 tag={}
@@ -13,12 +13,13 @@ for sp in species:
 
 	header = "Conspecifix Results:\n\n\tCompleted on: "+datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S') +"\n"
 	header = header + '\tSpecies: ' + sp  +'\n\n'
-	header = header + """	For more information about our process, please visit our website at
+	header = header + """	For more information about our process, visit our website
 	https://www.conspecifix.com
 	or take a look at our github
 	https://github.com/Bobay-Ochman
 
-	Exclusion Criterion defined in Bobay & Ochman, GBE 2017
+	Exclusion criterion based off a modified
+	version of that found in Bobay & Ochman, GBE 2017
 	
 """
 
@@ -27,30 +28,24 @@ for sp in species:
 
 	kick=[]
 	keep = []
-	tag="no"
-	f = None
+	sample = None
+	removal = None
 	try:
-		f=open(PATH_TO_OUTPUT + sp +"/kmeans.txt","r")
+		sample=open(PATH_TO_OUTPUT + sp +"/sample.txt","r")
+		removal = open(PATH_TO_OUTPUT + sp + "/for_removal.txt","r")
+		for l in removal:
+			kick.append(l.strip('\n'))
+		for l in sample:
+			strain = l.strip('\n')
+			if strain not in kick:
+				keep.append(strain)
 	except Exception as e:
 		print str(e)
-	for l in f:
-		a=l.strip('\n').split('\t')
-		st = a[0]
-		if st != "tot":
-			mode1,mode2=float(a[1]),float(a[3])
-			tot=mode1+mode2
-			ratio = mode2/tot
-			line = st + "\n"
-			if ratio ==0:
-				kick.append(st)
-				print sp, st
-				tag="y"
-			else:
-				keep.append(st)
-
+		continue
+	
 	h.write('\n'.join(keep) + '\n\n')
 
-	if tag is "no":
+	if len(kick) == 0:
 		h.write("All strains were determined to be a member of the species")
 	else:
 		h.write("The following strains were determined to NOT be a member of the species:\n")
@@ -58,4 +53,5 @@ for sp in species:
 
 	h.truncate()
 	h.close()
-	f.close()
+	removal.close()
+	sample.close()

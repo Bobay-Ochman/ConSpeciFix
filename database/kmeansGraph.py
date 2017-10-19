@@ -1,7 +1,7 @@
 from config import *
 import os
 
-species=getSelectedSpecies("distrib.txt")
+species=getSelectedSpecies("kmeans.txt")
 
 for sp in species:
 	print sp
@@ -28,16 +28,14 @@ pdf('"""+PATH_TO_OUTPUT+sp+"""/kmeans.pdf')
 p1 <- hist(tab$V3,breaks = ourBreaks,plot = FALSE)
 
 #remove all outliers identified with pvalues of <.001
-listOfValues = rm.outlier(listOfValues, fill = FALSE)
-pv = chisq.out.test(listOfValues)[3][1]$p.value
-while ( pv < .001)
+while ( chisq.out.test(listOfValues)[3][1]$p.value < .001)
 {
 	listOfValues = rm.outlier(listOfValues, fill = FALSE)
-	pv = chisq.out.test(listOfValues)[3][1]$p.value
 }
 
 maxAfterOutliers <- max(listOfValues)
 strainsForRemoval <- tab$V1[which(tab$V3 > maxAfterOutliers)]
+strainsForRemoval = as.character(strainsForRemoval)
 print(strainsForRemoval)
 write(strainsForRemoval,ncol=1,file='"""+PATH_TO_OUTPUT+sp+"""/for_removal.txt')
 
@@ -53,6 +51,6 @@ dev.off()""")
 	h.close()
 	os.system("Rscript  kmean_graph.R  ")
 
-os.remove("kmean_graph.R")
+#os.remove("kmean_graph.R")
 
 
