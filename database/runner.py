@@ -17,7 +17,7 @@ try:
 	pass
 except OSError as e:
 	print e
-"""
+
 print "making folders"
 os.system('python folders.py'+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/00_folders.txt')
 
@@ -66,12 +66,13 @@ print "Making Graphs"
 os.system('python graph.py' + ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/18_graph.txt')
 os.system('python big_graph.py'+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/19_graph_big.txt')
 os.system('Rscript '+ PATH_TO_OUTPUT + 'big_graph.R'+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/20_graph_r.txt')
-"""
+
 print "Launching Analysis"
 os.system('python distrib.py '+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/21_distrib.txt')
 os.system('python kmean.py '+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/22_kmean.txt')
 os.system('python split_kmean.py '+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/23_split_kmean.txt')
-os.system('python criterion.py '+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/24_criterion.txt')
+os.system('python kmeansGraph.py '+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/24_kmeansGraph.txt')
+os.system('python criterion.py '+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/25_criterion.txt')
 
 
 
