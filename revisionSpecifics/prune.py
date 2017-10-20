@@ -11,12 +11,12 @@ for sp in species:
 	for s in removalFile:
 		removal.append(s.strip('\n'))
 	for s in strainsFile:
-		strain = st.strip('\n')
+		strain = s.strip('\n')
 		if strain not in removal:
 			strains.append(strain)
 	strainsFile.close()
 	removalFile.close()
-	f = open(PATH_TO_OUTPUT + sp + '/revisedStrains.txt')
+	f = open(PATH_TO_OUTPUT + sp + '/revisedStrains.txt','w')
 	f.write('\n'.join(strains))
 	f.close()
 

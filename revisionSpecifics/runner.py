@@ -27,14 +27,16 @@ os.system('python concat85.py'+ ' &> '+PATH_TO_OUTPUT+'out_coreGenome_'+runId+'/
 print "RAxML"
 os.system('python raxml_distance.py'+ ' &> '+PATH_TO_OUTPUT+'out_coreGenome_'+runId+'/14_raxml.txt')
 
-print "prune"
+print "prune sample.txt"
 os.system('python prune.py'+ ' &> '+PATH_TO_OUTPUT+'out_coreGenome_'+runId+'/15_prune.txt')
 
 print "Calculating HM Ratio"
 os.system('python calcHM_build.py' + ' &> '+PATH_TO_OUTPUT+'out_coreGenome_'+runId+'/16_calcHM_build.txt')
 os.system('python calcHM_multi.py' + ' &> '+PATH_TO_OUTPUT+'out_coreGenome_'+runId+'/17_calcHM_multi.txt')
+os.system('python gatherHM.py' + ' &> '+PATH_TO_OUTPUT+'out_coreGenome_'+runId+'/18_gatherHM.txt')
 
-
+print "Making new Graph with boxplot"
+os.system('python graphWithBoxplot.py' + ' &> '+PATH_TO_OUTPUT+'out_coreGenome_'+runId+'/19_graphWithBoxplot.txt')
 
 
 

@@ -72,14 +72,6 @@ def calcHM(args):
 				if len(a) == 5:									
 					memo_subset[a[0]] = a[1:]
 			f.close()
-
-
-
-	f_subset=open(PATH_TO_OUTPUT + SP + '/geneSubsets/geneSubsetNo'+geneSubsetNumb+'/rm1.txt',"w")
-	for subset in memo_subset:
-		f_subset.write(subset + "\t" + '\t'.join(memo_subset[subset])  + "\n")
-	f_subset.close()	
-		
 		
 	alpha=['A','C','G','T']
 
@@ -314,7 +306,7 @@ def calcHM(args):
 	except ZeroDivisionError:
 		rm = 'NA'
 	print  SP, len(strains),' r/m= ', rm      #,' r= ',r,' m= ',m	, '   Bips:  r= ',bip.count('r'),'  m= ',bip.count('m'),' |  for ',singleton,' singleton'
-	h=open(PATH_TO_OUTPUT + SP + '/rm1.txt',"a")
+	h=open(PATH_TO_OUTPUT + SP +'/geneSubsets/geneSubsetNo'+geneSubsetNumb+'/rm1.txt',"a")
 	h.write(truc + '\t' + str(r) + '\t' + str(m) + '\t' + str(rm) + '\t' + str(len(bip)) + '\n'   )
 	h.close()
 	d=open("todo/completed.txt",'a')
