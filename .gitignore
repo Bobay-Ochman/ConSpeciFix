@@ -1,6 +1,7 @@
 */*.pyc
 */test.py
 database/todo/*
+revisionSpecifics/todo/*
 
 # OS generated files #
 ######################
