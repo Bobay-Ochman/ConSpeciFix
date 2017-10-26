@@ -64,15 +64,19 @@ print "Calculating HM Ratio"
 os.system('python calcHM_build.py' + ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/16_calcHM_build.txt')
 os.system('python calcHM_multi.py' + ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/17_calcHM_multi.txt')
 
-print "Making Graphs"
+print "Making HM Graphs"
 os.system('python graph.py' + ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/18_graph.txt')
-os.system('python make_graphs.py'+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/19_and_20_make_graphs.txt')
+os.system('python make_hm_graph.py'+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/19_and_20_make_graphs.txt')
 
-print "Launching Analysis"
+print "Making Distrib Graphs"
 os.system('python distrib.py '+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/21_distrib.txt')
-os.system('python kmean.py '+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/22_kmean.txt')
+os.system('python make_distrib_graph.py '+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/22_kmean.txt')
+
+print "Making KMeans Graphs"
 os.system('python split_kmean.py '+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/23_split_kmean.txt')
-os.system('python kmeansGraph.py '+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/24_kmeansGraph.txt')
+os.system('python make_kmeans_graph.py '+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/24_kmeansGraph.txt')
+
+print "Criterion..."
 os.system('python criterion.py '+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/25_criterion.txt')
 
 

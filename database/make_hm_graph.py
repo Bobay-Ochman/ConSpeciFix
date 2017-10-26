@@ -1,11 +1,14 @@
 from config import *
 import os
 
-species= getSelectedSpecies('graph.txt')
+species= getSelectedSpecies('graph.txt')[:5]
 
 for sp in species:
 	h = open(PATH_TO_OUTPUT+sp+'/hmgraph.R','w')
-	toWrite = """pdf('"""+PATH_TO_OUTPUT+sp+"""/gno1.pdf')
+	toWrite = """png('"""+PATH_TO_OUTPUT+sp+"""/gno1.png' ,width = 6,
+  height    = 6,
+  units     = "in",
+  res       = 400)
 par(mfrow=c(1,1))
 tab = read.table('"""+PATH_TO_OUTPUT+sp+"""/graph.txt',h=T)
 w=c(tab$Nb,rev(tab$Nb))

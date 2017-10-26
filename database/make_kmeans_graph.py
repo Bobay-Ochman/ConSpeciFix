@@ -23,7 +23,10 @@ if (minVal < 0){
 #calculate our breaks specifically because after removing outliers, breaks will change if defaults are used
 ourBreaks <- seq(minVal, maxVal, (maxVal - minVal)/20 )
 
-pdf('"""+PATH_TO_OUTPUT+sp+"""/kmeans.pdf')
+png('"""+PATH_TO_OUTPUT+sp+"""/kmeans.png' ,width = 6,
+  height    = 6,
+  units     = "in",
+  res       = 400)
 #graph of everything. Will be red since the "good ones" will be kept later on and be printed over
 p1 <- hist(tab$V3,breaks = ourBreaks,plot = FALSE)
 
