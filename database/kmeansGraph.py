@@ -5,7 +5,7 @@ species=getSelectedSpecies("kmeans.txt")
 
 for sp in species:
 	print sp
-	h=open('kmean_graph.R','w')
+	h=open(PATH_TO_OUTPUT+sp+'/kmean_graph.R','w')
 	h.write("""require('outliers')
 
 tab=read.table('"""+PATH_TO_OUTPUT+sp+"""/kmeans.txt')
@@ -49,8 +49,5 @@ plot( p2, col='darkolivegreen3', add=T)
 dev.off()""")
 	h.truncate()
 	h.close()
-	os.system("Rscript  kmean_graph.R  ")
-
-#os.remove("kmean_graph.R")
-
+	os.system("Rscript "+PATH_TO_OUTPUT+sp+"/kmean_graph.R  ")
 

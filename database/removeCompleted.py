@@ -1,15 +1,21 @@
 
-fcomplete = open('todo/completed.txt','r')
-ftodo = open('todo/calcHM.txt')
+fcomplete = open('todo/completed_old.txt','r')
+fcomplete2 = open('todo/completed_old2.txt','r')
+ftodo = open('todo/calcHM_orig.txt')
 
 todo = ftodo.readlines()
 complete = fcomplete.readlines()
+complete.extend(fcomplete2.readlines())
+
 
 print len(todo)
 print len(complete)
 
 for line in complete:
-	todo.remove(line)
+	try:
+		todo.remove(line)
+	except:
+		pass
 	print len(todo)
 
 fcomplete.close()

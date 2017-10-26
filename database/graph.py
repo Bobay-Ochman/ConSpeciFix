@@ -106,6 +106,11 @@ for sp in species:
 
 
 
+# Values of clonal species
+#0.108065507964
+#Low=  0.0199770156685
+#High=  0.196154000259
+
 
 
 

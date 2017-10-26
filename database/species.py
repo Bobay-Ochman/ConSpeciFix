@@ -37,7 +37,7 @@ species.sort()
 h=open(PATH_TO_SPECIES_TXT,'w')
 NB=0
 for sp in species:
-	if sp.lower() in args:
+	if True:
 		print 'considering', sp
 		#We need at least 15 to have statistically relevant datasets.
 		if dico[sp] >= 15:

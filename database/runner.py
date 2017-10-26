@@ -3,7 +3,7 @@ import os
 import sys
 import time
 
-runId = str(1508432169.8) #str(time.time())
+runId = str(time.time())
 print " "
 print " ---ConSpeciFix---"
 print " "
@@ -66,8 +66,7 @@ os.system('python calcHM_multi.py' + ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/17_cal
 
 print "Making Graphs"
 os.system('python graph.py' + ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/18_graph.txt')
-os.system('python big_graph.py'+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/19_graph_big.txt')
-os.system('Rscript '+ PATH_TO_OUTPUT + 'big_graph.R'+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/20_graph_r.txt')
+os.system('python make_graphs.py'+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/19_and_20_make_graphs.txt')
 
 print "Launching Analysis"
 os.system('python distrib.py '+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/21_distrib.txt')
