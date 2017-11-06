@@ -43,8 +43,8 @@ part.add_header('Content-Disposition', "attachment; filename= %s" % filename)
 msg.attach(part)
 
 #attach the standard graph 
-filename = "standardGraph.pdf"
-attachment = open(PATH_TO_OUTPUT+ str(getSingleSpecies()[0]) + '/standardGraph.pdf', "rb") 
+filename = "hmGraph.png"
+attachment = open(PATH_TO_OUTPUT+ str(getSingleSpecies()[0]) + '/hmGraph.png', "rb") 
 part = MIMEBase('application', 'octet-stream')
 part.set_payload((attachment).read())
 encoders.encode_base64(part)
