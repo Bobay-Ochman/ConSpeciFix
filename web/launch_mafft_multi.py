@@ -12,7 +12,6 @@ def launchMafft(args):
 
 if __name__ == '__main__':
 
-	species = getSelectedSpecies()
 	p = Pool(MAX_THREADS)
 	f = open(PATH_TO_UPLOAD + 'todo/mafft.txt','r')
 	args = []

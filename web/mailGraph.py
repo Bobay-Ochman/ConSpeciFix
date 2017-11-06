@@ -10,7 +10,7 @@ username = getUsername()
 password = getPassword()
 
 fromaddr = username
-toaddrs  = getEmail()
+toaddr  = getEmail()
  
 msg = MIMEMultipart()
  
