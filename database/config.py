@@ -8,17 +8,14 @@ import math
 ############### VARIABLES USERS WILL NEED TO CHANGE ###############
 
 
-#Path to output should be followed by a tailing slash
-#This is where the full database will be built,
-# and if all the species are being processed,
-# this can be upwards of 500GB
-PATH_TO_OUTPUT = '/Volumes/ITDR/brian/results/'
+# Where the full database will be built
+PATH_TO_OUTPUT = '/Volumes/ITDR/brian/nextCalcHMRun/'
 
-#your local instalations for the following programs,
+# your local instalations for the following programs,
 # or simply the name of the program if it can be accessed from the command line
-# for example
-# RAXML_PATH = '/Users/Admin/programs/standard-RAxML-master/raxmlHPC-SSE3'
-# We have all of ours on our path as the following names
+# for example:
+# 	RAXML_PATH = '/Users/Admin/programs/standard-RAxML-master/raxmlHPC-SSE3'
+
 USEARCH_PATH = 'usearch61' 
 MAFFT_PATH = 'mafft'
 MCL_PATH = 'mcl'
@@ -71,6 +68,7 @@ def printLog(string):
 		print '*** '+string
 		
 def getSpecies():
+	return getAllSpecies()
 	species=[]
 	f=open(PATH_TO_SPECIES_TXT,"r")
 	for l in f:

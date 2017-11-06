@@ -114,7 +114,11 @@ def getCore(spec):
 				k=open('../selected_species.txt','a')
 				k.write(sp + '\t' + str(len(strains[sp])) + '\n')
 				k.close()
+"""
+for sp in getAllSpecies():
+	getCore(sp)
 
+"""
 if __name__ == '__main__':
 	species = giveMulti(getAllSpecies())	
 	p = Pool(MAX_THREADS)

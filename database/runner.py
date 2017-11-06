@@ -64,20 +64,30 @@ print "Calculating HM Ratio"
 os.system('python calcHM_build.py' + ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/16_calcHM_build.txt')
 os.system('python calcHM_multi.py' + ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/17_calcHM_multi.txt')
 
-print "Making HM Graphs"
+print "Making HM Graph"
 os.system('python graph.py' + ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/18_graph.txt')
-os.system('python make_hm_graph.py'+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/19_and_20_make_graphs.txt')
+os.system('python make_hm_graph.py'+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/19_make_hm_graphs.txt')
 
 print "Making Distrib Graphs"
-os.system('python distrib.py '+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/21_distrib.txt')
-os.system('python make_distrib_graph.py '+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/22_kmean.txt')
+os.system('python distrib.py '+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/20_distrib.txt')
+os.system('python make_distrib_graph.py '+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/21_make_distrib_graph.txt')
 
 print "Making KMeans Graphs"
-os.system('python split_kmean.py '+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/23_split_kmean.txt')
-os.system('python make_kmeans_graph.py '+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/24_kmeansGraph.txt')
+os.system('python split_kmean.py '+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/22_split_kmean.txt')
+os.system('python make_kmeans_graph.py '+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/23_make_kmeans_graph.txt')
 
 print "Criterion..."
-os.system('python criterion.py '+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/25_criterion.txt')
+os.system('python criterion.py '+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/24_criterion.txt')
+
+print "Making Point Graph"
+os.system('python graph_point.py '+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/25_graph_point.txt')
+os.system('python make_hm_graph_point.py '+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/26_make_hm_graph_point.txt')
+
+print "Combine the images"
+os.system('python assembleImages.py '+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/27_assembleImages.txt')
+
+print "Completed\n..."
+print "Results in "+PATH_TO_OUTPUT+'\n'
 
 
 

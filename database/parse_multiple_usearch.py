@@ -112,7 +112,7 @@ def caller(JobQ):
 if __name__ == '__main__':
 	maxThreads = MAX_THREADS
 	jobQ = Queue()
-	species=getSpecies()
+	species=getAllSpecies()
 	#make sure we don't do work that has already been done
 	todoSpec = []
 	for sp in species:
