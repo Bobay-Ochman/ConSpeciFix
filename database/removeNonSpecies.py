@@ -1,13 +1,18 @@
 from config import *
 import os
 
-species = getAllSpecies()
+
+
+print PATH_TO_OUTPUT
+yes = raw_input("Are you sure you would like to remove? (type 'yes' to continue):")
+if yes != 'yes':
+	exit()
 
 def remove(name):
 	try:
 		# Leaving this method powerless unless you are actually tring to delete something.
 		# Too easy to accedentially call it and start deleting things
-		#os.remove(PATH_TO_OUTPUT+sp+'/'+name)
+		os.remove(PATH_TO_OUTPUT+sp+'/'+name)
 		pass
 	except:
 		print "could not remove "+PATH_TO_OUTPUT+sp+'/'+name
@@ -19,21 +24,29 @@ def rename(name):
 	except:
 		print "could not rename "+name
 
+species = getAllSpecies()
+
 for sp in species:
 	print sp
 	removalList = []
+	critfd = None
 	try:
-		critfd = open(PATH_TO_OUTPUT+sp+'/criterion.txt','r')
-		removalsFlag = False
-		
+		critfd = open(PATH_TO_OUTPUT+sp+'/criterion.txt','r')	
+	except:
+		try:
+			critfd = open(PATH_TO_OUTPUT+sp+'/zold_criterion.txt','r')
+		except:
+			pass
+
+	removalsFlag = False
+
+	if critfd!=None:
 		for l in critfd:
 			l = l.strip('\n')
 			if removalsFlag and l.startswith('GCF'):
 				removalList.append(l)
 			if "The following strains were determined to NOT" in l:
 				removalsFlag = True
-	except:
-		pass
 
 	#The things we need to do to everything:
 	for file in os.listdir(PATH_TO_OUTPUT+sp+'/align/'):
@@ -46,10 +59,11 @@ for sp in species:
  			print file
 	
 	for file in os.listdir(PATH_TO_OUTPUT+sp+'/genes/'):
-		remove('genes/'+file)
-	
-	for file in os.listdir(PATH_TO_OUTPUT+sp+'/genomes/'):
 		if file in removalList:
+			remove('genes/'+file)
+		
+	for file in os.listdir(PATH_TO_OUTPUT+sp+'/genomes/'):
+		if file.strip('.fna').strip('.gff')+'.fa' in removalList:
 			remove('genomes/'+file)
 
 	remove('concat85.fa')

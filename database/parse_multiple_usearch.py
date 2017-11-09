@@ -39,14 +39,7 @@ def parseMultUsearch(spec):
 
 		#print genes
 		#print lengthOfGene
-
-		for sp in species:
-			try:
-				#make ourselves folders
-				os.mkdir(PATH_TO_OUTPUT+sp+'/results')
-			except OSError:
-				pass
-
+		
 		parent={}
 
 		for sp in species:
@@ -88,8 +81,7 @@ def parseMultUsearch(spec):
 									geneIDs.append(id2)
 							f.close()
 						except IOError:
-							#print "!!!!!! ",st1,".prot-",st2,".prot"
-							#h.write(st1 + "\t" + st2 + "\n")
+							print "!!!!!! "+st1+"-"+st2
 							pass
 			g.close()
 	except Exception as e:
@@ -116,10 +108,11 @@ if __name__ == '__main__':
 	#make sure we don't do work that has already been done
 	todoSpec = []
 	for sp in species:
-		try:
-			k=open(PATH_TO_OUTPUT + sp + '/input_'+sp+'.txt','r')
-		except:
-			todoSpec.append(sp)
+		todoSpec.append(sp)
+		# try:
+		# 	k=open(PATH_TO_OUTPUT + sp + '/input_'+sp+'.txt','r')
+		# except:
+		# 	todoSpec.append(sp)
 	species = giveMulti(todoSpec)
 	
 	processes = []

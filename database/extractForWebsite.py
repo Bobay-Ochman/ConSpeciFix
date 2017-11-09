@@ -5,6 +5,7 @@ import os
 
 
 WEB_OUT = '/Volumes/ITDR/brian/websiteOutput/'
+PATH_TO_OUTPUT = '/Volumes/ITDR/brian/a_website/'
 
 def copySpec(sp):
 	os.mkdir(WEB_OUT+sp)

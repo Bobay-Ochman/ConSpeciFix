@@ -40,17 +40,14 @@ os.system('python '+ PATH_TO_SCRIPTS + 'usearch_build.py'+remArgs+ ' &> '+PATH_T
 print "------ usearch multi"
 os.system('python '+ PATH_TO_SCRIPTS + 'usearch_multi.py'+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/03_u_multi.txt')
 
-print "------ parse usearch"
-# parse multiple usearch
-os.system('python '+ PATH_TO_SCRIPTS + 'parse_multiple_usearch.py'+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/04_u_parse.txt')
 
-# MCL
-print "------ MCL time"
-os.system('python '+ PATH_TO_SCRIPTS + 'launch_mcl.py'+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/05_mcl.txt')
 
-# getcore
-print "------ get core"
-os.system('python '+ PATH_TO_SCRIPTS + 'get_core.py'+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/06_get_core.txt')
+print "------ add to core"
+os.system('python '+ PATH_TO_SCRIPTS + 'add_to_core.py'+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/04_add_to_core.txt')
+
+print "------ write core"
+os.system('python '+ PATH_TO_SCRIPTS + 'write_core.py'+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/05_write_core.txt')
+
 
 # launch mafft
 print "------ mafft prep"

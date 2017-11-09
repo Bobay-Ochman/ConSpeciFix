@@ -19,8 +19,8 @@ try:
 	pass
 except OSError as e:
 	print e
-
-print "making folders"
+"""
+print "Making folders"
 os.system('python folders.py'+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/00_folders.txt')
 
 print "Downloading Genomes"
@@ -40,7 +40,7 @@ os.system('python usearch_multi.py'+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/07_u_m
 
 print "Parsing Usearch"
 os.system('python parse_multiple_usearch.py'+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/08_u_parse.txt')
-
+"""
 print "MCL"
 os.system('python launch_mcl.py'+ ' &> '+PATH_TO_OUTPUT+'out_'+runId+'/09_mcl.txt')
 
