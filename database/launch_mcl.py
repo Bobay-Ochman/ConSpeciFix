@@ -10,7 +10,7 @@ def mclOnSpec(sp):
 	os.system('mv  out.input_' + sp + '.txt.I12 ' + PATH_TO_OUTPUT + sp + '/')
 
 if __name__ == '__main__':
-	species = giveMulti(getSpecies())
+	species = giveMulti(getAllSpecies())
 	complete = []
 	#makes a list of stuff we are done with
 	for sp in species:

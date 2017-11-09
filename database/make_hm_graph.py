@@ -1,14 +1,14 @@
 from config import *
 import os
 
-species= getSelectedSpecies('graph.txt')[:5]
+species= getSelectedSpecies('graph.txt')
 
 for sp in species:
-	h = open(PATH_TO_OUTPUT+sp+'/hmgraph.R','w')
+	h = open(PATH_TO_OUTPUT+sp+'/make_hm_graph.R','w')
 	toWrite = """png('"""+PATH_TO_OUTPUT+sp+"""/gno1.png' ,width = 6,
   height    = 6,
   units     = "in",
-  res       = 400)
+  res       = 200)
 par(mfrow=c(1,1))
 tab = read.table('"""+PATH_TO_OUTPUT+sp+"""/graph.txt',h=T)
 w=c(tab$Nb,rev(tab$Nb))
@@ -21,5 +21,5 @@ abline(h=0.196154000259,col="red", lwd=1, lty=3)
 """
 	h.write(toWrite)
 	h.close()
-	os.system('Rscript '+PATH_TO_OUTPUT+sp+'/hmgraph.R')
+	os.system('Rscript '+PATH_TO_OUTPUT+sp+'/make_hm_graph.R')
 

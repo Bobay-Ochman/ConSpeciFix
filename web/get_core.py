@@ -129,3 +129,7 @@ for sp in species:
 	if mean(genes[sp]) > 0:	
 		ratio = nb/mean(genes[sp])
 		print sp,' There are ',nb,' core genes and ',doublons[sp],' doublons ',mean(genes[sp]), ' genes on average for',len(strains[sp]),' strains.  Ratio=',100*nb/mean(genes[sp]),' %'
+
+
+
+		

@@ -17,7 +17,7 @@ try:
 	pass
 except OSError as e:
 	print e
-
+"""
 print "Making folders"
 os.system('python folders.py'+ ' &> '+PATH_TO_OUTPUT+'out_coreGenome_'+runId+'/13_concat85.txt')
 
@@ -33,10 +33,15 @@ os.system('python prune.py'+ ' &> '+PATH_TO_OUTPUT+'out_coreGenome_'+runId+'/15_
 print "Calculating HM Ratio"
 os.system('python calcHM_build.py' + ' &> '+PATH_TO_OUTPUT+'out_coreGenome_'+runId+'/16_calcHM_build.txt')
 os.system('python calcHM_multi.py' + ' &> '+PATH_TO_OUTPUT+'out_coreGenome_'+runId+'/17_calcHM_multi.txt')
+"""
 os.system('python gatherHM.py' + ' &> '+PATH_TO_OUTPUT+'out_coreGenome_'+runId+'/18_gatherHM.txt')
 
-print "Making new Graph with boxplot"
-os.system('python graphWithBoxplot.py' + ' &> '+PATH_TO_OUTPUT+'out_coreGenome_'+runId+'/19_graphWithBoxplot.txt')
+print "Making new Graphs with boxplot"
+os.system('python make_graphs.py' + ' &> '+PATH_TO_OUTPUT+'out_coreGenome_'+runId+'/19_make_graphs.txt')
+os.system('python make_point_graphs.py' + ' &> '+PATH_TO_OUTPUT+'out_coreGenome_'+runId+'/20_make_point_graphs.txt')
+
+print "New composite figures"
+os.system('python assembleImages.py' + ' &> '+PATH_TO_OUTPUT+'out_coreGenome_'+runId+'/21_assembleImages.txt')
 
 
 

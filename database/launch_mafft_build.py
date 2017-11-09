@@ -5,6 +5,8 @@ out = open('todo/mafft.txt','w')
 out.seek(0)
 for sp in species:
 	files = os.listdir(PATH_TO_OUTPUT + sp + '/align/')
+	if '.DS_Store' in files:
+		files.remove('.DS_Store')
 	done = []
 	files = files[::-1]
 	#print files

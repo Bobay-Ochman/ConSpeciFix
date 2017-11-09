@@ -5,7 +5,7 @@ species=getSelectedSpecies("kmeans.txt")
 
 for sp in species:
 	print sp
-	h=open(PATH_TO_OUTPUT+sp+'/kmean_graph.R','w')
+	h=open(PATH_TO_OUTPUT+sp+'/make_kmean_graph.R','w')
 	h.write("""require('outliers')
 
 tab=read.table('"""+PATH_TO_OUTPUT+sp+"""/kmeans.txt')
@@ -26,14 +26,20 @@ ourBreaks <- seq(minVal, maxVal, (maxVal - minVal)/20 )
 png('"""+PATH_TO_OUTPUT+sp+"""/kmeans.png' ,width = 6,
   height    = 6,
   units     = "in",
-  res       = 400)
+  res       = 200)
 #graph of everything. Will be red since the "good ones" will be kept later on and be printed over
 p1 <- hist(tab$V3,breaks = ourBreaks,plot = FALSE)
 
-#remove all outliers identified with pvalues of <.001
-while ( chisq.out.test(listOfValues)[3][1]$p.value < .001)
+#remove all outliers identified with pvalues of <.0001
+flag = TRUE
+while ( chisq.out.test(listOfValues)[3][1]$p.value < .0001 && flag)
 {
+	oldlistOfValues = listOfValues
 	listOfValues = rm.outlier(listOfValues, fill = FALSE)
+	if(min(oldlistOfValues) != min(listOfValues)){
+		flag = FALSE
+		listOfValues = oldlistOfValues
+	}
 }
 
 maxAfterOutliers <- max(listOfValues)
@@ -52,5 +58,5 @@ plot( p2, col='darkolivegreen3', add=T)
 dev.off()""")
 	h.truncate()
 	h.close()
-	os.system("Rscript "+PATH_TO_OUTPUT+sp+"/kmean_graph.R  ")
+	os.system("Rscript "+PATH_TO_OUTPUT+sp+"/make_kmean_graph.R  ")
 
