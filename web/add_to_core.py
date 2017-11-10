@@ -64,11 +64,12 @@ for userGene in geneMap:
 	#maps ortho numbers to a count of # times user gene matches genes in that ortho
 	possibleOrthos = {} #(all the ones we might be)
 	for databaseGene in geneMap[userGene]:
-		ortho  = geneOrthoLabels[databaseGene]
-		if ortho in possibleOrthos:
-			possibleOrthos[ortho] = possibleOrthos[ortho] + 1
-		else:
-			possibleOrthos[ortho] = 1
+		if databaseGene in geneOrthoLabels: #only use the core genes
+			ortho  = geneOrthoLabels[databaseGene]
+			if ortho in possibleOrthos:
+				possibleOrthos[ortho] = possibleOrthos[ortho] + 1
+			else:
+				possibleOrthos[ortho] = 1
 	bestCandidateOrtho = '' #(The one the we think we are the most)
 	for ortho in possibleOrthos:
 		if possibleOrthos[ortho] / (len(geneMap[userGene]) + 0.0) >= .85:
