@@ -12,7 +12,7 @@ strains=getStrains(species)
 specialStrain = getCompStrain()+'.fa'
 
 # build dictionary of orthologs already identified as core
-orthofd = open(PATH_TO_OUTPUT+species+'/orthologs.txt')
+orthofd = open(PATH_TO_OUTPUT+sp+'/orthologs.txt')
 geneOrthoLabels = {}
 orthoNumberToGenes = {}
 for line in orthofd:
