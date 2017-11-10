@@ -4,7 +4,7 @@ The scripts for web-based analysis are located here. These were have been develo
 
 ### Resampling analysis
 
-- `USEACH` We will only need to usearch against the new genome in the set (O(n) rather than O(n^2))
+- `USEARCH` We will only need to usearch against the new genome in the set (O(n) rather than O(n^2))
     - `todo/usearch.txt` will instead be `PATH_TO_OUTPUT/trial(no.)/todo/usearch.txt`
     
 - `parse_multiple_usearch.py` Finds the pair of orthologs genes
