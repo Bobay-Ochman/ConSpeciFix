@@ -16,7 +16,7 @@ orthofd = open(PATH_TO_OUTPUT+sp+'/orthologs.txt')
 geneOrthoLabels = {}
 orthoNumberToGenes = {}
 for line in orthofd:
-	l = line.remove('\n').split('\t')
+	l = line.strip('\n').split('\t')
 	orthoNumb = l[0]
 	l.pop(0)#remove the ortho number from list of genes
 	orthoNumberToGenes[orthoNumb] = l[:] #map ortho# to the database genes it matches with
