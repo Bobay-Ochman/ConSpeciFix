@@ -57,7 +57,7 @@ for st1 in strains[sp]:
 		pass
 
 #maps an ortho number to a user gene
-assignedOrthos = []
+assignedOrthos = {}
 
 #goes through each user gene and assigns it to a particular ortholog family
 for userGene in geneMap:
