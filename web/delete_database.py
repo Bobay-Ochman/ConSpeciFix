@@ -12,6 +12,7 @@ numbUsers = len(f.read().split('\n'))
 if numbUsers < 3:#because if there is one non-zero, there'll be a trailing newline.
 	#delete the system, we are the last
 	os.system('rm -rf 'PATH+sp)
+	os.system('rm -rf 'PATH+sp+'.zip')
 else:
 	#there are others using it, so we need to not delete it.
 	fd.close()
