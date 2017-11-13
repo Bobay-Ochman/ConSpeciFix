@@ -35,8 +35,7 @@ for sp in species:
 				keep.append(st)
 	f.close()
 
-header = "Conspecifix Results:\n\n\tCompleted on: "+datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S') +"\n"
-header = header + '\tFolder Path: ' + PATH_TO_FOLDER +'\n\n'
+header = "Conspecifix Results:\n\n\tCompleted on: "+datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S') +"\n\n"
 header = header + """	For more information about our process, please visit our website at
 	https://www.conspecifix.com
 	or take a look at our github

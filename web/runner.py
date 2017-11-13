@@ -95,5 +95,9 @@ os.system('python '+ PATH_TO_SCRIPTS + 'draw_box_plot.py '+remArgs+ ' &> '+PATH_
 
 print "------ Email the results!"
 os.system('python '+ PATH_TO_SCRIPTS + 'mailGraph.py'+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/21_mail.txt')
+
+print "------ deleting the dataset"
+os.system('python '+PATH_TO_SCRIPTS+ 'delete_database.py '+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/22_delete.txt')
+
 quit()
 

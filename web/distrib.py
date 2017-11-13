@@ -15,7 +15,11 @@ for l in f:
 	a=l.strip('\n').split('\t')
 	strains = a[0].split('&&&')
 	nb=len(strains)
-	rm = float(a[3])
+	rm = 0
+	try:
+		rm = float(a[3])
+	except:
+		continue
 	tag = "without"
 	if str(getCompStrain()+'.fa') in strains:
 		tag = "with"
