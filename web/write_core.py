@@ -69,12 +69,18 @@ for sp in species:
 		pass
 	nb=0
 	for lili in core:
-		#### Change to only do this if lili contains 'gene####'
-		g=open(PATH_TO_UPLOAD+ 'align/' + lili + ".fa","w")
-		for id in core[lili]:
-			g.write(">" + id + "\n" + seq[sp][id]  )
-		g.truncate()
-		g.close()	
+		# Only write the core gene if 'gene###' is in the list
+		flag = False
+		for geneId in core[lili]:
+			if 'gene' in geneId:
+				falg=True
+		if flag:
+			nb = nb+1
+			g=open(PATH_TO_UPLOAD+ 'align/' + lili + ".fa","w")
+			for id in core[lili]:
+				g.write(">" + id + "\n" + seq[sp][id]  )
+			g.truncate()
+			g.close()	
 
 	critInfoFD = open(PATH_TO_UPLOAD+'crit_stats.txt','a')
 	critInfoFD.write('Number of core genes orthologous to your genome: '+str(nb)+'\n')
