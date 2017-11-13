@@ -12,11 +12,11 @@ strains=getStrains(species)
 specialStrain = getCompStrain()+'.fa'
 
 # build dictionary of orthologs already identified as core
-orthofd = open(PATH_TO_OUTPUT+species+'/orthologs.txt')
+orthofd = open(PATH_TO_OUTPUT+sp+'/orthologs.txt')
 geneOrthoLabels = {}
 orthoNumberToGenes = {}
 for line in orthofd:
-	l = line.remove('\n').split('\t')
+	l = line.strip('\n').split('\t')
 	orthoNumb = l[0]
 	l.pop(0)#remove the ortho number from list of genes
 	orthoNumberToGenes[orthoNumb] = l[:] #map ortho# to the database genes it matches with
@@ -57,18 +57,19 @@ for st1 in strains[sp]:
 		pass
 
 #maps an ortho number to a user gene
-assignedOrthos = []
+assignedOrthos = {}
 
 #goes through each user gene and assigns it to a particular ortholog family
 for userGene in geneMap:
 	#maps ortho numbers to a count of # times user gene matches genes in that ortho
 	possibleOrthos = {} #(all the ones we might be)
 	for databaseGene in geneMap[userGene]:
-		ortho  = geneOrthoLabels[databaseGene]
-		if ortho in possibleOrthos:
-			possibleOrthos[ortho] = possibleOrthos[ortho] + 1
-		else:
-			possibleOrthos[ortho] = 1
+		if databaseGene in geneOrthoLabels: #only use the core genes
+			ortho  = geneOrthoLabels[databaseGene]
+			if ortho in possibleOrthos:
+				possibleOrthos[ortho] = possibleOrthos[ortho] + 1
+			else:
+				possibleOrthos[ortho] = 1
 	bestCandidateOrtho = '' #(The one the we think we are the most)
 	for ortho in possibleOrthos:
 		if possibleOrthos[ortho] / (len(geneMap[userGene]) + 0.0) >= .85:

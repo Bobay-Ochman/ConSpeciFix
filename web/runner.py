@@ -17,10 +17,10 @@ try:
 except OSError as e:
 	print e
 
-
-
-
 remArgs = ' '+sys.argv[1]+' '+sys.argv[2]+' '+sys.argv[3]+' '+sys.argv[4]+' '
+
+print "------ downloading dataset"
+os.system('python '+PATH_TO_SCRIPTS+ 'download_database.py '+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/00_download.txt')
 
 print "------ cleaning the names of the genes"
 os.system('python '+PATH_TO_SCRIPTS + 'clean_gene_names.py '+remArgs + ' &> '+PATH_TO_UPLOAD+'out/01_clean.txt')
@@ -95,5 +95,9 @@ os.system('python '+ PATH_TO_SCRIPTS + 'draw_box_plot.py '+remArgs+ ' &> '+PATH_
 
 print "------ Email the results!"
 os.system('python '+ PATH_TO_SCRIPTS + 'mailGraph.py'+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/21_mail.txt')
+
+print "------ deleting the dataset"
+os.system('python '+PATH_TO_SCRIPTS+ 'delete_database.py '+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/22_delete.txt')
+
 quit()
 
