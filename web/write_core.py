@@ -73,7 +73,7 @@ for sp in species:
 		flag = False
 		for geneId in core[lili]:
 			if 'gene' in geneId:
-				falg=True
+				flag=True
 		if flag:
 			nb = nb+1
 			g=open(PATH_TO_UPLOAD+ 'align/' + lili + ".fa","w")
