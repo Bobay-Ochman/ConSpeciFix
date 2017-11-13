@@ -17,7 +17,7 @@ tmp={}
 orthologFD=open(PATH_TO_UPLOAD + 'orthologs.txt',"r")
 core = {}
 for line in orthologFD:
-	l = line.remove('\n').split('\t')
+	l = line.strip('\n').split('\t')
 	orthoName = l[0]
 	l.pop(0)
 	core[orthoName] = l[:] #deep copy l
