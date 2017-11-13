@@ -1,1 +1,3 @@
+- Add version numbers (or just what we use) for each of the dependencies
+- Make thread-safe the download-management in web-server
 - Add 'kmeansGraph.py' to the personalComp runner

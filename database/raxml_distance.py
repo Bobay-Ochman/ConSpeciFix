@@ -14,7 +14,7 @@ for sp in species:
 		os.system('rm RAx*')
 	except:
 		pass
-	os.system(RAXML_PATH+' -f x -T 10 -p 12345 -s ' +  ' concat85.fa  -m GTRGAMMA -n dist')
+	os.system(RAXML_PATH+' -f x -T 15 -p 12345 -s ' +  ' concat85.fa  -m GTRGAMMA -n dist')
 
 
 

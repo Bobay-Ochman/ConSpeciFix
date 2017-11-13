@@ -22,6 +22,11 @@ def copySpec(sp):
 	copyfile(PATH_TO_OUTPUT+sp+'/input_'+sp+'.txt', WEB_OUT+sp+'/input_'+sp+'.txt')
 	copyfile(PATH_TO_OUTPUT+sp+'/gno1.png', WEB_OUT+sp+'/hmGraph.png')
 
+	os.chdir(PATH_TO_OUTPUT)
+	command = "zip -r "+sp+'.zip '+sp
+	print command
+	os.system(command)
+	os.system(' mv '+sp+'.zip ../websiteUploads/'+sp+'.zip')
 
 def wrapper(sp):
 	try:
