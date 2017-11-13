@@ -13,4 +13,4 @@ except:
 	os.system("unzip "+PATH_TO_OUTPUT+sp+'.zip -d '+PATH_TO_OUTPUT)
 
 #It won't be perfectly threadsafe, but that shouldn't matter with our usage
-os.system("echo '1' >> "PATH_TO_OUTPUT+sp+"/useCounter.txt")
+os.system("echo '1' >> "+PATH_TO_OUTPUT+sp+"/useCounter.txt")
