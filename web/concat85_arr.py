@@ -46,28 +46,30 @@ for sp in species:
 	for st in strains[sp]:
 		tmp[sp][st] = []
 	for ortho in genes[sp]:
-		print sp, ortho
-		f=open( PATH_TO_UPLOAD + 'align/'  + ortho + ".fa.align","r")
-		flash={}
-		memo=[]
-		maxLen = 0;
-		for l in f:
-			if l[0] == ">":
-				id = l.strip("\n").strip(">").split(" ")[0]
-				st = parent[id]
-				memo.append(st)
-				flash[st]=[]
-			else:
-				flash[st].append(l.strip("\n").upper())
-		f.close()
-		longueur = ''.join(flash[memo[0]])
-		for st in strains[sp]:
-			if flash.has_key(st):
-				resu = ''.join(flash[st])
-			else:
-				resu = '-'*len(longueur)
-			tmp[sp][st].append(resu)
-
+		try:
+			print sp, ortho
+			f=open( PATH_TO_UPLOAD + 'align/'  + ortho + ".fa.align","r")
+			flash={}
+			memo=[]
+			maxLen = 0;
+			for l in f:
+				if l[0] == ">":
+					id = l.strip("\n").strip(">").split(" ")[0]
+					st = parent[id]
+					memo.append(st)
+					flash[st]=[]
+				else:
+					flash[st].append(l.strip("\n").upper())
+			f.close()
+			longueur = ''.join(flash[memo[0]])
+			for st in strains[sp]:
+				if flash.has_key(st):
+					resu = ''.join(flash[st])
+				else:
+					resu = '-'*len(longueur)
+				tmp[sp][st].append(resu)
+		except:
+			print 'no ortho file'
 
 concat={}
 for sp in species:

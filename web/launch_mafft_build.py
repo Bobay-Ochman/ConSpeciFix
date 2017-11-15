@@ -12,11 +12,8 @@ for sp in species:
 		#print done
 		if str(fichier).endswith('.fa.align'):
 			done.append(str(fichier))
-			#We've already done it, we'll let them know
-			continue
 	for fichier in files:
 		if str(fichier)+'.align' not in done:
 			out.write(sp + '\t' + fichier + '\n');
-
 out.truncate()
 out.close()
