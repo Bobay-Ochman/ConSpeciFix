@@ -86,7 +86,9 @@ for orthoNumb in assignedOrthos:
 #write orthologs.txt
 h=open(PATH_TO_UPLOAD + 'orthologs.txt',"w")
 for orthoNumb in orthoNumberToGenes:
-	h.write(orthoNumb + '\t' + '\t'.join(orthoNumberToGenes[orthoNumb]) + '\n')
+	stringToWrite = '\t'.join(orthoNumberToGenes[orthoNumb])
+	if 'gene' in stringToWrite:
+		h.write(orthoNumb + '\t' + stringToWrite + '\n')
 h.close()
 
 
