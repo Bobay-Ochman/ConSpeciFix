@@ -36,7 +36,7 @@ Also the "by-hand" way. This describes every script and what it does to complete
 
 ### Resampling analysis
 
-- USEACH
+- USEARCH
     - `usearch_build.py` makes a list in `todo/usearch.txt` with all usearch comparisons needing to be performed.
     - `usearch_multi.py` creates parallell processes to do the work listed by comparing all the genome pairs with eachother using USEARCH.
     
