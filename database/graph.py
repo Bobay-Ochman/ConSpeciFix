@@ -62,10 +62,10 @@ liste={}
 for sp in species:
 	dico[sp]={}
 	liste[sp]=[]
-	try:
-		f=open(PATH_TO_OUTPUT + sp + '/rm1.txt',"r")
-		lines = f.readlines()
-		for l in lines:
+	f=open(PATH_TO_OUTPUT + sp + '/rm1.txt',"r")
+	lines = f.readlines()
+	for l in lines:
+		try:
 			a=l.strip("\n").split("\t")
 			subset = a[0]
 			b=subset.split("&&&")
@@ -80,10 +80,10 @@ for sp in species:
 						else:
 							dico[sp][nb] = [rm]
 							liste[sp].append(nb)
-		f.close()
-		print 'doing',sp
-	except Exception as e:
-		print 'passing!!!' , sp, e
+		except:
+			print 'passing on a line in '+sp
+	f.close()
+	print 'doing',sp
 
 
 

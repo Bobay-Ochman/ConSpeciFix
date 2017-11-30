@@ -99,6 +99,11 @@ def concatForSpec(sp):
 		h.close()
 	print 'completed! '+str(species[0])
 
+def wrapper(args):
+	try:
+		concatForSpec(args)
+	except:
+		print 'exception!' + str(args)
 
 if __name__ == '__main__':
 	species = giveMulti(getSelectedSpecies("align/ortho1.fa.align"))	
@@ -107,7 +112,7 @@ if __name__ == '__main__':
 		for i in range(100):
 			args.append(sp+'\t'+str(i))
 	p = Pool(MAX_THREADS)
-	p.map(concatForSpec,args)
+	p.map(wrapper,args)
 
 
 #"""

@@ -5,7 +5,6 @@ import time
 
 runId = str(time.time())
 
-print "Expecting species.txt to already be in place"
 print " "
 print "runId:" + runId
 print "path of log files:"
@@ -26,6 +25,9 @@ os.system('python concat85.py'+ ' &> '+PATH_TO_OUTPUT+'out_coreGenome_'+runId+'/
 
 print "RAxML"
 os.system('python raxml_distance.py'+ ' &> '+PATH_TO_OUTPUT+'out_coreGenome_'+runId+'/14_raxml.txt')
+"""
+print "combine all RAxML values"
+os.system('python combine_RAxML.py' + ' &> '+PATH_TO_OUTPUT+'out_coreGenome_'+runId+'/14.5_combine_RAxML.txt')
 
 print "prune sample.txt"
 os.system('python prune.py'+ ' &> '+PATH_TO_OUTPUT+'out_coreGenome_'+runId+'/15_prune.txt')
@@ -33,7 +35,8 @@ os.system('python prune.py'+ ' &> '+PATH_TO_OUTPUT+'out_coreGenome_'+runId+'/15_
 print "Calculating HM Ratio"
 os.system('python calcHM_build.py' + ' &> '+PATH_TO_OUTPUT+'out_coreGenome_'+runId+'/16_calcHM_build.txt')
 os.system('python calcHM_multi.py' + ' &> '+PATH_TO_OUTPUT+'out_coreGenome_'+runId+'/17_calcHM_multi.txt')
-"""
+
+
 os.system('python gatherHM.py' + ' &> '+PATH_TO_OUTPUT+'out_coreGenome_'+runId+'/18_gatherHM.txt')
 
 print "Making new Graphs with boxplot"
@@ -44,4 +47,5 @@ print "New composite figures"
 os.system('python assembleImages.py' + ' &> '+PATH_TO_OUTPUT+'out_coreGenome_'+runId+'/21_assembleImages.txt')
 
 
-
+# at this point, you can start the full analysis over again from "CalcHM" values in the standard database builder
+# It will pull from the new RAxML Values (the medians) taken from combine_RAxML

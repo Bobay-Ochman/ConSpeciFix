@@ -6,7 +6,7 @@ ftodo = open('todo/calcHM.txt')
 todo = ftodo.readlines()
 complete = fcomplete.readlines()
 #complete.extend(fcomplete2.readlines())
-
+complete = complete[::-1]
 
 print len(todo)
 print len(complete)

@@ -19,7 +19,7 @@ def remove(name):
 
 def rename(name):
 	try:
-		#os.rename(PATH_TO_OUTPUT+sp+'/'+name, PATH_TO_OUTPUT+sp+'/zold_'+name)
+		os.rename(PATH_TO_OUTPUT+sp+'/'+name, PATH_TO_OUTPUT+sp+'/zold_'+name)
 		pass
 	except:
 		print "could not rename "+name
@@ -45,7 +45,7 @@ for sp in species:
 			l = l.strip('\n')
 			if removalsFlag and l.startswith('GCF'):
 				removalList.append(l)
-			if "The following strains were determined to NOT" in l:
+			if "determined to NOT" in l:
 				removalsFlag = True
 
 	#The things we need to do to everything:
