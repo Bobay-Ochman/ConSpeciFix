@@ -24,24 +24,15 @@ os.system('python '+PATH_TO_SCRIPTS+ 'download_database.py '+remArgs+ ' &> '+PAT
 
 print "------ cleaning the names of the genes"
 os.system('python '+PATH_TO_SCRIPTS + 'clean_gene_names.py '+remArgs + ' &> '+PATH_TO_UPLOAD+'out/01_clean.txt')
-# parse the gff -> Skip since the FA already exists
-#print "------ running parse_gff_build"
-#os.system('python '+PATH_TO_SCRIPTS + 'parse_gff_build.py'+remArgs)
-#print "------ running parse_gff_multi"
-#os.system('python '+PATH_TO_SCRIPTS + 'parse_gff_multi.py'+remArgs)
 
-print "------ Expects just to have a .fa file"
-# usearch
 
 sendEmail("We've started your analysis and will be emailing you periodically to keep you updated on how it is going.")
-
 print "------ usearch build"
 os.system('python '+ PATH_TO_SCRIPTS + 'usearch_build.py'+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/02_u_build.txt')
 print "------ usearch multi"
 os.system('python '+ PATH_TO_SCRIPTS + 'usearch_multi.py'+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/03_u_multi.txt')
 
-
-
+#write all the ortholog files
 print "------ add to core"
 os.system('python '+ PATH_TO_SCRIPTS + 'add_to_core.py'+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/04_add_to_core.txt')
 
