@@ -21,7 +21,7 @@ try:
 	pass
 except OSError as e:
 	print e
-"""
+
 print "Making folders"
 os.system('python folders.py'+ ' &> '+PATH_TO_LOGS+'00_folders.txt')
 
@@ -39,7 +39,7 @@ os.system('python parse_gff_multi.py'+ ' &> '+PATH_TO_LOGS+'05_parse_gff_multi.t
 print "Usearch"
 os.system('python usearch_build.py'+ ' &> '+PATH_TO_LOGS+'06_u_build.txt')
 os.system('python usearch_multi.py'+ ' &> '+PATH_TO_LOGS+'07_u_multi.txt')
-"""
+
 print "Parsing Usearch"
 os.system('python parse_multiple_usearch.py'+ ' &> '+PATH_TO_LOGS+'08_u_parse.txt')
 

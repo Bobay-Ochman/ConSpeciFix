@@ -11,7 +11,7 @@ for sp in species:
   res       = 200)
 par(mfrow=c(1,1))
 tab = read.table('"""+PATH_TO_OUTPUT+sp+"""/graph_points.txt')
-plot(tab$V1,tab$V2,main='"""+sp+"""')
+plot(tab$V1,tab$V2,xlab=c("# Genomes"),ylab=c("h/m"),main='"""+sp+"""')
 abline(h=0.108065507964,col="red", lwd=2, lty=2)
 abline(h=0.196154000259,col="red", lwd=1, lty=3)
 """

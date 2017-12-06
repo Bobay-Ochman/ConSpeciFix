@@ -9,7 +9,7 @@ import math
 
 
 # Where the full database will be built
-PATH_TO_OUTPUT = '/Volumes/ITDR/brian/confirmedOneToRemove/'
+PATH_TO_OUTPUT = '/Volumes/ITDR/brian/a_website/'
 
 # your local instalations for the following programs,
 # or simply the name of the program if it can be accessed from the command line

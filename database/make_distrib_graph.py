@@ -6,7 +6,7 @@ species=getSelectedSpecies("distrib.txt")
 for sp in species:
 	print sp
 	h=open(PATH_TO_OUTPUT+sp+'/make_distrib_graph.R','w')
-	toWrite = """tab=read.table('"""+PATH_TO_OUTPUT+sp+"""/distrib.txt')
+	toWrite = """tab=read.table('"""+PATH_TO_OUTPUT+sp+"""/distrib.txt',sep = "\\t")
 toto=kmeans(tab$V2,2)
 png('"""+PATH_TO_OUTPUT+sp +"""/distrib.png', width = 6,
   height    = 6,

@@ -10,8 +10,8 @@ fd = open(PATH_TO_OUTPUT+sp+'/useCounter.txt','r')
 numbUsers = len(f.read().split('\n'))
 if numbUsers < 3:#because if there is one non-zero, there'll be a trailing newline.
 	#delete the system, we are the last
-	os.system('rm -rf 'PATH_TO_OUTPUT+sp)
-	os.system('rm -rf 'PATH_TO_OUTPUT+sp+'.zip')
+	os.system('rm -rf '+PATH_TO_OUTPUT+sp)
+	os.system('rm -rf '+PATH_TO_OUTPUT+sp+'.zip')
 else:
 	#there are others using it, so we need to not delete it.
 	fd.close()
