@@ -7,7 +7,7 @@ sp = species[0]
 #we need to do some threadsafety here, but like fingers crossed this won't be an issue until we are NCBIg
 
 fd = open(PATH_TO_OUTPUT+sp+'/useCounter.txt','r')
-numbUsers = len(f.read().split('\n'))
+numbUsers = len(fd.read().split('\n'))
 print numbUsers
 if numbUsers < 3:#because if there is one non-zero, there'll be a trailing newline.
 	#delete the system, we are the last
