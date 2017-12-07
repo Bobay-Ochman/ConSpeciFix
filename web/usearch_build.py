@@ -8,7 +8,7 @@ specialStrain = getCompStrain()
 liste={}
 for sp in species:
 	liste[sp]=[]
-	for st in open(PATH_TO_OUTPUT + sp + 'tenForUsearch.txt','r').readLines():
+	for st in open(PATH_TO_OUTPUT + sp + '/tenForUsearch.txt','r').readlines():
 		truc = st.strip('\n')
 		liste[sp].append(truc)
 
@@ -23,8 +23,7 @@ globalLeftToDo = 0
 for sp in species:
 	#if 'Mycobacterium' in sp or 'Pseudomonas_syringae' in sp or 'Ralstonia_solanacearum' in sp or 'Rhodococcus' in sp or 'Streptomyces_griseus' in sp:
 	#	continue
-
-	print sp,' ',nb,' strains'
+	print sp
 	done = 0
 	leftToDo = 0
 	for prot1 in liste[sp]:
@@ -37,5 +36,3 @@ for sp in species:
 todoList.close()
 
 print 'done already: ',globalDone, ' left to do: ',globalLeftToDo
-
-
