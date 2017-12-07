@@ -11,6 +11,7 @@ try:
 except:
 	os.system("wget -A.zip 'http://conspecifix-data-bucket.s3.amazonaws.com/"+sp+".zip' -P "+PATH_TO_OUTPUT)
 	os.system("unzip "+PATH_TO_OUTPUT+sp+'.zip -d '+PATH_TO_OUTPUT)
+	os.system('rm -rf '+PATH_TO_OUTPUT+sp+'.zip')
 
 #It won't be perfectly threadsafe, but that shouldn't matter with our usage
 os.system("echo '1' >> "+PATH_TO_OUTPUT+sp+"/useCounter.txt")
