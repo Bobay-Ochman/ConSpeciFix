@@ -101,7 +101,7 @@ while len(listPairsOfStrains) > 0:
 
 #Now tackel the ones that are too similar
 removedForBeingTooSimmilar = []
-while len(sub) > 100:
+while len(sub) > 30:
 	#generate a list of every pair and their distance from one another
 	listOfSimilarities = []
 	i = 0
