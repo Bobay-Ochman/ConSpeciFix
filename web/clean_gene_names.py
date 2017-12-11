@@ -43,7 +43,7 @@ os.system('mv '+PATH_TO_UPLOAD+getCompStrain()+"_clean.fa "+ fullName)
 if len(errors)>0:
 	errorFd = open(PATH_TO_UPLOAD+'cleaning_errors.txt','w')
 	if len(errors)>10:
-		errors.insert(0,("Printing first 10 errors. Total number of errors: " + len(errors)))
+		errors.insert(0,("Printing first 10 errors. Total number of errors: ", str(len(errors))))
 		errors = errors[:11]
 	for error in errors:
 		errorFd.write(error[0] + error[1])
