@@ -4,6 +4,15 @@ import os
 import sys
 
 
+
+def goHome():
+	print "------ deleting the dataset"
+	os.system('python '+PATH_TO_SCRIPTS+ 'delete_database.py '+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/22_delete.txt')
+	quit()
+
+
+
+
 print "------ making folders"
 
 # make folders
@@ -31,7 +40,7 @@ try:
 	emailMessage += "".join(f.readlines())
 	sendEmail(emailMessage)
 	os.system("echo quitting, going home > out/11_stopping.txt")
-	quit()
+	goHome()
 except:
 	pass
 	
@@ -72,7 +81,7 @@ try:
 except:
 	sendEmail("The genome that you are testing is substantially divergent from "+getSingleSpecies()[0]+", prohibiting recombination analysis and preventing production of h/m graphs. Please select a more closely related sample-set for comparison, if available.")
 	os.system("echo quitting, going home > out/11_stopping.txt")
-	quit()
+	goHome()
 
 # sample.py
 print "------ Sampling time"
@@ -99,8 +108,4 @@ os.system('python '+ PATH_TO_SCRIPTS + 'draw_box_plot.py '+remArgs+ ' &> '+PATH_
 print "------ Email the results!"
 os.system('python '+ PATH_TO_SCRIPTS + 'mailGraph.py'+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/21_mail.txt')
 
-print "------ deleting the dataset"
-os.system('python '+PATH_TO_SCRIPTS+ 'delete_database.py '+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/22_delete.txt')
-
-quit()
-
+goHome()
