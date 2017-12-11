@@ -30,7 +30,7 @@ for l in f:
 out.close()
 
 if count < 100:
-	errors.append(("Too few genes to compare. Please be sure genomes are seperated into genes as per the FASTA format. Number of genes identified:",str(count)))
+	errors.append(("Error: Too few genes to compare. Please seperate into genes as per the FASTA format. Number of genes identified: ",str(count)))
 
 
 fullName = PATH_TO_UPLOAD+getCompStrain()
@@ -42,6 +42,9 @@ os.system('mv '+PATH_TO_UPLOAD+getCompStrain()+"_clean.fa "+ fullName)
 
 if len(errors)>0:
 	errorFd = open(PATH_TO_UPLOAD+'cleaning_errors.txt','w')
+	if len(errors)>10:
+		errors.insert(0,("Printing first 10 errors. Total number of errors: " + len(errors)))
+		errors = errors[:11]
 	for error in errors:
 		errorFd.write(error[0] + error[1])
 	errorFd.close()
