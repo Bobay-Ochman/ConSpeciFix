@@ -29,7 +29,7 @@ for l in f:
 			errors.append(("Error: non nucleotide character in file: ",l))
 out.close()
 
-if count < 10:
+if count < 100:
 	errors.append(("Too few genes to compare. Please be sure genomes are seperated into genes as per the FASTA format. Number of genes identified:",str(count)))
 
 
