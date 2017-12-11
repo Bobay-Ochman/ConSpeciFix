@@ -25,6 +25,18 @@ os.system('python '+PATH_TO_SCRIPTS+ 'download_database.py '+remArgs+ ' &> '+PAT
 print "------ cleaning the names of the genes"
 os.system('python '+PATH_TO_SCRIPTS + 'clean_gene_names.py '+remArgs + ' &> '+PATH_TO_UPLOAD+'out/01_clean.txt')
 
+try:
+	f = open(PATH_TO_UPLOAD+'cleaning_errors.txt',"r")
+	emailMessage = 'The file you have uploaded appears to not be in the proper format. Please be sure to upload an annotated genome in the FASTA format. An error log is listed below.\n'
+	emailMessage += "".join(f.readlines())
+	sendEmail(emailMessage)
+	os.system("echo quitting, going home > out/11_stopping.txt")
+	quit()
+except:
+	pass
+	
+
+
 
 sendEmail("We've started your analysis and will be emailing you periodically to keep you updated on how it is going.")
 print "------ usearch build"
