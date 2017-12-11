@@ -5,7 +5,7 @@ import os
 def validLine(l):
 #	digits = any(char.isdigit() for char in l)
 	l = l.rstrip()
-	nonNucleotide = any(char not in {'A','T','G','C','-'} for char in l)
+	nonNucleotide = any(char not in {'A','T','G','C','-','N'} for char in l)
 	if nonNucleotide:
 		return False
 	else:
