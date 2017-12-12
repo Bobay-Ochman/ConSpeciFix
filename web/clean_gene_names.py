@@ -5,11 +5,9 @@ import os
 def validLine(l):
 #	digits = any(char.isdigit() for char in l)
 	l = l.rstrip()
-	nonNucleotide = any(char not in {'A','T','G','C','-','N'} for char in l)
-	if nonNucleotide:
-		return False
-	else:
-		return True
+	nonNucleotide = sum(char not in {'A','T','G','C','-','N'} for char in l)]
+	total = len(l)
+	return (nonNucleotide,total)
 
 errors = []
 
@@ -18,15 +16,28 @@ print printAllArgs()
 f = open(PATH_TO_UPLOAD+getCompStrain(),'r')
 out = open(PATH_TO_UPLOAD+getCompStrain()+"_clean.fa",'w')
 count = 0
+totalLen = 0.0
+totalNonNucleotide = 0.0
+maxGeneLen = 0
+geneLen = 0
 for l in f:
 	if(l.startswith('>')):
 		count+=1
 		out.write('>gene'+str(count)+'\n')
+		if geneLen > maxGeneLen:
+			maxGeneLen = geneLen
+		geneLen = 0
 	else:
-		if validLine(l):
-			out.write(l)
-		else:
-			errors.append(("Error: non nucleotide character in file: ",l))
+		countOfValid = validLine(l)
+		totalNonNucleotide += countOfValid[0]
+		totalLen += countOfValid[1]
+		geneLen += countOfValid[1]
+		out.write(l)
+if totalNonNucleotide / totalLen > .1:
+	errors.append(("Error: too many non-nucleotide character in file: ",str(totalNonNucleotide)+' non-nucleotide to '+str(totalLen)+'valid nucleotide'))
+if maxGeneLen > 30000:
+	errors.append(("Error: longest gene is > 30kbp. Are your genes annotated? Max len: ",str(maxGeneLen)))
+
 out.close()
 
 if count < 100:
