@@ -36,7 +36,7 @@ os.system('python '+PATH_TO_SCRIPTS + 'clean_gene_names.py '+remArgs + ' &> '+PA
 
 try:
 	f = open(PATH_TO_UPLOAD+'cleaning_errors.txt',"r")
-	emailMessage = 'The file you have uploaded appears to not be in the proper format. Please be sure to upload an annotated genome in the FASTA format. An error log is listed below.\n\nLog:\n'
+	emailMessage = 'The file you have uploaded appears to not be in the proper format. Please be sure to upload a multi-FASTA file of the protein-coding genes of the genome. An error log is listed below.\n\nLog:\n'
 	emailMessage += "".join(f.readlines())
 	sendEmail(emailMessage)
 	os.system("echo quitting, going home > out/11_stopping.txt")
