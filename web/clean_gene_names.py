@@ -5,7 +5,7 @@ import os
 def validLine(l):
 #	digits = any(char.isdigit() for char in l)
 	l = l.rstrip()
-	nonNucleotide = sum(char not in {'A','T','G','C','-','N'} for char in l)]
+	nonNucleotide = sum(char not in {'A','T','G','C','-','N'} for char in l)
 	total = len(l)
 	return (nonNucleotide,total)
 
@@ -34,14 +34,14 @@ for l in f:
 		geneLen += countOfValid[1]
 		out.write(l)
 if totalNonNucleotide / totalLen > .1:
-	errors.append(("Error: too many non-nucleotide character in file: ",str(totalNonNucleotide)+' non-nucleotide to '+str(totalLen)+'valid nucleotide'))
+	errors.append(("Error: too many non-nucleotide character in file: ",str(totalNonNucleotide)+' non-nucleotide to '+str(totalLen)+' total'))
 if maxGeneLen > 30000:
 	errors.append(("Error: longest gene is > 30kbp. Are your genes annotated? Max len: ",str(maxGeneLen)))
 
 out.close()
 
 if count < 100:
-	errors.append(("Error: Too few genes to compare. Please seperate into genes as per the FASTA format. Number of genes identified: ",str(count)))
+	errors.append(("Error: too few genes to compare. Please seperate into genes as per the FASTA format. Number of genes identified: ",str(count)))
 
 
 fullName = PATH_TO_UPLOAD+getCompStrain()
@@ -57,5 +57,5 @@ if len(errors)>0:
 		errors.insert(0,("Printing first 10 errors. Total number of errors: ", str(len(errors))))
 		errors = errors[:11]
 	for error in errors:
-		errorFd.write(error[0] + error[1])
+		errorFd.write(error[0] + error[1]+'\n')
 	errorFd.close()
