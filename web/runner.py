@@ -42,12 +42,9 @@ try:
 	os.system("echo quitting, going home > out/11_stopping.txt")
 	goHome()
 except:
-	pass
-	
+	sendEmail("We've started your analysis and will be emailing you periodically to keep you updated on how it is going.")
 
 
-
-sendEmail("We've started your analysis and will be emailing you periodically to keep you updated on how it is going.")
 print "------ usearch build"
 os.system('python '+ PATH_TO_SCRIPTS + 'usearch_build.py'+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/02_u_build.txt')
 print "------ usearch multi"
