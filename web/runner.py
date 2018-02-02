@@ -4,6 +4,15 @@ import os
 import sys
 
 
+
+def goHome():
+	print "------ deleting the dataset"
+	os.system('python '+PATH_TO_SCRIPTS+ 'delete_database.py '+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/22_delete.txt')
+	quit()
+
+
+
+
 print "------ making folders"
 
 # make folders
@@ -25,8 +34,17 @@ os.system('python '+PATH_TO_SCRIPTS+ 'download_database.py '+remArgs+ ' &> '+PAT
 print "------ cleaning the names of the genes"
 os.system('python '+PATH_TO_SCRIPTS + 'clean_gene_names.py '+remArgs + ' &> '+PATH_TO_UPLOAD+'out/01_clean.txt')
 
+try:
+	f = open(PATH_TO_UPLOAD+'cleaning_errors.txt',"r")
+	emailMessage = 'The file you have uploaded appears to not be in the proper format. Please be sure to upload a multi-FASTA file of the protein-coding genes of the genome. An error log is listed below.\n\nLog:\n'
+	emailMessage += "".join(f.readlines())
+	sendEmail(emailMessage)
+	os.system("echo quitting, going home > out/11_stopping.txt")
+	goHome()
+except:
+	sendEmail("We've started your analysis and will be emailing you periodically to keep you updated on how it is going.")
 
-sendEmail("We've started your analysis and will be emailing you periodically to keep you updated on how it is going.")
+
 print "------ usearch build"
 os.system('python '+ PATH_TO_SCRIPTS + 'usearch_build.py'+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/02_u_build.txt')
 print "------ usearch multi"
@@ -60,7 +78,7 @@ try:
 except:
 	sendEmail("The genome that you are testing is substantially divergent from "+getSingleSpecies()[0]+", prohibiting recombination analysis and preventing production of h/m graphs. Please select a more closely related sample-set for comparison, if available.")
 	os.system("echo quitting, going home > out/11_stopping.txt")
-	quit()
+	goHome()
 
 # sample.py
 print "------ Sampling time"
@@ -87,8 +105,4 @@ os.system('python '+ PATH_TO_SCRIPTS + 'draw_box_plot.py '+remArgs+ ' &> '+PATH_
 print "------ Email the results!"
 os.system('python '+ PATH_TO_SCRIPTS + 'mailGraph.py'+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/21_mail.txt')
 
-print "------ deleting the dataset"
-os.system('python '+PATH_TO_SCRIPTS+ 'delete_database.py '+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/22_delete.txt')
-
-quit()
-
+goHome()
