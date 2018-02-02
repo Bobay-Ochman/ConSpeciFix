@@ -15,7 +15,7 @@ for trial in os.listdir(PATH_TO_QUERY_SPEC):
 		species = params[2].strip('\n')
 		email = params[3].strip('\n')
 
-		arg = '../web/no_email_runner.py '+species+' '+fileName+' '+timestamp+' '+email+'\n'
+		arg = 'web/runner.py '+species+' '+fileName+' '+timestamp+' '+email+'\n'
 		todoFile.write(arg)
 
 todoFile.close()

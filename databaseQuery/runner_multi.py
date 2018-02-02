@@ -14,11 +14,11 @@ def runTrial(args):
 
 
 if __name__ == '__main__':
-	p = Pool(16)
+	p = Pool(2)
 	f = open('todo/runner.txt','r')
 	args = []
 	for l in giveMulti(f.readlines()):
 		args.append(l)
-	args = args[200:201]
+	args = args[:2]
 	p.map(runTrial,args)
 	
