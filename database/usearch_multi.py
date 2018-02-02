@@ -20,6 +20,7 @@ def work(jobQ,remQ):
 		sp = work[1]
 		prot1 = work[2]
 		prot2 = work[3]
+		print work
 #		command = ' usearch61 -usearch_global ' + path + sp + '/genes/' + prot1 + ' -db  ' + path + sp + '/genes/'  + prot2 + ' -id 0.7 -strand plus -blast6out ' + path +  sp + '/BBH/' + prot1 + '-' + prot2
 	
 		#run usearch
@@ -74,7 +75,8 @@ if __name__ == '__main__':
 	
 	f = open('todo/LargeSpec.txt','r')
 	for line in f:
-		largeSpecList.append(line.strip('\n'))
+		if not line.isspace():
+			largeSpecList.append(line.strip('\n'))
 	f.close()
 	
 	
@@ -85,7 +87,12 @@ if __name__ == '__main__':
 
 	f = open('todo/usearch.txt','r')
 	lines = f.readlines()
-	lines = giveMulti(lines)
+	newLines = []
+	for l in lines:
+		if not l.isspace():
+			newLines.append(l)
+	lines = giveMulti(newLines)
+	lines = reversed(lines)
 	for l in lines:
 		##see if any of our children functions have produced a thing we need to not init
 		try:

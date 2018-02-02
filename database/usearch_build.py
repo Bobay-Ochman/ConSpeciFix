@@ -33,14 +33,13 @@ largeSpecList = open('todo/LargeSpec.txt','w')
 globalDone = 0
 globalLeftToDo = 0
 
+listOfTodos = []
+
 for sp in species:
 	#if 'Mycobacterium' in sp or 'Pseudomonas_syringae' in sp or 'Ralstonia_solanacearum' in sp or 'Rhodococcus' in sp or 'Streptomyces_griseus' in sp:
 	#	continue
 	nb = len(liste[sp])
 	if nb >= 15:
-		if nb > 500:
-			largeSpecList.write(sp + '\n')
-			continue
 		print sp,' ',nb,' strains'
 		i=0
 		done = 0
@@ -49,18 +48,17 @@ for sp in species:
 			i+=1
 			for prot2 in liste[sp][i:]:
 				if prot1 != prot2:
-					try:
-						completed = open(PATH_TO_OUTPUT +  sp + '/BBH/' + prot1 + '-' + prot2, 'r')
+					if os.path.isfile(PATH_TO_OUTPUT +  sp + '/BBH/' + prot1 + '-' + prot2):
 						done+=1
 						globalDone +=1
-						continue
-					except:
-						todoList.write(PATH_TO_OUTPUT + '\t' + sp + '\t' + prot1 + '\t' + prot2+'\n');
+					else:
+						listOfTodos.append(PATH_TO_OUTPUT + '\t' + sp + '\t' + prot1 + '\t' + prot2);
 						leftToDo+=1
 						globalLeftToDo+=1
 		print 'done already: ',done, ' left to do: ',leftToDo
 	else:
 		print sp, ' <15'
+todoList.write('\n'.join(listOfTodos))
 todoList.truncate()
 todoList.close()
 largeSpecList.close()

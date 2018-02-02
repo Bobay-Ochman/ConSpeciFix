@@ -24,9 +24,8 @@ def copySpec(sp):
 	copyfile(PATH_TO_OUTPUT+sp+'/gno1.png', WEB_OUT+sp+'/hmGraph.png')
 	copyfile(PATH_TO_OUTPUT+sp+'/tenForUsearch.txt', WEB_OUT+sp+'/tenForUsearch.txt')
 
-	os.chdir(PATH_TO_OUTPUT)
+	os.chdir(WEB_OUT)
 	command = "zip -r "+sp+'.zip '+sp
-	print command
 	os.system(command)
 	os.system(' mv '+sp+'.zip ../websiteUploads/'+sp+'.zip')
 

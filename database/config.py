@@ -9,7 +9,7 @@ import math
 
 
 # Where the full database will be built
-PATH_TO_OUTPUT = '/Volumes/ITDR/brian/a_website/'
+PATH_TO_OUTPUT = '/Volumes/APE_MacPro_External_2/brian/toobig_1/'
 
 # your local instalations for the following programs,
 # or simply the name of the program if it can be accessed from the command line
@@ -30,7 +30,7 @@ RAXML_PATH = 'raxml'
 MAX_THREADS = multiprocessing.cpu_count()
 
 #Used to ignore species that would take computationally very long times
-MAX_SPECIES_SIZE = 500
+MAX_SPECIES_SIZE = 1000000000
 
 
 ############### Things users will not need to change ###############
