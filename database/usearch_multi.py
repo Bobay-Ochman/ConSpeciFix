@@ -32,6 +32,8 @@ def work(jobQ,remQ):
 		args.append(path + sp + '/genes/'  + prot2)
 		args.append('-id')
 		args.append('0.7')
+		args.append('-threads')
+		args.append('2')
 		args.append('-strand')
 		args.append('plus')
 		args.append('-blast6out')
