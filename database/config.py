@@ -39,16 +39,6 @@ PATH_TO_OUTPUT = '/' + PATH_TO_OUTPUT.strip('/') + '/'
 
 PATH_TO_SPECIES_TXT = "../species.txt"
 
-#used for multiprocessing on Stampeede
-TACC = (platform.processor() != 'i386')
-if(TACC):
-	PATH_TO_OUTPUT = '/work/03414/uteID/out/results/'
-	MCL_PATH = '/work/03414/uteID/local/bin/mcl'
-	MAX_THREADS = 4
-	MAFFT_PATH = '/work/03414/uteID/bin/mafft'
-	RAXML_PATH = '/work/03414/uteID/RAxML/raxmlHPC-PTHREADS'
-
-
 def giveMulti(list):
 	rank = 0
 	worldSize = 1
@@ -68,7 +58,6 @@ def printLog(string):
 		print '*** '+string
 		
 def getSpecies():
-	return getAllSpecies()
 	species=[]
 	f=open(PATH_TO_SPECIES_TXT,"r")
 	for l in f:
