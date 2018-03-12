@@ -45,15 +45,6 @@ PATH_TO_DATABASE = '/' + PATH_TO_DATABASE.strip('/') + '/'
 
 PATH_TO_SPECIES_TXT = "../species.txt"
 
-#used for multiprocessing on Stampeede
-TACC = (platform.processor() != 'i386')
-if(TACC):
-	PATH_TO_OUTPUT = '/work/03414/uteID/out/results/'
-	MCL_PATH = '/work/03414/uteID/local/bin/mcl'
-	MAX_THREADS = 4
-	MAFFT_PATH = '/work/03414/uteID/bin/mafft'
-	RAXML_PATH = '/work/03414/uteID/RAxML/raxmlHPC-PTHREADS'
-
 
 def giveMulti(list):
 	rank = 0
