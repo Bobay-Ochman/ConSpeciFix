@@ -16,6 +16,8 @@ for sp in species:
 	h.write('plot(100,100,cex=0.5,cex.main=0.8,xlim=c(3,max(w)),ylim=c(0,max(v) + 0.1),xlab=c("# Genomes"),ylab=c("h/m"),main="Testing strain against ' + sp + '")\n')
 	h.write('polygon(w,v,col="gray88",border=NA)\n')
 	h.write('points(tab$Nb,tab$Median,pch=16,cex=0.3,t="b")\n')
+	h.write('abline(h=0.108065507964,col="red", lwd=2, lty=2)\n')
+	h.write('abline(h=0.196154000259,col="red", lwd=1, lty=3)\n')
 	if nb == 1:
 		nb = 0
 		NB+=1
