@@ -8,6 +8,7 @@ from multiprocessing import Pool
 for trial in os.listdir(PATH_TO_QUERY_SPEC):
 	if trial == '.DS_Store':
 		continue
+	validate(trial)
 
 def validate(timestamp):
 	thingsToRemove = []
