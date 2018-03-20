@@ -34,17 +34,15 @@ os.system('python '+PATH_TO_SCRIPTS+ 'download_database.py '+remArgs+ ' &> '+PAT
 print "------ cleaning the names of the genes"
 os.system('python '+PATH_TO_SCRIPTS + 'clean_gene_names.py '+remArgs + ' &> '+PATH_TO_UPLOAD+'out/01_clean.txt')
 
-try:
+if os.path.isfile(PATH_TO_UPLOAD+'cleaning_errors.txt'):
 	f = open(PATH_TO_UPLOAD+'cleaning_errors.txt',"r")
 	emailMessage = 'The file you have uploaded appears to not be in the proper format. Please be sure to upload a multi-FASTA file of the protein-coding genes of the genome. An error log is listed below.\n\nLog:\n'
 	emailMessage += "".join(f.readlines())
 	sendEmail(emailMessage)
-	os.system("echo quitting, going home > out/11_stopping.txt")
+	os.system('echo quitting, going home &> '+PATH_TO_UPLOAD+' out/11_stopping.txt')
 	goHome()
-except:
-	sendEmail("We've started your analysis and will be emailing you periodically to keep you updated on how it is going.")
 
-
+sendEmail("We've started your analysis and will be emailing you periodically to keep you updated on how it is going.")
 print "------ usearch build"
 os.system('python '+ PATH_TO_SCRIPTS + 'usearch_build.py'+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/02_u_build.txt')
 print "------ usearch multi"
