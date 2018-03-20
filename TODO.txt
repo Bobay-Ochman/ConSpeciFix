@@ -1,4 +1,0 @@
-- move all ‘todo’ files to PATH_TO_OUT/todo/whatever.txt
-- Add version numbers (or just what we use) for each of the dependencies
-- Make thread-safe the download-management in web-server
-- Update graphs on web and personal comp
