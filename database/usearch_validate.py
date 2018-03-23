@@ -73,13 +73,7 @@ if __name__ == '__main__':
 		processes.append(p)
 
 
-	genomes = getGenomes(['Xanthomonas_oryzae','Pseudomonas_putida',
-	'Leptospira_interrogans','Streptomyces_rimosus','Burkholderia_vietnamiensis',
-	'Pseudoalteromonas_luteoviolacea','Vibrio_cyclitrophicus','Pseudomonas_fluorescens',
-	'Rhodococcus_erythropolis','Haemophilus_parasuis','Salinispora_pacifica','Mycobacterium_avium'
-	,'Burkholderia_ubonensis','Pseudomonas_syringae','Salinispora_arenicola','Mycobacterium_immunogenum'
-	,'Ralstonia_solanacearum','Neisseria_gonorrhoeae','Rhizobium_leguminosarum','Burkholderia_thailandensis',
-	'Mycobacterium_bovis','Streptomyces_griseus','Rhodococcus_fascians','Acetobacter_pasteurianus','Mycobacterium_colombiense'])
+	genomes = getGenomes(getSpecies())
 	
 	for sp in genomes:
 		if sp not in largeSpecList:

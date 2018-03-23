@@ -6,6 +6,10 @@ import time
 runId = str(time.time())
 PATH_TO_LOGS =PATH_TO_OUTPUT+'out_'+runId+'/'
 
+
+
+
+
 print " "
 print " ---ConSpeciFix---"
 print " "
@@ -35,14 +39,14 @@ os.system('python unzip.py'+ ' &> '+PATH_TO_LOGS+'03_unzip.txt')
 print "Parsing GFF"
 os.system('python parse_gff_build.py'+ ' &> '+PATH_TO_LOGS+'04_parse_gff_build.txt')
 os.system('python parse_gff_multi.py'+ ' &> '+PATH_TO_LOGS+'05_parse_gff_multi.txt')
-"""
+
 print "Usearch"
 os.system('python usearch_build.py'+ ' &> '+PATH_TO_LOGS+'06_u_build.txt')
 os.system('python usearch_multi.py'+ ' &> '+PATH_TO_LOGS+'07_u_multi.txt')
 
 print "Parsing Usearch"
 os.system('python parse_multiple_usearch.py'+ ' &> '+PATH_TO_LOGS+'08_u_parse.txt')
-
+"""
 print "MCL"
 os.system('python launch_mcl.py'+ ' &> '+PATH_TO_LOGS+'09_mcl.txt')
 
@@ -90,9 +94,6 @@ os.system('python assembleImages.py '+ ' &> '+PATH_TO_LOGS+'27_assembleImages.tx
 
 print "Completed\n..."
 print "Results in "+PATH_TO_OUTPUT+'\n'
-
-
-
 
 
 
