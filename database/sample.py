@@ -35,14 +35,17 @@ def sample(sp):
 # Remove identical genomes
 
 	exclusion=[]
-	excFd = open('todo/exclusion.txt','r')
-	for line in excFd.readlines():
-		dat = line.replace("'","").strip('\n')+'.fa'
-		if dat in exclusion:
-			continue
-		else:
-			exclusion.append(dat)
-	
+	try:
+		excFd = open('todo/exclusion.txt','r')
+		for line in excFd.readlines():
+			dat = line.replace("'","").strip('\n')+'.fa'
+			if dat in exclusion:
+				continue
+			else:
+				exclusion.append(dat)
+	except:
+		print "no exclusion.txt in todo folder"
+
 	testStrains = []
 	for st in strains:
 		testStrains.append(st)
