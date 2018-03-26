@@ -46,7 +46,7 @@ os.system('python usearch_multi.py'+ ' &> '+PATH_TO_LOGS+'07_u_multi.txt')
 
 print "Parsing Usearch"
 os.system('python parse_multiple_usearch.py'+ ' &> '+PATH_TO_LOGS+'08_u_parse.txt')
-"""
+
 print "MCL"
 os.system('python launch_mcl.py'+ ' &> '+PATH_TO_LOGS+'09_mcl.txt')
 

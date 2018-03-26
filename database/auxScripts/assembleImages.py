@@ -16,7 +16,7 @@ for sp in species:
 	# os.system('rm '+PATH_TO_OUTPUT+sp+'/tmp2.png')
 	pass
 
-
+print "hello?"
 #Used to produce the 4perPage graph images
 
 i = 0
