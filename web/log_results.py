@@ -12,9 +12,8 @@ stats = ['cleaning error','computation error','completed']
 status = 2
 if os.path.isdir(PATH_TO_UPLOAD+'cleaning_errors.txt'):
 	status = 0
-else if not os.path.isdir(PATH_TO_UPLOAD+'RAxML_distances.txt'):
+elif not os.path.isdir(PATH_TO_UPLOAD+'RAxML_distances.txt'):
 	status = 1
-
 
 username = getUsername()
 password = getPassword()
