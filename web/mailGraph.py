@@ -71,7 +71,7 @@ encoders.encode_base64(part)
 part.add_header('Content-Disposition', "attachment; filename= %s" % filename)
 msg.attach(part)
 
-
+#send the email.
 server = smtplib.SMTP('smtp.gmail.com', 587)
 server.starttls()
 server.login(username, password)
@@ -79,7 +79,6 @@ text = msg.as_string()
 server.sendmail(fromaddr, toaddr, text)
 server.quit()
 
-print msg.as_string()
 print "all done. With everything!"
 
 
