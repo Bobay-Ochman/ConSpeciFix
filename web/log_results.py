@@ -28,9 +28,12 @@ msg['To'] = toaddr
 msg['Subject'] = 'Log on user upload id:'+ getTimeStamp()+' final status: '+stats[status]
 
 res = '\n\n'
-critInfoFD = open(PATH_TO_UPLOAD+'crit_stats.txt','r')
-for l in critInfoFD:
-	res += l
+try:
+	critInfoFD = open(PATH_TO_UPLOAD+'crit_stats.txt','r')
+	for l in critInfoFD:
+		res += l
+except:
+	res+='no crit_stats.txt file.\n'
 res+='\n'
 
 body = "Hello!\n\nHere are the results of your comparison."+res+"\n\nThanks,\nThe ConSpeciFix Team"
