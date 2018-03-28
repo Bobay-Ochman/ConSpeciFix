@@ -10,9 +10,9 @@ import os
 stats = ['cleaning error','computation error','completed']
 
 status = 2
-if os.path.isdir(PATH_TO_UPLOAD+'cleaning_errors.txt'):
+if os.path.isfile(PATH_TO_UPLOAD+'cleaning_errors.txt'):
 	status = 0
-elif not os.path.isdir(PATH_TO_UPLOAD+'RAxML_distances.txt'):
+elif not os.path.isfile(PATH_TO_UPLOAD+'RAxML_distances.txt'):
 	status = 1
 
 username = getUsername()
