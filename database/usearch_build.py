@@ -3,7 +3,7 @@ from config import *
 
 
 species=getSpecies()
-
+#species = ['Mycobacterium_abscessus']
 strains={}
 for sp in species:
 	strains[sp]=[]
@@ -58,6 +58,7 @@ for sp in species:
 		print 'done already: ',done, ' left to do: ',leftToDo
 	else:
 		print sp, ' <15'
+
 todoList.write('\n'.join(listOfTodos))
 todoList.truncate()
 todoList.close()

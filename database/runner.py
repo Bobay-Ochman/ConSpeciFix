@@ -6,6 +6,10 @@ import time
 runId = str(time.time())
 PATH_TO_LOGS =PATH_TO_OUTPUT+'out_'+runId+'/'
 
+
+
+
+
 print " "
 print " ---ConSpeciFix---"
 print " "
@@ -90,9 +94,6 @@ os.system('python assembleImages.py '+ ' &> '+PATH_TO_LOGS+'27_assembleImages.tx
 
 print "Completed\n..."
 print "Results in "+PATH_TO_OUTPUT+'\n'
-
-
-
 
 
 

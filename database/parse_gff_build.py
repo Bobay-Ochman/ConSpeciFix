@@ -3,7 +3,7 @@ import os.path
 from config import *
 
 species = getSpecies()
-#species = ['Escherichia_coli']
+#species = ['Acinetobacter_baumannii']
 file = open('todo/parse_gff.txt','w')
 for sp in species:
 	listOfFiles = os.listdir(PATH_TO_OUTPUT + sp + '/genomes')
