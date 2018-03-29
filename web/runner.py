@@ -6,10 +6,11 @@ import sys
 
 
 def goHome():
+	print "------ logging results"
+	os.system('python '+PATH_TO_SCRIPTS+ 'log_results.py '+remArgs+' &> '+PATH_TO_UPLOAD+'out/99_log_results.txt')
 	print "------ deleting the dataset"
 	os.system('python '+PATH_TO_SCRIPTS+ 'delete_database.py '+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/22_delete.txt')
 	quit()
-
 
 
 
