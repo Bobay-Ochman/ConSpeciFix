@@ -12,7 +12,7 @@ for trial in os.listdir(PATH_TO_QUERY_SPEC):
 
 def validate(timestamp):
 	thingsToRemove = []
-	if not os.path.isfile(PATH_TO_QUERY_SPEC+trial+'/criterion.txt'):
+	if not os.path.isfile(PATH_TO_QUERY_SPEC+timestamp+'/criterion.txt'):
 		#check folders for empty files:
 		for folderName in ['align','BBH']:
 			for fileName in os.listdir(PATH_TO_QUERY_SPEC+timestamp+'/'+folderName):
