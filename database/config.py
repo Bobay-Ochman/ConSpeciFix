@@ -9,7 +9,7 @@ import math
 
 
 # Where the full database will be built
-PATH_TO_OUTPUT = '/Volumes/APE_MacPro_External_2/brian/toobig_1/'
+PATH_TO_OUTPUT = '/Volumes/APE_MacPro_External_2/brian/containers/cont_Bordetella_pertussis/'
 
 # your local instalations for the following programs,
 # or simply the name of the program if it can be accessed from the command line
@@ -27,7 +27,7 @@ RAXML_PATH = 'raxml'
 
 # Used on larger jobs where all work is linear, or in cases like
 # RAXML where the binaries themselves are optomized for multithreading
-MAX_THREADS = 4#multiprocessing.cpu_count()
+MAX_THREADS = 1#multiprocessing.cpu_count()
 
 #Used to ignore species that would take computationally very long times
 MAX_SPECIES_SIZE = 1000000000

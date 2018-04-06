@@ -4,10 +4,11 @@ from multiprocessing import Pool
 import os
 
 
-WEB_OUT = '/Volumes/APE_MacPro_External_2/brian/webDatabaseAlignmentFiles/'
+WEB_OUT = '/Volumes/APE_MacPro_External_2/brian/AllStrains/'
 
 def copySpec(sp):
-	copyfile(PATH_TO_OUTPUT+sp+'/concat85.fa', WEB_OUT+sp+'_concat85.fa')
+	# os.system('mkdir '+WEB_OUT+sp)
+	os.system('cp -r ' + PATH_TO_OUTPUT+sp+'/genes '+ WEB_OUT+sp+'/genes ')
 
 def wrapper(sp):
 	try:
@@ -17,5 +18,5 @@ def wrapper(sp):
 
 if __name__ == '__main__':
 	species = getAllSpecies()
-	p = Pool(16)
+	p = Pool(4)
 	p.map(wrapper,species)

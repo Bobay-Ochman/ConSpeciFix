@@ -84,7 +84,12 @@ def concatForSpec(sp):
 			concat[sp][id] = ''.join(tmp[sp][id])
 
 	tmp={}
-
+	for sp in species:
+		for st in strains[sp]:
+			if ('G' not in concat[sp][st]) and ('A' not in concat[sp][st]) and ('T' not in concat[sp][st]) and ('C' not in concat[sp][st]):
+				print 'no values found for: '+st
+				strains[sp].remove(st)
+	
 	for sp in species:
 		h=open(PATH_TO_OUTPUT+sp + '/concat85.fa',"w")
 		for st in strains[sp]:

@@ -3,6 +3,8 @@ import listAllSpecies
 
 genusSizes = listAllSpecies.getSize()
 
+print genusSizes
+
 myPath = '/Users/ochmanlab/Desktop/ConSpeciFix/env/work/Ochman/brian/databaseQuerySpecies/'
 
 interesting = {}
