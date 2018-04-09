@@ -32,6 +32,8 @@ def work(jobQ,remQ):
 		args.append(path + sp + '/genes/'  + prot2)
 		args.append('-id')
 		args.append('0.7')
+		args.append('-threads')
+		args.append('2')
 		args.append('-strand')
 		args.append('plus')
 		args.append('-blast6out')
@@ -85,7 +87,7 @@ if __name__ == '__main__':
 		p.start()
 		processes.append(p)
 
-	f = open('todo/usearch.txt','r')
+	f = open('todo/usearch_re_do.txt','r')
 	lines = f.readlines()
 	newLines = []
 	for l in lines:

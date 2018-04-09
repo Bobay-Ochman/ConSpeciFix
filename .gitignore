@@ -1,5 +1,5 @@
-*/*/*.pyc
 */*.pyc
+*/*/*.pyc
 */test.py
 database/todo/*
 databaseQuery/todo/*

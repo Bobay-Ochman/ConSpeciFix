@@ -9,7 +9,7 @@ import math
 
 
 # Where the full database will be built
-PATH_TO_OUTPUT = '/Volumes/APE_MacPro_External_2/brian/toobig_1/'
+PATH_TO_OUTPUT = '/Volumes/APE_MacPro_External_2/brian/containers/cont_Bordetella_pertussis/'
 
 # your local instalations for the following programs,
 # or simply the name of the program if it can be accessed from the command line
@@ -27,7 +27,7 @@ RAXML_PATH = 'raxml'
 
 # Used on larger jobs where all work is linear, or in cases like
 # RAXML where the binaries themselves are optomized for multithreading
-MAX_THREADS = multiprocessing.cpu_count()
+MAX_THREADS = 1#multiprocessing.cpu_count()
 
 #Used to ignore species that would take computationally very long times
 MAX_SPECIES_SIZE = 1000000000
@@ -38,16 +38,6 @@ MAX_SPECIES_SIZE = 1000000000
 PATH_TO_OUTPUT = '/' + PATH_TO_OUTPUT.strip('/') + '/'
 
 PATH_TO_SPECIES_TXT = "../species.txt"
-
-#used for multiprocessing on Stampeede
-TACC = (platform.processor() != 'i386')
-if(TACC):
-	PATH_TO_OUTPUT = '/work/03414/uteID/out/results/'
-	MCL_PATH = '/work/03414/uteID/local/bin/mcl'
-	MAX_THREADS = 4
-	MAFFT_PATH = '/work/03414/uteID/bin/mafft'
-	RAXML_PATH = '/work/03414/uteID/RAxML/raxmlHPC-PTHREADS'
-
 
 def giveMulti(list):
 	rank = 0
@@ -68,7 +58,6 @@ def printLog(string):
 		print '*** '+string
 		
 def getSpecies():
-	return getAllSpecies()
 	species=[]
 	f=open(PATH_TO_SPECIES_TXT,"r")
 	for l in f:
