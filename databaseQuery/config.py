@@ -13,8 +13,8 @@ import math
 #This is where the full database will be built,
 # and if all the species are being processed,
 # this can be upwards of 500GB
-PATH_TO_QUERY_SPEC = '/Volumes/ITDR/brian/databaseQuerySpecies/'
-PATH_TO_DATABASE = '/Volumes/ITDR/brian/figures_box/'
+PATH_TO_QUERY_SPEC = '/stor/work/Ochman/brian/databaseQuerySpecies/'
+PATH_TO_DATABASE = '/stor/work/Ochman/brian/a_website/'
 
 #your local instalations for the following programs,
 # or simply the name of the program if it can be accessed from the command line
@@ -32,7 +32,7 @@ RAXML_PATH = 'raxml'
 
 # Used on larger jobs where all work is linear, or in cases like
 # RAXML where the binaries themselves are optomized for multithreading
-MAX_THREADS = multiprocessing.cpu_count()
+MAX_THREADS = 4#multiprocessing.cpu_count()
 
 #Used to ignore species that would take computationally very long times
 MAX_SPECIES_SIZE = 500
