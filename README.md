@@ -23,6 +23,6 @@ There are three variants of the current conspecifix process. They are:
 
 - [**Analyze Your Own Genomes:**](https://github.com/Bobay-Ochman/ConSpeciFix/tree/master/personalCompare) for use on a single folder of genomes to determine if they are all the same species.
 - [**Database Mining:**](https://github.com/Bobay-Ochman/ConSpeciFix/tree/master/database) used to build a large database of genomes. Initiates downloads and comparisons, producing results for several species.
-- [**Web-based Database Comparison:**](https://github.com/Bobay-Ochman/ConSpeciFix/tree/master/web) A light-weight database comparison method designed for use in our website at www.conspecifix.com
+- [**Web-based Database Comparison:**](https://github.com/Bobay-Ochman/ConSpeciFix/tree/master/web) A light-weight database comparison method designed for use in our website at www.conspecifix.com. Not in the standard release.
 
 These are all found in their respective folders with respective README files to describe specific functions.
