@@ -12,7 +12,7 @@ import math
 #This is where the full database will be built,
 # and if all the species are being processed,
 # this can be upwards of 500GB
-PATH_TO_FOLDER = '/Volumes/ITDR/brian/folderComp/'
+PATH_TO_FOLDER = '/stor/home/be4833/testSpec/genes'
 
 #your local instalations for the following programs,
 # or simply the name of the program if it can be accessed from the command line
@@ -23,6 +23,10 @@ USEARCH_PATH = 'usearch61'
 MAFFT_PATH = 'mafft'
 MCL_PATH = 'mcl'
 RAXML_PATH = 'raxml'
+
+# command line character to pipe output to a file. on Macs, use ' &> '. on unix use ' > '
+PIPE_CHAR = ' > '
+
 
 ############### VARIABLES USERS MIGHT NEED TO CHANGE ###############
 
