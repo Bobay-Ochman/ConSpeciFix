@@ -25,72 +25,72 @@ try:
 	pass
 except OSError as e:
 	print e
-"""
+
 print "Making folders"
-os.system('python folders.py'+ ' &> '+PATH_TO_LOGS+'00_folders.txt')
+os.system('python folders.py'+ PIPE_CHAR+PATH_TO_LOGS+'00_folders.txt')
 
 print "Downloading Genomes"
-os.system('python download_build.py'+ ' &> '+PATH_TO_LOGS+'01_download_build.txt')
-os.system('python download_multi.py'+ ' &> '+PATH_TO_LOGS+'02_download_multi.txt')
+os.system('python download_build.py'+ PIPE_CHAR+PATH_TO_LOGS+'01_download_build.txt')
+os.system('python download_multi.py'+ PIPE_CHAR+PATH_TO_LOGS+'02_download_multi.txt')
 
 print "Unziping Genomes"
-os.system('python unzip.py'+ ' &> '+PATH_TO_LOGS+'03_unzip.txt')
+os.system('python unzip.py'+ PIPE_CHAR+PATH_TO_LOGS+'03_unzip.txt')
 
 print "Parsing GFF"
-os.system('python parse_gff_build.py'+ ' &> '+PATH_TO_LOGS+'04_parse_gff_build.txt')
-os.system('python parse_gff_multi.py'+ ' &> '+PATH_TO_LOGS+'05_parse_gff_multi.txt')
+os.system('python parse_gff_build.py'+ PIPE_CHAR+PATH_TO_LOGS+'04_parse_gff_build.txt')
+os.system('python parse_gff_multi.py'+ PIPE_CHAR+PATH_TO_LOGS+'05_parse_gff_multi.txt')
 
 print "Usearch"
-os.system('python usearch_build.py'+ ' &> '+PATH_TO_LOGS+'06_u_build.txt')
-os.system('python usearch_multi.py'+ ' &> '+PATH_TO_LOGS+'07_u_multi.txt')
+os.system('python usearch_build.py'+ PIPE_CHAR+PATH_TO_LOGS+'06_u_build.txt')
+os.system('python usearch_multi.py'+ PIPE_CHAR+PATH_TO_LOGS+'07_u_multi.txt')
 
 print "Parsing Usearch"
-os.system('python parse_multiple_usearch.py'+ ' &> '+PATH_TO_LOGS+'08_u_parse.txt')
+os.system('python parse_multiple_usearch.py'+ PIPE_CHAR+PATH_TO_LOGS+'08_u_parse.txt')
 
 print "MCL"
-os.system('python launch_mcl.py'+ ' &> '+PATH_TO_LOGS+'09_mcl.txt')
-"""
+os.system('python launch_mcl.py'+ PIPE_CHAR+PATH_TO_LOGS+'09_mcl.txt')
+
 print "Getting Core Genome"
-os.system('python get_core.py'+ ' &> '+PATH_TO_LOGS+'10_get_core.txt')
+os.system('python get_core.py'+ PIPE_CHAR+PATH_TO_LOGS+'10_get_core.txt')
 
 print "Mafft"
-os.system('python launch_mafft_build.py'+ ' &> '+PATH_TO_LOGS+'11_mafft_build.txt')
-os.system('python launch_mafft_multi.py'+ ' &> '+PATH_TO_LOGS+'12_mafft_multi.txt')
+os.system('python launch_mafft_build.py'+ PIPE_CHAR+PATH_TO_LOGS+'11_mafft_build.txt')
+os.system('python launch_mafft_multi.py'+ PIPE_CHAR+PATH_TO_LOGS+'12_mafft_multi.txt')
 
 print "Making a single Concat file"
-os.system('python concat85.py'+ ' &> '+PATH_TO_LOGS+'13_concat85.txt')
+os.system('python concat85.py'+ PIPE_CHAR+PATH_TO_LOGS+'13_concat85.txt')
 
 print "RAxML"
-os.system('python raxml_distance.py'+ ' &> '+PATH_TO_LOGS+'14_raxml.txt')
+os.system('python raxml_distance.py'+ PIPE_CHAR+PATH_TO_LOGS+'14_raxml.txt')
 
 print "Sampling"
-os.system('python sample.py' + ' &> '+PATH_TO_LOGS+'15_sample.txt')
+os.system('python sample.py' + PIPE_CHAR+PATH_TO_LOGS+'15_sample.txt')
 
 print "Calculating HM Ratio"
-os.system('python calcHM_build.py' + ' &> '+PATH_TO_LOGS+'16_calcHM_build.txt')
-os.system('python calcHM_multi.py' + ' &> '+PATH_TO_LOGS+'17_calcHM_multi.txt')
+os.system('python calcHM_build.py' + PIPE_CHAR+PATH_TO_LOGS+'16_calcHM_build.txt')
+os.system('python calcHM_multi.py' + PIPE_CHAR+PATH_TO_LOGS+'17_calcHM_multi.txt')
 
 print "Making HM Graph"
-os.system('python graph.py' + ' &> '+PATH_TO_LOGS+'18_graph.txt')
-os.system('python make_hm_graph.py'+ ' &> '+PATH_TO_LOGS+'19_make_hm_graphs.txt')
+os.system('python graph.py' + PIPE_CHAR+PATH_TO_LOGS+'18_graph.txt')
+os.system('python make_hm_graph.py'+ PIPE_CHAR+PATH_TO_LOGS+'19_make_hm_graphs.txt')
 
 print "Making Distrib Graphs"
-os.system('python distrib.py '+ ' &> '+PATH_TO_LOGS+'20_distrib.txt')
-os.system('python make_distrib_graph.py '+ ' &> '+PATH_TO_LOGS+'21_make_distrib_graph.txt')
+os.system('python distrib.py '+ PIPE_CHAR+PATH_TO_LOGS+'20_distrib.txt')
+os.system('python make_distrib_graph.py '+ PIPE_CHAR+PATH_TO_LOGS+'21_make_distrib_graph.txt')
 
 print "Making KMeans Graphs"
-os.system('python split_kmean.py '+ ' &> '+PATH_TO_LOGS+'22_split_kmean.txt')
-os.system('python make_kmeans_graph.py '+ ' &> '+PATH_TO_LOGS+'23_make_kmeans_graph.txt')
+os.system('python split_kmean.py '+ PIPE_CHAR+PATH_TO_LOGS+'22_split_kmean.txt')
+os.system('python make_kmeans_graph.py '+ PIPE_CHAR+PATH_TO_LOGS+'23_make_kmeans_graph.txt')
 
 print "Criterion..."
-os.system('python criterion.py '+ ' &> '+PATH_TO_LOGS+'24_criterion.txt')
+os.system('python criterion.py '+ PIPE_CHAR+PATH_TO_LOGS+'24_criterion.txt')
 
 print "Making Point Graph"
-os.system('python graph_point.py '+ ' &> '+PATH_TO_LOGS+'25_graph_point.txt')
-os.system('python make_hm_graph_point.py '+ ' &> '+PATH_TO_LOGS+'26_make_hm_graph_point.txt')
+os.system('python graph_point.py '+ PIPE_CHAR+PATH_TO_LOGS+'25_graph_point.txt')
+os.system('python make_hm_graph_point.py '+ PIPE_CHAR+PATH_TO_LOGS+'26_make_hm_graph_point.txt')
 
 print "Combine the images"
-os.system('python assembleImages.py '+ ' &> '+PATH_TO_LOGS+'27_assembleImages.txt')
+os.system('python assembleImages.py '+ PIPE_CHAR+PATH_TO_LOGS+'27_assembleImages.txt')
 
 print "Completed\n..."
 print "Results in "+PATH_TO_OUTPUT+'\n'
