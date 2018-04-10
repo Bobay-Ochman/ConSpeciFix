@@ -18,14 +18,17 @@ PATH_TO_FOLDER = '/stor/home/be4833/testSpec/genes'
 # or simply the name of the program if it can be accessed from the command line
 # for example
 # RAXML_PATH = '/Users/Admin/programs/standard-RAxML-master/raxmlHPC-SSE3'
-# We have all of ours on our path as the following names
+
 USEARCH_PATH = 'usearch61' 
 MAFFT_PATH = 'mafft'
 MCL_PATH = 'mcl'
 RAXML_PATH = 'raxml'
 
-# command line character to pipe output to a file. on Macs, use ' &> '. on unix use ' > '
+# command line character to pipe output to a file.
+# On most shells, use ' &> '.
 PIPE_CHAR = ' > '
+# if the & is interpreted as launching a new subprocess instead of the pipe,
+# a simple ' > ' will work instead.
 
 
 ############### VARIABLES USERS MIGHT NEED TO CHANGE ###############
