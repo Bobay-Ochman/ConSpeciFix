@@ -14,6 +14,7 @@ print PATH_TO_LOGS
 print " "
 print "Now beginning analysis steps:"
 print "  (See progress in log files)"
+print "  (log files span 06_ to 24_)"
 
 
 try:
