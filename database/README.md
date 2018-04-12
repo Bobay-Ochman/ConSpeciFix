@@ -11,11 +11,11 @@ The important files:
 
 To produce your database:
 
-1. `git clone https://github.com/Bobay-Ochman/ConSpeciFix.git`
+1. Download the latest stable release from [our github](https://github.com/Bobay-Ochman/ConSpeciFix/releases).
 2. update the `genomes_proks.txt` with the newest list from [NCBI](https://www.ncbi.nlm.nih.gov/genome/browse#!/prokaryotes/)
 3. Edit path variables in `ConSpeciFix/database/config`
 4. `cd ConSpeciFix/database`
-5. `python species.py`
+5. Run `python species.py` to produce the list of all possible species to build into the database.
 6. Remove any unwanted species from `species.txt`
 7. `python runner.py`
 
@@ -84,3 +84,7 @@ The following scripts allow the Exclusion Criterion to run in order to identify 
 - `split_kmeans.py` analyses the results of kmeans.py and produces `kmeans.txt`
 - `kmeansGraph.py` generates Rscript that graphs the result of `kmeans.txt` and identifies outliers, outputing `kmeans.pdf` and `for_removal.txt`
 - `criterion.py` writes the final results into `criterion.txt`
+
+### Additional Scripts
+
+Some additional scripts for mass database editing are included in `database/auxScripts`. These scripts are not a part of the pipeline, but can be used to aid in analysis, progress reporting, aggregating results, or cleaning up the data produced. Code in this section is provided as-is, and is not intended to be stable or complete.

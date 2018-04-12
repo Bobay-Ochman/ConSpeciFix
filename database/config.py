@@ -35,8 +35,8 @@ PIPE_CHAR = ' > '
 # RAXML where the binaries themselves are optomized for multithreading
 MAX_THREADS = multiprocessing.cpu_count()
 
-#Used to ignore species that would take computationally very long times
-MAX_SPECIES_SIZE = 1000000000
+# Used to ignore species that would take computationally very long times
+MAX_SPECIES_SIZE = 500
 
 
 ############### Things users will not need to change ###############

@@ -10,9 +10,9 @@ The important files:
 
 To run your folder comparison:
 
-1. `git clone https://github.com/Bobay-Ochman/ConSpeciFix.git`
-2. Edit path variables in `ConSpeciFix/personalCompare/config`
-3. `cd ConSpeciFix/personalCompare`
+1. Download the latest stable release from [our github](https://github.com/Bobay-Ochman/ConSpeciFix/releases).
+2. Edit path variables in `ConSpeciFix-#.#.#/personalCompare/config`
+3. `cd ConSpeciFix-#.#.#/personalCompare`
 4. `python runner.py`
 
 ## The Hard Way
