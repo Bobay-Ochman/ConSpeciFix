@@ -1,9 +1,14 @@
 from config import *
 import sys
 import os
+from multiprocessing import Pool
+
 args = []
 for arg in sys.argv:
 	args.append(arg.lower())
+
+import findRepForBigSpecies as readRaxml
+
 
 
 dico={}
@@ -45,33 +50,61 @@ species.sort()
 
 
 
+
+
+
+speciesWeHaveDistancesFor = []
+possibleBigSpecies = os.listdir('/Volumes/APE_MacPro_External_2/brian/distances/')
+for item in possibleBigSpecies:
+	speciesWeHaveDistancesFor.append(item.rstrip('.txt').lstrip('names_').lstrip('distances_'))
+
+speciesWeHaveDistancesFor = list(set(speciesWeHaveDistancesFor))
+
+
+
+
+
 bigSpecies = []
 count = 0
 totalStrainsCount = 0
 
+needsToBeDone = []
+needsToAskLm = []
 
 
 for sp in species:
 	if dico[sp]>20 and (not sp in existingSpecies):
-		if dico[sp]>500:
-			bigSpecies.append(sp)
+		# if dico[sp]>500:
+		# 	bigSpecies.append(sp)
+		# else:
+		print sp, dico[sp], sp in speciesWeHaveDistancesFor
+		if sp in speciesWeHaveDistancesFor:
+			needsToBeDone.append(sp)
 		else:
-			print sp, dico[sp]
-			count+=1
+			needsToAskLm.append(sp)
+		count+=1
+
+print needsToAskLm
 
 
-for sp in species:
-	if dico[sp] > 15:
-		totalStrainsCount+=dico[sp]
+# for sp in species:
+# 	if dico[sp] > 15:
+# 		totalStrainsCount+=dico[sp]
 
 print"_________________"
 print count
 print"_________________"
 
 
-for sp in bigSpecies:
-	print sp, dico[sp]
+if __name__ == '__main__':
+	p = Pool(16)
+	p.map(readRaxml.sample,needsToBeDone)
 
-print len(bigSpecies)
 
-print "total strains: "+str(totalStrainsCount) 
+
+# for sp in bigSpecies:
+# 	print sp, dico[sp]
+
+# print len(bigSpecies)
+
+# print "total strains: "+str(totalStrainsCount) 

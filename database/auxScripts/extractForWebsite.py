@@ -4,7 +4,7 @@ from multiprocessing import Pool
 import os
 
 
-WEB_OUT = '/Volumes/ITDR/brian/websiteOutput/'
+WEB_OUT = '/Volumes/APE_MacPro_External_2/brian/websiteOutput/'
 
 def copySpec(sp):
 	os.mkdir(WEB_OUT+sp)
@@ -12,8 +12,6 @@ def copySpec(sp):
 	os.mkdir(WEB_OUT+sp+'/BBH')
 	os.mkdir(WEB_OUT+sp+'/genes')
 	os.mkdir(WEB_OUT+sp+'/genomes')
-
-	PATH_TO_OUTPUT = '/Volumes/ITDR/brian/a_website/'
 
 	for file in os.listdir(PATH_TO_OUTPUT+sp+'/genes'):
 		copyfile(PATH_TO_OUTPUT+sp+'/genes/'+file, WEB_OUT+sp+'/genes/'+file)
@@ -37,5 +35,5 @@ def wrapper(sp):
 
 if __name__ == '__main__':
 	species = getAllSpecies()
-	p = Pool(16)
+	p = Pool(4)
 	p.map(wrapper,species)
