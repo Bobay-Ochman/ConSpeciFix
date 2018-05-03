@@ -7,9 +7,9 @@ import sys
 
 def goHome():
 	print "------ logging results"
-	os.system('python '+PATH_TO_SCRIPTS+ 'log_results.py '+remArgs+' &> '+PATH_TO_UPLOAD+'out/99_log_results.txt')
+	os.system('python '+PATH_TO_SCRIPTS+ 'log_results.py '+remArgs+' &> '+PATH_TO_UPLOAD+'out/98_log_results.txt')
 	print "------ deleting the dataset"
-	os.system('python '+PATH_TO_SCRIPTS+ 'delete_database.py '+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/22_delete.txt')
+	os.system('python '+PATH_TO_SCRIPTS+ 'delete_database.py '+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/99_delete.txt')
 	quit()
 
 
@@ -28,7 +28,7 @@ except OSError as e:
 	print e
 
 remArgs = ' '+sys.argv[1]+' '+sys.argv[2]+' '+sys.argv[3]+' '+sys.argv[4]+' '
-"""
+
 print "------ downloading dataset"
 os.system('python '+PATH_TO_SCRIPTS+ 'download_database.py '+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/00_download.txt')
 
@@ -86,7 +86,7 @@ os.system('python '+ PATH_TO_SCRIPTS + 'sample.py'+remArgs + ' &> '+PATH_TO_UPLO
 # calcHM
 print "------ going for r/m"
 os.system('python '+ PATH_TO_SCRIPTS + 'calcHM_multi.py'+remArgs + ' &> '+PATH_TO_UPLOAD+'out/12_calcHM.txt')
-"""
+
 # graph
 print "------ Graph time!"
 os.system('python '+ PATH_TO_SCRIPTS + 'graph.py'+remArgs + ' &> '+PATH_TO_UPLOAD+'out/13_graph.txt')
