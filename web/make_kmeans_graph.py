@@ -7,7 +7,11 @@ sp = species[0]
 print sp
 
 h=open(PATH_TO_UPLOAD + 'make_kmean_graph.R','w')
-h.write("""require('outliers')
+h.write("""
+
+install.packages("outliers", repos="https://cloud.r-project.org")
+
+require('outliers')
 
 tab=read.table('"""+PATH_TO_UPLOAD+"""kmeans.txt')
 listOfValues= tab$V3
