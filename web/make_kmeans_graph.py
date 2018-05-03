@@ -28,7 +28,7 @@ if (minVal < 0){
 #calculate our breaks specifically because after removing outliers, breaks will change if defaults are used
 ourBreaks <- seq(minVal, maxVal, (maxVal - minVal)/20 )
 
-png('"""+PATH_TO_UPLOAD+"""kmeans.png' ,width = 6,
+png('"""+PATH_TO_UPLOAD+"""hmGraph.png' ,width = 6,
   height    = 6,
   units     = "in",
   res       = 200)
