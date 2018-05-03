@@ -13,8 +13,8 @@ import math
 #This is where the full database will be built,
 # and if all the species are being processed,
 # this can be upwards of 500GB
-PATH_TO_QUERY_SPEC = '/Volumes/ITDR/brian/databaseQuerySpecies/'
-PATH_TO_DATABASE = '/Volumes/APE_MacPro_External_2/brian/a_website'
+PATH_TO_QUERY_SPEC = '/Volumes/APE_MacPro_External_2/brian/databaseComp/'
+PATH_TO_DATABASE = '/Volumes/APE_MacPro_External_2/brian/a_website/'
 
 #your local instalations for the following programs,
 # or simply the name of the program if it can be accessed from the command line

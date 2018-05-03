@@ -1,6 +1,6 @@
 import os
 
-myPath = '/Volumes/APE_MacPro_External_2/brian/z_oldExports/databaseCompExport2/'
+myPath = '/Users/ochmanlab/Desktop/ConSpeciFix/env/databaseQuerySpecies/'
 
 #target='/Volumes/APE_MacPro_External_2/brian/databaseComp/'
 target = '/Volumes/APE_MacPro_External_2/brian/databaseCompExport2/'

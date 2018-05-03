@@ -14,9 +14,9 @@ MCL_PATH = 'mcl'
 MAX_THREADS = 1
 MAFFT_PATH = 'mafft'
 RAXML_PATH = 'raxml'
-PATH_TO_UPLOAD = '/Volumes/ITDR/brian/databaseQuerySpecies/'+str(sys.argv[3])+'/'
+PATH_TO_UPLOAD = '/Volumes/APE_MacPro_External_2/brian/databaseQuerySpecies/'+str(sys.argv[3])+'/'
 PATH_TO_SCRIPTS = '/Users/ochmanlab/Desktop/ConSpeciFix/ConSpeciFix/databaseQuery/web/'
-PATH_TO_OUTPUT = '/Volumes/ITDR/brian/a_website/'
+PATH_TO_OUTPUT = '/Volumes/APE_MacPro_External_2/brian/websiteOutput/'
 
 
 #sys args:
