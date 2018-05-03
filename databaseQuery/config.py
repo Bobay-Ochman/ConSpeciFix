@@ -32,7 +32,7 @@ RAXML_PATH = 'raxml'
 
 # Used on larger jobs where all work is linear, or in cases like
 # RAXML where the binaries themselves are optomized for multithreading
-MAX_THREADS = multiprocessing.cpu_count()
+MAX_THREADS = 4#multiprocessing.cpu_count()
 
 #Used to ignore species that would take computationally very long times
 MAX_SPECIES_SIZE = 500

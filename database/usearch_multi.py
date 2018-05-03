@@ -87,7 +87,7 @@ if __name__ == '__main__':
 		p.start()
 		processes.append(p)
 
-	f = open('todo/usearch_re_do.txt','r')
+	f = open('todo/usearch.txt','r')
 	lines = f.readlines()
 	newLines = []
 	for l in lines:

@@ -17,23 +17,17 @@ for sp in species:
 	tag="no"
 	f = None
 	try:
-		f=open(PATH_TO_UPLOAD +"kmeans_" + sp + ".txt","r")
-	except:
+		sample=open(PATH_TO_UPLOAD +"sample.txt","r")
+		removal = open(PATH_TO_UPLOAD + "for_removal.txt","r")
+		for l in removal:
+			kick.append(l.strip('\n'))
+		for l in sample:
+			strain = l.strip('\n')
+			if strain not in kick:
+				keep.append(strain)
+	except Exception as e:
+		print str(e)
 		continue
-	for l in f:
-		a=l.strip('\n').split('\t')
-		st = a[0]
-		if st != "tot":
-			mode1,mode2=float(a[1]),float(a[3])
-			tot=mode1+mode2
-			ratio = mode2/tot
-			line = st + "\n"
-			if ratio ==0:
-				kick.append(st)
-				tag="yes"
-			else:
-				keep.append(st)
-	f.close()
 
 header = "Conspecifix Results:\n\n\tCompleted on: "+datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S') +"\n\n"
 header = header + """	For more information about our process, please visit our website at

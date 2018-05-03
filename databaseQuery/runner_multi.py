@@ -59,11 +59,9 @@ def runTrial(args):
 
 
 if __name__ == '__main__':
-	p = Pool(2)
+	p = Pool(16)
 	f = open('todo/runner.txt','r')
 	args = []
 	for l in giveMulti(f.readlines()):
 		args.append(l)
-	args = args[:2]
 	p.map(runTrial,args)
-	

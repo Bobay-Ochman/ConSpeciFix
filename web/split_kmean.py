@@ -89,7 +89,7 @@ for sp in species:
 				high.extend(strains)
 		i+=1
 	TOT = len(low) + len(high)
-	h=open(PATH_TO_UPLOAD + 'kmeans_' + sp + '.txt','w')
+	h=open(PATH_TO_UPLOAD + 'kmeans.txt','w')
 	h.write('tot\t' + str(len(low))  + '\t' +  str(round(100*len(low)/float(TOT),1)) + '\t' + str(len(high))  + '\t' +  str(round(100*len(high)/float(TOT),1)) + '\n')
 	for st in sample[sp]:
 		L = low.count(st)

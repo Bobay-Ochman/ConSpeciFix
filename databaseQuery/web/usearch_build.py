@@ -12,7 +12,6 @@ for sp in species:
 		truc = st.strip('\n')
 		liste[sp].append(truc)
 
-
 parent,dico={},{}
 
 todoList = open(PATH_TO_UPLOAD+'todo/usearch.txt','w')

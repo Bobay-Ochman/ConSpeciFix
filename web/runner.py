@@ -7,9 +7,9 @@ import sys
 
 def goHome():
 	print "------ logging results"
-	os.system('python '+PATH_TO_SCRIPTS+ 'log_results.py '+remArgs+' &> '+PATH_TO_UPLOAD+'out/99_log_results.txt')
+	os.system('python '+PATH_TO_SCRIPTS+ 'log_results.py '+remArgs+' &> '+PATH_TO_UPLOAD+'out/98_log_results.txt')
 	print "------ deleting the dataset"
-	os.system('python '+PATH_TO_SCRIPTS+ 'delete_database.py '+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/22_delete.txt')
+	os.system('python '+PATH_TO_SCRIPTS+ 'delete_database.py '+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/99_delete.txt')
 	quit()
 
 
@@ -95,13 +95,14 @@ os.system('Rscript '+ PATH_TO_UPLOAD + 'graph.R'+ ' &> '+PATH_TO_UPLOAD+'out/15_
 
 print "------ Analysis time!"
 os.system('python '+ PATH_TO_SCRIPTS + 'distrib.py '+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/16_distrib.txt')
-os.system('python '+ PATH_TO_SCRIPTS + 'kmean.py '+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/17_kmean.txt')
+os.system('python '+ PATH_TO_SCRIPTS + 'make_distrib_graph.py '+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/17_distrib_graph.txt')
 os.system('python '+ PATH_TO_SCRIPTS + 'split_kmean.py '+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/18_split_kmean.txt')
-os.system('python '+ PATH_TO_SCRIPTS + 'criterion.py '+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/19_criterion.txt')
-os.system('python '+ PATH_TO_SCRIPTS + 'draw_box_plot.py '+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/20_draw.txt')
+os.system('python '+ PATH_TO_SCRIPTS + 'make_kmeans_graph.py '+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/19_kmean_graph.txt')
+os.system('python '+ PATH_TO_SCRIPTS + 'criterion.py '+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/20_criterion.txt')
+os.system('python '+ PATH_TO_SCRIPTS + 'draw_box_plot.py '+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/21_draw.txt')
 
 
 print "------ Email the results!"
-os.system('python '+ PATH_TO_SCRIPTS + 'mailGraph.py'+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/21_mail.txt')
+os.system('python '+ PATH_TO_SCRIPTS + 'mailGraph.py'+remArgs+ ' &> '+PATH_TO_UPLOAD+'out/22_mail.txt')
 
 goHome()
