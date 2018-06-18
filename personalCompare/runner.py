@@ -32,7 +32,7 @@ except OSError as e:
 	print e
 
 print "Cleaning"
-os.system('python clean_files.py'+PIPE_CHAR+PATH_TO_LOGS++'01_cleaning.txt')
+os.system('python clean_files.py'+PIPE_CHAR+PATH_TO_LOGS+'01_cleaning.txt')
 
 print "Usearch"
 os.system('python usearch_build.py'+ PIPE_CHAR+PATH_TO_LOGS+'06_u_build.txt')
