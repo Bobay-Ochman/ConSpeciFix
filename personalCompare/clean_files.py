@@ -16,7 +16,10 @@ print 'Starting!'
 
 print 'args: '+str(sys.argv)
 
+
+fileNo = 0
 for strainName in os.listdir(PATH_TO_FOLDER):
+	fileNo+=1
 	print strainName
 	if strainName == '.DS_Store' or strainName == '_conspecifix':
 		continue
@@ -34,7 +37,7 @@ for strainName in os.listdir(PATH_TO_FOLDER):
 			if len(cumulativeLine) != 0:
 				cumulativeLine.append('\n')
 				out.write(str(''.join(cumulativeLine)))
-			out.write('>gene'+str(count)+'\n')
+			out.write('>gene'+str(fileNo)+'-'+str(count)+'\n')
 			cumulativeLine = []
 			if geneLen > maxGeneLen:
 				maxGeneLen = geneLen
