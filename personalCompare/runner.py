@@ -12,6 +12,9 @@ print " "
 print "Path to log files at:"
 print PATH_TO_LOGS
 print " "
+print "Origionals will be moved to:"
+print PATH_TO_MAT+'orig/' 
+print " "
 print "Now beginning analysis steps:"
 print "  (See progress in log files)"
 
@@ -23,9 +26,12 @@ try:
 	os.system('mkdir '+PATH_TO_MAT+'align/')
 	os.system('mkdir '+PATH_TO_MAT+'BBH/')
 	os.system('mkdir '+PATH_TO_MAT+'results/')
+	os.system('mkdir '+PATH_TO_MAT+'orig/')
 except OSError as e:
 	print e
 
+print "Cleaning"
+os.system('python clean_files.py'+ ' &> '+PATH_TO_LOGS+'01_cleaning.txt')
 
 print "Usearch"
 os.system('python usearch_build.py'+ ' &> '+PATH_TO_LOGS+'06_u_build.txt')
