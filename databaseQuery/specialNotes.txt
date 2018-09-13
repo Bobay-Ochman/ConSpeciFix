@@ -1,3 +1,0 @@
-Special Notes:
-
-There are 545 samples where RAXML was never run bc of a typo in the script. This has since been rectified, but a search for all files with an "10_raxml.txt" file in the OUT but without criterion or "11_whatever" would need to be listed for a restart.

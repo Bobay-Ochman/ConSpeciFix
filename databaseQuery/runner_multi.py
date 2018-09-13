@@ -1,6 +1,7 @@
 from multiprocessing import Pool
 import multiprocessing
 import os
+import time
 from config import *
 import parse_gff
 
@@ -30,11 +31,13 @@ def runTrial(args):
 	fd.write(args)
 	fd.close()
 
-	#download file into folder		
-	os.system('wget '+ftp + '/' + id1)
-	os.system('wget '+ftp + '/' + id2)
-	os.system('mv '+id1+' '+PATH_TO_TRIALS+dbSp+'/'+cpSp)
-	os.system('mv '+id2+' '+PATH_TO_TRIALS+dbSp+'/'+cpSp)
+	#move to the folder so they can go in the right place
+	os.chdir(PATH_TO_TRIALS+dbSp+'/'+cpSp)
+	os.system('wget --quiet '+ftp + '/' + id1)
+	os.system('wget --quiet '+ftp + '/' + id2)
+
+	# move back so we can do everything
+	os.chdir('/work/03414/be4833/stampede2/ConSpeciFix/databaseQuery/')
 	
 	#unzip and parseGFF
 	os.system('gunzip '+PATH_TO_TRIALS+dbSp+'/'+cpSp+'/'+id1)
@@ -43,8 +46,8 @@ def runTrial(args):
 	os.system('mv ' + PATH_TO_TRIALS+dbSp+'/'+cpSp+'/'+strain +'.fa '+ PATH_TO_TRIALS+dbSp+'/'+cpSp+'/'+strain)
 
 	#remove the .gff and .fna files
-	os.system('rm '+PATH_TO_TRIALS+dbSp+'/'+cpSp+'/'+strain+'.fna')
-	os.system('rm '+PATH_TO_TRIALS+dbSp+'/'+cpSp+'/'+strain+'.gff')
+	#os.system('rm '+PATH_TO_TRIALS+dbSp+'/'+cpSp+'/'+strain+'.fna')
+	#os.system('rm '+PATH_TO_TRIALS+dbSp+'/'+cpSp+'/'+strain+'.gff')
 
 	#call web/runner
 	runnerArgs = [dbSp,strain,dbSp+'/'+cpSp,'tst@me.com']
@@ -59,9 +62,10 @@ def runTrial(args):
 
 
 if __name__ == '__main__':
-	p = Pool(16)
+	p = Pool(MAX_THREADS)
 	f = open('todo/runner.txt','r')
 	args = []
 	for l in giveMulti(f.readlines()):
 		args.append(l)
+	print "Starting! on: "+str(len(args))
 	p.map(runTrial,args)

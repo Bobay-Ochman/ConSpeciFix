@@ -13,18 +13,18 @@ import math
 #This is where the full database will be built,
 # and if all the species are being processed,
 # this can be upwards of 500GB
-PATH_TO_TRIALS = '/Volumes/APE_MacPro_External_2/brian/databaseQuerySpecies/'
-PATH_TO_DATABASE = '/Volumes/APE_MacPro_External_2/brian/websiteOutput/'
+PATH_TO_TRIALS = '/scratch/03414/be4833/databaseQuerySpecies/'
+PATH_TO_DATABASE = '/scratch/03414/be4833/websiteOutput/'
 
 #your local instalations for the following programs,
 # or simply the name of the program if it can be accessed from the command line
 # for example
 # RAXML_PATH = '/Users/Admin/programs/standard-RAxML-master/raxmlHPC-SSE3'
 # We have all of ours on our path as the following names
-USEARCH_PATH = 'usearch61' 
-MAFFT_PATH = 'mafft'
-MCL_PATH = 'mcl'
-RAXML_PATH = 'raxml'
+USEARCH_PATH = '/work/03414/be4833/stampede2/programs/usearch8.0.1623_i86linux32' 
+MAFFT_PATH = '/work/03414/be4833/bin/mafft'
+MCL_PATH = '/home1/03414/be4833/local/bin/mcl'
+RAXML_PATH = '/work/03414/be4833/RAxML/raxmlHPC-PTHREADS'
 
 
 ############### VARIABLES USERS MIGHT NEED TO CHANGE ###############
@@ -32,7 +32,7 @@ RAXML_PATH = 'raxml'
 
 # Used on larger jobs where all work is linear, or in cases like
 # RAXML where the binaries themselves are optomized for multithreading
-MAX_THREADS = 4#multiprocessing.cpu_count()
+MAX_THREADS = multiprocessing.cpu_count()
 
 #Used to ignore species that would take computationally very long times
 MAX_SPECIES_SIZE = 500
@@ -73,7 +73,7 @@ def getSelectedSpecies(file,database):
 			if(database):
 				h = open(PATH_TO_DATABASE + sp+'/' + file)
 			else:
-				h = open(PATH_TO_QUERY_SPEC + sp+'/' + file)
+				h = open(PATH_TO_TRIALS + sp+'/' + file)
 			h.close()
 			ret.append(sp)
 		except:
@@ -85,7 +85,7 @@ def getAllSpecies(database):
 	if database:
 		allSpec = os.listdir(PATH_TO_DATABASE)
 	else:
-		allSpec = os.listdir(PATH_TO_QUERY_SPEC)
+		allSpec = os.listdir(PATH_TO_TRIALS)
 	i = 0
 	while i < len(allSpec):
 		if allSpec[i] == '.DS_Store' or allSpec[i] == 'big_graph.R' or any(char.isdigit() for char in allSpec[i]):
@@ -100,7 +100,7 @@ def getGenomes(species,database):
 		if database:
 			dico[sp] = os.listdir(PATH_TO_DATABASE + sp+'/genes')
 		else:
-			dico[sp] = os.listdir(PATH_TO_QUERY_SPEC + sp+'/genes')
+			dico[sp] = os.listdir(PATH_TO_TRIALS + sp+'/genes')
 	return dico
 
 def getFolders():

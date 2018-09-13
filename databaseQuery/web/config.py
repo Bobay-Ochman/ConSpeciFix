@@ -4,19 +4,21 @@ import sys
 import platform
 
 PATH_TO_SPECIES_TXT = "../species.txt"
-MAX_THREADS = multiprocessing.cpu_count()
 MAX_SPECIES_SIZE = 500
-
-
-
-USEARCH_PATH = 'usearch61' 
-MCL_PATH = 'mcl'
 MAX_THREADS = 1
-MAFFT_PATH = 'mafft'
-RAXML_PATH = 'raxml'
-PATH_TO_UPLOAD = '/Volumes/APE_MacPro_External_2/brian/databaseQuerySpecies/'+str(sys.argv[3])+'/'
-PATH_TO_SCRIPTS = '/Users/ochmanlab/Desktop/ConSpeciFix/ConSpeciFix/databaseQuery/web/'
-PATH_TO_OUTPUT = '/Volumes/APE_MacPro_External_2/brian/websiteOutput/'
+
+
+
+USEARCH_PATH = '/work/03414/be4833/stampede2/programs/usearch8.0.1623_i86linux32' 
+MAFFT_PATH = '/work/03414/be4833/bin/mafft'
+MCL_PATH = '/home1/03414/be4833/local/bin/mcl'
+RAXML_PATH = '/work/03414/be4833/RAxML/raxmlHPC-PTHREADS'
+
+
+
+PATH_TO_UPLOAD = '/scratch/03414/be4833/databaseQuerySpecies/'+str(sys.argv[3])+'/'
+PATH_TO_SCRIPTS = '/work/03414/be4833/stampede2/ConSpeciFix/databaseQuery/web/'
+PATH_TO_OUTPUT = '/scratch/03414/be4833/websiteOutput/'
 
 
 #sys args:
