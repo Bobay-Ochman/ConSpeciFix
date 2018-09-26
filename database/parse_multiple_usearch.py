@@ -13,7 +13,6 @@ def parseMultUsearch(spec):
 		print 'starting!' + str(species)
 
 		strains= getGenomes(species)
-
 		genes,lengthOfGene={},{}
 
 		for sp in species:
@@ -37,8 +36,8 @@ def parseMultUsearch(spec):
 						lengthOfGene[id] = len(l.strip('\n'))
 				f.close()
 
-		#print genes
-		#print lengthOfGene
+		# print genes
+		# print lengthOfGene
 		
 		parent={}
 
@@ -85,6 +84,7 @@ def parseMultUsearch(spec):
 							pass
 			g.close()
 	except Exception as e:
+		print "EXCEPTION!"
 		print spec
 		print e
 
