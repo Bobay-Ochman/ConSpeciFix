@@ -24,6 +24,9 @@ MAFFT_PATH = 'mafft'
 MCL_PATH = 'mcl'
 RAXML_PATH = 'raxml'
 
+# command line character to pipe output to a file. on Macs, use ' &> '. on unix use ' > '
+PIPE_CHAR = ' > '
+
 ############### VARIABLES USERS MIGHT NEED TO CHANGE ###############
 
 
