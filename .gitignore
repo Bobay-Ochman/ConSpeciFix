@@ -4,6 +4,7 @@
 database/todo/*
 databaseQuery/todo/*
 revisionSpecifics/todo/*
+*/nohup.out
 
 # OS generated files #
 ######################
