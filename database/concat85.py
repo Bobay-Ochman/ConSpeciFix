@@ -93,6 +93,8 @@ def concatForSpec(sp):
 	for sp in species:
 		h=open(PATH_TO_OUTPUT+sp + '/concat85.fa',"w")
 		for st in strains[sp]:
+			if ('A' not in concat[sp][st]) and ('S' not in concat[sp][st]) and ('T' not in concat[sp][st]) and ('G' not in concat[sp][st]):
+				continue
 			h.write(">" + st + "\n")
 			i=0
 			while i < len(concat[sp][st]):		# MODIF 

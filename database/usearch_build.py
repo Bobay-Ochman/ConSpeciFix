@@ -39,7 +39,7 @@ for sp in species:
 	#if 'Mycobacterium' in sp or 'Pseudomonas_syringae' in sp or 'Ralstonia_solanacearum' in sp or 'Rhodococcus' in sp or 'Streptomyces_griseus' in sp:
 	#	continue
 	nb = len(liste[sp])
-	if nb >= 15:
+	if nb >= 2:
 		print sp,' ',nb,' strains'
 		i=0
 		done = 0
