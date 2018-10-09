@@ -1,6 +1,7 @@
 from config import *
 import os
 import sys
+from multiprocessing import Pool
 
 
 def validLine(l):
@@ -10,19 +11,13 @@ def validLine(l):
 	total = len(l)
 	return (nonNucleotide,total)
 
-errors = []
 
-print 'Starting!'
-
-print 'args: '+str(sys.argv)
-
-
-fileNo = 0
-for strainName in os.listdir(PATH_TO_FOLDER):
-	fileNo+=1
+def cleanFile(arg):
+	errors = []
+	strainName = arg
 	print strainName
 	if strainName == '.DS_Store' or strainName == '_conspecifix':
-		continue
+		return
 	f = open(PATH_TO_FOLDER+strainName,'r')
 	out = open(PATH_TO_FOLDER+strainName+"_clean.fa",'w')
 	count = 0
@@ -37,7 +32,7 @@ for strainName in os.listdir(PATH_TO_FOLDER):
 			if len(cumulativeLine) != 0:
 				cumulativeLine.append('\n')
 				out.write(str(''.join(cumulativeLine)))
-			out.write('>gene'+str(fileNo)+'-'+str(count)+'\n')
+			out.write('>gene'+strainName+'-'+str(count)+'\n')
 			cumulativeLine = []
 			if geneLen > maxGeneLen:
 				maxGeneLen = geneLen
@@ -56,7 +51,7 @@ for strainName in os.listdir(PATH_TO_FOLDER):
 
 	out.close()
 
-	if count < 11:
+	if count < 0:
 		errors.append(("Error: too few genes to compare. Please seperate into genes as per the FASTA format. Number of genes identified: ",str(count)))
 
 	fullName = '1_'
@@ -75,3 +70,12 @@ for strainName in os.listdir(PATH_TO_FOLDER):
 		for error in errors:
 			errorFd.write('File:'+strainName+'\t'+error[0] + error[1]+'\n')
 		errorFd.close()
+
+
+if __name__ == '__main__':
+	print 'args: '+str(sys.argv)
+	p = Pool(MAX_THREADS)
+	print 'Starting! with '+ str(MAX_THREADS) + ' threads.'
+	filesToProcess = os.listdir(PATH_TO_FOLDER)
+	p.map(cleanFile,filesToProcess)
+

@@ -83,7 +83,7 @@ for lili in core:
 	h.write(ortho + "\t" + "\t".join(lili) + "\n")
 	g=open(PATH_TO_MAT + 'align/' + ortho + ".fa","w")
 	for id in lili:
-		g.write(">" + id + "\n" + seq[id]  )
+		g.write(">" + id + "\n" + seq[id].strip()+'\n'  )
 	g.truncate()
 	g.close()	
 h.close()

@@ -23,7 +23,7 @@ globalDone = 0
 globalLeftToDo = 0
 
 nb = len(liste)
-if nb >= 15:
+if nb >= 2:
 	i=0
 	done = 0
 	leftToDo = 0
@@ -40,7 +40,7 @@ if nb >= 15:
 					leftToDo+=1
 					globalLeftToDo+=1
 else:
-	print ' <15'
+	print ' <2'
 todoList.truncate()
 todoList.close()
 

@@ -65,6 +65,8 @@ tmp={}
 
 h=open(PATH_TO_MAT+'concat85.fa',"w")
 for st in strains:
+	if ('A' not in concat[st]) and ('S' not in concat[st]) and ('T' not in concat[st]) and ('G' not in concat[st]):
+		continue
 	h.write(">" + st + "\n")
 	i=0
 	while i < len(concat[st]):		# MODIF 
