@@ -8,6 +8,7 @@ if 'config.pyc' in files:
 	os.remove('config.pyc')
 
 try:
+	from config import *
 	print PATH_TO_OUTPUT
 except:
 	print 'whelp this will be not fun'
