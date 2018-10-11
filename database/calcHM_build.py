@@ -76,15 +76,6 @@ def calcHM(SP):
 			f.close()
 
 
-
-	f_subset=open(PATH_TO_OUTPUT + SP + '/rm1.txt',"w")
-	for subset in memo_subset:
-		f_subset.write(subset + "\t" + '\t'.join(memo_subset[subset])  + "\n")
-
-	f_subset.close()
-
-
-
 	tmp=[]
 	f=open(PATH_TO_OUTPUT + SP + '/families_'+SP+'.txt','r')
 	for l in f:

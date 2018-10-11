@@ -72,23 +72,6 @@ def calcHM(args):
 					memo_subset[a[0]] = a[1:]
 			f.close()
 
-
-
-	f_subset=open(PATH_TO_OUTPUT + SP + '/rm1.txt',"w")
-	for subset in memo_subset:
-		f_subset.write(subset + "\t" + '\t'.join(memo_subset[subset])  + "\n")
-	f_subset.close()
-
-
-	tmp=[]
-	f=open(PATH_TO_OUTPUT + SP + '/families_'+SP+'.txt','r')
-	for l in f:
-		a=l.strip('\n').split('\t')
-		if memo_subset.has_key(a[1]):
-			pass
-		else:
-			tmp.append(a[1])	
-		
 		
 	alpha=['A','C','G','T']
 
