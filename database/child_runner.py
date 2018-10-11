@@ -29,13 +29,6 @@ except OSError as e:
 print "Making folders"
 os.system('python folders.py'+ PIPE_CHAR+PATH_TO_LOGS+'00_folders.txt')
 
-# print "Downloading Genomes"
-# os.system('python download_build.py'+ PIPE_CHAR+PATH_TO_LOGS+'01_download_build.txt')
-# os.system('python download_multi.py'+ PIPE_CHAR+PATH_TO_LOGS+'02_download_multi.txt')
-
-print "Unziping Genomes"
-os.system('python unzip.py'+ PIPE_CHAR+PATH_TO_LOGS+'03_unzip.txt')
-
 print "Parsing GFF"
 os.system('python parse_gff_build.py'+ PIPE_CHAR+PATH_TO_LOGS+'04_parse_gff_build.txt')
 os.system('python parse_gff_multi.py'+ PIPE_CHAR+PATH_TO_LOGS+'05_parse_gff_multi.txt')
