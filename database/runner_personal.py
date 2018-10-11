@@ -54,7 +54,8 @@ fd.write(userSpecies+'\t30\n')
 fd.close()
 
 for f in os.listdir(user_path):
-	clean_files.cleanFile(f,user_path,con_db_path+userSpecies+'/genes/')
+	if '_conspecifix' not in f:
+		clean_files.cleanFile(f,user_path,con_db_path+userSpecies+'/genes/')
 
 pathToDatabaseComp = con_script_path+origComponentFolders[len(origComponentFolders)-1]
 pathToOldConfig = pathToDatabaseComp+'/config.py'
@@ -64,14 +65,14 @@ oldConfig = open(pathToOldConfig,'r')
 newConfig = open(pathToNewConfig,'w')
 
 for l in oldConfig.readlines():
-	if 'PATH_TO_OUTPUT = ' in l:
-		l = 'PATH_TO_OUTPUT = "'+con_db_path+'"'
+	if 'PATH_TO_OUT = ' in l:
+		l = 'PATH_TO_OUT = "'+con_db_path+'"'
 	newConfig.write(l)
 os.system('mv '+pathToNewConfig+' '+pathToOldConfig)
 
 os.chdir(pathToDatabaseComp)
-print(os.getcwd())
-os.remove(pathToDatabaseComp+'/config.pyc')
+print("CWD:"+os.getcwd())
 os.system('chmod 777 *')
+os.remove(pathToDatabaseComp+'/config.pyc')
 os.system('python child_runner.py')
 

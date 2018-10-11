@@ -9,7 +9,7 @@ import math
 
 
 # Where the full database will be built
-PATH_TO_OUTPUT = '/Users/ochmanlab/Desktop/ConSpeciFix/env/work/Ochman/brian/c_med_ready_boys/'
+PATH_TO_OUT = '/Users/ochmanlab/Desktop/ConSpeciFix/env/work/Ochman/brian/c_med_ready_boys/'
 
 # your local instalations for the following programs,
 # or simply the name of the program if it can be accessed from the command line
@@ -37,7 +37,7 @@ MIN_SPECIES_SIZE = 8
 
 ############### Things users will not need to change ###############
 
-PATH_TO_OUTPUT = '/' + PATH_TO_OUTPUT.strip('/') + '/'
+PATH_TO_OUTPUT = '/' + PATH_TO_OUT.strip('/') + '/'
 
 PATH_TO_SPECIES_TXT = "../species.txt"
 
