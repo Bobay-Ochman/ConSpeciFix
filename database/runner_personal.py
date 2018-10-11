@@ -71,5 +71,7 @@ os.system('mv '+pathToNewConfig+' '+pathToOldConfig)
 
 os.chdir(pathToDatabaseComp)
 print(os.getcwd())
+os.remove(pathToDatabaseComp+'/config.pyc')
+os.system('chmod 777 *')
 os.system('python child_runner.py')
 

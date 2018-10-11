@@ -16,7 +16,7 @@ PATH_TO_OUTPUT = '/Users/ochmanlab/Desktop/ConSpeciFix/env/work/Ochman/brian/c_m
 # for example:
 # 	RAXML_PATH = '/Users/Admin/programs/standard-RAxML-master/raxmlHPC-SSE3'
 
-USEARCH_PATH = 'usearch61' 
+USEARCH_PATH = '/stor/home/be4833/usearch6.1.544_i86linux32' 
 MAFFT_PATH = 'mafft'
 MCL_PATH = 'mcl'
 RAXML_PATH = 'raxml'

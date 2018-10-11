@@ -55,7 +55,7 @@ os.system('python get_core.py'+ PIPE_CHAR+PATH_TO_LOGS+'10_get_core.txt')
 
 print "Mafft"
 os.system('python launch_mafft_build.py'+ PIPE_CHAR+PATH_TO_LOGS+'11_mafft_build.txt')
-os.system('python launch_mafft_multi.py'+ PIPE_CHAR+PATH_TO_LOGS+'12_mafft_multi.txt')
+os.system('python launch_mafft_multi.py')
 
 print "Making a single Concat file"
 os.system('python concat85.py'+ PIPE_CHAR+PATH_TO_LOGS+'13_concat85.txt')
