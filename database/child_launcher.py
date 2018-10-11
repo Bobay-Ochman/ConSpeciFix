@@ -2,9 +2,11 @@ import os
 
 print "hello from launcher"
 print os.getcwd()
-print os.listdir(os.getcwd())
+files = os.listdir(os.getcwd())
+print files
+if 'config.pyc' in files:
+	os.remove('config.pyc')
 
-from config import *
 try:
 	print PATH_TO_OUTPUT
 except:
