@@ -48,7 +48,7 @@ def concatForSpec(sp):
 				f=open( PATH_TO_OUTPUT + sp + '/align/'  + ortho + ".fa.align","r")
 				if os.stat(PATH_TO_OUTPUT + sp + '/align/'  + ortho + ".fa.align").st_size == 0:
 					raise NotImplementedError("ortho file is empty, skipping.")
-			except IOError as e:
+			except Exception as e:
 				print 'failing to do '+sp+' - '+ortho
 				continue
 			flash={}
