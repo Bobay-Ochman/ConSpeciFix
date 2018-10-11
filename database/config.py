@@ -33,7 +33,7 @@ MAX_THREADS = multiprocessing.cpu_count()
 
 #Used to ignore species that would take computationally very long times
 MAX_SPECIES_SIZE = 1000000000
-
+MIN_SPECIES_SIZE = 8
 
 ############### Things users will not need to change ###############
 

@@ -39,7 +39,7 @@ for sp in species:
 	#if 'Mycobacterium' in sp or 'Pseudomonas_syringae' in sp or 'Ralstonia_solanacearum' in sp or 'Rhodococcus' in sp or 'Streptomyces_griseus' in sp:
 	#	continue
 	nb = len(liste[sp])
-	if nb >= 2:
+	if nb >= MIN_SPECIES_SIZE:
 		print sp,' ',nb,' strains'
 		i=0
 		done = 0
@@ -57,7 +57,7 @@ for sp in species:
 						globalLeftToDo+=1
 		print 'done already: ',done, ' left to do: ',leftToDo
 	else:
-		print sp, ' <15'
+		print sp, ' <'+str(MIN_SPECIES_SIZE)
 
 todoList.write('\n'.join(listOfTodos))
 todoList.truncate()
