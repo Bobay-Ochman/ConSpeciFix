@@ -7,13 +7,17 @@ user_path = sys.argv[1] #path to user's files
 user_path = user_path.rstrip('/')+'/'
 con_path = user_path+'_conspecifix/'
 if os.path.exists(con_path):
-	shutil.rmtree(con_path)
-con_script_path = con_path+'scripts/'
-con_db_path = con_path+'database/'
+	try:
+		shutil.rmtree(con_path)
+	except Exception as e:
+		print "Could not remove old path: %s" % e
 try:
 	os.mkdir(con_path)
 except Exception as e:
 	print('Dir not made, Error: %s' % e)
+
+con_script_path = con_path+'scripts/'
+con_db_path = con_path+'database/'
 try:
 	os.mkdir(con_db_path)
 except Exception as e:
