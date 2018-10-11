@@ -70,5 +70,6 @@ for l in oldConfig.readlines():
 os.system('mv '+pathToNewConfig+' '+pathToOldConfig)
 
 os.chdir(pathToDatabaseComp)
+print(os.getcwd())
 os.system('python child_runner.py')
 
