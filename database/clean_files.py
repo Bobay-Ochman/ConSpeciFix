@@ -58,7 +58,7 @@ def cleanFile(fileName, path_to_orig, path_to_dest):
 		errors.append(("Error: too few genes to compare. Please seperate into genes as per the FASTA format. Number of genes identified: ",str(count)))
 
 	if len(errors)>0:
-		errorFd = open(PATH_TO_FOLDER+'cleaning_errors.txt','a')
+		errorFd = open(path_to_orig+'cleaning_errors.txt','a')
 		if len(errors)>10:
 			errors.insert(0,("Printing first 10 errors. Total number of errors: ", str(len(errors))))
 			errors = errors[:11]
