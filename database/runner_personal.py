@@ -79,6 +79,6 @@ print("CWD:\n"+os.getcwd()+"\n")
 os.system('chmod 777 *')
 print 'Removing:\n'+pathToDatabaseComp+'/config.pyc\n'
 os.system('rm '+pathToDatabaseComp+'/config.pyc')
-print "Calling:\n"+'python '+pathToDatabaseComp+'/child_launcher.py\n\n'
-os.system('python '+pathToDatabaseComp+'/child_launcher.py')
+print "Calling:\n"+'sh '+pathToDatabaseComp+'/child_launcher.sh\n\n'
+os.system('sh '+pathToDatabaseComp+'/child_launcher.sh')
 
