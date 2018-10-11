@@ -1,5 +1,6 @@
 from config import *
 import os
+import sys
 from multiprocessing import Pool
 
 def concatForSpec(sp):
@@ -93,10 +94,19 @@ def concatForSpec(sp):
 		h.close()
 	print 'completed! '+str(species[0])
 
+def wrapper(args):
+	try:
+		concatForSpec(args)
+	except Exception as e:
+	    exc_type, exc_obj, exc_tb = sys.exc_info()
+	    fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+	    print(exc_type, fname, exc_tb.tb_lineno)
+
+
 if __name__ == '__main__':
 	species = giveMulti(getSelectedSpecies("align/ortho1.fa.align"))	
 	p = Pool(MAX_THREADS)
-	p.map(concatForSpec,species)
+	p.map(wrapper,species)
 
 
 #"""
