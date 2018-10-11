@@ -75,10 +75,10 @@ for l in oldConfig.readlines():
 os.system('mv '+pathToNewConfig+' '+pathToOldConfig)
 
 os.chdir(pathToDatabaseComp)
-print("CWD:\n"+os.getcwd()+"\n\n")
+print("CWD:\n"+os.getcwd()+"\n")
 os.system('chmod 777 *')
 print 'Removing:\n'+pathToDatabaseComp+'/config.pyc'
 os.remove(pathToDatabaseComp+'/config.pyc')
-print "Calling:\n"+'python '+pathToDatabaseComp+'/child_runner.py'
-os.system('python '+pathToDatabaseComp+'/child_runner.py')
+print "Calling:\n"+'python '+pathToDatabaseComp+'/child_launcher.py+\n\n'
+os.system('python '+pathToDatabaseComp+'/child_launcher.py')
 
