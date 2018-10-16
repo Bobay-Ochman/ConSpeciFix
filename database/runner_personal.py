@@ -3,6 +3,8 @@ import sys
 import shutil
 import clean_files
 
+print "starting..."
+
 user_path = sys.argv[1] #path to user's files
 user_path = user_path.rstrip('/')+'/'
 con_path = user_path+'_conspecifix/'
@@ -57,6 +59,7 @@ fd = open(con_script_path+'species.txt','w')
 fd.write(userSpecies+'\t30\n')
 fd.close()
 
+print "cleaning files..."
 for f in os.listdir(user_path):
 	if '_conspecifix' not in f:
 		clean_files.cleanFile(f,user_path,con_db_path+userSpecies+'/genes/')

@@ -12,7 +12,6 @@ def validLine(l):
 def cleanFile(fileName, path_to_orig, path_to_dest):
 	errors = []
 	strainName = fileName
-	print strainName
 	if strainName == '.DS_Store' or strainName == '_conspecifix':
 		return
 	fullName = '1_'
