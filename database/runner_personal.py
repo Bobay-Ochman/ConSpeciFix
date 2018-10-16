@@ -72,6 +72,8 @@ for l in oldConfig.readlines():
 	if 'PATH_TO_OUT = ' in l:
 		l = 'PATH_TO_OUT = "'+con_db_path+'"'
 	newConfig.write(l)
+newConfig.close()
+oldConfig.close()
 os.system('mv '+pathToNewConfig+' '+pathToOldConfig)
 
 os.chdir(pathToDatabaseComp)

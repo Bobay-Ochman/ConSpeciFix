@@ -26,6 +26,7 @@ try:
 except OSError as e:
 	print e
 
+
 print "Making folders"
 os.system('python folders.py'+ PIPE_CHAR+PATH_TO_LOGS+'00_folders.txt')
 

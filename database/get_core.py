@@ -101,7 +101,7 @@ def getCore(spec):
 			h.write(ortho + "\t" + "\t".join(lili) + "\n")
 			g=open(PATH_TO_OUTPUT + sp + '/align/' + ortho + ".fa","w")
 			for id in lili:
-				g.write(">" + id + "\n" + seq[sp][id]  )
+				g.write(">" + id + "\n" + seq[sp][id].strip()+'\n'  )
 			g.truncate()
 			g.close()	
 		h.close()

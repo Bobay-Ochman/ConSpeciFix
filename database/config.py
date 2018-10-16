@@ -16,10 +16,10 @@ PATH_TO_OUT = '/Users/ochmanlab/Desktop/ConSpeciFix/env/work/Ochman/brian/c_med_
 # for example:
 # 	RAXML_PATH = '/Users/Admin/programs/standard-RAxML-master/raxmlHPC-SSE3'
 
-USEARCH_PATH = '/stor/home/be4833/usearch6.1.544_i86linux32' 
+USEARCH_PATH = '/Users/Admin/Documents/Work/programs/usearch10.0.240_i86osx32' 
 MAFFT_PATH = 'mafft'
 MCL_PATH = 'mcl'
-RAXML_PATH = 'raxml'
+RAXML_PATH = '/Users/Admin/Documents/Work/programs/standard-RAxML-master/raxmlHPC-SSE3'
 
 # command line character to pipe output to a file. on Macs, use ' &> '. on unix use ' > '
 PIPE_CHAR = ' > '
