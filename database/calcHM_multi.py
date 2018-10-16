@@ -308,10 +308,10 @@ def calcHM(args):
 		rm = 'NA'
 	print  SP, len(strains),' r/m= ', rm      #,' r= ',r,' m= ',m	, '   Bips:  r= ',bip.count('r'),'  m= ',bip.count('m'),' |  for ',singleton,' singleton'
 	h=io.open(PATH_TO_OUTPUT + SP + '/rm1.txt',mode="a")
-	h.write(truc + '\t' + str(r) + '\t' + str(m) + '\t' + str(rm) + '\t' + str(len(bip)) + '\n'   )
+	h.write(unicode(str(truc + '\t' + str(r) + '\t' + str(m) + '\t' + str(rm) + '\t' + str(len(bip)) + '\n'   )))
 	h.close()
 	d=io.open("todo/completed.txt",mode='a')
-	d.write(args)
+	d.write(unicode(args))
 	d.close()
 
 """
