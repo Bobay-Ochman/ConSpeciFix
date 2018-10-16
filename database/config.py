@@ -9,19 +9,21 @@ import math
 
 
 # Where the full database will be built
-PATH_TO_OUT = '/Users/ochmanlab/Desktop/ConSpeciFix/env/work/Ochman/brian/c_med_ready_boys/'
+PATH_TO_OUT = '/path/to/where/you/want/the/database/to/be/built'
 
 # your local instalations for the following programs,
 # or simply the name of the program if it can be accessed from the command line
 # for example:
 # 	RAXML_PATH = '/Users/Admin/programs/standard-RAxML-master/raxmlHPC-SSE3'
 
-USEARCH_PATH = '/stor/home/be4833/usearch6.1.544_i86linux32' 
+USEARCH_PATH = 'usearch' 
 MAFFT_PATH = 'mafft'
 MCL_PATH = 'mcl'
 RAXML_PATH = 'raxml'
 
-# command line character to pipe output to a file. on Macs, use ' &> '. on unix use ' > '
+# command line character to pipe output to a file.
+# on Macs, use ' &> ' to pipe more output to the logs/
+# on unix use ' > ' to avoid starting all scripts as subprocesses. 
 PIPE_CHAR = ' > '
 
 ############### VARIABLES USERS MIGHT NEED TO CHANGE ###############
