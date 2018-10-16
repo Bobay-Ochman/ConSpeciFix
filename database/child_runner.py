@@ -79,7 +79,7 @@ print "Combine the images"
 os.system('python assembleImages.py '+ PIPE_CHAR+PATH_TO_LOGS+'27_assembleImages.txt')
 
 print "Completed\n..."
-print "Results in:\n"+PATH_TO_OUTPUT+'\n'
+print "Results in:\n"+PATH_TO_OUTPUT+'User_spec/\n'
 
 os.system('cp '+PATH_TO_OUTPUT+'User_spec/criterion.txt ' +PATH_TO_OUTPUT+'../../results.txt')
 
