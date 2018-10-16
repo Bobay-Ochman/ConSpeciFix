@@ -77,7 +77,7 @@ def sample(sp):
 					elif  st2 in exclusion and st2 in sub:
 						sub.remove(st2)
 						i=-1
-				elif float(dist[st1][st2]) > 1:
+				elif float(dist[st1][st2]) > MAX_RAXML_DISTANCE_ALLOWED:
 					if st1 in countOfStrains:
 						countOfStrains[st1] +=1
 					else:
