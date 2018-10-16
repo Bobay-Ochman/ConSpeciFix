@@ -1,27 +1,3 @@
-# Database Building
-
-Produces a database of genomes, their comparisons, and result metrics for every species.
-
-## The Easy Way
-
-The important files:
-- `config.py` defines several important variables that must be configered before any other steps.
-- `species.py` When run, this populates `species.txt` with a list of all species in the NCBI database. Only species on this list will be run in the next step.
-- `runner.py` When run, takes this list and runs an analysis for that species to completion.
-
-To produce your database:
-
-1. `git clone https://github.com/Bobay-Ochman/ConSpeciFix.git`
-2. Edit path variables in `ConSpeciFix/database/config`
-3. `cd ConSpeciFix/database`
-4. `python species.py`
-5. Remove any unwanted species from `species.txt`
-6. `python runner.py`
-
-## The Hard Way
-
-Also the "by-hand" way. This describes every script and what it does to complete the databse build.
-
 ### Preparing the data
 
 - `species.py` creates species.txt with all species that will be applicable. (all the species with more than 15 complete genomes)
