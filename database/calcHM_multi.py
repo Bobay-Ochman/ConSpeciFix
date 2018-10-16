@@ -2,6 +2,7 @@ import os
 from config import *
 from multiprocessing import Pool
 import multiprocessing
+import io
 
 def calcHM(args):
 
@@ -306,10 +307,10 @@ def calcHM(args):
 	except ZeroDivisionError:
 		rm = 'NA'
 	print  SP, len(strains),' r/m= ', rm      #,' r= ',r,' m= ',m	, '   Bips:  r= ',bip.count('r'),'  m= ',bip.count('m'),' |  for ',singleton,' singleton'
-	h=open(PATH_TO_OUTPUT + SP + '/rm1.txt',"a")
+	h=io.open(PATH_TO_OUTPUT + SP + '/rm1.txt',"a")
 	h.write(truc + '\t' + str(r) + '\t' + str(m) + '\t' + str(rm) + '\t' + str(len(bip)) + '\n'   )
 	h.close()
-	d=open("todo/completed.txt",'a')
+	d=io.open("todo/completed.txt",'a')
 	d.write(args)
 	d.close()
 
