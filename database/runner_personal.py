@@ -77,10 +77,10 @@ oldConfig.close()
 os.system('mv '+pathToNewConfig+' '+pathToOldConfig)
 
 os.chdir(pathToDatabaseComp)
-print("CWD:\n"+os.getcwd()+"\n")
+# print("CWD:\n"+os.getcwd()+"\n")
 os.system('chmod 777 *')
-print 'Removing:\n'+pathToDatabaseComp+'/config.pyc\n'
+# print 'Removing:\n'+pathToDatabaseComp+'/config.pyc\n'
 os.system('rm '+pathToDatabaseComp+'/config.pyc')
-print "Calling:\n"+'sh '+pathToDatabaseComp+'/child_launcher.sh\n\n'
+print "Folder structure established, calling launcher"
 os.system('sh '+pathToDatabaseComp+'/child_launcher.sh')
 
