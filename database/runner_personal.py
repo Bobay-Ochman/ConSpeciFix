@@ -84,6 +84,6 @@ os.chdir(pathToDatabaseComp)
 os.system('chmod 777 *')
 # print 'Removing:\n'+pathToDatabaseComp+'/config.pyc\n'
 os.system('rm '+pathToDatabaseComp+'/config.pyc')
-print "Folder structure established, calling launcher"
+print "Folder structure completed, calling launcher..."
 os.system('sh '+pathToDatabaseComp+'/child_launcher.sh')
 
