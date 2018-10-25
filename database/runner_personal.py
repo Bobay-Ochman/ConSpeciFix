@@ -14,14 +14,11 @@ args = parser.parse_args()
 
 
 print("""
---- ConSpeciFix ---
-
 Please site:
 Bobay LM, Ochman H. Biological species are universal across life's domains.
 Genome Biol Evol. 2017. doi: 10.1093/gbe/evx026.
 
-starting...
-""")
+starting...""")
 
 user_path = args.path_to_comparison #path to user's files
 user_path = user_path.rstrip('/')+'/'
@@ -105,6 +102,6 @@ os.chdir(pathToDatabaseComp)
 os.system('chmod 777 *')
 # print 'Removing:\n'+pathToDatabaseComp+'/config.pyc\n'
 os.system('rm '+pathToDatabaseComp+'/config.pyc')
-print "Folder structure completed, calling launcher..."
+print "calling launcher..."
 os.system('sh '+pathToDatabaseComp+'/child_launcher.sh')
 
