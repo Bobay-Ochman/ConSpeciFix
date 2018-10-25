@@ -33,7 +33,7 @@ def runTrial(args):
 	os.chdir('/work/03414/be4833/stampede2/ConSpeciFix/databaseQuery/')
 	
 	#unzip and parseGFF
-	os.system('cp ' + PATH_TO_DATABASE+cpSp+'/genes/'+strain' ' PATH_TO_TRIALS+dbSp+'/'+cpSp+'/'+strain)
+	os.system('cp ' + PATH_TO_DATABASE+cpSp+'/genes/'+strain+' '+ PATH_TO_TRIALS+dbSp+'/'+cpSp+'/'+strain)
 
 	#call web/runner
 	runnerArgs = [dbSp,strain,dbSp+'/'+cpSp,'tst@me.com']
@@ -48,7 +48,7 @@ def runTrial(args):
 
 
 if __name__ == '__main__':
-	p = Pool(MAX_THREADS)
+	p = Pool(2)
 	f = open('todo/runner.txt','r')
 	args = []
 	for l in giveMulti(f.readlines()):
