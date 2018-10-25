@@ -3,9 +3,27 @@ import sys
 import shutil
 import clean_files
 
-print "starting..."
 
-user_path = sys.argv[1] #path to user's files
+import argparse
+parser = argparse.ArgumentParser(description="The personal comparison mode for the ConSpeciFix comparison process. www.conspecifix.com/")
+parser.add_argument('path_to_comparison', metavar='PATH', type=str,
+                    help='path to directory containing .fa files')
+parser.add_argument('-t', nargs='?', help='Max# of threads. Defaults to # cores',type=int, dest='threads')
+
+args = parser.parse_args()
+
+
+print("""
+--- ConSpeciFix ---
+
+Please site:
+Bobay LM, Ochman H. Biological species are universal across life's domains.
+Genome Biol Evol. 2017. doi: 10.1093/gbe/evx026.
+
+starting...
+""")
+
+user_path = args.path_to_comparison #path to user's files
 user_path = user_path.rstrip('/')+'/'
 con_path = user_path+'_conspecifix/'
 if os.path.exists(con_path):
@@ -74,6 +92,9 @@ newConfig = open(pathToNewConfig,'w')
 for l in oldConfig.readlines():
 	if 'PATH_TO_OUT = ' in l:
 		l = 'PATH_TO_OUT = "'+con_db_path+'"'
+	if 'MAX_THREADS' in l:
+		if(args.threads != None):
+			l = 'MAX_THREADS = '+args.threads+'\n'
 	newConfig.write(l)
 newConfig.close()
 oldConfig.close()
