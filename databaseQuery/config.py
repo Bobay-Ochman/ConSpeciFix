@@ -13,18 +13,18 @@ import math
 #This is where the full database will be built,
 # and if all the species are being processed,
 # this can be upwards of 500GB
-PATH_TO_TRIALS = '/scratch/03414/be4833/databaseQuerySpecies/'
-PATH_TO_DATABASE = '/scratch/03414/be4833/websiteOutput/'
+PATH_TO_TRIALS = '/stor/work/Ochman/brian/entroCross/'
+PATH_TO_DATABASE = '/stor/work/Ochman/brian/compDB/'
 
 #your local instalations for the following programs,
 # or simply the name of the program if it can be accessed from the command line
 # for example
 # RAXML_PATH = '/Users/Admin/programs/standard-RAxML-master/raxmlHPC-SSE3'
 # We have all of ours on our path as the following names
-USEARCH_PATH = '/work/03414/be4833/stampede2/programs/usearch8.0.1623_i86linux32' 
-MAFFT_PATH = '/work/03414/be4833/bin/mafft'
-MCL_PATH = '/home1/03414/be4833/local/bin/mcl'
-RAXML_PATH = '/work/03414/be4833/RAxML/raxmlHPC-PTHREADS'
+USEARCH_PATH = '/stor/home/be4833/usearch6.1.544_i86linux32' 
+MAFFT_PATH = 'mafft'
+MCL_PATH = 'mcl'
+RAXML_PATH = 'raxml'
 
 
 ############### VARIABLES USERS MIGHT NEED TO CHANGE ###############

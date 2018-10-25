@@ -8,17 +8,16 @@ MAX_SPECIES_SIZE = 500
 MAX_THREADS = 1
 
 
-
-USEARCH_PATH = '/work/03414/be4833/stampede2/programs/usearch8.0.1623_i86linux32' 
-MAFFT_PATH = '/work/03414/be4833/bin/mafft'
-MCL_PATH = '/home1/03414/be4833/local/bin/mcl'
-RAXML_PATH = '/work/03414/be4833/RAxML/raxmlHPC-PTHREADS'
-
+USEARCH_PATH = '/stor/home/be4833/usearch6.1.544_i86linux32' 
+MAFFT_PATH = 'mafft'
+MCL_PATH = 'mcl'
+RAXML_PATH = 'raxml'
 
 
-PATH_TO_UPLOAD = '/scratch/03414/be4833/databaseQuerySpecies/'+str(sys.argv[3])+'/'
-PATH_TO_SCRIPTS = '/work/03414/be4833/stampede2/ConSpeciFix/databaseQuery/web/'
-PATH_TO_OUTPUT = '/scratch/03414/be4833/websiteOutput/'
+
+PATH_TO_UPLOAD = '/stor/work/Ochman/brian/entroCross/'+str(sys.argv[3])+'/'
+PATH_TO_SCRIPTS = '/stor/work/Ochman/brian/ConSpeciFix/databaseQuery/web/'
+PATH_TO_OUTPUT = '/stor/work/Ochman/brian/compDB/'
 
 
 #sys args:
