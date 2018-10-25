@@ -33,7 +33,7 @@ for l in f:
 		totalLen += countOfValid[1]
 		geneLen += countOfValid[1]
 		out.write(l)
-if count < 11:
+if count < 2:
 	errors.append(("Error: too few genes to compare. Please seperate into genes as per the FASTA format. Number of genes identified: ",str(count)))
 
 if totalLen > 0 and totalNonNucleotide / totalLen > .1:
