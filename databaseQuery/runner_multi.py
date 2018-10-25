@@ -25,7 +25,7 @@ def runTrial(args):
 		return
 
 	#just mention that we were here
-	fd = open(PATH_TO_TRIALS+dbSp+'/'+cpSp+'/params.txt','w')
+	fd = open(PATH_TO_TRIALS+destFolder+'/params.txt','w')
 	fd.write(args)
 	fd.close()
 		
