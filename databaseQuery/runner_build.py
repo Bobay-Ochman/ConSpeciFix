@@ -19,4 +19,6 @@ for dbSp in os.listdir(PATH_TO_DATABASE):
 			doingComp.append(strainToDo)
 			args = '\t'.join([dbSp,cpSp,strainToDo])
 			totalArgs.append(args)
-print totalArgs
+fd = open('todo/runner.txt','w')
+fd.write('\n'.join(totalArgs))
+fd.close()
