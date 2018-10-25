@@ -4,8 +4,8 @@ import sys
 import random
 
 totalArgs= []
-for dbSp in os.lisdir(PATH_TO_DATABASE):
-	for cpSp in os.lisdir(PATH_TO_DATABASE):
+for dbSp in os.listdir(PATH_TO_DATABASE):
+	for cpSp in os.listdir(PATH_TO_DATABASE):
 		if dbSp==cpSp:
 			continue
 		tenForU = open(PATH_TO_DATABASE+cpSp+'/tenForUsearch.txt')
