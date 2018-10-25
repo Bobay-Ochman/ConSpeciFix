@@ -24,9 +24,9 @@ The following programs should be accessible from your command line (on your loca
 
 There are three variants of the current conspecifix process. They are:
 
-- [**Analyze Your Own Genomes:**](https://github.com/Bobay-Ochman/ConSpeciFix/tree/master/personalCompare) for use on a single folder of genomes to determine if they are all the same species.
-- [**Database Mining:**](https://github.com/Bobay-Ochman/ConSpeciFix/tree/master/database) used to build a large database of genomes. Initiates downloads and comparisons for species from NCBI, producing results similar to those found in our paper for the specified species.
-- [**Web-based Database Comparison:**](https://github.com/Bobay-Ochman/ConSpeciFix/tree/master/web) A light-weight database comparison method designed for use in our website at www.conspecifix.com
+- **Analyze Your Own Genomes:** for use on a single folder of genomes to determine if they are all the same species.
+- **Database Mining:** used to build a large database of genomes. Initiates downloads and comparisons for species from NCBI, producing results similar to those found in our paper for the specified species.
+- **Web-based Database Comparison:** A light-weight database comparison method designed for use in our website at www.conspecifix.com
 
 ## Personal Comparison
 

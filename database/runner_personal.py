@@ -94,7 +94,7 @@ for l in oldConfig.readlines():
 		l = 'PATH_TO_OUT = "'+con_db_path+'"'
 	if 'MAX_THREADS' in l:
 		if(args.threads != None):
-			l = 'MAX_THREADS = '+args.threads+'\n'
+			l = 'MAX_THREADS = '+str(args.threads)+'\n'
 	newConfig.write(l)
 newConfig.close()
 oldConfig.close()
