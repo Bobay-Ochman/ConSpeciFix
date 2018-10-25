@@ -17,6 +17,6 @@ for dbSp in os.listdir(PATH_TO_DATABASE):
 			strainToDo = random.choice(possibleStrains)
 			possibleStrains.remove(strainToDo)
 			doingComp.append(strainToDo)
-			args = '\t'.joint([dbSp,cpSp,strainToDo])
+			args = '\t'.join([dbSp,cpSp,strainToDo])
 			totalArgs.append(args)
 print totalArgs
