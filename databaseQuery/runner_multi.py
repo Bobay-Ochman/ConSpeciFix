@@ -26,12 +26,7 @@ def runTrial(args):
 	fd = open(PATH_TO_TRIALS+dbSp+'/'+cpSp+'/params.txt','w')
 	fd.write(args)
 	fd.close()
-
-	#move to the folder so they can go in the right place
-
-	# move back so we can do everything
-	os.chdir('/work/03414/be4833/stampede2/ConSpeciFix/databaseQuery/')
-	
+		
 	#unzip and parseGFF
 	os.system('cp ' + PATH_TO_DATABASE+cpSp+'/genes/'+strain+' '+ PATH_TO_TRIALS+dbSp+'/'+cpSp+'/'+strain)
 
