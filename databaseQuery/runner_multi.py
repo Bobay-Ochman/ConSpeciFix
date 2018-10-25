@@ -11,13 +11,15 @@ def runTrial(args):
 	dbSp = myArgs[0] # name of database species
 	cpSp = myArgs[1] # name of new species
 	strain = myArgs[2]
+	trialNumber = myArgs[3]
 	#make folders
+	destFolder = dbSp+'/'+cpSp+'_'+str(trialNumber)
 	try:
 		os.mkdir(PATH_TO_TRIALS+dbSp)
 	except:
 		pass
 	try:
-		os.mkdir(PATH_TO_TRIALS+dbSp+'/'+cpSp)
+		os.mkdir(PATH_TO_TRIALS+destFolder)
 	except:
 		print "Comparison already completed?\t"+args
 		return
@@ -28,10 +30,10 @@ def runTrial(args):
 	fd.close()
 		
 	#unzip and parseGFF
-	os.system('cp ' + PATH_TO_DATABASE+cpSp+'/genes/'+strain+' '+ PATH_TO_TRIALS+dbSp+'/'+cpSp+'/'+strain)
+	os.system('cp ' + PATH_TO_DATABASE+cpSp+'/genes/'+strain+' '+ PATH_TO_TRIALS+destFolder+'/'+strain)
 
 	#call web/runner
-	runnerArgs = [dbSp,strain,dbSp+'/'+cpSp,'tst@me.com']
+	runnerArgs = [dbSp,strain,destFolder,'tst@me.com']
 	print runnerArgs
 	os.system('python web/runner.py '+ ' '.join(runnerArgs))
 
@@ -43,7 +45,7 @@ def runTrial(args):
 
 
 if __name__ == '__main__':
-	p = Pool(2)
+	p = Pool(5)
 	f = open('todo/runner.txt','r')
 	args = []
 	for l in giveMulti(f.readlines()):

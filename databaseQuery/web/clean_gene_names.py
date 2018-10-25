@@ -46,7 +46,7 @@ out.close()
 
 
 
-fullName = PATH_TO_UPLOAD+getCompStrain() + '.fa'
+fullName = PATH_TO_UPLOAD+getCompStrain().split('.fa')[0] + '.fa'
 os.system('mv '+PATH_TO_UPLOAD+getCompStrain()+"_clean.fa "+ fullName)
 
 if len(errors)>0:

@@ -17,7 +17,7 @@ for dbSp in os.listdir(PATH_TO_DATABASE):
 			strainToDo = random.choice(possibleStrains)
 			possibleStrains.remove(strainToDo)
 			doingComp.append(strainToDo)
-			args = '\t'.join([dbSp,cpSp,strainToDo])
+			args = '\t'.join([dbSp,cpSp,strainToDo,str(i+1)])
 			totalArgs.append(args)
 fd = open('todo/runner.txt','w')
 fd.write('\n'.join(totalArgs))
