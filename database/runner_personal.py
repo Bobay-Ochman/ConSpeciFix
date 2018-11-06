@@ -22,6 +22,7 @@ starting...""")
 
 user_path = args.path_to_comparison #path to user's files
 user_path = user_path.rstrip('/')+'/'
+lastFolderName = user_path.split('/')[len(user_path.split('/'))-2]
 con_path = user_path+'_conspecifix/'
 if os.path.exists(con_path):
 	try:
@@ -54,7 +55,7 @@ try:
 except shutil.Error as e:
     print('Directory not copied. Error: %s' % e)
 
-userSpecies = 'User_spec'
+userSpecies = lastFolderName
 try:
 	os.mkdir(con_db_path+userSpecies)
 except Exception as e:
