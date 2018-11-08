@@ -22,7 +22,6 @@ starting...""")
 
 user_path = args.path_to_comparison #path to user's files
 user_path = user_path.rstrip('/')+'/'
-lastFolderName = user_path.split('/')[len(user_path.split('/'))-2].replace('0','A').replace('1','B').replace('2','C').replace('3','D').replace('4','E').replace('5','F').replace('6','G').replace('7','H').replace('8','I').replace('9','J')
 con_path = user_path+'_conspecifix/'
 if os.path.exists(con_path):
 	try:
@@ -55,7 +54,7 @@ try:
 except shutil.Error as e:
     print('Directory not copied. Error: %s' % e)
 
-userSpecies = lastFolderName
+userSpecies = 'User_spec'
 try:
 	os.mkdir(con_db_path+userSpecies)
 except Exception as e:
