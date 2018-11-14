@@ -85,7 +85,9 @@ def calcHM(args):
 	singleton,more=0,0
 	i = 0
 	r,m=0,0
+	whatHappens = []
 	while i < LONGUEUR:
+		whatHappens.append('n')
 		tmp=[]
 		memo=[]
 		for sp in strains:
@@ -116,6 +118,7 @@ def calcHM(args):
 				number.remove(1)
 				singleton+=1
 				m+=1
+				whatHappens[i] = 'm'
 			if len(number) == 2:																		##### 2 #####
 				more += 1
 				N1,N2 = unique[0],unique[1]
@@ -142,10 +145,12 @@ def calcHM(args):
 						INTER.append(dist[st1][st2])
 				if max(INTRA) > min(INTER):
 					r+=1
+					whatHappens[i] = 'r'
 					toto='r'
 				else:
 					toto='m'
 					m+=1
+					whatHappens[i] = 'm'
 				#print i,' ',tot,' ',unique,' ',number,' ',minor,' ',min(INTRA),' ',min(INTER),' ',toto
 				bip.append(toto)
 			elif len(number) == 3:																		##### 3 #####
@@ -190,9 +195,11 @@ def calcHM(args):
 				if max(INTRA) > min(INTER):
 					r+=1
 					toto='r'
+					whatHappens[i] = 'r'
 				else:
 					toto='m'
 					m+=1	
+					whatHappens[i] = 'm'
 				#print i,' ',tot,' ',unique,' ',number,' ',minor1,' ',min(INTRA),' ',min(INTER),' ',toto
 				bip.append(toto)
 				INTRA,INTER=[],[]
@@ -205,9 +212,11 @@ def calcHM(args):
 				if max(INTRA) > min(INTER):
 					r+=1
 					toto='r'
+					whatHappens[i] = 'r'
 				else:
 					toto='m'
 					m+=1
+					whatHappens[i] = 'm'
 				#print i,' ',tot,' ',unique,' ',number,' ',minor2,' ',min(INTRA),' ',min(INTER),' ',toto
 				bip.append(toto)
 			elif len(number) == 4:																		##### 4 #####
@@ -266,9 +275,11 @@ def calcHM(args):
 				if max(INTRA) > min(INTER):
 					r+=1
 					toto='r'
+					whatHappens[i] = 'r'
 				else:
 					toto='m'
 					m+=1	
+					whatHappens[i] = 'm'
 				#print i,' ',tot,' ',unique,' ',number,' ',minor1,' ',min(INTRA),' ',min(INTER),' ',toto
 				bip.append(toto)
 				INTRA,INTER=[],[]
@@ -281,9 +292,11 @@ def calcHM(args):
 				if max(INTRA) > min(INTER):
 					r+=1
 					toto='r'
+					whatHappens[i] = 'r'
 				else:
 					toto='m'
 					m+=1
+					whatHappens[i] = 'm'
 				#print i,' ',tot,' ',unique,' ',number,' ',minor2,' ',min(INTRA),' ',min(INTER),' ',toto
 				bip.append(toto)
 				INTRA,INTER=[],[]
@@ -296,9 +309,11 @@ def calcHM(args):
 				if max(INTRA) > min(INTER):
 					r+=1
 					toto='r'
+					whatHappens[i] = 'r'
 				else:
 					toto='m'
 					m+=1
+					whatHappens[i] = 'm'
 				#print i,' ',tot,' ',unique,' ',number,' ',minor3,' ',min(INTRA),' ',min(INTER),' ',toto
 				bip.append(toto)
 		i+=1
@@ -313,6 +328,8 @@ def calcHM(args):
 	d=io.open("todo/completed.txt",mode='a')
 	d.write(unicode(args))
 	d.close()
+	v=io.open(PATH_TO_OUTPUT + SP + '/visual.txt',mode="a")
+	v.write(unicode(str(truc + '\t' + ','.join(whatHappens)+ '\n')))
 
 """
 f = open('todo/calcHM.txt','r')
