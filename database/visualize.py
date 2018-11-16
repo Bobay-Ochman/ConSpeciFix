@@ -1,3 +1,4 @@
+from config import *
 import numpy as np
 import json
 import random
@@ -141,6 +142,7 @@ def wrapper(f):
 
 if __name__ == '__main__':
     args = getAllSpecies()
+    args = giveMulti(args)
     p = Pool(MAX_THREADS)
     p.map(wrapper, args)
 
