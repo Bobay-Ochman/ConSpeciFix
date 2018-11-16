@@ -12,7 +12,7 @@ from matplotlib.colors import LogNorm
 def makeImages(sp):
 	fromSave = False
 	makeSave = True
-	pat = PATH_TO_OUTPUT + sp
+	pat = PATH_TO_OUTPUT + sp+'/'
 
 	print(pat)
 	print("starting")
@@ -144,7 +144,7 @@ if __name__ == '__main__':
     args = getAllSpecies()
     args = giveMulti(args)
     p = Pool(MAX_THREADS)
-    p.map(wrapper, args)
+    p.map(makeImages, args)
 
 
 
