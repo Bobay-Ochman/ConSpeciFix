@@ -64,7 +64,7 @@ def getCore(spec):
 				except KeyError:
 					pass
 			a=list(tmp)
-			if len(a) >= 0.85 * len(strains[sp]):
+			if len(a) >= CORE_GENOME_PERCENT * len(strains[sp]):
 				tmp=[]
 				tag=0
 				b=[]
@@ -80,7 +80,7 @@ def getCore(spec):
 						b.append(st)
 				if tag == 1:
 					doublons[sp] += 1
-				if len(tmp) >= 0.85 * len(strains[sp]) and tag==0:
+				if len(tmp) >= CORE_GENOME_PERCENT * len(strains[sp]) and tag==0:
 				#	print sp,' ',len(tmp),' ',len(strains[sp])
 				#also very noisy output, so removed
 					core[sp].append(a)

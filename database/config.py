@@ -34,7 +34,7 @@ PIPE_CHAR = ' > '
 MAX_THREADS = multiprocessing.cpu_count()
 
 MAX_RAXML_DISTANCE_ALLOWED = 1
-
+CORE_GENOME_PERCENT = .85
 #Used to ignore species that would take computationally very long times
 MAX_SPECIES_SIZE = 1000000000
 MIN_SPECIES_SIZE = 8

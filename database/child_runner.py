@@ -76,7 +76,10 @@ os.system('python graph_point.py '+ PIPE_CHAR+PATH_TO_LOGS+'25_graph_point.txt')
 os.system('python make_hm_graph_point.py '+ PIPE_CHAR+PATH_TO_LOGS+'26_make_hm_graph_point.txt')
 
 print "Combine the images"
-os.system('python assembleImages.py '+ PIPE_CHAR+PATH_TO_LOGS+'27_assembleImages.txt')
+os.system('python assembleImages.py '+ PIPE_CHAR+PATH_TO_LOGS+'27_assemble_images.txt')
+
+print "Making Map of Genome"
+os.system('python visualize.py '+ PIPE_CHAR+PATH_TO_LOGS+'28_map_genome.txt')
 
 print "Completed\n..."
 print "Results in:\n"+PATH_TO_OUTPUT+'User_spec/\n'
