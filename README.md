@@ -11,10 +11,10 @@ Bobay and Ochman. *Genome Biol Evol* 2017. 9(3): 491–501.
 
 The following programs should be accessible from your command line (on your local path), or else the path to the program specified in `config.py`. Programs marked with a * must be on your local path.
 
-- python*
+- python* (must call python 2.7)
 - gunzip*
 - wget*
-- usearch https://www.drive5.com/usearch/
+- usearch https://www.drive5.com/usearch/ (v.6.1)
 - mcl https://www.micans.org/mcl/index.html
 - mafft http://mafft.cbrc.jp/alignment/software/
 - RAxML https://sco.h-its.org/exelixis/web/software/raxml/index.html
