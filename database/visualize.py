@@ -80,12 +80,12 @@ def makeImages(sp):
 
 	if not fromSave:
 		if makeSave:
-			save = open('save.txt','w')
+			save = open(pat+'mapOfRecombination.txt','w')
 			save.write(str(strainMap))
 			save.close()
 
 	if fromSave:
-		fd = open('save.txt','r')
+		fd = open(pat+'mapOfRecombination.txt','r')
 		strainMap = []
 		for l in fd.readlines():
 			jsonReadable = l.strip().replace("'",'"')
