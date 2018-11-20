@@ -12,7 +12,7 @@ def validLine(l):
 def cleanFile(fileName, path_to_orig, path_to_dest):
 	errors = []
 	strainName = fileName
-	if strainName == '.DS_Store' or strainName == '_conspecifix':
+	if '.DS_Store' in strainName or '_conspecifix' in strainName or 'results.txt' in strainName or 'cleaning_errors' in strainName:
 		return
 	fullName = '1_'
 	if strainName.endswith('.fa'):
