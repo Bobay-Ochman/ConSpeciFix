@@ -62,26 +62,7 @@ def makeImages(sp):
 	
 	specialStrains = allStrains
 	largestStrainGroup = 'all strains'
-	# assumes that strains are labeled with groups like: groupId-IndividId
-	# strainGroups = {}
-	# for strain in allStrains:
-	# 	strainGroup = strain.split('-')[0] #split on Dengue1, Dengue2, etc.
-	# 	if strainGroup not in strainGroups.keys():
-	# 		strainGroups[strainGroup] = []
-	# 	strainGroups[strainGroup].append(strain)
-
-	# largestStrainGroup = strainGroups.keys()[0]
-	# for name in strainGroups:
-	# 	if len(strainGroups[name]) > len(strainGroups[largestStrainGroup]):
-	# 		largestStrainGroup = name
-
-	# # largestStrainGroup = 'All_Dengue'
-	# specialStrains = []
-	# for strainGroup in strainGroups.keys():
-	# 	specialStrains.append(random.sample(strainGroups[strainGroup],1)[0])
-
-	# specialStrains = ['Dengue1-AF180817','Dengue2-KY937188','Dengue2-KY937189','Dengue2-FM210227']
-
+	
 	if not fromSave:
 		if makeSave:
 			save = open(pat+'mapOfRecombination.txt','w')
