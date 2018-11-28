@@ -52,10 +52,10 @@ for sp in species:
 	for file in os.listdir(PATH_TO_OUTPUT+sp+'/align/'):
 	 	remove('align/'+file)
 
-	for file in os.listdir(PATH_TO_OUTPUT+sp+'/BBH/'):
+	for file in os.listdir(PATH_TO_OUTPUT+sp+'/'+USEARCH_FOLDER+'/'):
  		fileParts = file.split('.fa-')
  		if fileParts[0]+'.fa' in removalList or fileParts[1] in removalList:
-			remove('BBH/'+file)
+			remove(''+USEARCH_FOLDER+'/'+file)
  			print file
 	
 	for file in os.listdir(PATH_TO_OUTPUT+sp+'/genes/'):

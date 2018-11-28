@@ -18,7 +18,7 @@ while True:
 	totalDone = 0
 
 	for sp in species:
-		list = os.listdir(PATH_TO_OUTPUT + sp + '/BBH/')
+		list = os.listdir(PATH_TO_OUTPUT + sp + '/'+USEARCH_FOLDER+'/')
 		for f in list:
 			if f.endswith('fa'):
 				totalDone+=1

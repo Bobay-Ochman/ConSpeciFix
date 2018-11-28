@@ -42,8 +42,8 @@ MIN_SPECIES_SIZE = 8
 ############### Things users will not need to change ###############
 
 PATH_TO_OUTPUT = '/' + PATH_TO_OUT.strip('/') + '/'
-
 PATH_TO_SPECIES_TXT = "../species.txt"
+USEARCH_FOLDER = 'BBH'
 
 def giveMulti(list):
 	rank = 0

@@ -24,7 +24,7 @@ def work(jobQ,remQ):
 		name = v1 + '-' + v2
 		h = None
 		try:
-			h = open(PATH_TO_OUTPUT + sp + '/BBH/' + name,'r')
+			h = open(PATH_TO_OUTPUT + sp + '/'+USEARCH_FOLDER+'/' + name,'r')
 		except:
 			continue
 		lines = h.readlines()
@@ -32,7 +32,7 @@ def work(jobQ,remQ):
 			lenLine = len(l.split('\t'))
 			if lenLine != 12:
 				#print lenLine
-				print sp + '/BBH/' + name
+				print sp + '/'+USEARCH_FOLDER+'/' + name
 				remQ.put([PATH_TO_OUTPUT,sp,v1,v2])
 		h.close()		
 

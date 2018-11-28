@@ -48,7 +48,7 @@ for sp in species:
 			i+=1
 			for prot2 in liste[sp][i:]:
 				if prot1 != prot2:
-					if os.path.isfile(PATH_TO_OUTPUT +  sp + '/BBH/' + prot1 + '-' + prot2):
+					if os.path.isfile(PATH_TO_OUTPUT +  sp + '/'+USEARCH_FOLDER+'/' + prot1 + '-' + prot2):
 						done+=1
 						globalDone +=1
 					else:

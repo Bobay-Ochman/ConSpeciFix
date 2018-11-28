@@ -57,7 +57,7 @@ def parseMultUsearch(spec):
 							#open the results of usearch
 							#print PATH_TO_OUTPUT + sp + '/BBH/'  + st1 + "-" + st2
 					
-							f=open(PATH_TO_OUTPUT + sp + '/BBH/'  + st1 + "-" + st2 ,"r") 
+							f=open(PATH_TO_OUTPUT + sp + '/'+USEARCH_FOLDER+'/'  + st1 + "-" + st2 ,"r") 
 							geneIDs = []
 							for l in f:
 								a= l.strip("\n").split("\t")

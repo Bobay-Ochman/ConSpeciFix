@@ -113,9 +113,6 @@ def makeImages(sp):
 				value = sum(strainMap[strainPair][i*100:(i+1)*100])
 				genomeMap.append(value)
 			mapToPrint.append(genomeMap)
-		print orderOfStrains
-		print unicode(spStrain)
-		print("image")
 		# data = np.array(mapToPrint)
 		print(len(mapToPrint[0]))
 		print(len(mapToPrint))

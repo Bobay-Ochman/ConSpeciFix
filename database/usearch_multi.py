@@ -37,7 +37,7 @@ def work(jobQ,remQ):
 		args.append('-strand')
 		args.append('plus')
 		args.append('-blast6out')
-		args.append(path +  sp + '/BBH/' + prot1 + '-' + prot2)
+		args.append(path +  sp + '/'+USEARCH_FOLDER+'/' + prot1 + '-' + prot2)
 		popen = subprocess.Popen(args, stderr=subprocess.PIPE, universal_newlines=True)
 		for stdout_line in iter(popen.stderr.readline, ""):
 			print 'out: '+ stdout_line.strip('\n') 
@@ -53,7 +53,7 @@ def work(jobQ,remQ):
 			remQ.put(sp+'-'+prot1)
 			continue
 		#check the result
-		res = open(path +  sp + '/BBH/' + prot1 + '-' + prot2)
+		res = open(path +  sp + '/'+USEARCH_FOLDER+'/' + prot1 + '-' + prot2)
 		compResults = []
 		for line in res:
 			compResults.append(float(line.split('\t')[2]))
