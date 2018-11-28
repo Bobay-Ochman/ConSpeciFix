@@ -61,7 +61,7 @@ def makeImages(sp):
 
 	
 	specialStrains = allStrains
-
+	largestStrainGroup = 'all strains'
 	# assumes that strains are labeled with groups like: groupId-IndividId
 	# strainGroups = {}
 	# for strain in allStrains:
