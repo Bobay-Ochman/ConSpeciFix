@@ -33,17 +33,24 @@ PIPE_CHAR = ' > '
 # RAXML where the binaries themselves are optomized for multithreading
 MAX_THREADS = multiprocessing.cpu_count()
 
+# can be modified to prevent kicking out of very divergent genomes
 MAX_RAXML_DISTANCE_ALLOWED = 1
 CORE_GENOME_PERCENT = .85
+
 #Used to ignore species that would take computationally very long times
 MAX_SPECIES_SIZE = 1000000000
 MIN_SPECIES_SIZE = 8
+
+# can be changed to 'tmp' or other names to avoid backup, as this folder can
+# get very very large
+USEARCH_FOLDER = 'BBH'
+
 
 ############### Things users will not need to change ###############
 
 PATH_TO_OUTPUT = '/' + PATH_TO_OUT.strip('/') + '/'
 PATH_TO_SPECIES_TXT = "../species.txt"
-USEARCH_FOLDER = 'BBH'
+
 
 def giveMulti(list):
 	rank = 0
@@ -109,7 +116,7 @@ def getGenomes(species):
 	return dico
 
 def getFolders():
-	return ['/genes','/genomes','/align','/BBH','/tmp','/maps']
+	return ['/genes','/genomes','/align','/'+USEARCH_FOLDER,'/maps']
 	
 
 ########################################################################
