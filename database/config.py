@@ -88,7 +88,7 @@ def getAllSpecies():
 	allSpec = os.listdir(PATH_TO_OUTPUT)
 	i = 0
 	while i < len(allSpec):
-		if allSpec[i] == '.DS_Store' or allSpec[i] == 'big_graph.R' or any(char.isdigit() for char in allSpec[i]):
+		if '.DS_Store' in allSpec[i]  or allSpec[i] == 'big_graph.R' or 'out_' in allSpec[i]:
 			del allSpec[i]
 			i-=1
 		i+=1
@@ -109,7 +109,7 @@ def getGenomes(species):
 	return dico
 
 def getFolders():
-	return ['/genes','/genomes','/align','/BBH']
+	return ['/genes','/genomes','/align','/BBH','/tmp','/maps']
 	
 
 ########################################################################

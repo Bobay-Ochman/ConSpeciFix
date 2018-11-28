@@ -59,22 +59,26 @@ def makeImages(sp):
 							strainMap[name][i] = 1
 						# strainMap[s1][i] = 1
 
-	strainGroups = {}
-	for strain in allStrains:
-		strainGroup = strain.split('-')[0] #split on Dengue1, Dengue2, etc.
-		if strainGroup not in strainGroups.keys():
-			strainGroups[strainGroup] = []
-		strainGroups[strainGroup].append(strain)
+	
+	specialStrains = allStrains
 
-	largestStrainGroup = strainGroups.keys()[0]
-	for name in strainGroups:
-		if len(strainGroups[name]) > len(strainGroups[largestStrainGroup]):
-			largestStrainGroup = name
+	# assumes that strains are labeled with groups like: groupId-IndividId
+	# strainGroups = {}
+	# for strain in allStrains:
+	# 	strainGroup = strain.split('-')[0] #split on Dengue1, Dengue2, etc.
+	# 	if strainGroup not in strainGroups.keys():
+	# 		strainGroups[strainGroup] = []
+	# 	strainGroups[strainGroup].append(strain)
 
-	# largestStrainGroup = 'All_Dengue'
-	specialStrains = []
-	for strainGroup in strainGroups.keys():
-		specialStrains.append(random.sample(strainGroups[strainGroup],1)[0])
+	# largestStrainGroup = strainGroups.keys()[0]
+	# for name in strainGroups:
+	# 	if len(strainGroups[name]) > len(strainGroups[largestStrainGroup]):
+	# 		largestStrainGroup = name
+
+	# # largestStrainGroup = 'All_Dengue'
+	# specialStrains = []
+	# for strainGroup in strainGroups.keys():
+	# 	specialStrains.append(random.sample(strainGroups[strainGroup],1)[0])
 
 	# specialStrains = ['Dengue1-AF180817','Dengue2-KY937188','Dengue2-KY937189','Dengue2-FM210227']
 
@@ -132,7 +136,7 @@ def makeImages(sp):
 		ax0.set_title(spStrain+' against population of '+largestStrainGroup)
 		cbar = fig.colorbar(c, ax=ax0,ticks=[1,int((data.max()+1) / 2), data.max()])
 		cbar.ax.set_yticklabels([0,int((data.max()) / 2), data.max()])  
-		plt.savefig(pat+'image_'+spStrain+'_v_pop_'+largestStrainGroup+'.pdf')
+		plt.savefig(pat+'maps/image_'+spStrain+'_v_pop_'+largestStrainGroup+'.pdf')
 
 def wrapper(f):
 	try:
@@ -144,7 +148,7 @@ if __name__ == '__main__':
     args = getAllSpecies()
     args = giveMulti(args)
     p = Pool(MAX_THREADS)
-    p.map(makeImages, args)
+    p.map(wrapper, args)
 
 
 
