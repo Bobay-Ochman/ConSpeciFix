@@ -61,7 +61,7 @@ def makeImages(sp):
 
 	
 	specialStrains = allStrains
-	largestStrainGroup = 'all strains'
+	largestStrainGroup = sp
 	
 	if not fromSave:
 		if makeSave:
