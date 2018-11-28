@@ -59,7 +59,7 @@ To produce your database:
 3. `cd ConSpeciFix-#.#.#/database`
 4. `python species.py`
 5. Remove any unwanted species from `species.txt`
-6. `python runner.py`
+6. `python runner_database.py`
 
 ## Details
 
