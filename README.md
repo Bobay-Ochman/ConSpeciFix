@@ -11,9 +11,11 @@ Bobay and Ochman. *Genome Biol Evol* 2017. 9(3): 491–501.
 
 The following programs should be accessible from your command line (on your local path), or else the path to the program specified in `config.py`. Programs marked with a * must be on your local path.
 
-- python* (must call python 2.7)
-- gunzip*
-- wget*
+- python* (must call python 2.7 from typing 'python')
+	- numpy (optional, used to generate maps of recombination across genome)
+	- matplotlib (optional, same as above)
+- gunzip* (used in database building)
+- wget* (used in database building)
 - usearch https://www.drive5.com/usearch/ (v.6.1)
 - mcl https://www.micans.org/mcl/index.html
 - mafft http://mafft.cbrc.jp/alignment/software/
@@ -60,6 +62,10 @@ To produce your database:
 4. `python species.py`
 5. Remove any unwanted species from `species.txt`
 6. `python runner_database.py`
+
+## Analyzing Results
+
+See [our website](http://www.conspecifix.com/#!/results).
 
 ## Details
 
