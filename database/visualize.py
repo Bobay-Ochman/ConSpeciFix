@@ -8,6 +8,8 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.colors import LogNorm
+import unicodedata
+import copy
 
 def makeImages(sp):
 	fromSave = False
@@ -78,8 +80,20 @@ def makeImages(sp):
 
 	print("consolidate")
 	maxLen = 0
+
+	#get the ordering from RAxML
+	raxmlFile = open(pat+'RAxML_parsimonyTree.dist','r')
+	totalSortedOrder = []
+	for l in raxmlFile.readlines():
+		totalSortedOrder = l.replace('(',"").replace(')','').replace(';',"").strip().split(',')
+	print totalSortedOrder
+
+	totalTally = []
+	
 	for spStrain in specialStrains:
-		mapToPrint = []
+		sortedOrder = copy.copy(totalSortedOrder)
+		sortedOrder.remove(spStrain)		
+		mapToPrint = [[]]*len(sortedOrder)
 		orderOfStrains = []
 		for strainPair in sorted(strainMap.keys()):
 			if not strainPair.startswith(spStrain):
@@ -90,10 +104,18 @@ def makeImages(sp):
 			orderOfStrains.append(compStrainName)
 			genomeMap = []
 			maxLen = int(len(strainMap[strainPair])/100)
+			
+			if len(totalTally) < maxLen:
+				totalTally = [0] * maxLen
+
 			for i in range(maxLen):
 				value = sum(strainMap[strainPair][i*100:(i+1)*100])
 				genomeMap.append(value)
-			mapToPrint.append(genomeMap)
+				totalTally[i] += value
+
+			compName = unicodedata.normalize('NFKD', compStrainName).encode('ascii','ignore')
+			insertIndex = sortedOrder.index(compName)
+			mapToPrint[insertIndex] = genomeMap
 		# data = np.array(mapToPrint)
 		print(len(mapToPrint[0]))
 		print(len(mapToPrint))
@@ -106,8 +128,9 @@ def makeImages(sp):
 		#img.save('zimage_'+spStrain+'_against_population_of_'+largestStrainGroup+'.png')
 		print("max data point: " + str(data.max()))
 		fig, (ax0) = plt.subplots(1,1)
-		plt.xticks(np.arange(0,maxLen,step = 20), np.arange(0,maxLen*100,step = 20*100))
-		plt.yticks(np.arange(0,len(mapToPrint),step=1), orderOfStrains)
+		tickNames = [str(s) + 'kbp' for s in np.arange(0,maxLen*100,step = int(maxLen/10)/10)]  
+		plt.xticks(np.arange(0,maxLen,step = int(maxLen/10)),tickNames )
+		plt.yticks(np.arange(0,len(mapToPrint),step=1), sortedOrder)
 		c = ax0.pcolor(data,norm=LogNorm(vmin=1, vmax=data.max()),cmap='GnBu')
 		plt.tick_params(axis='y', which='major', labelsize=3)
 		spStrain = spStrain.split('.fa')[0]
@@ -115,6 +138,14 @@ def makeImages(sp):
 		cbar = fig.colorbar(c, ax=ax0,ticks=[1,int((data.max()+1) / 2), data.max()])
 		cbar.ax.set_yticklabels([0,int((data.max()) / 2), data.max()])  
 		plt.savefig(pat+'maps/image_'+spStrain+'_v_pop_'+largestStrainGroup+'.pdf')
+		plt.clf()
+	print totalTally
+	plt.plot(totalTally)
+	plt.title('h/m instances found across entire genome')
+	plt.ylabel('h/m totals')
+	plt.xticks(np.arange(0,maxLen,step = int(maxLen/10)),tickNames)
+	plt.savefig(pat+'maps/overall.pdf')
+
 
 def wrapper(f):
 	try:
