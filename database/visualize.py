@@ -112,8 +112,11 @@ def makeImages(sp):
 				value = sum(strainMap[strainPair][i*100:(i+1)*100])
 				genomeMap.append(value)
 				totalTally[i] += value
+			try:
+				compName = unicodedata.normalize('NFKD', compStrainName).encode('ascii','ignore')
+			except TypeError:
+				compName = compStrainName
 
-			compName = unicodedata.normalize('NFKD', compStrainName).encode('ascii','ignore')
 			insertIndex = sortedOrder.index(compName)
 			mapToPrint[insertIndex] = genomeMap
 		# data = np.array(mapToPrint)
@@ -150,8 +153,8 @@ def makeImages(sp):
 def wrapper(f):
 	try:
 		makeImages(f)
-	except:
-		print('ERROR WITH !!!!!!! ' + str(f))
+	except Exception as e:
+		print('ERROR WITH !!!!!!! ' + str(f)+"\n"+str(e))
 
 if __name__ == '__main__':
     args = getAllSpecies()
