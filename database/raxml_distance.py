@@ -11,7 +11,9 @@ for sp in species:
 	os.chdir(PATH_TO_OUTPUT+ sp+'/')
 	print os.getcwd()
 	try:
-		os.system('rm RAx*')
+		# os.system('rm RAx*')
+		# useful if you needed to run multiple times over a single database and were likely to have aborted part of the way through
+		pass
 	except:
 		pass
 	os.system(RAXML_PATH+' -f x -T '+str(MAX_THREADS+1)+' -p 12345 -s ' +  ' concat85.fa  -m GTRGAMMA -n dist')
