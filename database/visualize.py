@@ -131,12 +131,13 @@ def makeImages(sp):
 		#img.save('zimage_'+spStrain+'_against_population_of_'+largestStrainGroup+'.png')
 		print("max data point: " + str(data.max()))
 		fig, (ax0) = plt.subplots(1,1)
-		tickNames = [str(s) + 'kbp' for s in np.arange(0,maxLen*100,step = int(maxLen/10)/10)]  
+		tickNames = [str(s) for s in np.arange(0,maxLen*100,step = max(int(maxLen/10)/10,1))]  
 		plt.xticks(np.arange(0,maxLen,step = int(maxLen/10)),tickNames )
 		plt.yticks(np.arange(0,len(mapToPrint),step=1), sortedOrder)
 		c = ax0.pcolor(data,norm=LogNorm(vmin=1, vmax=data.max()),cmap='GnBu')
 		plt.tick_params(axis='y', which='major', labelsize=3)
 		spStrain = spStrain.split('.fa')[0]
+		plt.xlabel("kbp")
 		ax0.set_title(spStrain+' against population of '+largestStrainGroup)
 		cbar = fig.colorbar(c, ax=ax0,ticks=[1,int((data.max()+1) / 2), data.max()])
 		cbar.ax.set_yticklabels([0,int((data.max()) / 2), data.max()])  
@@ -144,8 +145,8 @@ def makeImages(sp):
 		plt.clf()
 	print totalTally
 	plt.plot(totalTally)
-	plt.title('h/m instances found across entire genome')
-	plt.ylabel('h/m totals')
+	plt.title('recombination instances found across entire genome')
+	plt.ylabel('count totals')
 	plt.xticks(np.arange(0,maxLen,step = int(maxLen/10)),tickNames)
 	plt.savefig(pat+'maps/overall.pdf')
 
