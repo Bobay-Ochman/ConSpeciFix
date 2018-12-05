@@ -142,7 +142,7 @@ def makeImages(sp):
 		cbar = fig.colorbar(c, ax=ax0,ticks=[1,int((data.max()+1) / 2), data.max()])
 		cbar.ax.set_yticklabels([0,int((data.max()) / 2), data.max()])  
 		plt.savefig(pat+'maps/image_'+spStrain+'_v_pop_'+largestStrainGroup+'.pdf')
-		plt.clf()
+		plt.close()
 	print totalTally
 	plt.plot(totalTally)
 	plt.title('recombination instances found across entire genome')
