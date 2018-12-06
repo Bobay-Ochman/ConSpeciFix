@@ -11,9 +11,9 @@ from matplotlib.colors import LogNorm
 import unicodedata
 import copy
 
-def makeImages(sp)
-	fromSave = True
-	makeSave = False
+def makeImages(sp):
+	fromSave = False
+	makeSave = True
 	pat = PATH_TO_OUTPUT + sp+'/'
 
 	print(pat)
