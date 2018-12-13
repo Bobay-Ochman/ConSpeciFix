@@ -9,6 +9,8 @@ import math
 
 
 # Where the full database will be built
+# This path is only used in the database building version.
+# -> does not need to be changed for runner_personal mode
 PATH_TO_OUT = '/path/to/where/you/want/the/database/to/be/built'
 
 # your local instalations for the following programs,
@@ -44,6 +46,10 @@ MIN_SPECIES_SIZE = 8
 # can be changed to 'tmp' or other names to avoid backup, as this folder can
 # get very very large
 USEARCH_FOLDER = 'BBH'
+
+# Used to control the generation of gene maps. Optional because the files
+# are both numerous and large (for example, one hundred 10kbp genomes will produce a 38G file)
+GENERATE_GENE_MAPS = True
 
 
 ############### Things users will not need to change ###############

@@ -78,6 +78,17 @@ def makeImages(sp):
 			jsonReadable = l.strip().replace("'",'"')
 		 	strainMap = json.loads(jsonReadable)
 
+	strainTotals = {}
+	for i in strainMap:
+		print i
+		strainTotals[i] = sum( [1 for z in strainMap[i] if z== 'r'] )
+	out = open('totalsOfRecombination.txt','w')
+	for i in strainTotals:
+		put = '\t'.join(str(i).split('&&&')) +'\t'+str(strainTotals[i])
+		print put 
+		out.write(put+'\n')
+	out.close()
+
 	print("consolidate")
 	maxLen = 0
 
