@@ -23,7 +23,6 @@ def makeImages(sp):
 		allStrains.append(l.strip())
 	print("have all strains")
 
-
 	if not fromSave:
 		strainMap = {}
 		for s1 in allStrains:
@@ -50,16 +49,21 @@ def makeImages(sp):
 	#			break
 			print("on new line " + str(lineNumber))
 			for i in range(genomeLength):
-				for sac in whatHappened[i]:
+				for testResult in whatHappened[i]:
+					RorM = testResult[0]
+					sac = testResult[1]
 					for s1 in sac:
 						for s2 in sac:
 							if s1 == s2:
 								continue
 							name = "&&&".join([s1,s2])
 							if len(strainMap[name]) == 0:
-								strainMap[name] = [0]*genomeLength
-							strainMap[name][i] = 1
-						# strainMap[s1][i] = 1
+								strainMap[name] = ['n']*genomeLength
+							if RorM == 'r':
+								strainMap[name][i] = 'r'
+							else:
+								if strainMap[name][i] != 'r':
+									strainMap[name][i] = 'm'
 
 	
 	specialStrains = allStrains
@@ -117,12 +121,16 @@ def makeImages(sp):
 			maxLen = int(len(strainMap[strainPair])/100)
 			
 			if len(totalTally) < maxLen:
-				totalTally = [0] * maxLen
+				totalTally = [[]] * maxLen
 
 			for i in range(maxLen):
-				value = sum(strainMap[strainPair][i*100:(i+1)*100])
-				genomeMap.append(value)
-				totalTally[i] += value
+				recombs = [(z=='r') for z in strainMap[strainPair][i*100:(i+1)*100]]
+				mutations = [(z=='m') for z in strainMap[strainPair][i*100:(i+1)*100]]
+				hmRate = 0
+				if (sum(mutations)) != 0:
+					hmRate = (sum(recombs)+0.0)/sum(mutations)
+				genomeMap.append(hmRate)
+				totalTally[i].append(hmRate)
 			try:
 				compName = unicodedata.normalize('NFKD', compStrainName).encode('ascii','ignore')
 			except TypeError:
@@ -134,7 +142,7 @@ def makeImages(sp):
 		print(len(mapToPrint[0]))
 		print(len(mapToPrint))
 		w, h = len(mapToPrint[0]), len(mapToPrint)
-		data = np.zeros((h, w), dtype=np.uint8)
+		data = np.zeros((h, w), dtype=np.float64)
 		for i in range(len(mapToPrint)):
 			for j in range(len(mapToPrint[i])):
 				data[i, j] = mapToPrint[i][j]+1
@@ -150,17 +158,27 @@ def makeImages(sp):
 		spStrain = spStrain.split('.fa')[0]
 		plt.xlabel("kbp")
 		ax0.set_title(spStrain+' against population of '+largestStrainGroup)
-		cbar = fig.colorbar(c, ax=ax0,ticks=[1,int((data.max()+1) / 2), data.max()])
-		cbar.ax.set_yticklabels([0,int((data.max()) / 2), data.max()])  
+		tickLabels = []
+		for i in range(9):
+			tickLabels.append(int((data.max()-1)*(i/8.0)*100)/100.0)
+		labelThings = [mark+1 for mark in tickLabels]
+		print tickLabels
+		print data.max(),data.min()
+		print labelThings
+		cbar = fig.colorbar(c, ax=ax0, ticks = labelThings)
+		#cbar.formatter = LogFormatterExponent(base=10) # 10 is the default
+		cbar.ax.set_yticklabels(tickLabels)  
 		plt.savefig(pat+'maps/image_'+spStrain+'_v_pop_'+largestStrainGroup+'.pdf')
 		plt.close()
-	print totalTally
-	plt.plot(totalTally)
+	tallyToPrint = []
+	for arr in totalTally:
+		tallyToPrint.append(sum(arr)/(len(arr)+0.0))
+	print tallyToPrint
+	plt.plot(tallyToPrint)
 	plt.title('recombination instances found across entire genome')
 	plt.ylabel('count totals')
 	plt.xticks(np.arange(0,maxLen,step = int(maxLen/10)),tickNames)
 	plt.savefig(pat+'maps/overall.pdf')
-
 
 def wrapper(f):
 	try:
