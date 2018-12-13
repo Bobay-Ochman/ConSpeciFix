@@ -16,12 +16,19 @@ def makeImages(sp):
 	makeSave = True
 	pat = PATH_TO_OUTPUT + sp+'/'
 
+
+	#start by loading all of the strain names from samples.txt
 	print(pat)
 	print("starting")
 	allStrains = []
 	for l in open(pat+'sample.txt','r').readlines():
 		allStrains.append(l.strip())
 	print("have all strains")
+
+
+	#build a map of the whole genome for every strain A&&&B, and if the index at that point
+	#was a 'n', 'm', 'r' for no change, mutation, or recombination.
+	#This is built from the visual.txt file and will be print to mapOfRecombination.txt
 
 	if not fromSave:
 		strainMap = {}
@@ -45,8 +52,9 @@ def makeImages(sp):
 			genomeLength = len(whatHappened)
 			print(genomeLength)
 			lineNumber += 1
-	#		if lineNumber == 50: #this says only take the first 25 lines. This isn't really enough.
-	#			break
+			# go through every line, which is a H/m comparison of N genomes
+			# and for each location containing the genomes, look if the sites
+			# contain n,m,or r.
 			print("on new line " + str(lineNumber))
 			for i in range(genomeLength):
 				for testResult in whatHappened[i]:
@@ -69,12 +77,14 @@ def makeImages(sp):
 	specialStrains = allStrains
 	largestStrainGroup = sp
 	
+	#save the work, becauase it takes forevery to make this map
 	if not fromSave:
 		if makeSave:
 			save = open(pat+'mapOfRecombination.txt','w')
 			save.write(str(strainMap))
 			save.close()
 
+	# load it from save if we already made it
 	if fromSave:
 		fd = open(pat+'mapOfRecombination.txt','r')
 		strainMap = []
@@ -82,6 +92,10 @@ def makeImages(sp):
 			jsonReadable = l.strip().replace("'",'"')
 		 	strainMap = json.loads(jsonReadable)
 
+	# make a seperate 'totals' list. Can be used in combination with MCL to
+	# make subgroups of the given strains and split them into bits.
+	# not super duper related to making maps, but useful to produce here
+	# while we have the full map loaded into memory
 	strainTotals = {}
 	for i in strainMap:
 		print i
@@ -92,19 +106,21 @@ def makeImages(sp):
 		print put 
 		out.write(put+'\n')
 	out.close()
+	
 
-	print("consolidate")
-	maxLen = 0
-
-	#get the ordering from RAxML
+	#get the ordering from RAxML so we can sort via philogony
 	raxmlFile = open(pat+'RAxML_parsimonyTree.dist','r')
 	totalSortedOrder = []
 	for l in raxmlFile.readlines():
 		totalSortedOrder = l.replace('(',"").replace(')','').replace(';',"").strip().split(',')
 	print totalSortedOrder
 
+	
+	print("consolidate")
+	maxLen = 0
 	totalTally = []
 	
+	#actually start making the maps
 	for spStrain in specialStrains:
 		sortedOrder = copy.copy(totalSortedOrder)
 		sortedOrder.remove(spStrain)		
