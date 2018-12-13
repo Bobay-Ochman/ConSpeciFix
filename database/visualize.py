@@ -13,7 +13,6 @@ import copy
 
 def makeImages(sp):
 	fromSave = False
-	makeSave = True
 	pat = PATH_TO_OUTPUT + sp+'/'
 
 
@@ -79,10 +78,9 @@ def makeImages(sp):
 	
 	#save the work, becauase it takes forevery to make this map
 	if not fromSave:
-		if makeSave:
-			save = open(pat+'mapOfRecombination.txt','w')
-			save.write(str(strainMap))
-			save.close()
+		save = open(pat+'mapOfRecombination.txt','w')
+		save.write(str(strainMap))
+		save.close()
 
 	# load it from save if we already made it
 	if fromSave:
@@ -100,7 +98,7 @@ def makeImages(sp):
 	for i in strainMap:
 		print i
 		strainTotals[i] = sum( [1 for z in strainMap[i] if z== 'r'] )
-	out = open('totalsOfRecombination.txt','w')
+	out = open(pat+'totalsOfRecombination.txt','w')
 	for i in strainTotals:
 		put = '\t'.join(str(i).split('&&&')) +'\t'+str(strainTotals[i])
 		print put 
