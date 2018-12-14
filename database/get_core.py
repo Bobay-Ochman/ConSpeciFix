@@ -116,6 +116,7 @@ def getCore(spec):
 				k.write(sp + '\t' + str(len(strains[sp])) + '\n')
 				k.close()
 			if nb == 0:
+				ts = time.time()
 				h=open(PATH_TO_OUTPUT + sp + "/criterion.txt","w")
 				header = "Conspecifix Results:\n\n\tCompleted on: "+datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S') +"\n"
 				header = header + '\tSpecies: ' + sp  +'\n\n'
