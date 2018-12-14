@@ -3,6 +3,8 @@ import multiprocessing
 import os
 import datetime
 from config import *
+import time
+
 
 #species=getSpeciesOfSize(500)
 
