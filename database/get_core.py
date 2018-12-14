@@ -1,6 +1,7 @@
 from multiprocessing import Pool
 import multiprocessing
 import os
+import datetime
 from config import *
 
 #species=getSpeciesOfSize(500)
