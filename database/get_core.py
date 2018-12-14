@@ -114,6 +114,20 @@ def getCore(spec):
 				k=open('../selected_species.txt','a')
 				k.write(sp + '\t' + str(len(strains[sp])) + '\n')
 				k.close()
+			if nb == 0:
+				h=open(PATH_TO_OUTPUT + sp + "/criterion.txt","w")
+				header = "Conspecifix Results:\n\n\tCompleted on: "+datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S') +"\n"
+				header = header + '\tSpecies: ' + sp  +'\n\n'
+				header = header + """	For more information about our process, visit our website
+				https://www.conspecifix.com
+				or take a look at our github
+				https://github.com/Bobay-Ochman
+
+	Exclusion criterion based off a modified
+	version of that found in Bobay & Ochman, GBE 2017
+
+	"""
+				body = "Error: There are no core genes common to "+str(CORE_GENOME_PERCENT*100)+" percent of the population."
 """
 for sp in getAllSpecies():
 	getCore(sp)
