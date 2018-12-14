@@ -128,6 +128,8 @@ def getCore(spec):
 
 	"""
 				body = "Error: There are no core genes common to "+str(CORE_GENOME_PERCENT*100)+" percent of the population."
+				h.write(header+body)
+				h.close()
 """
 for sp in getAllSpecies():
 	getCore(sp)
