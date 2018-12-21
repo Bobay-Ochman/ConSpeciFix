@@ -21,6 +21,7 @@ The following programs should be accessible from your command line (on your loca
 - mafft http://mafft.cbrc.jp/alignment/software/
 - RAxML https://sco.h-its.org/exelixis/web/software/raxml/index.html
 - Rscript* https://cran.r-project.org/doc/manuals/r-release/R-admin.html
+	- outliers package, installed via `install.packages('outliers')`
 
 ## Functionality
 
