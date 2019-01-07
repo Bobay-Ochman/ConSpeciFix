@@ -21,8 +21,7 @@ for sp in species:
 		r,m=float(a[1]),float(a[2])  # change to just pull the rm ratio
 		if m > 0:
 			rm = r/m
-			if nb >= 10:
-				k.write(a[0] + '\t' + str(rm) + '\n')
+			k.write(a[0] + '\t' + str(rm) + '\n')
 	f.close()
 	k.truncate()
 	k.close()
