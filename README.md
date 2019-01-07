@@ -46,6 +46,10 @@ To run your folder comparison:
 3. `cd ConSpeciFix-#.#.#/database`
 4. `python runner_personal.py /absolute/path/to/folder/with/genes/`
 
+### Test Data
+
+Test data sets and examples of completed analysis can be found [here](https://github.com/Bobay-Ochman/Test-Data)
+
 ## Database Building
 
 Produces a database of genomes, their comparisons, and result metrics for every species. Pulls data from NCBI.
