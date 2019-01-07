@@ -15,6 +15,9 @@ def makeImages(sp):
 	fromSave = False
 	pat = PATH_TO_OUTPUT + sp+'/'
 
+	#automatically pull from save file if it exists
+	if os.path.isfile(pat+'mapOfRecombination.txt'):
+		fromSave = True
 
 	#start by loading all of the strain names from samples.txt
 	print(pat)
@@ -113,14 +116,18 @@ def makeImages(sp):
 		totalSortedOrder = l.replace('(',"").replace(')','').replace(';',"").strip().split(',')
 	print totalSortedOrder
 
-	
+	trimmedSortedOrder = []
+	for strain in totalSortedOrder:
+		if strain in allStrains:
+			trimmedSortedOrder.append(strain)
+
 	print("consolidate")
 	maxLen = 0
 	totalTally = []
 	
 	#actually start making the maps
 	for spStrain in specialStrains:
-		sortedOrder = copy.copy(totalSortedOrder)
+		sortedOrder = copy.copy(trimmedSortedOrder)
 		sortedOrder.remove(spStrain)		
 		mapToPrint = [[]]*len(sortedOrder)
 		orderOfStrains = []
@@ -153,9 +160,12 @@ def makeImages(sp):
 			insertIndex = sortedOrder.index(compName)
 			mapToPrint[insertIndex] = genomeMap
 		# data = np.array(mapToPrint)
-		print(len(mapToPrint[0]))
+		for i in range(len(mapToPrint)):
+			if len(mapToPrint[i]) == 0:
+				mapToPrint[i] = [0] * maxLen
+		print(maxLen)
 		print(len(mapToPrint))
-		w, h = len(mapToPrint[0]), len(mapToPrint)
+		w, h = maxLen, len(mapToPrint)
 		data = np.zeros((h, w), dtype=np.float64)
 		for i in range(len(mapToPrint)):
 			for j in range(len(mapToPrint[i])):
