@@ -1,9 +1,9 @@
-# Bacteria Speciation Process
+# ConSpeciFix: a Speciation Process
 
 **For the most up-to-date _stable_ version of ConSpeciFix, please go to [releases](https://github.com/Bobay-Ochman/ConSpeciFix/releases).**
 
 ## About
-An algorithm that detects bacterial and archaeal species based on the rates of gene flow across populations.
+An algorithm that detects bacterial and archaeal species based on the rates of gene flow across populations. Has also been used with good results on viral species.
 
 Bobay and Ochman. *Genome Biol Evol* 2017. 9(3): 491–501.
 
@@ -45,6 +45,12 @@ To run your folder comparison:
 2. Edit path variables in `ConSpeciFix-#.#.#/database/config`
 3. `cd ConSpeciFix-#.#.#/database`
 4. `python runner_personal.py /absolute/path/to/folder/with/genes/`
+
+An additional flag can be added `-t` to limit the number of threads. The default is the number of cores on the machine, but can be changed like this:
+```
+python runner_personal.py -t 4 /absolute/path/to/folder/with/genes/
+```
+
 
 ### Test Data
 
