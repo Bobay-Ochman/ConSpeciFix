@@ -139,14 +139,14 @@ def makeImages(sp):
 				continue
 			orderOfStrains.append(compStrainName)
 			genomeMap = []
-			maxLen = int(len(strainMap[strainPair])/100)
+			maxLen = int(len(strainMap[strainPair])/BUCKET_SIZE)
 			
 			if len(totalTally) < maxLen:
 				totalTally = [[]] * maxLen
 
 			for i in range(maxLen):
-				recombs = [(z=='r') for z in strainMap[strainPair][i*100:(i+1)*100]]
-				mutations = [(z=='m') for z in strainMap[strainPair][i*100:(i+1)*100]]
+				recombs = [(z=='r') for z in strainMap[strainPair][i*BUCKET_SIZE:(i+1)*BUCKET_SIZE]]
+				mutations = [(z=='m') for z in strainMap[strainPair][i*BUCKET_SIZE:(i+1)*BUCKET_SIZE]]
 				hmRate = 0
 				if (sum(mutations)) != 0:
 					hmRate = (sum(recombs)+0.0)/sum(mutations)
@@ -174,7 +174,7 @@ def makeImages(sp):
 		#img.save('zimage_'+spStrain+'_against_population_of_'+largestStrainGroup+'.png')
 		print("max data point: " + str(data.max()))
 		fig, (ax0) = plt.subplots(1,1)
-		tickNames = [str(s) for s in np.arange(0,maxLen*100,step = max(int(maxLen/10)/10,1))]  
+		tickNames = [str(s) for s in np.arange(0,maxLen*BUCKET_SIZE,step = max(int(maxLen/10)/10,1))]  
 		plt.xticks(np.arange(0,maxLen,step = int(maxLen/10)),tickNames )
 		plt.yticks(np.arange(0,len(mapToPrint),step=1), sortedOrder)
 		c = ax0.pcolor(data,norm=LogNorm(vmin=1, vmax=data.max()),cmap='GnBu')
@@ -184,7 +184,7 @@ def makeImages(sp):
 		ax0.set_title(spStrain+' against population of '+largestStrainGroup)
 		tickLabels = []
 		for i in range(9):
-			tickLabels.append(int((data.max()-1)*(i/8.0)*100)/100.0)
+			tickLabels.append(int((data.max()-1)*(i/8.0)*BUCKET_SIZE)/BUCKET_SIZE.0)
 		labelThings = [mark+1 for mark in tickLabels]
 		print tickLabels
 		print data.max(),data.min()

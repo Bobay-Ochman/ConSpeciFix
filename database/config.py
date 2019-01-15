@@ -50,7 +50,10 @@ USEARCH_FOLDER = 'BBH'
 # Used to control the generation of gene maps. Optional because the files
 # are both numerous and large (for example, one hundred 10kbp genomes will produce a 38G file)
 GENERATE_GENE_MAPS = True
-
+# Size to amortize over for generating genome map.
+# Bucket size should be about ~1/100th of total genome length
+# for 10kbp 
+BUCKET_SIZE = 100
 
 ############### Things users will not need to change ###############
 
