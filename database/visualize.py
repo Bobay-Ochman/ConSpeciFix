@@ -184,7 +184,7 @@ def makeImages(sp):
 		ax0.set_title(spStrain+' against population of '+largestStrainGroup)
 		tickLabels = []
 		for i in range(9):
-			tickLabels.append(int((data.max()-1)*(i/8.0)*BUCKET_SIZE)/BUCKET_SIZE.0)
+			tickLabels.append(int((data.max()-1)*(i/8.0)*BUCKET_SIZE)/float(BUCKET_SIZE))
 		labelThings = [mark+1 for mark in tickLabels]
 		print tickLabels
 		print data.max(),data.min()
