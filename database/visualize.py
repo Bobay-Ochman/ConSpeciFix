@@ -11,7 +11,9 @@ from matplotlib.colors import LogNorm
 import unicodedata
 import copy
 
+
 def makeImages(sp):
+
 	fromSave = False
 	pat = PATH_TO_OUTPUT + sp+'/'
 
@@ -47,8 +49,10 @@ def makeImages(sp):
 		print(len(strainMap))
 
 		fd = open(pat+'visual.txt','r')
+		allLines = fd.readlines()
+		linesToUse = allLines[-LINES_TO_USE:]
 		lineNumber = 0
-		for l in fd.readlines():
+		for l in linesToUse:
 			jsonReadable = l.strip().replace("'",'"')
 			whatHappened = json.loads(jsonReadable)
 			genomeLength = len(whatHappened)
@@ -104,7 +108,6 @@ def makeImages(sp):
 	out = open(pat+'totalsOfRecombination.txt','w')
 	for i in strainTotals:
 		put = '\t'.join(str(i).split('&&&')) +'\t'+str(strainTotals[i])
-		print put 
 		out.write(put+'\n')
 	out.close()
 	
@@ -114,7 +117,6 @@ def makeImages(sp):
 	totalSortedOrder = []
 	for l in raxmlFile.readlines():
 		totalSortedOrder = l.replace('(',"").replace(')','').replace(';',"").strip().split(',')
-	print totalSortedOrder
 
 	trimmedSortedOrder = []
 	for strain in totalSortedOrder:
@@ -139,14 +141,14 @@ def makeImages(sp):
 				continue
 			orderOfStrains.append(compStrainName)
 			genomeMap = []
-			maxLen = int(len(strainMap[strainPair])/BUCKET_SIZE)
+			maxLen = int(len(strainMap[strainPair])/100)
 			
 			if len(totalTally) < maxLen:
 				totalTally = [[]] * maxLen
 
 			for i in range(maxLen):
-				recombs = [(z=='r') for z in strainMap[strainPair][i*BUCKET_SIZE:(i+1)*BUCKET_SIZE]]
-				mutations = [(z=='m') for z in strainMap[strainPair][i*BUCKET_SIZE:(i+1)*BUCKET_SIZE]]
+				recombs = [(z=='r') for z in strainMap[strainPair][i*100:(i+1)*100]]
+				mutations = [(z=='m') for z in strainMap[strainPair][i*100:(i+1)*100]]
 				hmRate = 0
 				if (sum(mutations)) != 0:
 					hmRate = (sum(recombs)+0.0)/sum(mutations)
@@ -174,7 +176,7 @@ def makeImages(sp):
 		#img.save('zimage_'+spStrain+'_against_population_of_'+largestStrainGroup+'.png')
 		print("max data point: " + str(data.max()))
 		fig, (ax0) = plt.subplots(1,1)
-		tickNames = [str(s) for s in np.arange(0,maxLen*BUCKET_SIZE,step = max(int(maxLen/10)/10,1))]  
+		tickNames = [str(s) for s in np.arange(0,maxLen*100,step = max(int(maxLen/10)/10,1))]  
 		plt.xticks(np.arange(0,maxLen,step = int(maxLen/10)),tickNames )
 		plt.yticks(np.arange(0,len(mapToPrint),step=1), sortedOrder)
 		c = ax0.pcolor(data,norm=LogNorm(vmin=1, vmax=data.max()),cmap='GnBu')
@@ -184,7 +186,7 @@ def makeImages(sp):
 		ax0.set_title(spStrain+' against population of '+largestStrainGroup)
 		tickLabels = []
 		for i in range(9):
-			tickLabels.append(int((data.max()-1)*(i/8.0)*BUCKET_SIZE)/float(BUCKET_SIZE))
+			tickLabels.append(int((data.max()-1)*(i/8.0)*100)/100.0)
 		labelThings = [mark+1 for mark in tickLabels]
 		print tickLabels
 		print data.max(),data.min()
@@ -210,11 +212,14 @@ def wrapper(f):
 	except Exception as e:
 		print('ERROR WITH !!!!!!! ' + str(f)+"\n"+str(e))
 
-if __name__ == '__main__':
-    args = getAllSpecies()
-    args = giveMulti(args)
-    p = Pool(MAX_THREADS)
-    p.map(wrapper, args)
+for i in getAllSpecies():
+	makeImages(i)
+
+# if __name__ == '__main__':
+#     args = getAllSpecies()
+#     args = giveMulti(args)
+#     p = Pool(MAX_THREADS)
+#     p.map(wrapper, args)
 
 
 
